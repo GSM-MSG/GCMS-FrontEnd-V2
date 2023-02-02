@@ -6,8 +6,7 @@ export const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #000;
-  opacity: 0.64;
+  background: rgba(0, 0, 0, 0.64);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,12 +1,11 @@
 name: GCMS-CI
 
 on:
-  push:
+  pull_request:
     branches:
       - 'fix/**'
       - 'feature/**'
       - 'releases/**'
-  pull_request:
     types: [opened, reopened]
 
 jobs:

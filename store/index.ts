@@ -1,9 +1,12 @@
 import { AnyAction, combineReducers, configureStore } from '@reduxjs/toolkit'
 import { createWrapper, HYDRATE } from 'next-redux-wrapper'
+import clubCreationSlice from './clubCreation'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
-const rootReducer = combineReducers({})
+const rootReducer = combineReducers({
+  clubCreation: clubCreationSlice.reducer,
+})
 export type RootState = ReturnType<typeof rootReducer>
 
 const reducer = (state: RootState | undefined, action: AnyAction) => {
@@ -24,4 +27,5 @@ const makeStore = () => {
 
 const wrapper = createWrapper(makeStore, { debug: NODE_ENV })
 
+export const store = makeStore()
 export default wrapper

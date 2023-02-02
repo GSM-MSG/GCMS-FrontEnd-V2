@@ -10,9 +10,6 @@ jobs:
   GCMS-CI:
     runs-on: ubuntu-latest
     
-    env:
-      react-icon: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K
-
     strategy:
       matrix:
         node-version: [18.x]
@@ -40,7 +37,7 @@ jobs:
         username: GCMS CI bot
         url: "https://github.com/GSM-MSG/GCMS-FrontEnd-V2"
         color: 4CAF50
-        avatar_url: $react-icon
+        avatar_url: $AVATAR_URL
   
     - name: Failure notification to discord
       uses: sarisia/actions-status-discord@v1.11.0
@@ -53,5 +50,5 @@ jobs:
         username: GCMS CI bot
         url: "https://github.com/GSM-MSG/GCMS-FrontEnd-V2"
         color: e74c3c
-        avatar_url: $react-icon
+        avatar_url: $AVATAR_URL
       

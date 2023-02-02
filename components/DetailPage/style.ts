@@ -1,0 +1,272 @@
+import styled from '@emotion/styled'
+
+export const Layout = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const Wrapper = styled.div`
+  width: 700px;
+  @media (max-width: 715px) {
+    width: 100%;
+  }
+  display: flex;
+  justify-content: space-between;
+`
+export const Section = styled.section`
+  width: 510px;
+  margin-top: 42px;
+`
+
+export const ClubBanner = styled.img`
+  width: 100%;
+  height: 332px;
+  background: #373737;
+  border-radius: 10px;
+  object-fit: contain;
+`
+
+export const ClubInfo = styled.div`
+  width: 100%;
+  h3 {
+    margin: 36px 0 0;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+  }
+`
+export const Contact = styled.div`
+  width: 100%;
+  height: 87px;
+  > div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  hr {
+    margin: 0;
+    border: 1px solid #313131;
+    border-radius: 1px;
+  }
+`
+export const ProfileImg = styled.img`
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  background: #c4c4c4;
+`
+
+export const ContactInfo = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  > * {
+    margin: 0;
+  }
+  p {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  span {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+`
+
+export const Description = styled.div`
+  h3,
+  p {
+    margin: 0;
+    font-family: 'Pretendard';
+    font-style: normal;
+  }
+  h3 {
+    font-weight: 700;
+    font-size: 15px;
+    margin-top: 29px;
+  }
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #848484;
+    margin-top: 10px;
+  }
+`
+
+export const ClubActivity = styled.div`
+  margin-top: 60px;
+  h3 {
+    margin: 0;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  div {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+`
+export const ActivityImg = styled.img`
+  width: 250px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  background: linear-gradient(0deg, #373737, #373737), url(image.png);
+  border-radius: 10px;
+`
+
+export const ClubMember = styled.div`
+  margin-top: 60px;
+  > h3 {
+    margin: 0;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  > div {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    gap: 26px;
+  }
+  > span {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    gap: 9px;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+`
+
+export const HeadProfile = styled.div`
+  width: 105px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`
+
+export const HeadInfo = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  > * {
+    margin: 0;
+    font-family: 'Pretendard';
+    font-style: normal;
+  }
+  p {
+    font-weight: 500;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  span {
+    font-weight: 500;
+    font-size: 13px;
+  }
+`
+
+export const MemberProfile = styled.img`
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  background: #c4c4c4;
+`
+
+export const Footer = styled.footer`
+  width: 100%;
+  height: 214px;
+  background: #242425;
+`
+
+export const SideBar = styled.div`
+  position: sticky;
+  top: 42px;
+  width: 174px;
+  height: 224px;
+  background: #242425;
+  border-radius: 10px;
+  padding: 12px 14px 34px;
+  > h3 {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    color: #c7c7c7;
+    margin: 0;
+  }
+`
+export const SideControl = styled.div`
+  padding-top: 12px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  > button {
+    width: 100%;
+    height: 36px;
+    border: none;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    color: #ffffff;
+    background: #4164e1;
+    border-radius: 7px;
+  }
+`
+
+export const NotionInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  > * {
+    margin: 0;
+    font-family: 'Pretendard';
+    font-style: normal;
+  }
+  > p {
+    width: 70%;
+    font-weight: 400;
+    font-size: 13px;
+    color: #858585;
+  }
+  > a {
+    font-weight: 500;
+    font-size: 13px;
+    color: #8be246;
+  }
+`

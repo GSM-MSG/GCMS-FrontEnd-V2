@@ -6,7 +6,6 @@ on:
       - 'fix/**'
       - 'feature/**'
       - 'releases/**'
-    types: [opened, reopened]
 
 jobs:
   GCMS-CI:
@@ -39,7 +38,7 @@ jobs:
         username: GCMS CI bot
         url: "https://github.com/GSM-MSG/GCMS-FrontEnd-V2"
         color: 4CAF50
-        image: https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg
+        avatar_url: https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg
   
     - name: Failure notification to discord
       uses: sarisia/actions-status-discord@v1.11.0
@@ -52,5 +51,5 @@ jobs:
         username: GCMS CI bot
         url: "https://github.com/GSM-MSG/GCMS-FrontEnd-V2"
         color: e74c3c
-        image: https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg
+        avatar_url: https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg
       

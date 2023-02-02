@@ -1,7 +1,6 @@
-import ClubType from '@/type/common/ClubType'
+import { ClubType, MemberType } from '@/type/common'
 import {
   ClubCreationInitialState,
-  SetClubImagesPayload,
   SetClubInfoPayload,
 } from '@/type/store/clubCreation'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
@@ -31,21 +30,30 @@ const clubCreationSlice = createSlice({
       }
     },
 
-    setClubImages: (state, action: PayloadAction<SetClubImagesPayload>) => {
-      state.bannerImg = action.payload.bannerImg
-      state.activityImgs = action.payload.activityImgs
+    setBannerImg: (state, action: PayloadAction<string>) => {
+      state.bannerImg = action.payload
     },
 
-    setClubContent: (state, action: PayloadAction<string>) => {
+    setActivityImg: (state, action: PayloadAction<string>) => {
+      state.activityImgs.push(action.payload)
+    },
+
+    removeActivityImg: (state, action: PayloadAction<string>) => {
+      state.activityImgs = state.activityImgs.filter(
+        (i) => i !== action.payload
+      )
+    },
+
+    setContent: (state, action: PayloadAction<string>) => {
       state.content = action.payload
     },
 
-    setClubMember: (state, action: PayloadAction<string>) => {
+    setMember: (state, action: PayloadAction<MemberType>) => {
       state.member.push(action.payload)
     },
 
-    removeClubMember: (state, action: PayloadAction<string>) => {
-      state.member = state.member.filter((i) => i !== action.payload)
+    removeMember: (state, action: PayloadAction<string>) => {
+      state.member = state.member.filter((i) => i.uuid !== action.payload)
     },
   },
 })
@@ -53,10 +61,12 @@ const clubCreationSlice = createSlice({
 export const {
   setClubType,
   setClubInfo,
-  setClubImages,
-  setClubMember,
-  setClubContent,
-  removeClubMember,
+  setMember,
+  setContent,
+  removeMember,
+  setBannerImg,
+  setActivityImg,
+  removeActivityImg,
 } = clubCreationSlice.actions
 
 export default clubCreationSlice

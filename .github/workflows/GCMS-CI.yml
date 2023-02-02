@@ -3,9 +3,8 @@ name: GCMS-CI
 on:
   pull_request:
     branches:
-      - 'fix/**'
-      - 'feature/**'
-      - 'releases/**'
+      - 'develop'
+      - 'master'
 
 jobs:
   GCMS-CI:

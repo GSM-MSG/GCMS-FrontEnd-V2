@@ -34,7 +34,9 @@ const clubCreationSlice = createSlice({
       state.bannerImg = action.payload
     },
 
-    setActivityImg: (state, action: PayloadAction<string>) => {
+    addActivityImg: (state, action: PayloadAction<string>) => {
+      if (state.activityImgs.length >= 4)
+        throw new Error('Activity image maximum count is 4')
       state.activityImgs.push(action.payload)
     },
 
@@ -65,7 +67,7 @@ export const {
   setContent,
   removeMember,
   setBannerImg,
-  setActivityImg,
+  addActivityImg,
   removeActivityImg,
 } = clubCreationSlice.actions
 

@@ -27,4 +27,5 @@ const makeStore = () => {
 
 const wrapper = createWrapper(makeStore, { debug: NODE_ENV })
 
+export const store = makeStore()
 export default wrapper

@@ -14,9 +14,18 @@ export const Layer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 60px;
-  h4,
   small {
     color: rgba(255, 255, 255, 0.31);
+  }
+
+  @media (max-width: 800px) {
+    width: 87.5%;
+    align-items: center;
+  }
+  @media (max-width: 400px) {
+    > div {
+      width: 100%;
+    }
   }
 `
 
@@ -54,21 +63,25 @@ export const ProfileImg = styled.div`
 `
 
 export const ClubBox = styled.div`
-  width: 100%;
+  width: 350px;
   display: flex;
   flex-direction: column;
   gap: 25px;
-  h2,
-  h4 {
+  h2 {
     margin: 0;
   }
 `
 
 export const ClubContainer = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
+`
+
+export const ClubType = styled.h4`
+  color: rgba(255, 255, 255, 0.31);
+  margin: 0;
 `
 
 export const ClubWrapper = styled.div`
@@ -78,15 +91,15 @@ export const ClubWrapper = styled.div`
   border-radius: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-
-  h4 {
-    width: 72%;
-    font-size: 15px;
-  }
+  justify-content: space-between;
+  padding: 16px;
 `
-
 export const ClubImg = styled(ProfileImg)`
   width: 40px;
   height: 40px;
+`
+
+export const ClubName = styled(ClubType)`
+  width: 72%;
+  font-size: 15px;
 `

@@ -7,7 +7,7 @@ export default function MyPage() {
     return (
       <S.ClubWrapper>
         <S.ClubImg></S.ClubImg>
-        <h4>{name}</h4>
+        <S.ClubName>{name}</S.ClubName>
         <KebabMenuIcon />
       </S.ClubWrapper>
     )
@@ -28,15 +28,15 @@ export default function MyPage() {
         <S.ClubBox>
           <h2>내 동아리</h2>
           <S.ClubContainer>
-            <h4>전공동아리</h4>
+            <S.ClubType>전공동아리</S.ClubType>
             {ClubWrapper('미소')}
           </S.ClubContainer>
           <S.ClubContainer>
-            <h4>자율동아리</h4>
+            <S.ClubType>자율동아리</S.ClubType>
             {ClubWrapper('더모먼트')}
           </S.ClubContainer>
           <S.ClubContainer>
-            <h4>사설동아리</h4>
+            <S.ClubType>사설동아리</S.ClubType>
             {ClubWrapper('MSG')}
             {ClubWrapper('MSG')}
             {ClubWrapper('MSG')}

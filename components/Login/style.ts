@@ -29,6 +29,11 @@ export const LogoWarppaer = styled.div`
   font-weight: 700;
   font-size: 34px;
   pointer-events: none;
+  @media (max-width: 450px) {
+    margin: 0 auto;
+    width: 80%;
+    font-weight: 500;
+  }
 `
 
 export const Auth = styled.div`
@@ -46,6 +51,15 @@ export const Auth = styled.div`
   font-size: 17px;
   color: #2e80cc;
   cursor: pointer;
+
+  @media (max-width: 450px) {
+    margin: 0 auto;
+    font-size: 0px;
+    width: 20%;
+    aspect-ratio: auto 1/1;
+    border-radius: 50px;
+    gap: 0;
+  }
 `
 
 export const ContentInfo = styled.div`
@@ -56,4 +70,8 @@ export const ContentInfo = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
+  @media (max-width: 450px) {
+    margin-top: 15%;
+    font-size: 11px;
+  }
 `

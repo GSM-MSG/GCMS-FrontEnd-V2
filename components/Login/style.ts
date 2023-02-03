@@ -38,6 +38,7 @@ export const Auth = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   border-radius: 6px;
   font-family: 'Pretendard';
   font-style: normal;

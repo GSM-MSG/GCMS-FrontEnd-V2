@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Profile from './Profile'
 import * as S from './style'
 
 export default function Header() {
@@ -10,10 +11,7 @@ export default function Header() {
           <S.NavWrapper>
             <Link href='#'>홈</Link>
             <Link href='#'>로그인</Link>
-            <S.ProfileWrapper>
-              <S.ProfileIMG src='#' />
-              <S.ClientName>안징형님</S.ClientName>
-            </S.ProfileWrapper>
+            <Profile />
           </S.NavWrapper>
         </S.Wrapper>
       </S.Header>

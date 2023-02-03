@@ -14,10 +14,10 @@ export const Header = styled.header`
 `
 
 export const Wrapper = styled.div`
-  width: 709px;
+  width: 710px;
   height: 100%;
-  padding: 0 10px;
   display: flex;
+  padding: 10px;
   justify-content: space-between;
   align-items: center;
 `

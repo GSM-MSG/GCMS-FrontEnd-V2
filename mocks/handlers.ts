@@ -20,7 +20,7 @@ export const handlers = [
         grade: 2,
         classNum: 1,
         number: 9,
-        profileImg: 'https://',
+        profileImg: '',
         clubs: [
           {
             id: 1,

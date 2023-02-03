@@ -59,7 +59,7 @@ export default function MyPage() {
             <S.ProfileImg>
               <Image
                 src={userData.profileImg}
-                alt='bannerImg'
+                alt='profileImg'
                 width={60}
                 height={60}
               />

@@ -1,5 +1,4 @@
-import KebabMenuIcon from '@/public/svg/KebabMenuIcon'
-import ProfileIcon from '@/public/svg/profileIcon'
+import * as SVG from '@/assets/svg'
 import { ProfileType } from '@/type/common'
 import axios from 'axios'
 import Image from 'next/image'
@@ -44,7 +43,7 @@ export default function MyPage() {
               />
             </S.ClubImg>
             <S.ClubName>{item.title}</S.ClubName>
-            <KebabMenuIcon />
+            <SVG.KebabMenuIcon />
           </S.ClubWrapper>
         )
     })
@@ -54,7 +53,7 @@ export default function MyPage() {
     <S.Positionier>
       <S.Layer>
         <S.ProfileBox>
-          <ProfileIcon />
+          <SVG.ProfileIcon />
           <S.ProfileContent>
             <S.ProfileImg>
               <Image
@@ -69,7 +68,7 @@ export default function MyPage() {
               {userData.grade}학년 {userData.classNum}반 {userData.number}번
             </small>
           </S.ProfileContent>
-          <KebabMenuIcon />
+          <SVG.KebabMenuIcon />
         </S.ProfileBox>
         <S.ClubBox>
           <h2>내 동아리</h2>

@@ -1,4 +1,4 @@
-export default function KebabMenuIcon() {
+export const KebabMenuIcon = () => {
   return (
     <svg
       width='3'

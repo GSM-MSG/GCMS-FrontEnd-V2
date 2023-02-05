@@ -4,7 +4,7 @@ export const Wrapper = styled.nav`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin: 2rem 0;
   gap: 1rem;
 `
 

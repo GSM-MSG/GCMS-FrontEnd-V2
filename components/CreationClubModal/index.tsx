@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Portal from '../Portal'
 import Navigation from './Navigation'
-import SelectionClubType from './SelectionClubType'
+import ClubKindSelection from './ClubKindSelection'
 import * as S from './style'
 
 const CreationClubModal = () => {
@@ -14,7 +14,7 @@ const CreationClubModal = () => {
 
         <Navigation page={page} />
 
-        <SelectionClubType />
+        <ClubKindSelection />
       </S.Wrapper>
     </Portal>
   )

@@ -5,7 +5,7 @@ interface MemberType {
   grade: number
   classNum: number
   number: number
-  profileImg: string
+  profileImg?: string
 }
 
 export default MemberType

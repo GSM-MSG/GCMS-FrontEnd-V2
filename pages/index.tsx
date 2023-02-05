@@ -1,3 +1,5 @@
+import CreationClubModal from '@/components/CreationClubModal'
+
 export default function Home() {
-  return <>hello world</>
+  return <CreationClubModal />
 }

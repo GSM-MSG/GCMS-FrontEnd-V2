@@ -1,5 +1,5 @@
-import CreationClubModal from '@/components/CreationClubModal'
+import ClubCreationModal from '@/components/ClubCreationModal'
 
 export default function Home() {
-  return <CreationClubModal />
+  return <ClubCreationModal />
 }

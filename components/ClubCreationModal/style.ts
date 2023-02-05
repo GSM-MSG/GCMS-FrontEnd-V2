@@ -12,6 +12,17 @@ export const Wrapper = styled.div`
   flex-direction: column;
 `
 
+export const TopContent = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`
+
+export const CloseButton = styled.button`
+  width: min-content;
+  background: transparent;
+  border: none;
+`
+
 export const Title = styled.h3`
   margin: 0;
   text-align: center;

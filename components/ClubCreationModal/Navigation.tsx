@@ -1,10 +1,12 @@
+import { RootState } from '@/store'
+import { useSelector } from 'react-redux'
 import * as S from './Navigation.style'
 
-interface Props {
-  page: number
-}
+const Navigation = () => {
+  const { page } = useSelector((state: RootState) => ({
+    page: state.clubCreationPage,
+  }))
 
-const Navigation = ({ page }: Props) => {
   return (
     <S.Wrapper>
       {[...Array(5)].map((_, i) => (

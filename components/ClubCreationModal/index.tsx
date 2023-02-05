@@ -1,20 +1,23 @@
-import { useState } from 'react'
 import Portal from '../Portal'
 import Navigation from './Navigation'
 import ClubKindSelection from './ClubKindSelection'
 import * as S from './style'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 const ClubCreationModal = () => {
-  const [page, setPage] = useState<number>(1)
+  const { page } = useSelector((state: RootState) => ({
+    page: state.clubCreationPage,
+  }))
 
   return (
     <Portal>
       <S.Wrapper>
         <S.Title>동아리 개설</S.Title>
 
-        <Navigation page={page} />
+        <Navigation />
 
-        <ClubKindSelection />
+        {page === 1 && <ClubKindSelection />}
       </S.Wrapper>
     </Portal>
   )

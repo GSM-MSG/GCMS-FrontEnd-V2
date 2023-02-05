@@ -1,13 +1,25 @@
 import clubTypeInfo from '@/lib/clubTypeInfo'
+import { setClubType } from '@/store/clubCreation'
+import { nextPage } from '@/store/clubCreationPage'
 import { ClubType } from '@/type/common'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import * as S from './ClubKindSelection.style'
 import SubmitButton from './SubmitButton'
 
 const ClubKindSelection = () => {
   const [type, setType] = useState<ClubType>('MAJOR')
+  const dispatch = useDispatch()
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    dispatch(setClubType(type))
+    dispatch(nextPage())
+  }
+
   return (
-    <S.Wrapper>
+    <S.Wrapper onSubmit={onSubmit}>
       <S.Content>
         {clubTypeInfo.map((i, idx) => (
           <S.Option

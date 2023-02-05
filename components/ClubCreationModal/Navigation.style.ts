@@ -1,3 +1,4 @@
+import { SelectType } from '@/type/components/ClubCreationModal'
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.nav`
@@ -8,11 +9,7 @@ export const Wrapper = styled.nav`
   gap: 1rem;
 `
 
-interface TabProps {
-  select: boolean
-}
-
-export const Tab = styled.div<TabProps>`
+export const Tab = styled.div<SelectType>`
   color: #313131;
   background: #696969;
   width: 2rem;

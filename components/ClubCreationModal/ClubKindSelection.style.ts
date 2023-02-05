@@ -1,8 +1,5 @@
+import { OptionProps, SelectType } from '@/type/components/ClubCreationModal'
 import styled from '@emotion/styled'
-
-interface SelectType {
-  select: boolean
-}
 
 export const Wrapper = styled.form`
   width: 100%;
@@ -18,11 +15,6 @@ export const Content = styled.div`
   flex-direction: column;
   gap: 0.8rem;
 `
-
-interface OptionProps extends SelectType {
-  url: string
-  position: string
-}
 
 export const Option = styled.div<OptionProps>`
   width: 100%;

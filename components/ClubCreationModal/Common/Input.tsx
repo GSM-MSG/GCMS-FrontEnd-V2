@@ -1,4 +1,3 @@
-import { forwardRef } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
 import * as S from './Input.style'
 
@@ -38,4 +37,4 @@ const Input = ({
   )
 }
 
-export default forwardRef(Input)
+export default Input

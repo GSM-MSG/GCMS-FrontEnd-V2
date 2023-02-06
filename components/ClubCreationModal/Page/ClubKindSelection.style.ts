@@ -1,21 +1,6 @@
 import { OptionProps, SelectType } from '@/type/components/ClubCreationModal'
 import styled from '@emotion/styled'
 
-export const Wrapper = styled.form`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
-
-export const Content = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-`
-
 export const Option = styled.div<OptionProps>`
   width: 100%;
   height: 7rem;

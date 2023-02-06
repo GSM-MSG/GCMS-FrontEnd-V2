@@ -1,6 +1,6 @@
 import Portal from '../Portal'
-import Navigation from './Navigation'
-import ClubKindSelection from './ClubKindSelection'
+import Navigation from './Layout/Navigation'
+import ClubKindSelection from './Page/ClubKindSelection'
 import * as S from './style'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'

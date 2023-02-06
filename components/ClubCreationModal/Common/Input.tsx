@@ -1,3 +1,5 @@
+import { forwardRef } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import * as S from './Input.style'
 
 interface Props {
@@ -7,6 +9,7 @@ interface Props {
   errorPlaceholder?: string
   error?: boolean
   optional?: boolean
+  register: UseFormRegisterReturn
 }
 
 const Input = ({
@@ -16,6 +19,7 @@ const Input = ({
   errorPlaceholder,
   error,
   optional,
+  register,
 }: Props) => {
   return (
     <S.Wrapper>
@@ -28,9 +32,10 @@ const Input = ({
       <S.InputTag
         error={error}
         placeholder={error && errorPlaceholder ? errorPlaceholder : placeholder}
+        {...register}
       />
     </S.Wrapper>
   )
 }
 
-export default Input
+export default forwardRef(Input)

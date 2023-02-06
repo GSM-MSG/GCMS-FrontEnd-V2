@@ -1,4 +1,4 @@
-export default function ProfileIcon() {
+export const ProfileIcon = () => {
   return (
     <svg
       width='15'

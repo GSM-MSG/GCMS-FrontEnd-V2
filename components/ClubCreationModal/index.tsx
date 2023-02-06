@@ -1,5 +1,5 @@
 import Portal from '../Portal'
-import Navigation from './Layout/Navigation'
+import Navigation from './Common/Navigation'
 import ClubKindSelection from './Page/ClubKindSelection'
 import * as S from './style'
 import { useSelector } from 'react-redux'

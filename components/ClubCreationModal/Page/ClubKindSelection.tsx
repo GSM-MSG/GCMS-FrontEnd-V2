@@ -5,7 +5,7 @@ import { ClubType } from '@/type/common'
 import { FormEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './ClubKindSelection.style'
-import SubmitButton from '../Layout/SubmitButton'
+import SubmitButton from '../Common/SubmitButton'
 
 const ClubKindSelection = () => {
   const [type, setType] = useState<ClubType>('MAJOR')

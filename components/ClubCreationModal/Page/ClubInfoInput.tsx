@@ -1,5 +1,5 @@
-import Input from '../Layout/Input'
-import SubmitButton from '../Layout/SubmitButton'
+import Input from '../Common/Input'
+import SubmitButton from '../Common/SubmitButton'
 import * as S from './ClubInfoInput.style'
 
 const ClubInfoInput = () => {

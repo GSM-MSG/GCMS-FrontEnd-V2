@@ -1,4 +1,5 @@
 import BannerImg from '../Common/BannerImg'
+import ClubImgs from '../Common/ClubImgs'
 import Layout from '../Common/Layout'
 
 const ClubImgUpload = () => {
@@ -9,6 +10,7 @@ const ClubImgUpload = () => {
   return (
     <Layout onSubmit={onSubmit} back>
       <BannerImg />
+      <ClubImgs />
     </Layout>
   )
 }

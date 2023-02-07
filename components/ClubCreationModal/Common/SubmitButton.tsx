@@ -2,7 +2,7 @@ import { backPage } from '@/store/clubCreationPage'
 import { useDispatch } from 'react-redux'
 import * as S from './SubmitButton.style'
 
-interface Props {
+export interface Props {
   back?: boolean
   complete?: boolean
 }

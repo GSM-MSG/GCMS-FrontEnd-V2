@@ -5,7 +5,7 @@ import { ClubType } from '@/type/common'
 import { FormEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './ClubKindSelection.style'
-import SubmitButton from '../Layout/SubmitButton'
+import Layout from '../Common/Layout'
 
 const ClubKindSelection = () => {
   const [type, setType] = useState<ClubType>('MAJOR')
@@ -19,28 +19,24 @@ const ClubKindSelection = () => {
   }
 
   return (
-    <S.Wrapper onSubmit={onSubmit}>
-      <S.Content>
-        {clubTypeInfo.map((i, idx) => (
-          <S.Option
-            select={type === i.type}
-            position={i.position}
-            url={i.img}
-            key={idx}
-            onClick={() => setType(i.type)}
-          >
-            <div>
-              <S.OptionType>{i.title}</S.OptionType>
-              <S.OptionDescription select={type === i.type}>
-                {i.description}
-              </S.OptionDescription>
-            </div>
-          </S.Option>
-        ))}
-      </S.Content>
-
-      <SubmitButton />
-    </S.Wrapper>
+    <Layout onSubmit={onSubmit}>
+      {clubTypeInfo.map((i, idx) => (
+        <S.Option
+          select={type === i.type}
+          position={i.position}
+          url={i.img}
+          key={idx}
+          onClick={() => setType(i.type)}
+        >
+          <div>
+            <S.OptionType>{i.title}</S.OptionType>
+            <S.OptionDescription select={type === i.type}>
+              {i.description}
+            </S.OptionDescription>
+          </div>
+        </S.Option>
+      ))}
+    </Layout>
   )
 }
 

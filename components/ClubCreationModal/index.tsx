@@ -1,10 +1,11 @@
 import Portal from '../Portal'
-import Navigation from './Layout/Navigation'
+import Navigation from './Common/Navigation'
 import ClubKindSelection from './Page/ClubKindSelection'
 import * as S from './style'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import * as SVG from '@/type/assets/svg'
+import ClubInfoInput from './Page/ClubInfoInput'
 
 interface Props {
   onClose: () => void
@@ -28,6 +29,7 @@ const ClubCreationModal = ({ onClose }: Props) => {
         <Navigation />
 
         {page === 1 && <ClubKindSelection />}
+        {page === 2 && <ClubInfoInput />}
       </S.Wrapper>
     </Portal>
   )

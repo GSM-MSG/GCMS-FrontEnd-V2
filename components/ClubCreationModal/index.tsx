@@ -4,7 +4,7 @@ import ClubKindSelection from './Page/ClubKindSelection'
 import * as S from './style'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
-import * as SVG from '@/type/assets/svg'
+import * as SVG from '@/assets/svg'
 import ClubInfoInput from './Page/ClubInfoInput'
 import ClubImgUpload from './Page/ClubImgUpload'
 

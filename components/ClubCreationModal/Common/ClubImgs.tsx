@@ -20,7 +20,11 @@ const ClubImgs = () => {
           </S.ImgCount>
         </S.ImgInput>
 
-        <S.Img src='https://bit.ly/3I4iZ8V'></S.Img>
+        <S.Img src='https://bit.ly/3I4iZ8V'>
+          <S.RemoveImg>
+            <SVG.XMark width='10' height='10' />
+          </S.RemoveImg>
+        </S.Img>
       </S.ImgList>
 
       <input

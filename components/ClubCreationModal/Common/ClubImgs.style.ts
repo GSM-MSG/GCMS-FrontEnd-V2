@@ -24,6 +24,7 @@ export const Description = styled.div`
 
 export const ImgList = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 `
 
@@ -61,4 +62,18 @@ export const Img = styled.div<ImgProps>`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+`
+
+export const RemoveImg = styled.div`
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100%;
+  background: #000;
+  cursor: pointer;
+  top: -0.5rem;
+  right: -0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

@@ -21,7 +21,7 @@ class TokenManager {
       new Date().setMinutes(new Date(expiredString).getMinutes() - 1)
     )
 
-    if (expiredAt >= new Date()) return false
+    if (expiredAt <= new Date()) return false
 
     return true
   }

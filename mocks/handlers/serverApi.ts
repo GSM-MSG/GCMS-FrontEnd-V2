@@ -1,4 +1,4 @@
 const serverApi = (path: string) =>
-  `${process.env.NEXT_PUBLIC_SERVER_URL}${path}`
+  new URL(path, process.env.NEXT_PUBLIC_SERVER_URL).toString()
 
 export default serverApi

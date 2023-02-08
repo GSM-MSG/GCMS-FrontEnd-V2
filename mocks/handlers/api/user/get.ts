@@ -1,6 +1,7 @@
 import { rest } from 'msw'
+import serverApi from '../../serverApi'
 
-const getUser = rest.get('/user', (_req, res, ctx) => {
+const getUser = rest.get(serverApi('/user'), (_req, res, ctx) => {
   return res(
     ctx.status(200),
     ctx.json({

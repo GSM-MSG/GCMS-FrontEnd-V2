@@ -1,5 +1,5 @@
 import { rest } from 'msw'
-import serverApi from '../serverApi'
+import serverApi from '../../serverApi'
 
 const postImgUpload = rest.post(serverApi('/image'), (_req, res, ctx) => {
   return res(

@@ -9,7 +9,7 @@ const ImgsSlice = createSlice({
   name: 'imgs',
   initialState,
   reducers: {
-    setBannerImg: (state, { payload }: PayloadAction<FilePayload>) => {
+    setBannerFile: (state, { payload }: PayloadAction<FilePayload>) => {
       const file = payload.file?.item(0)
       if (!file || !file?.type.includes('image')) return
 
@@ -17,7 +17,7 @@ const ImgsSlice = createSlice({
       return state
     },
 
-    addActivityImgs: (state, { payload }: PayloadAction<FilePayload>) => {
+    addActivityFiles: (state, { payload }: PayloadAction<FilePayload>) => {
       if (state.activityImgs.length >= 4) return
 
       const file = payload.file?.item(0)
@@ -26,10 +26,13 @@ const ImgsSlice = createSlice({
       state.activityImgs.push(file)
     },
 
-    removeActivityImgs: (state, { payload }: PayloadAction<number>) => {
+    removeActivityFile: (state, { payload }: PayloadAction<number>) => {
       state.activityImgs = state.activityImgs.filter((_, i) => i !== payload)
     },
   },
 })
+
+export const { setBannerFile, addActivityFiles, removeActivityFile } =
+  ImgsSlice.actions
 
 export default ImgsSlice

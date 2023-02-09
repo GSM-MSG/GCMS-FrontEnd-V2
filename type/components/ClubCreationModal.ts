@@ -10,3 +10,8 @@ export interface OptionProps extends SelectType {
 export interface ErrorProps {
   error?: boolean
 }
+
+export interface ImgUploadFormType {
+  bannerImg: FileList
+  activityImgs: FileList
+}

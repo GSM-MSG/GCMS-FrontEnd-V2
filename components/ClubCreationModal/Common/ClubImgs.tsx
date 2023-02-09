@@ -1,7 +1,18 @@
 import * as S from './ClubImgs.style'
 import * as SVG from '@/assets/svg'
+import { UseFormRegisterReturn } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@/store'
+import { removeActivityFile } from '@/store/imgs'
 
-const ClubImgs = () => {
+interface Props {
+  register: UseFormRegisterReturn
+}
+
+const ClubImgs = ({ register }: Props) => {
+  const dispatch = useDispatch()
+  const { imgs } = useSelector((store: RootState) => ({ imgs: store.imgs }))
+
   return (
     <S.Wrapper>
       <S.Label>
@@ -16,15 +27,20 @@ const ClubImgs = () => {
         <S.ImgInput htmlFor='imgs'>
           <SVG.Pictures />
           <S.ImgCount>
-            <S.ImgCountHightlight>4</S.ImgCountHightlight> / 4
+            <S.ImgCountHightlight>
+              {imgs.activityImgs.length}
+            </S.ImgCountHightlight>{' '}
+            / 4
           </S.ImgCount>
         </S.ImgInput>
 
-        <S.Img src='https://bit.ly/3I4iZ8V'>
-          <S.RemoveImg>
-            <SVG.XMark width='10' height='10' />
-          </S.RemoveImg>
-        </S.Img>
+        {imgs.activityImgs.map((i, idx) => (
+          <S.Img key={idx} src={URL.createObjectURL(i)}>
+            <S.RemoveImg onClick={() => dispatch(removeActivityFile(idx))}>
+              <SVG.XMark width='10' height='10' />
+            </S.RemoveImg>
+          </S.Img>
+        ))}
       </S.ImgList>
 
       <input
@@ -32,6 +48,7 @@ const ClubImgs = () => {
         accept='image/*'
         id='imgs'
         style={{ display: 'none' }}
+        {...register}
       />
     </S.Wrapper>
   )

@@ -1,16 +1,42 @@
+import { RootState } from '@/store'
+import { addActivityFiles, setBannerFile } from '@/store/imgs'
+import { ImgUploadFormType } from '@/type/components/ClubCreationModal'
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
 import BannerImg from '../Common/BannerImg'
 import ClubImgs from '../Common/ClubImgs'
 import Layout from '../Common/Layout'
 
 const ClubImgUpload = () => {
-  const onSubmit = () => {
+  const dispatch = useDispatch()
+  const { imgs } = useSelector((state: RootState) => ({ imgs: state.imgs }))
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ImgUploadFormType>()
+
+  const onSubmit = async () => {
+    console.log(imgs)
     return
   }
 
   return (
-    <Layout onSubmit={onSubmit} back>
-      <BannerImg error />
-      <ClubImgs />
+    <Layout onSubmit={handleSubmit(onSubmit)} back>
+      <BannerImg
+        register={register('bannerImg', {
+          required: true,
+          onChange: (e) =>
+            dispatch(setBannerFile({ file: e.currentTarget.files })),
+        })}
+        error={!!errors.bannerImg}
+      />
+      <ClubImgs
+        register={register('activityImgs', {
+          onChange: (e) =>
+            dispatch(addActivityFiles({ file: e.currentTarget.files })),
+        })}
+      />
     </Layout>
   )
 }

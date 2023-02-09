@@ -25,6 +25,15 @@ export const BannerInput = styled.label<ErrorProps>`
   cursor: pointer;
 `
 
+export const Img = styled.img`
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  object-position: center;
+`
+
 export const BannerDescription = styled.div<ErrorProps>`
   color: ${({ error }) => (error ? '#FF6666' : '#696969')};
 `

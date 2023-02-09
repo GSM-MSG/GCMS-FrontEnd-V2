@@ -1,5 +1,6 @@
 import { useUpload } from '@/hooks'
 import { RootState } from '@/store'
+import { addActivityImg } from '@/store/clubCreation'
 import { nextPage } from '@/store/clubCreationPage'
 import { addActivityFiles, setBannerFile } from '@/store/imgs'
 import { ImgUploadFormType } from '@/type/components/ClubCreationModal'
@@ -26,6 +27,7 @@ const ClubImgUpload = () => {
 
     if (!files) return
 
+    dispatch(addActivityImg(files))
     dispatch(nextPage())
   }
 

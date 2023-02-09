@@ -13,7 +13,9 @@ const useUpload = () => {
     })
 
     try {
-      const { data } = await API.post<string[]>('/image', formData)
+      const { data } = await API.post<string[]>('/image', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
       setIsLoading(false)
       return data
     } catch (e) {

@@ -9,7 +9,7 @@ const ClubImgUpload = () => {
 
   return (
     <Layout onSubmit={onSubmit} back>
-      <BannerImg />
+      <BannerImg error />
       <ClubImgs />
     </Layout>
   )

@@ -4,15 +4,18 @@ import { UseFormRegisterReturn } from 'react-hook-form'
 
 interface Props {
   register?: UseFormRegisterReturn
+  error?: boolean
 }
 
-const BannerImg = ({ register }: Props) => {
+const BannerImg = ({ register, error }: Props) => {
   return (
     <S.Wrapper>
-      <S.Label>배너 사진</S.Label>
-      <S.BannerInput htmlFor='bannerImg'>
-        <SVG.Pictures />
-        <S.BannerDescription>배너 사진 업로드</S.BannerDescription>
+      <S.Label error={error}>{error && '*'} 배너 사진</S.Label>
+      <S.BannerInput error={error} htmlFor='bannerImg'>
+        <SVG.Pictures error={error} />
+        <S.BannerDescription error={error}>
+          배너 사진 업로드
+        </S.BannerDescription>
       </S.BannerInput>
 
       <input

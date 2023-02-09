@@ -12,8 +12,9 @@ export const Label = styled.label<ErrorProps>`
   font-weight: bold;
 `
 
-export const BannerInput = styled.label`
-  background: #2d2d2f;
+export const BannerInput = styled.label<ErrorProps>`
+  background: ${({ error }) => (error ? '#391F21' : '#2d2d2f')};
+  ${({ error }) => error && 'border: 1px solid #FF6666;'}
   width: 100%;
   display: flex;
   justify-content: center;
@@ -24,6 +25,6 @@ export const BannerInput = styled.label`
   cursor: pointer;
 `
 
-export const BannerDescription = styled.div`
-  color: #696969;
+export const BannerDescription = styled.div<ErrorProps>`
+  color: ${({ error }) => (error ? '#FF6666' : '#696969')};
 `

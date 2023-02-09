@@ -4,20 +4,20 @@ import { useCallback, useState } from 'react'
 const useUpload = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const upload = useCallback(async (file: File): Promise<boolean> => {
-    if (!file.type.includes('image')) return false
+  const upload = useCallback(async (file: File[]) => {
     setIsLoading(true)
 
     const formData = new FormData()
-    formData.append('file', file)
+    file.forEach((f) => {
+      formData.append('file', f)
+    })
 
     try {
-      await API.post('/image', formData)
+      const { data } = await API.post<string[]>('/image', formData)
       setIsLoading(false)
-      return true
+      return data
     } catch (e) {
       setIsLoading(false)
-      return false
     }
   }, [])
 

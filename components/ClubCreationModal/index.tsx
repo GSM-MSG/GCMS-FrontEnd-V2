@@ -29,9 +29,9 @@ const ClubCreationModal = ({ onClose }: Props) => {
 
         <Navigation />
 
-        {/* {page === 1 && <ClubKindSelection />} */}
-        {page === 1 && <ClubContent />}
+        {page === 1 && <ClubKindSelection />}
         {page === 2 && <ClubInfoInput />}
+        {page === 4 && <ClubContent />}
       </S.Wrapper>
     </Portal>
   )

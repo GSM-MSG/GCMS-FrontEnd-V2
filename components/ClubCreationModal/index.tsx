@@ -7,6 +7,7 @@ import { RootState } from '@/store'
 import * as SVG from '@/type/assets/svg'
 import ClubInfoInput from './Page/ClubInfoInput'
 import ClubContent from './Page/ClubContent'
+import AddClubMember from './Page/AddClubMember'
 
 interface Props {
   onClose: () => void
@@ -29,9 +30,10 @@ const ClubCreationModal = ({ onClose }: Props) => {
 
         <Navigation />
 
-        {page === 1 && <ClubKindSelection />}
+        {/* {page === 1 && <ClubKindSelection />} */}
         {page === 2 && <ClubInfoInput />}
         {page === 4 && <ClubContent />}
+        {page === 1 && <AddClubMember />}
       </S.Wrapper>
     </Portal>
   )

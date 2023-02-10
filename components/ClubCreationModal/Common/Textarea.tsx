@@ -11,7 +11,7 @@ interface Props {
 const Textarea = ({ register, watch, error }: Props) => {
   return (
     <S.Wrapper>
-      <S.Label error={error}>동아리 설명</S.Label>
+      <S.Label error={error}>{error && '*'} 동아리 설명</S.Label>
       <div>
         <S.TextareaInput
           placeholder='동아리 설명을 입력해주세요.'

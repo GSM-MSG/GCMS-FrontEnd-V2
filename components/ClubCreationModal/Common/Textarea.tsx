@@ -8,16 +8,17 @@ interface Props {
   error: boolean
 }
 
-const Textarea = ({ register, watch }: Props) => {
+const Textarea = ({ register, watch, error }: Props) => {
   return (
     <S.Wrapper>
-      <S.Label>동아리 설명</S.Label>
+      <S.Label error={error}>동아리 설명</S.Label>
       <div>
         <S.TextareaInput
           placeholder='동아리 설명을 입력해주세요.'
+          error={error}
           {...register}
         />
-        <S.MaxLength>{watch('content').length}/200</S.MaxLength>
+        <S.MaxLength error={error}>{watch('content').length}/200</S.MaxLength>
       </div>
     </S.Wrapper>
   )

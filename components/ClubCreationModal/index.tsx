@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import * as SVG from '@/type/assets/svg'
 import ClubInfoInput from './Page/ClubInfoInput'
-import ClubDescription from './Page/ClubDescription'
+import ClubContent from './Page/ClubContent'
 
 interface Props {
   onClose: () => void
@@ -30,7 +30,7 @@ const ClubCreationModal = ({ onClose }: Props) => {
         <Navigation />
 
         {/* {page === 1 && <ClubKindSelection />} */}
-        {page === 1 && <ClubDescription />}
+        {page === 1 && <ClubContent />}
         {page === 2 && <ClubInfoInput />}
       </S.Wrapper>
     </Portal>

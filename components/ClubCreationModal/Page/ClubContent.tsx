@@ -1,7 +1,9 @@
+import { useForm } from 'react-hook-form'
 import Layout from '../Common/Layout'
 import TextareaInput from '../Common/Textarea'
 
-const ClubDescription = () => {
+const ClubContent = () => {
+  const {} = useForm()
   const onSubmit = async () => {
     return
   }
@@ -13,4 +15,4 @@ const ClubDescription = () => {
   )
 }
 
-export default ClubDescription
+export default ClubContent

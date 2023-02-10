@@ -10,3 +10,7 @@ export interface OptionProps extends SelectType {
 export interface ErrorProps {
   error?: boolean
 }
+
+export interface ContentFormType {
+  content: string
+}

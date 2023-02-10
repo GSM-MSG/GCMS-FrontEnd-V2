@@ -42,7 +42,7 @@ export const UserName = styled.h4`
   margin: 0;
 `
 
-export const StudentDescription = styled.p`
+export const MemberDescription = styled.p`
   margin: 0;
   opacity: 0.35;
   font-size: 0.9rem;

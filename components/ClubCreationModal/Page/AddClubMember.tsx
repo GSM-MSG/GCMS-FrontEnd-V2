@@ -1,6 +1,6 @@
 import Input from '../Common/Input'
 import Layout from '../Common/Layout'
-import Student from '../Common/Student'
+import Member from '../Common/Member'
 
 const AddClubMember = () => {
   const onSubmit = async () => {

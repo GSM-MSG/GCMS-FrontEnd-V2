@@ -1,2 +1,5 @@
 export * from './KebabMenuIcon'
 export * from './profileIcon'
+export * from './PersonIcon'
+export * from './MemoPadIcon'
+export * from './School'

@@ -9,14 +9,22 @@ import Member from '../Common/Member'
 import SubmitButton from '../Common/SubmitButton'
 import * as S from './AddClubMember.style'
 
-const AddClubMember = () => {
-  const { type } = useSelector((state: RootState) => ({
-    type: state.clubCreation.type,
+interface Props {
+  onClose: () => void
+}
+
+const AddClubMember = ({ onClose }: Props) => {
+  const { clubCreation } = useSelector((state: RootState) => ({
+    clubCreation: state.clubCreation,
   }))
   const { register, watch } = useForm<{ name: string }>()
   const { fetch, data } = useFetch<MemberType[]>({
-    url: `/user/search?name=${watch('name')}&type=${type}`,
+    url: `/user/search?name=${watch('name')}&type=${clubCreation.type}`,
     method: 'get',
+  })
+  const { fetch: addClub, isLoading } = useFetch({
+    url: '/club',
+    method: 'post',
   })
 
   useEffect(() => {
@@ -28,6 +36,12 @@ const AddClubMember = () => {
 
     return () => clearTimeout(delayFetch)
   }, [fetch, watch])
+
+  const onClick = async () => {
+    if (isLoading) return
+    await addClub(clubCreation)
+    onClose()
+  }
 
   return (
     <S.Wrapper>
@@ -43,7 +57,7 @@ const AddClubMember = () => {
         {watch('name')?.trim() &&
           data?.map((i) => <Member key={i.uuid} member={i} />)}
       </div>
-      <SubmitButton />
+      <SubmitButton back complete onClick={onClick} />
     </S.Wrapper>
   )
 }

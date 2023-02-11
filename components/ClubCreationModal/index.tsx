@@ -33,7 +33,7 @@ const ClubCreationModal = ({ onClose }: Props) => {
         {/* {page === 1 && <ClubKindSelection />} */}
         {page === 2 && <ClubInfoInput />}
         {page === 4 && <ClubContent />}
-        {page === 1 && <AddClubMember />}
+        {page === 1 && <AddClubMember onClose={onClose} />}
       </S.Wrapper>
     </Portal>
   )

@@ -24,7 +24,7 @@ const Member = ({ member }: Props) => {
   }
 
   return (
-    <S.Wrapper htmlFor='check'>
+    <S.Wrapper htmlFor={`check${member.uuid}`}>
       <S.UserInfo>
         {member?.profileImg ? (
           <S.UserImg src={member.profileImg} />
@@ -41,12 +41,12 @@ const Member = ({ member }: Props) => {
       </S.UserInfo>
 
       <S.CheckBox
-        id='check'
+        id={`check${member.uuid}`}
         type='checkbox'
         checked={uuids.includes(member.uuid)}
         onChange={onChange}
       />
-      <S.CheckBoxLabel htmlFor='check' />
+      <S.CheckBoxLabel htmlFor={`check${member.uuid}`} />
     </S.Wrapper>
   )
 }

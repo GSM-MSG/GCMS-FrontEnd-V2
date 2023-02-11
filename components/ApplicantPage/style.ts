@@ -6,14 +6,12 @@ export const Positionier = styled.div`
   align-items: center;
   flex-direction: column;
   padding-top: 80px;
-  margin-bottom: 20px;
 `
 
 export const Layer = styled.div`
   width: 700px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
   padding: 0 20px;
 
   small {

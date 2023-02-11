@@ -46,8 +46,13 @@ export default function Login() {
           Sign in with GAuth
         </S.Auth>
         <S.ContentInfo>
-          <Link href='#'>서비스 이용약관</Link> |{' '}
-          <Link href='#'>개인정보 처리 방침</Link>
+          <Link href='https://matsogeum.notion.site/0f7c494b26114da098d0c8ea50bb5588'>
+            서비스 이용약관
+          </Link>{' '}
+          |{' '}
+          <Link href='https://matsogeum.notion.site/db8c0669605e4685b036cc08293aceb7'>
+            개인정보 처리 방침
+          </Link>
         </S.ContentInfo>
       </S.Wrapper>
     </Portal>

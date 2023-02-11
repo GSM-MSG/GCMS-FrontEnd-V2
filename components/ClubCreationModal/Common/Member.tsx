@@ -1,11 +1,28 @@
 import * as S from './Member.style'
 import MemberType from '@/type/common/MemberType'
+import { RootState } from '@/store'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeMember, setMember } from '@/store/clubCreation'
 
 interface Props {
   member: MemberType
 }
 
 const Member = ({ member }: Props) => {
+  const dispatch = useDispatch()
+  const { uuids } = useSelector((state: RootState) => ({
+    uuids: state.clubCreation.member,
+  }))
+
+  const onChange = () => {
+    if (uuids.includes(member.uuid)) {
+      dispatch(removeMember(member.uuid))
+      return
+    }
+
+    dispatch(setMember(member.uuid))
+  }
+
   return (
     <S.Wrapper htmlFor='check'>
       <S.UserInfo>
@@ -23,7 +40,12 @@ const Member = ({ member }: Props) => {
         </S.GradeInfo>
       </S.UserInfo>
 
-      <S.CheckBox id='check' type='checkbox' />
+      <S.CheckBox
+        id='check'
+        type='checkbox'
+        checked={uuids.includes(member.uuid)}
+        onChange={onChange}
+      />
       <S.CheckBoxLabel htmlFor='check' />
     </S.Wrapper>
   )

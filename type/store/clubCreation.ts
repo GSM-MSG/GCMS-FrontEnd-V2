@@ -1,4 +1,3 @@
-import { MemberType } from '../common'
 import ClubType from '../common/ClubType'
 
 export interface ClubCreationInitialState {
@@ -10,7 +9,7 @@ export interface ClubCreationInitialState {
   notionLink: string
   teacher?: string
   activityImgs: string[]
-  member: MemberType[]
+  member: string[]
 }
 
 export interface SetClubInfoPayload {

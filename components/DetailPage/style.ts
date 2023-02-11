@@ -12,15 +12,19 @@ export const Layout = styled.div`
 
 export const Wrapper = styled.div`
   width: 700px;
-  @media (max-width: 715px) {
-    width: 100%;
-  }
   display: flex;
   justify-content: space-between;
+  @media (max-width: 750px) {
+    width: 100%;
+    flex-direction: column;
+  }
 `
 export const Section = styled.section`
   width: 510px;
   margin-top: 42px;
+  @media (max-width: 750px) {
+    width: 100%;
+  }
 `
 
 export const ClubBanner = styled.img`
@@ -126,6 +130,9 @@ export const ClubActivity = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    @media (max-width: 750px) {
+      justify-content: space-evenly;
+    }
   }
 `
 export const ActivityImg = styled.img`
@@ -134,6 +141,12 @@ export const ActivityImg = styled.img`
   object-fit: contain;
   background: linear-gradient(0deg, #373737, #373737), url(image.png);
   border-radius: 10px;
+  @media (max-width: 750px) {
+    width: 45vw;
+  }
+  @media (max-width: 370px) {
+    width: 90%;
+  }
 `
 
 export const ClubMember = styled.div`
@@ -163,6 +176,11 @@ export const ClubMember = styled.div`
     ::-webkit-scrollbar {
       display: none;
     }
+  }
+  @media (max-width: 750px) {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 60px;
   }
 `
 
@@ -226,6 +244,12 @@ export const SideBar = styled.div`
     color: #c7c7c7;
     margin: 0;
   }
+  @media (max-width: 750px) {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    height: 140px;
+  }
 `
 export const SideControl = styled.div`
   padding-top: 12px;
@@ -268,5 +292,11 @@ export const NotionInfo = styled.div`
     font-weight: 500;
     font-size: 13px;
     color: #8be246;
+  }
+  @media (max-width: 750px) {
+    flex-direction: row;
+    a {
+      white-space: nowrap;
+    }
   }
 `

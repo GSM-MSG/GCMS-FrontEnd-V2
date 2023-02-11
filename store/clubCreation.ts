@@ -1,4 +1,4 @@
-import { ClubType } from '@/type/common'
+import { ClubType, MemberType } from '@/type/common'
 import {
   ClubCreationInitialState,
   SetClubInfoPayload,
@@ -50,12 +50,12 @@ const clubCreationSlice = createSlice({
       state.content = action.payload
     },
 
-    setMember: (state, action: PayloadAction<string>) => {
+    setMember: (state, action: PayloadAction<MemberType>) => {
       state.member.push(action.payload)
     },
 
     removeMember: (state, action: PayloadAction<string>) => {
-      state.member = state.member.filter((i) => i !== action.payload)
+      state.member = state.member.filter((i) => i.uuid !== action.payload)
     },
   },
 })

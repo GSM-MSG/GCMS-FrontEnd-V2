@@ -10,17 +10,17 @@ interface Props {
 
 const Member = ({ member }: Props) => {
   const dispatch = useDispatch()
-  const { uuids } = useSelector((state: RootState) => ({
-    uuids: state.clubCreation.member,
+  const { members } = useSelector((state: RootState) => ({
+    members: state.clubCreation.member,
   }))
 
   const onChange = () => {
-    if (uuids.includes(member.uuid)) {
+    if (members.find((i) => i.uuid === member.uuid)) {
       dispatch(removeMember(member.uuid))
       return
     }
 
-    dispatch(setMember(member.uuid))
+    dispatch(setMember(member))
   }
 
   return (
@@ -43,7 +43,7 @@ const Member = ({ member }: Props) => {
       <S.CheckBox
         id={`check${member.uuid}`}
         type='checkbox'
-        checked={uuids.includes(member.uuid)}
+        checked={!!members.find((i) => i.uuid === member.uuid)}
         onChange={onChange}
       />
       <S.CheckBoxLabel htmlFor={`check${member.uuid}`} />

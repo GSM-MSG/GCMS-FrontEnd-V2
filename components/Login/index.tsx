@@ -7,7 +7,7 @@ import { API } from '@/lib/API'
 import { accessToken, accessExp, refreshToken, refreshExp } from '@/lib/Token'
 import { AxiosError } from 'axios'
 import { gauthLoginUri } from '@/lib/GauthLoginUrI'
-import * as SVG from '@/public/svg'
+import * as SVG from '@/assets/svg'
 
 export default function Login() {
   const router = useRouter()

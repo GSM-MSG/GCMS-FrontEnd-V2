@@ -1,11 +1,16 @@
 import { AnyAction, combineReducers, configureStore } from '@reduxjs/toolkit'
 import { createWrapper, HYDRATE } from 'next-redux-wrapper'
+
 import clubCreationSlice from './clubCreation'
+import clubCreationPageSlice from './clubCreationPage'
+import ImgsSlice from './imgs'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
 const rootReducer = combineReducers({
   clubCreation: clubCreationSlice.reducer,
+  clubCreationPage: clubCreationPageSlice.reducer,
+  imgs: ImgsSlice.reducer,
 })
 export type RootState = ReturnType<typeof rootReducer>
 
@@ -22,6 +27,8 @@ const makeStore = () => {
   return configureStore({
     reducer,
     devTools: NODE_ENV,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ serializableCheck: false }),
   })
 }
 

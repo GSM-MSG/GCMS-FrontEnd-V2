@@ -7,22 +7,20 @@ describe('clubCreation store test', () => {
       clubCreation: { type },
     } = store.getState()
 
-    expect(type).toEqual(undefined)
+    expect(type).toEqual('MAJOR')
   })
 
   it('club type should be MAJOR', () => {
-    store.dispatch(setClubType('MAJOR'))
+    store.dispatch(setClubType('FREEDOM'))
     const {
       clubCreation: { type },
     } = store.getState()
 
-    expect(type).toEqual('MAJOR')
+    expect(type).toEqual('FREEDOM')
   })
 
   it('4 activity images should be added', () => {
-    ;['1', '2', '3', '4'].forEach((i) => {
-      store.dispatch(addActivityImg(i))
-    })
+    store.dispatch(addActivityImg(['1', '2', '3', '4']))
 
     const {
       clubCreation: { activityImgs },
@@ -32,9 +30,9 @@ describe('clubCreation store test', () => {
   })
 
   it('Activity images should throw error from 5', () => {
-    expect(() => store.dispatch(addActivityImg('5'))).toThrow(
-      Error('Activity image maximum count is 4')
-    )
+    expect(() =>
+      store.dispatch(addActivityImg(['1', '2', '3', '4', '5']))
+    ).toThrow(Error('Activity image maximum count is 4'))
   })
 })
 

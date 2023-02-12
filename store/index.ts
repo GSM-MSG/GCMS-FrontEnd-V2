@@ -27,6 +27,8 @@ const makeStore = () => {
   return configureStore({
     reducer,
     devTools: NODE_ENV,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ serializableCheck: false }),
   })
 }
 

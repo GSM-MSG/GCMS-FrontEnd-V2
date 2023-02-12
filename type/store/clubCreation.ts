@@ -2,7 +2,7 @@ import { MemberType } from '../common'
 import ClubType from '../common/ClubType'
 
 export interface ClubCreationInitialState {
-  type?: ClubType
+  type: ClubType
   name: string
   content: string
   bannerImg: string

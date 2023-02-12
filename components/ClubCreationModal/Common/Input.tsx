@@ -8,7 +8,7 @@ interface Props {
   errorPlaceholder?: string
   error?: boolean
   optional?: boolean
-  register: UseFormRegisterReturn
+  register?: UseFormRegisterReturn
 }
 
 const Input = ({

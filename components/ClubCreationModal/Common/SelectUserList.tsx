@@ -2,6 +2,7 @@ import { RootState } from '@/store'
 import { removeMember } from '@/store/clubCreation'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './SelectUserList.style'
+import * as SVG from '@/assets/svg'
 
 const SelectUserList = () => {
   const dispatch = useDispatch()
@@ -20,7 +21,9 @@ const SelectUserList = () => {
       <S.Content>
         {member.map((i) => (
           <S.UserWrapper key={i.uuid}>
-            <S.RemoveBtn onClick={() => onClick(i.uuid)}>X</S.RemoveBtn>
+            <S.RemoveBtn onClick={() => onClick(i.uuid)}>
+              <SVG.XMark />
+            </S.RemoveBtn>
 
             {i?.profileImg ? (
               <S.UserImg src={i.profileImg} />

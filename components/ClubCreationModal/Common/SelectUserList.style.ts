@@ -23,8 +23,8 @@ export const UserWrapper = styled.div`
 
 export const RemoveBtn = styled.button`
   position: absolute;
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
   background: #000;
   color: #fff;
   border: none;

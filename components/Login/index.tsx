@@ -41,7 +41,7 @@ export default function Login() {
     <Portal>
       <S.Wrapper>
         <S.CancelBtn>
-          <SVG.CloseIcon />
+          <SVG.XMark />
         </S.CancelBtn>
         <S.LogoWarppaer>
           <SVG.LoginLogo />

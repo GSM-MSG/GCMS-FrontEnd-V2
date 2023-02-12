@@ -6,6 +6,7 @@ import {
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const initialState: ClubCreationInitialState = {
+  type: 'MAJOR',
   name: '',
   content: '',
   bannerImg: '',
@@ -24,7 +25,7 @@ const clubCreationSlice = createSlice({
     },
 
     setClubInfo: (state, action: PayloadAction<SetClubInfoPayload>) => {
-      state = {
+      return {
         ...state,
         ...action.payload,
       }
@@ -34,16 +35,10 @@ const clubCreationSlice = createSlice({
       state.bannerImg = action.payload
     },
 
-    addActivityImg: (state, action: PayloadAction<string>) => {
-      if (state.activityImgs.length >= 4)
+    addActivityImg: (state, action: PayloadAction<string[]>) => {
+      if (action.payload.length > 4)
         throw new Error('Activity image maximum count is 4')
-      state.activityImgs.push(action.payload)
-    },
-
-    removeActivityImg: (state, action: PayloadAction<string>) => {
-      state.activityImgs = state.activityImgs.filter(
-        (i) => i !== action.payload
-      )
+      state.activityImgs = action.payload
     },
 
     setContent: (state, action: PayloadAction<string>) => {
@@ -68,7 +63,6 @@ export const {
   removeMember,
   setBannerImg,
   addActivityImg,
-  removeActivityImg,
 } = clubCreationSlice.actions
 
 export default clubCreationSlice

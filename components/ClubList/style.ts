@@ -73,6 +73,13 @@ export const ClubImg = styled.img`
   border-radius: 10px;
   object-fit: contain;
 `
+export const SampleClubImg = styled.div`
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #2d2d2f;
+  border-radius: 10px;
+`
+
 export const ClubTitle = styled.div`
   h3 {
     font-family: 'Pretendard';

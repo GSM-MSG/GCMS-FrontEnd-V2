@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import Input from '../Common/Input'
 import Member from '../Common/Member'
+import SelectUserList from '../Common/SelectUserList'
 import SubmitButton from '../Common/SubmitButton'
 import * as S from './AddClubMember.style'
 
@@ -39,7 +40,10 @@ const AddClubMember = ({ onClose }: Props) => {
 
   const onClick = async () => {
     if (isLoading) return
-    await addClub(clubCreation)
+    await addClub({
+      ...clubCreation,
+      member: clubCreation.member.map((i) => i.uuid),
+    })
     onClose()
   }
 
@@ -56,7 +60,10 @@ const AddClubMember = ({ onClose }: Props) => {
         {watch('name')?.trim() &&
           data?.map((i) => <Member key={i.uuid} member={i} />)}
       </S.Content>
-      <SubmitButton back complete onClick={onClick} />
+      <div>
+        <SelectUserList />
+        <SubmitButton back complete onClick={onClick} />
+      </div>
     </S.Wrapper>
   )
 }

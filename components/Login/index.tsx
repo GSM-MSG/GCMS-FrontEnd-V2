@@ -7,17 +7,11 @@ import { gauthLoginUri } from '@/lib/GauthLoginUrI'
 import * as SVG from '@/assets/svg'
 import { accessExp, accessToken, refreshExp, refreshToken } from '@/lib/token'
 import { useFetch } from '@/hooks'
+import { TokensType } from '@/type/api/TokenType'
 
 export default function Login() {
   const router = useRouter()
   const gauthCode = router.query.code?.toString()
-
-  type TokensType = {
-    accessToken: string
-    refreshToken: string
-    accessExp: string
-    refreshExp: string
-  }
 
   const { fetch } = useFetch<TokensType>({
     url: 'auth',

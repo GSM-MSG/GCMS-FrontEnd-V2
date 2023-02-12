@@ -3,7 +3,6 @@ import serverApi from '../../serverApi'
 
 const postLogin = rest.post(serverApi('/auth'), async (req, res, ctx) => {
   const data = await req.json()
-  if (!data.code) return res(ctx.status(500))
   return res(
     ctx.status(200),
     ctx.json({

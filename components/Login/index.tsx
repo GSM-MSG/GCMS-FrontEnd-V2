@@ -19,10 +19,10 @@ export default function Login() {
     refreshExp: string
   }
 
-  const { fetch } = useFetch({
+  const { fetch } = useFetch<TokensType>({
     url: 'auth',
     method: 'post',
-    onSuccess: (data: TokensType) => {
+    onSuccess: (data) => {
       if (!data) return
       localStorage.setItem(accessToken, data.accessToken)
       localStorage.setItem(refreshToken, data.refreshToken)

@@ -7,16 +7,16 @@ describe('clubCreation store test', () => {
       clubCreation: { type },
     } = store.getState()
 
-    expect(type).toEqual(undefined)
+    expect(type).toEqual('MAJOR')
   })
 
   it('club type should be MAJOR', () => {
-    store.dispatch(setClubType('MAJOR'))
+    store.dispatch(setClubType('FREEDOM'))
     const {
       clubCreation: { type },
     } = store.getState()
 
-    expect(type).toEqual('MAJOR')
+    expect(type).toEqual('FREEDOM')
   })
 
   it('4 activity images should be added', () => {

@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import Input from '../Common/Input'
+import Input from '@/components/Common/Input'
 import Layout from '../Common/Layout'
 import { SetClubInfoPayload } from '@/type/store/clubCreation'
 import { useDispatch, useSelector } from 'react-redux'

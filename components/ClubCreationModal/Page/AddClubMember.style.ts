@@ -6,6 +6,13 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow-y: scroll;
   gap: 1.5rem;
+  overflow-y: auto;
+`
+
+export const Content = styled.div`
+  overflow-y: auto;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
 `

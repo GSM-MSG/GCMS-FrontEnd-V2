@@ -45,18 +45,17 @@ const AddClubMember = ({ onClose }: Props) => {
 
   return (
     <S.Wrapper>
-      <div>
-        <Input
-          label='동아리원'
-          placeholder='너, 내 동료가 돼라'
-          optional
-          description='동아리원은 나중에 다시 선택 혹은 수정이 가능해요.'
-          register={register('name')}
-        />
-
+      <Input
+        label='동아리원'
+        placeholder='너, 내 동료가 돼라'
+        optional
+        description='동아리원은 나중에 다시 선택 혹은 수정이 가능해요.'
+        register={register('name')}
+      />
+      <S.Content>
         {watch('name')?.trim() &&
           data?.map((i) => <Member key={i.uuid} member={i} />)}
-      </div>
+      </S.Content>
       <SubmitButton back complete onClick={onClick} />
     </S.Wrapper>
   )

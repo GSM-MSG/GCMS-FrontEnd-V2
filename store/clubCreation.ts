@@ -6,6 +6,7 @@ import {
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const initialState: ClubCreationInitialState = {
+  type: 'MAJOR',
   name: '',
   content: '',
   bannerImg: '',
@@ -24,7 +25,7 @@ const clubCreationSlice = createSlice({
     },
 
     setClubInfo: (state, action: PayloadAction<SetClubInfoPayload>) => {
-      state = {
+      return {
         ...state,
         ...action.payload,
       }

@@ -4,8 +4,9 @@ import ClubKindSelection from './Page/ClubKindSelection'
 import * as S from './style'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
-import * as SVG from '@/type/assets/svg'
+import * as SVG from '@/assets/svg'
 import ClubInfoInput from './Page/ClubInfoInput'
+import ClubImgUpload from './Page/ClubImgUpload'
 import ClubContent from './Page/ClubContent'
 
 interface Props {
@@ -31,6 +32,7 @@ const ClubCreationModal = ({ onClose }: Props) => {
 
         {page === 1 && <ClubKindSelection />}
         {page === 2 && <ClubInfoInput />}
+        {page === 3 && <ClubImgUpload />}
         {page === 4 && <ClubContent />}
       </S.Wrapper>
     </Portal>

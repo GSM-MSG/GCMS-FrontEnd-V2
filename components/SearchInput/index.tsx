@@ -1,5 +1,5 @@
 import { SearchIcon } from '@/assets/svg'
-import * as S from './SearchInput.style'
+import * as S from './style'
 
 export default function SearchInput() {
   return (

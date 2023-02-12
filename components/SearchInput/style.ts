@@ -3,6 +3,22 @@ import styled from '@emotion/styled'
 export const Layer = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+`
+
+export const TopBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  > * {
+    margin: 0;
+  }
+
+  h5 {
+    color: #888;
+  }
 `
 
 export const InputBox = styled.div`

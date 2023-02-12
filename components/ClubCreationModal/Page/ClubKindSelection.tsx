@@ -3,12 +3,16 @@ import { setClubType } from '@/store/clubCreation'
 import { nextPage } from '@/store/clubCreationPage'
 import { ClubType } from '@/type/common'
 import { FormEvent, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as S from './ClubKindSelection.style'
 import Layout from '../Common/Layout'
+import { RootState } from '@/store'
 
 const ClubKindSelection = () => {
-  const [type, setType] = useState<ClubType>('MAJOR')
+  const { clubType } = useSelector((state: RootState) => ({
+    clubType: state.clubCreation.type,
+  }))
+  const [type, setType] = useState<ClubType>(clubType)
   const dispatch = useDispatch()
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {

@@ -8,6 +8,7 @@ import * as SVG from '@/assets/svg'
 import ClubInfoInput from './Page/ClubInfoInput'
 import ClubImgUpload from './Page/ClubImgUpload'
 import ClubContent from './Page/ClubContent'
+import AddClubMember from './Page/AddClubMember'
 
 interface Props {
   onClose: () => void
@@ -34,6 +35,7 @@ const ClubCreationModal = ({ onClose }: Props) => {
         {page === 2 && <ClubInfoInput />}
         {page === 3 && <ClubImgUpload />}
         {page === 4 && <ClubContent />}
+        {page === 5 && <AddClubMember onClose={onClose} />}
       </S.Wrapper>
     </Portal>
   )

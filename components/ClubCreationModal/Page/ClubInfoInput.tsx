@@ -2,16 +2,27 @@ import { useForm } from 'react-hook-form'
 import Input from '../Common/Input'
 import Layout from '../Common/Layout'
 import { SetClubInfoPayload } from '@/type/store/clubCreation'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setClubInfo } from '@/store/clubCreation'
 import { nextPage } from '@/store/clubCreationPage'
+import { RootState } from '@/store'
 
 const ClubInfoInput = () => {
+  const { clubCreation } = useSelector((state: RootState) => ({
+    clubCreation: state.clubCreation,
+  }))
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SetClubInfoPayload>()
+  } = useForm<SetClubInfoPayload>({
+    defaultValues: {
+      name: clubCreation.name,
+      contact: clubCreation.contact,
+      notionLink: clubCreation.notionLink,
+      teacher: clubCreation.teacher,
+    },
+  })
   const dispatch = useDispatch()
 
   const onSubmit = (form: SetClubInfoPayload) => {

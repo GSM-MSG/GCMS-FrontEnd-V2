@@ -14,7 +14,9 @@ const SubmitButton = ({ back, complete, onClick }: Props) => {
   return (
     <S.Wrapper>
       {back && (
-        <S.BackButton onClick={() => dispatch(backPage())}>이전</S.BackButton>
+        <S.BackButton type='button' onClick={() => dispatch(backPage())}>
+          이전
+        </S.BackButton>
       )}
       <S.Button onClick={onClick} type='submit'>
         {complete ? '만들기' : '다음'}

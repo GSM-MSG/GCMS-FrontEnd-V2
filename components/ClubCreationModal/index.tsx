@@ -4,8 +4,9 @@ import ClubKindSelection from './Page/ClubKindSelection'
 import * as S from './style'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
-import * as SVG from '@/type/assets/svg'
+import * as SVG from '@/assets/svg'
 import ClubInfoInput from './Page/ClubInfoInput'
+import ClubImgUpload from './Page/ClubImgUpload'
 import ClubContent from './Page/ClubContent'
 import AddClubMember from './Page/AddClubMember'
 
@@ -32,6 +33,7 @@ const ClubCreationModal = ({ onClose }: Props) => {
 
         {/* {page === 1 && <ClubKindSelection />} */}
         {page === 2 && <ClubInfoInput />}
+        {page === 3 && <ClubImgUpload />}
         {page === 4 && <ClubContent />}
         {page === 1 && <AddClubMember onClose={onClose} />}
       </S.Wrapper>

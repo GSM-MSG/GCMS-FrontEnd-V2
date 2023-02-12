@@ -5,34 +5,37 @@ import * as S from './style'
 import { useEffect } from 'react'
 import { gauthLoginUri } from '@/lib/GauthLoginUrI'
 import * as SVG from '@/assets/svg'
-import API from '@/api'
 import { accessExp, accessToken, refreshExp, refreshToken } from '@/lib/token'
-import { AxiosError } from 'axios'
+import { useFetch } from '@/hooks'
 
 export default function Login() {
   const router = useRouter()
-  const gauthCode = router.query.code
+  const gauthCode = router.query.code?.toString()
+
+  type TokensType = {
+    accessToken: string
+    refreshToken: string
+    accessExp: string
+    refreshExp: string
+  }
+
+  const { fetch } = useFetch({
+    url: 'auth',
+    method: 'post',
+    onSuccess: (data: TokensType) => {
+      if (!data) return
+      localStorage.setItem(accessToken, data.accessToken)
+      localStorage.setItem(refreshToken, data.refreshToken)
+      localStorage.setItem(accessExp, data.accessExp)
+      localStorage.setItem(refreshExp, data.refreshExp)
+      router.replace(`${process.env.NEXT_PUBLIC_GAUTH_REDIRECT_URI}`)
+    },
+  })
 
   useEffect(() => {
     if (!gauthCode) return
-    ;(() => {
-      setTimeout(async () => {
-        try {
-          const { data } = await API.post(`/auth`, {
-            code: gauthCode,
-          })
-
-          localStorage.setItem(accessToken, data.accessToken)
-          localStorage.setItem(refreshToken, data.refreshToken)
-          localStorage.setItem(accessExp, data.accessExp)
-          localStorage.setItem(refreshExp, data.refreshExp)
-        } catch (e) {
-          if (!(e instanceof AxiosError) || e.response?.status === 500)
-            console.log('error')
-        }
-      }, 1000)
-    })()
-  }, [gauthCode])
+    fetch({ code: gauthCode })
+  }, [gauthCode, fetch])
 
   return (
     <Portal>

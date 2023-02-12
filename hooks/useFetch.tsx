@@ -14,7 +14,7 @@ const useFetch = <T,>({ url, method, onSuccess, onFailure }: Props<T>) => {
   const [data, setData] = useState<T | null>(null)
 
   const fetch = useCallback(
-    async (body?: T) => {
+    async (body?: any) => {
       setIsLoading(true)
 
       try {

@@ -22,17 +22,19 @@ export const LogoWarppaer = styled.div`
   width: 100%;
   aspect-ratio: auto 1/1;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   font-family: 'Pretendard';
   font-style: normal;
-  font-weight: 700;
-  font-size: 34px;
+  font-weight: 400;
+  font-size: 15px;
   pointer-events: none;
   @media (max-width: 450px) {
     margin: 0 auto;
     width: 80%;
-    font-weight: 500;
+    font-size: 0px;
   }
 `
 
@@ -63,6 +65,9 @@ export const Auth = styled.div`
 `
 
 export const ContentInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
   margin-top: 10%;
   text-align: center;
   color: #606062;

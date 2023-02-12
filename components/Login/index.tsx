@@ -43,7 +43,10 @@ export default function Login() {
         <S.CancelBtn>
           <SVG.CloseIcon />
         </S.CancelBtn>
-        <S.LogoWarppaer>logo</S.LogoWarppaer>
+        <S.LogoWarppaer>
+          <SVG.LoginLogo />
+          GSM 동아리 관리의 모든것
+        </S.LogoWarppaer>
         <S.Auth onClick={() => router.replace(gauthLoginUri)}>
           <SVG.GauthLogo />
           Sign in with GAuth

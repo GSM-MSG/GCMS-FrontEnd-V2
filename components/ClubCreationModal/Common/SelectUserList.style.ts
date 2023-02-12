@@ -7,6 +7,14 @@ export const Wrapper = styled.div`
   gap: 1rem;
 `
 
+export const TotalCount = styled.div`
+  color: #7a7a7a;
+`
+
+export const CountText = styled.span`
+  color: #8be246;
+`
+
 export const Content = styled.div`
   width: 100%;
   display: flex;

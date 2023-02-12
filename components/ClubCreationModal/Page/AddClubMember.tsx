@@ -26,6 +26,7 @@ const AddClubMember = ({ onClose }: Props) => {
   const { fetch: addClub, isLoading } = useFetch({
     url: '/club',
     method: 'post',
+    onSuccess: onClose,
   })
 
   useEffect(() => {
@@ -40,11 +41,11 @@ const AddClubMember = ({ onClose }: Props) => {
 
   const onClick = async () => {
     if (isLoading) return
+
     await addClub({
       ...clubCreation,
       member: clubCreation.member.map((i) => i.uuid),
     })
-    onClose()
   }
 
   return (

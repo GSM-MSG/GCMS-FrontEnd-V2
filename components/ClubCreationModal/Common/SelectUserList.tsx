@@ -16,7 +16,9 @@ const SelectUserList = () => {
 
   return (
     <S.Wrapper>
-      <div>총 {member.length}명</div>
+      <S.TotalCount>
+        총 <S.CountText>{member.length}명</S.CountText>
+      </S.TotalCount>
 
       <S.Content>
         {member.map((i) => (

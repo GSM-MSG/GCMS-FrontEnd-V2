@@ -1,3 +1,5 @@
 export type { default as ClubType } from './ClubType'
 export type { default as MemberType } from './MemberType'
 export type { default as ProfileType } from './ProfileType'
+export type { default as MemberScope } from './MemberScope'
+export type { default as ApplicantListType } from './ApplicantListType'

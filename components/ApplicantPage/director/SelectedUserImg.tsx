@@ -1,4 +1,4 @@
-import { XMark } from '@/type/assets/svg'
+import { XMark } from '@/assets/svg'
 import * as S from './SelectedUserImg.style'
 
 export default function SelectedUserImg() {

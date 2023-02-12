@@ -3,8 +3,23 @@ import SearchInput from '../SearchInput'
 import { TopBox } from '../SearchInput/style'
 import Director from './director'
 import * as S from './style'
+import { useFetch } from '@/hooks'
+import { ApplicantListType } from '@/type/common'
+import { useEffect } from 'react'
 
 export default function ApplicantPage() {
+  const { fetch, data, isLoading } = useFetch<ApplicantListType>({
+    url: '/applicant',
+    method: 'get',
+    onSuccess: (data) => console.log(data),
+    onFailure: (e) => console.log(e),
+  })
+  useEffect(() => {
+    setTimeout(async () => {
+      console.log(fetch(), data, isLoading)
+    }, 5000)
+  }, [])
+
   return (
     <S.Positioner>
       <S.Layer>

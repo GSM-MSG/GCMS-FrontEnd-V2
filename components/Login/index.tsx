@@ -3,11 +3,11 @@ import Portal from '../Portal'
 import { useRouter } from 'next/router'
 import * as S from './style'
 import { useEffect } from 'react'
-import { API } from '@/lib/API'
-import { accessToken, accessExp, refreshToken, refreshExp } from '@/lib/token'
-import { AxiosError } from 'axios'
 import { gauthLoginUri } from '@/lib/GauthLoginUrI'
 import * as SVG from '@/assets/svg'
+import API from '@/api'
+import { accessExp, accessToken, refreshExp, refreshToken } from '@/lib/token'
+import { AxiosError } from 'axios'
 
 export default function Login() {
   const router = useRouter()
@@ -15,23 +15,23 @@ export default function Login() {
 
   useEffect(() => {
     if (!gauthCode) return
-    ;async () => {
-      try {
-        const { data } = await API.post('/auth', {
-          code: gauthCode,
-        })
+    ;(() => {
+      setTimeout(async () => {
+        try {
+          const { data } = await API.post(`/auth`, {
+            code: gauthCode,
+          })
 
-        localStorage.setItem(accessToken, data.accessToken)
-        localStorage.setItem(refreshToken, data.refreshToken)
-        localStorage.setItem(accessExp, data.accessExp)
-        localStorage.setItem(refreshExp, data.refreshExp)
-      } catch (e) {
-        if (!(e instanceof AxiosError))
-          return console.log('예기치 못한 오류가 발생하였습니다.')
-        if (e.response?.status === 500)
-          console.log('서버에 문제가 발생하였습니다.')
-      }
-    }
+          localStorage.setItem(accessToken, data.accessToken)
+          localStorage.setItem(refreshToken, data.refreshToken)
+          localStorage.setItem(accessExp, data.accessExp)
+          localStorage.setItem(refreshExp, data.refreshExp)
+        } catch (e) {
+          if (!(e instanceof AxiosError) || e.response?.status === 500)
+            console.log('error')
+        }
+      }, 1000)
+    })()
   }, [gauthCode])
 
   return (

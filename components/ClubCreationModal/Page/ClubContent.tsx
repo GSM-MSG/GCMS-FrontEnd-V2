@@ -5,7 +5,7 @@ import { ContentFormType } from '@/type/components/ClubCreationModal'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../Common/Layout'
-import TextareaInput from '../Common/Textarea'
+import TextareaInput from '@/components/Common/Textarea'
 
 const ClubContent = () => {
   const dispatch = useDispatch()

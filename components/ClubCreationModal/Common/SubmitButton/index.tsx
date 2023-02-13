@@ -1,6 +1,6 @@
 import { backPage } from '@/store/clubCreationPage'
 import { useDispatch } from 'react-redux'
-import * as S from './SubmitButton.style'
+import * as S from './style'
 
 export interface Props {
   back?: boolean

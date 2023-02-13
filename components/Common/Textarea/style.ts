@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { ErrorProps } from '@/type/components/ClubCreationModal'
-export { Label } from './Input.style'
+export { Label } from '../Input/style'
 
 export const Wrapper = styled.div`
   display: flex;

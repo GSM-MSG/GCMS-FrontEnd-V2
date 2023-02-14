@@ -87,7 +87,6 @@ const Edit = ({ initialData, banner, activity }: Props) => {
       <S.BannerAndContent>
         <BannerImg
           register={register('bannerImg', {
-            required: true,
             onChange: (e) => onUpload(e, 'bannerImg'),
           })}
           bannerImg={bannerImg}

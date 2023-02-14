@@ -41,6 +41,7 @@ const ClubImgUpload = () => {
             dispatch(setBannerFile({ file: e.currentTarget.files })),
         })}
         error={!!errors.bannerImg}
+        bannerImg={imgs.bannerImg && URL.createObjectURL(imgs.bannerImg)}
       />
       <ClubImgs
         register={register('activityImgs', {

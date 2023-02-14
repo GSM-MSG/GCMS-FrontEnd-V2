@@ -1,12 +1,17 @@
+import { ClubListType } from '@/type/common'
 import * as S from './style'
 
-export default function NewClubItem() {
+interface Props {
+  club: ClubListType
+}
+
+export default function NewClubItem({ club }: Props) {
   return (
     <S.NewClubItem>
-      <S.NewClubImg src='https://www.computerhope.com/jargon/h/img.png' />
+      <S.NewClubImg src={club.bannerImg} />
       <S.NewClubTitle>
-        <h3>더모먼트</h3>
-        <p>더모먼트는 정말 정말 정말 개쩌는 팀입니다.</p>
+        <h3>{club.name}</h3>
+        <p>{club.content}</p>
       </S.NewClubTitle>
     </S.NewClubItem>
   )

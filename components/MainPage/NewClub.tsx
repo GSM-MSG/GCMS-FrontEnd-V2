@@ -2,8 +2,20 @@ import Link from 'next/link'
 import NewClubItem from './NewClubItem'
 import * as S from './style'
 import * as SVG from '@/assets/svg'
+import { useFetch } from '@/hooks'
+import { useEffect } from 'react'
+import { ClubListType } from '@/type/common'
 
 export default function NewClub() {
+  const { fetch, data } = useFetch<ClubListType[]>({
+    url: `/club`,
+    method: 'get',
+  })
+
+  useEffect(() => {
+    fetch()
+  }, [])
+
   return (
     <S.NewClubWrapper>
       <S.NewClubHead>
@@ -13,13 +25,10 @@ export default function NewClub() {
         </Link>
       </S.NewClubHead>
       <S.NewClubList>
-        <NewClubItem />
-        <NewClubItem />
-        <NewClubItem />
-        <NewClubItem />
-        <NewClubItem />
-        <NewClubItem />
-        <NewClubItem />
+        {data &&
+          data.map((i) => {
+            return <NewClubItem key={i.id} club={i} />
+          })}
       </S.NewClubList>
     </S.NewClubWrapper>
   )

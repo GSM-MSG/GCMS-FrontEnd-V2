@@ -69,7 +69,7 @@ const data = [
 
 const getClubList = rest.get(serverApi('/club'), async (req, res, ctx) => {
   const queryName = req.url.searchParams.get('type')
-  if (!queryName) return res(ctx.status(400))
+  if (!queryName) return res(ctx.json(data))
   return res(ctx.json(data.filter((i) => i.type.includes(queryName))))
 })
 

@@ -21,9 +21,6 @@ export default function ClubList() {
     if (!watch('club')) return
     fetch()
   }, [watch, fetch])
-  useEffect(() => {
-    console.log(data)
-  }, [data])
 
   return (
     <S.ClubWrapper>

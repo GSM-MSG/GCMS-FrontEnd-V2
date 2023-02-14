@@ -5,14 +5,6 @@ export const ClubWrapper = styled.div`
   height: 100%;
   margin: 12px 0 16px;
 `
-
-export const ClubHead = styled.div`
-  p {
-    font-weight: 600;
-    font-size: 17px;
-    margin: 0;
-  }
-`
 export const ClubOptionLayer = styled.form`
   display: flex;
   gap: 6px;

@@ -1,6 +1,6 @@
 import { ContentFormType } from '@/type/components/ClubCreationModal'
 import { UseFormRegisterReturn, UseFormWatch } from 'react-hook-form'
-import * as S from './Textarea.style'
+import * as S from './style'
 
 interface Props {
   register: UseFormRegisterReturn

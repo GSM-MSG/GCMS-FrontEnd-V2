@@ -6,8 +6,8 @@ import { addActivityFiles, setBannerFile } from '@/store/imgs'
 import { ImgUploadFormType } from '@/type/components/ClubCreationModal'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import BannerImg from '../Common/BannerImg'
-import ClubImgs from '../Common/ClubImgs'
+import BannerImg from '@/components/Common/BannerImg'
+import ClubImgs from '@/components/Common/ClubImgs'
 import Layout from '../Common/Layout'
 
 const ClubImgUpload = () => {

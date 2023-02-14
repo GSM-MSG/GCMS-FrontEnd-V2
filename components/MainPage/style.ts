@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   width: 700px;
   @media (max-width: 715px) {
     width: 100%;
+    padding: 0 15px;
   }
 `
 export const BannerWrapper = styled.div`

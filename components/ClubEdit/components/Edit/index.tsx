@@ -11,9 +11,10 @@ import { EditClubForm } from '@/type/components/ClubEdit'
 
 interface Props {
   initialData: Partial<EditClubForm>
+  clubDetailReFetch: () => Promise<void>
 }
 
-const Edit = ({ initialData }: Props) => {
+const Edit = ({ initialData, clubDetailReFetch }: Props) => {
   const {
     register,
     watch,
@@ -47,12 +48,13 @@ const Edit = ({ initialData }: Props) => {
     setActivityImgs(activityImgs.filter((_, i) => i !== idx))
   }
 
-  const onSubmit = (form: EditClubForm) => {
-    fetch({
+  const onSubmit = async (form: EditClubForm) => {
+    await fetch({
       ...form,
       activityImgs,
       bannerImg,
     })
+    await clubDetailReFetch()
   }
 
   return (

@@ -27,7 +27,7 @@ const ClubEdit = () => {
   return (
     <S.Wrapper>
       <Notice />
-      <Edit initialData={clubData} />
+      <Edit clubDetailReFetch={fetch} initialData={clubData} />
     </S.Wrapper>
   )
 }

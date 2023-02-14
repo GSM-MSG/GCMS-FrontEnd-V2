@@ -3,11 +3,11 @@ import Input from '@/components/Common/Input'
 import Textarea from '@/components/Common/Textarea'
 import { useForm } from 'react-hook-form'
 import * as S from './style'
-import { ClubCreationInitialState } from '@/type/store/clubCreation'
 import ClubImgs from '../ClubImgs'
 import { useFetch, useUpload } from '@/hooks'
 import { ChangeEvent, useState } from 'react'
 import { useRouter } from 'next/router'
+import { EditClubForm } from '@/type/components/ClubEdit'
 
 const Edit = () => {
   const {
@@ -15,7 +15,7 @@ const Edit = () => {
     watch,
     formState: { errors },
     handleSubmit,
-  } = useForm<ClubCreationInitialState>()
+  } = useForm<EditClubForm>()
   const router = useRouter()
   const { upload } = useUpload()
   const [activityImgs, setActivityImgs] = useState<string[]>([])
@@ -43,7 +43,7 @@ const Edit = () => {
     setActivityImgs(activityImgs.filter((_, i) => i !== idx))
   }
 
-  const onSubmit = (form: ClubCreationInitialState) => {
+  const onSubmit = (form: EditClubForm) => {
     fetch({
       ...form,
       activityImgs,

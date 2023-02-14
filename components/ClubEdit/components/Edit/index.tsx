@@ -14,10 +14,10 @@ const Edit = () => {
     watch,
     formState: { errors },
     handleSubmit,
-    setValue,
   } = useForm<Omit<ClubCreationInitialState, 'member'>>()
   const { upload } = useUpload()
   const [activityImgs, setActivityImgs] = useState<string[]>([])
+  const [bannerImg, setBannerImg] = useState<string>('')
 
   const onUpload = async (
     e: ChangeEvent<HTMLInputElement>,
@@ -29,7 +29,7 @@ const Edit = () => {
     const url = await upload([file])
     if (!url) return
 
-    if (type === 'bannerImg') return setValue(type, url[0])
+    if (type === 'bannerImg') return setBannerImg(url[0])
     setActivityImgs([...activityImgs, url[0]])
   }
 
@@ -71,6 +71,7 @@ const Edit = () => {
             required: true,
             onChange: (e) => onUpload(e, 'bannerImg'),
           })}
+          bannerImg={bannerImg}
           error={!!errors.bannerImg}
         />
         <Textarea

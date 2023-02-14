@@ -42,6 +42,7 @@ const ClubImgs = ({ register, activityImgs, onRemove }: Props) => {
         accept='image/*'
         id='imgs'
         style={{ display: 'none' }}
+        disabled={activityImgs.length >= 4}
         {...register}
       />
     </S.Wrapper>

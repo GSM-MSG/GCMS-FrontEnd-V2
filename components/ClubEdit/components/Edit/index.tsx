@@ -11,20 +11,24 @@ import { EditClubForm } from '@/type/components/ClubEdit'
 
 interface Props {
   initialData: Partial<EditClubForm>
-  clubDetailReFetch: () => Promise<void>
+  banner: string
+  activity: string[]
 }
 
-const Edit = ({ initialData, clubDetailReFetch }: Props) => {
+const Edit = ({ initialData, banner, activity }: Props) => {
   const {
     register,
     watch,
     formState: { errors },
     handleSubmit,
-  } = useForm<EditClubForm>({ defaultValues: initialData })
+  } = useForm<EditClubForm>({
+    defaultValues: initialData,
+    shouldUseNativeValidation: true,
+  })
   const router = useRouter()
   const { upload } = useUpload()
-  const [activityImgs, setActivityImgs] = useState<string[]>([])
-  const [bannerImg, setBannerImg] = useState<string>('')
+  const [activityImgs, setActivityImgs] = useState<string[]>(activity)
+  const [bannerImg, setBannerImg] = useState<string>(banner)
   const { fetch } = useFetch({
     method: 'patch',
     url: `/club/${router.query?.clubID}`,
@@ -54,7 +58,6 @@ const Edit = ({ initialData, clubDetailReFetch }: Props) => {
       activityImgs,
       bannerImg,
     })
-    await clubDetailReFetch()
   }
 
   return (

@@ -11,7 +11,7 @@ import * as S from './style'
 const ClubEdit = () => {
   const router = useRouter()
   const [clubData, setClubData] = useState<Partial<EditClubForm>>({})
-  const { fetch } = useFetch<ClubDetailType>({
+  const { fetch, data } = useFetch<ClubDetailType>({
     method: 'get',
     url: `/club/${router.query.clubID}`,
     onSuccess: (data) => {
@@ -27,7 +27,14 @@ const ClubEdit = () => {
   return (
     <S.Wrapper>
       <Notice />
-      <Edit clubDetailReFetch={fetch} initialData={clubData} />
+
+      {data?.scope === 'HEAD' && (
+        <Edit
+          banner={data.bannerImg}
+          activity={data.activityImgs}
+          initialData={clubData}
+        />
+      )}
     </S.Wrapper>
   )
 }

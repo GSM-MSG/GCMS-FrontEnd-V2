@@ -26,8 +26,6 @@ export const LogoWarppaer = styled.div`
   gap: 20px;
   justify-content: center;
   align-items: center;
-  font-family: 'Pretendard';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   pointer-events: none;
@@ -47,8 +45,6 @@ export const Auth = styled.div`
   align-items: center;
   gap: 10px;
   border-radius: 6px;
-  font-family: 'Pretendard';
-  font-style: normal;
   font-weight: 600;
   font-size: 17px;
   color: #2e80cc;
@@ -71,8 +67,6 @@ export const ContentInfo = styled.div`
   margin-top: 10%;
   text-align: center;
   color: #606062;
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   @media (max-width: 450px) {

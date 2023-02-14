@@ -9,7 +9,11 @@ import { accessExp, accessToken, refreshExp, refreshToken } from '@/lib/token'
 import { useFetch } from '@/hooks'
 import { TokensType } from '@/type/api/TokenType'
 
-export default function Login() {
+interface Props {
+  onClose: () => void
+}
+
+const Login = ({ onClose }: Props) => {
   const router = useRouter()
   const gauthCode = router.query.code?.toString()
 
@@ -29,12 +33,12 @@ export default function Login() {
   useEffect(() => {
     if (!gauthCode) return
     fetch({ code: gauthCode })
-  }, [gauthCode, fetch])
+  }, [gauthCode])
 
   return (
-    <Portal>
+    <Portal onClose={onClose}>
       <S.Wrapper>
-        <S.CancelBtn>
+        <S.CancelBtn onClick={onClose}>
           <SVG.XMark />
         </S.CancelBtn>
         <S.LogoWarppaer>
@@ -58,3 +62,4 @@ export default function Login() {
     </Portal>
   )
 }
+export default Login

@@ -5,17 +5,30 @@ import { useForm } from 'react-hook-form'
 import * as S from './style'
 import { ClubCreationInitialState } from '@/type/store/clubCreation'
 import ClubImgs from '@/components/Common/ClubImgs'
-import { useDispatch } from 'react-redux'
-import { addActivityFiles, setBannerFile } from '@/store/imgs'
+import { useUpload } from '@/hooks'
+import { ChangeEvent } from 'react'
 
 const Edit = () => {
-  const dispatch = useDispatch()
   const {
     register,
     watch,
     formState: { errors },
     handleSubmit,
+    setValue,
   } = useForm<Omit<ClubCreationInitialState, 'member'>>()
+  const { upload } = useUpload()
+
+  const onUpload = async (
+    e: ChangeEvent<HTMLInputElement>,
+    type: 'bannerImg' | 'activityImgs'
+  ) => {
+    const file = e.currentTarget.files?.item(0)
+    if (!file) return
+
+    const url = await upload([file])
+    if (!url) return
+    setValue(type, url[0])
+  }
 
   const onSubmit = async () => {
     return
@@ -49,9 +62,7 @@ const Edit = () => {
         <BannerImg
           register={register('bannerImg', {
             required: true,
-            onChange: (e) => {
-              dispatch(setBannerFile({ file: e.currentTarget.files }))
-            },
+            onChange: (e) => onUpload(e, 'bannerImg'),
           })}
           error={!!errors.bannerImg}
         />
@@ -64,9 +75,7 @@ const Edit = () => {
 
       <ClubImgs
         register={register('activityImgs', {
-          onChange: (e) => {
-            dispatch(addActivityFiles({ file: e.currentTarget.files }))
-          },
+          onChange: (e) => onUpload(e, 'activityImgs'),
         })}
       />
 

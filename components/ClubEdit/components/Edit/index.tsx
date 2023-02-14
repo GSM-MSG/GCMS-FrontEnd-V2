@@ -4,9 +4,9 @@ import Textarea from '@/components/Common/Textarea'
 import { useForm } from 'react-hook-form'
 import * as S from './style'
 import { ClubCreationInitialState } from '@/type/store/clubCreation'
-import ClubImgs from '@/components/Common/ClubImgs'
+import ClubImgs from '../ClubImgs'
 import { useUpload } from '@/hooks'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 const Edit = () => {
   const {
@@ -17,6 +17,7 @@ const Edit = () => {
     setValue,
   } = useForm<Omit<ClubCreationInitialState, 'member'>>()
   const { upload } = useUpload()
+  const [activityImgs, setActivityImgs] = useState<string[]>([])
 
   const onUpload = async (
     e: ChangeEvent<HTMLInputElement>,
@@ -27,7 +28,13 @@ const Edit = () => {
 
     const url = await upload([file])
     if (!url) return
-    setValue(type, url[0])
+
+    if (type === 'bannerImg') return setValue(type, url[0])
+    setActivityImgs([...activityImgs, url[0]])
+  }
+
+  const onRemove = (idx: number) => {
+    setActivityImgs(activityImgs.filter((_, i) => i !== idx))
   }
 
   const onSubmit = async () => {
@@ -77,6 +84,8 @@ const Edit = () => {
         register={register('activityImgs', {
           onChange: (e) => onUpload(e, 'activityImgs'),
         })}
+        activityImgs={activityImgs}
+        onRemove={onRemove}
       />
 
       <Input

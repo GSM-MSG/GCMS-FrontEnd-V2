@@ -8,11 +8,7 @@ interface Props {
 export default function ClubItem({ club }: Props) {
   return (
     <S.ClubItem>
-      {club.bannerImg ? (
-        <S.ClubImg src={club.bannerImg} />
-      ) : (
-        <S.SampleClubImg />
-      )}
+      <S.ClubImg src={club.bannerImg} />
       <S.ClubTitle>
         <h3>{club.name}</h3>
         <p>{club.content}</p>

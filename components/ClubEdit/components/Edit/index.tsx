@@ -9,13 +9,17 @@ import { ChangeEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { EditClubForm } from '@/type/components/ClubEdit'
 
-const Edit = () => {
+interface Props {
+  initialData: Partial<EditClubForm>
+}
+
+const Edit = ({ initialData }: Props) => {
   const {
     register,
     watch,
     formState: { errors },
     handleSubmit,
-  } = useForm<EditClubForm>()
+  } = useForm<EditClubForm>({ defaultValues: initialData })
   const router = useRouter()
   const { upload } = useUpload()
   const [activityImgs, setActivityImgs] = useState<string[]>([])

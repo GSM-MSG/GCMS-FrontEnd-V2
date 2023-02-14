@@ -26,7 +26,7 @@ const ClubEdit = () => {
 
   return (
     <S.Wrapper>
-      <Notice />
+      <Notice data={data} />
 
       {data?.scope === 'HEAD' && (
         <Edit

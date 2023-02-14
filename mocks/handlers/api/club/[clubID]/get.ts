@@ -6,14 +6,19 @@ const getClubDetail = rest.get(serverApi('/club/:clubID'), (_req, res, ctx) => {
     ctx.json({
       id: 1,
       type: 'MAJOR',
-      bannerImg: '동아리 배너 url',
+      bannerImg: 'https://bit.ly/3EsznxZ',
       name: '동아리 이름',
       content: 'tjfaud',
       contact: '윤지빈#5193',
       teacher: '선생님이름', // optional
       isOpened: true,
-      notionLink: 'https://',
-      activityImgs: ['img1', 'img2', 'img3', 'img4'],
+      notionLink: 'https://bit.ly/3EsznxZ',
+      activityImgs: [
+        'https://bit.ly/3EsznxZ',
+        'https://bit.ly/3EsznxZ',
+        'https://bit.ly/3EsznxZ',
+        'https://bit.ly/3EsznxZ',
+      ],
       head: {
         uuid: 'uuuid',
         email: 's21073',

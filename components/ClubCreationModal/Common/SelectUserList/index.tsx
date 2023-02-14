@@ -1,7 +1,7 @@
 import { RootState } from '@/store'
 import { removeMember } from '@/store/clubCreation'
 import { useDispatch, useSelector } from 'react-redux'
-import * as S from './SelectUserList.style'
+import * as S from './style'
 import * as SVG from '@/assets/svg'
 
 const SelectUserList = () => {

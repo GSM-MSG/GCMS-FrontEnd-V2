@@ -8,8 +8,6 @@ export const ClubWrapper = styled.div`
 
 export const ClubHead = styled.div`
   p {
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 17px;
     margin: 0;
@@ -82,8 +80,6 @@ export const SampleClubImg = styled.div`
 
 export const ClubTitle = styled.div`
   h3 {
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 15px;
     margin: 0;
@@ -91,8 +87,6 @@ export const ClubTitle = styled.div`
   p {
     margin: 8px 0 0 0;
     width: 100%;
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 500;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.51);

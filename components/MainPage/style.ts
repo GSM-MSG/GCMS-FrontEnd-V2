@@ -32,9 +32,6 @@ export const BannerWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 11px;
     color: #000000;
@@ -50,15 +47,11 @@ export const NewClubHead = styled.div`
   justify-content: space-between;
   align-items: center;
   p {
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 17px;
     margin: 0;
   }
   a {
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 500;
     font-size: 13px;
     color: #7a7a7a;
@@ -97,8 +90,6 @@ export const NewClubImg = styled.img`
 `
 export const NewClubTitle = styled.div`
   h3 {
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 15px;
     margin: 0;
@@ -106,8 +97,6 @@ export const NewClubTitle = styled.div`
   p {
     margin: 8px 0 0 0;
     width: 100%;
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 500;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.51);
@@ -123,8 +112,6 @@ export const NewClubTitle = styled.div`
 export const ClubWrapper = styled.div`
   margin-top: 76px;
   p {
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 17px;
     margin: 0;

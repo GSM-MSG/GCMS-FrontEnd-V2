@@ -1,5 +1,5 @@
 import { UseFormRegisterReturn } from 'react-hook-form'
-import * as S from './Input.style'
+import * as S from './style'
 
 interface Props {
   label: string

@@ -1,4 +1,4 @@
-import * as S from './BannerImg.style'
+import * as S from './style'
 import * as SVG from '@/assets/svg'
 import { UseFormRegisterReturn } from 'react-hook-form'
 import { useSelector } from 'react-redux'

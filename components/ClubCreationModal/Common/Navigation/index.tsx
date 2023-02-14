@@ -1,6 +1,6 @@
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
-import * as S from './Navigation.style'
+import * as S from './style'
 
 const Navigation = () => {
   const { page } = useSelector((state: RootState) => ({

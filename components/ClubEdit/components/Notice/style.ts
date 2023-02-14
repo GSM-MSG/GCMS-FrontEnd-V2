@@ -90,6 +90,7 @@ export const Switch = styled.label`
     color: #939393;
   }
 `
+
 export const SwitchBtn = styled.span`
   position: absolute;
   width: 2rem;

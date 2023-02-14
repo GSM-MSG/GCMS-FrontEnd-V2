@@ -18,7 +18,7 @@ const Textarea = ({ register, watch, error }: Props) => {
           error={error}
           {...register}
         />
-        <S.MaxLength error={error}>{watch('content').length}/200</S.MaxLength>
+        <S.MaxLength error={error}>{watch('content')?.length}/200</S.MaxLength>
       </div>
     </S.Wrapper>
   )

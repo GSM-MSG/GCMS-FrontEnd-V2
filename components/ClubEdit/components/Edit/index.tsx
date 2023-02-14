@@ -49,7 +49,7 @@ const Edit = () => {
         />
         <Textarea
           register={register('content', { required: true })}
-          watch={watch}
+          content={watch('content')}
           error={!!errors.content}
         />
       </S.BannerAndContent>

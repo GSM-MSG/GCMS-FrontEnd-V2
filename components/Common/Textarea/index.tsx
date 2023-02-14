@@ -1,14 +1,13 @@
-import { ContentFormType } from '@/type/components/ClubCreationModal'
-import { UseFormRegisterReturn, UseFormWatch } from 'react-hook-form'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import * as S from './style'
 
 interface Props {
   register: UseFormRegisterReturn
-  watch: UseFormWatch<ContentFormType>
+  content: string
   error: boolean
 }
 
-const Textarea = ({ register, watch, error }: Props) => {
+const Textarea = ({ register, content, error }: Props) => {
   return (
     <S.Wrapper>
       <S.Label error={error}>{error && '*'} 동아리 설명</S.Label>
@@ -18,7 +17,7 @@ const Textarea = ({ register, watch, error }: Props) => {
           error={error}
           {...register}
         />
-        <S.MaxLength error={error}>{watch('content')?.length}/200</S.MaxLength>
+        <S.MaxLength error={error}>{content.length}/200</S.MaxLength>
       </div>
     </S.Wrapper>
   )

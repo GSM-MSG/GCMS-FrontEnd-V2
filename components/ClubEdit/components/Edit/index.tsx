@@ -5,8 +5,11 @@ import { useForm } from 'react-hook-form'
 import * as S from './style'
 import { ClubCreationInitialState } from '@/type/store/clubCreation'
 import ClubImgs from '@/components/Common/ClubImgs'
+import { useDispatch } from 'react-redux'
+import { addActivityFiles, setBannerFile } from '@/store/imgs'
 
 const Edit = () => {
+  const dispatch = useDispatch()
   const {
     register,
     watch,
@@ -44,7 +47,12 @@ const Edit = () => {
 
       <S.BannerAndContent>
         <BannerImg
-          register={register('bannerImg', { required: true })}
+          register={register('bannerImg', {
+            required: true,
+            onChange: (e) => {
+              dispatch(setBannerFile({ file: e.currentTarget.files }))
+            },
+          })}
           error={!!errors.bannerImg}
         />
         <Textarea
@@ -54,7 +62,13 @@ const Edit = () => {
         />
       </S.BannerAndContent>
 
-      <ClubImgs register={register('activityImgs')} />
+      <ClubImgs
+        register={register('activityImgs', {
+          onChange: (e) => {
+            dispatch(addActivityFiles({ file: e.currentTarget.files }))
+          },
+        })}
+      />
 
       <Input
         label='노션 링크'

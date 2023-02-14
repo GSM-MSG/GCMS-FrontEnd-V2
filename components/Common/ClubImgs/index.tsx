@@ -1,4 +1,4 @@
-import * as S from './ClubImgs.style'
+import * as S from './style'
 import * as SVG from '@/assets/svg'
 import { UseFormRegisterReturn } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'

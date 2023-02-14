@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form'
 import * as S from './style'
 import { ClubCreationInitialState } from '@/type/store/clubCreation'
 import ClubImgs from '../ClubImgs'
-import { useUpload } from '@/hooks'
+import { useFetch, useUpload } from '@/hooks'
 import { ChangeEvent, useState } from 'react'
+import { useRouter } from 'next/router'
 
 const Edit = () => {
   const {
@@ -14,10 +15,15 @@ const Edit = () => {
     watch,
     formState: { errors },
     handleSubmit,
-  } = useForm<Omit<ClubCreationInitialState, 'member'>>()
+  } = useForm<ClubCreationInitialState>()
+  const router = useRouter()
   const { upload } = useUpload()
   const [activityImgs, setActivityImgs] = useState<string[]>([])
   const [bannerImg, setBannerImg] = useState<string>('')
+  const { fetch } = useFetch({
+    method: 'patch',
+    url: `/club/${router.query?.clubID}`,
+  })
 
   const onUpload = async (
     e: ChangeEvent<HTMLInputElement>,
@@ -37,8 +43,12 @@ const Edit = () => {
     setActivityImgs(activityImgs.filter((_, i) => i !== idx))
   }
 
-  const onSubmit = async () => {
-    return
+  const onSubmit = (form: ClubCreationInitialState) => {
+    fetch({
+      ...form,
+      activityImgs,
+      bannerImg,
+    })
   }
 
   return (

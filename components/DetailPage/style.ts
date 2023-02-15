@@ -1,12 +1,10 @@
 import styled from '@emotion/styled'
 
 export const Layout = styled.div`
-  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 100px;
-  justify-content: space-between;
   align-items: center;
 `
 
@@ -17,6 +15,7 @@ export const Wrapper = styled.div`
   @media (max-width: 750px) {
     width: 100%;
     flex-direction: column;
+    padding: 15px;
   }
 `
 export const Section = styled.section`
@@ -39,8 +38,6 @@ export const ClubInfo = styled.div`
   width: 100%;
   h3 {
     margin: 36px 0 0;
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 700;
     font-size: 20px;
   }
@@ -78,15 +75,11 @@ export const ContactInfo = styled.div`
     margin: 0;
   }
   p {
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 11px;
     color: rgba(255, 255, 255, 0.4);
   }
   span {
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 13px;
     display: flex;
@@ -100,8 +93,6 @@ export const Description = styled.div`
   h3,
   p {
     margin: 0;
-    font-family: 'Pretendard';
-    font-style: normal;
   }
   h3 {
     font-weight: 700;
@@ -120,8 +111,6 @@ export const ClubActivity = styled.div`
   margin-top: 60px;
   h3 {
     margin: 0;
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 700;
     font-size: 15px;
   }
@@ -142,7 +131,7 @@ export const ActivityImg = styled.img`
   background: linear-gradient(0deg, #373737, #373737), url(image.png);
   border-radius: 10px;
   @media (max-width: 750px) {
-    width: 45vw;
+    width: 42vw;
   }
   @media (max-width: 370px) {
     width: 90%;
@@ -153,8 +142,6 @@ export const ClubMember = styled.div`
   margin-top: 60px;
   > h3 {
     margin: 0;
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 700;
     font-size: 15px;
   }
@@ -199,8 +186,6 @@ export const HeadInfo = styled.div`
   gap: 4px;
   > * {
     margin: 0;
-    font-family: 'Pretendard';
-    font-style: normal;
   }
   p {
     font-weight: 500;
@@ -237,8 +222,6 @@ export const SideBar = styled.div`
   border-radius: 10px;
   padding: 12px 14px 34px;
   > h3 {
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 700;
     font-size: 13px;
     color: #c7c7c7;
@@ -263,8 +246,6 @@ export const SideControl = styled.div`
     width: 100%;
     height: 36px;
     border: none;
-    font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 13px;
     color: #ffffff;
@@ -279,8 +260,6 @@ export const NotionInfo = styled.div`
   gap: 13px;
   > * {
     margin: 0;
-    font-family: 'Pretendard';
-    font-style: normal;
   }
   > p {
     width: 70%;

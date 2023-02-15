@@ -1,7 +1,11 @@
 import { UserInitialState } from '@/type/store/user'
 import * as S from './style'
 
-export default function Profile({ user }: { user: UserInitialState }) {
+interface Props {
+  user: UserInitialState
+}
+
+export default function Profile({ user }: Props) {
   return (
     <S.ProfileWrapper>
       {user.profileImg ? (

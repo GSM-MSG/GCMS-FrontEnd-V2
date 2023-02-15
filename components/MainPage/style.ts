@@ -8,6 +8,7 @@ export const Section = styled.section`
 `
 
 export const Wrapper = styled.div`
+  position: relative;
   width: 700px;
   @media (max-width: 715px) {
     width: 100%;

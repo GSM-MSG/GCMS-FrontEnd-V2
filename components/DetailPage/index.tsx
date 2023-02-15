@@ -1,3 +1,7 @@
+import { useFetch } from '@/hooks'
+import { ClubDetailType } from '@/type/common'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import ClubActivity from './ClubActivity'
 import ClubMember from './ClubMember'
 import Contact from './Contact'
@@ -6,6 +10,18 @@ import SideBar from './SideBar'
 import * as S from './style'
 
 export default function DetailPage() {
+  const router = useRouter()
+  const clubID = router.query.clubID?.toString()
+
+  const { fetch } = useFetch<ClubDetailType>({
+    url: `/club/${clubID}`,
+    method: 'get',
+  })
+
+  useEffect(() => {
+    fetch()
+  }, [clubID])
+
   return (
     <S.Layout>
       <S.Wrapper>

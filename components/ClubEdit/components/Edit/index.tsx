@@ -8,6 +8,7 @@ import { useFetch, useUpload } from '@/hooks'
 import { ChangeEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { EditClubForm } from '@/type/components/ClubEdit'
+import ConfirmModal from '@/components/Common/ConfirmModal'
 
 interface Props {
   initialData: Partial<EditClubForm>
@@ -63,6 +64,10 @@ const Edit = ({ initialData, banner, activity }: Props) => {
 
   return (
     <S.Wrapper onSubmit={handleSubmit(onSubmit)}>
+      <ConfirmModal
+        title='탈퇴하기'
+        description='MSG(맛소금)을/를 정말 탈퇴하시겠습니까?'
+      />
       <S.TitleSection>
         <S.Title>수정</S.Title>
         <div>

@@ -8,12 +8,16 @@ export default function SideBar() {
   const { clubDetail } = useSelector((state: RootState) => ({
     clubDetail: state.clubDetail,
   }))
+  const isOpened = clubDetail.isOpened
+  const isApplied = clubDetail.isApplied
 
   return (
     <S.SideBar>
       <h3>{clubDetail.name}</h3>
       <S.SideControl>
-        <button>지원하기</button>
+        <S.SideBtn isOpened={isOpened} isApplied={isApplied}>
+          {isOpened ? (isApplied ? '지원하기' : '신청취소') : '준비중'}
+        </S.SideBtn>
         <S.NotionInfo>
           <p>{clubDetail.name}이/가 더 궁금하다면?</p>
           <Link href={clubDetail.notionLink}>

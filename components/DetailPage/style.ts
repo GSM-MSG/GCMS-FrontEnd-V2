@@ -1,3 +1,4 @@
+import { ApplyStateTpye } from '@/type/components/ClubDetailSide'
 import styled from '@emotion/styled'
 
 export const Layout = styled.div`
@@ -249,16 +250,22 @@ export const SideControl = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  > button {
-    width: 100%;
-    height: 36px;
-    border: none;
-    font-weight: 600;
-    font-size: 13px;
-    color: #ffffff;
-    background: #4164e1;
-    border-radius: 7px;
-  }
+`
+
+export const SideBtn = styled.button<ApplyStateTpye>`
+  width: 100%;
+  height: 36px;
+  border: none;
+  font-weight: 600;
+  font-size: 13px;
+  color: #ffffff;
+  background: #4164e1;
+  ${({ isOpened, isApplied }) =>
+    isOpened
+      ? !isApplied &&
+        'color: #FF6666;background: #391F21;border: 1px solid #FF6666;'
+      : 'color: #C1C1C1;background: #373737;'}
+  border-radius: 7px;
 `
 
 export const NotionInfo = styled.div`

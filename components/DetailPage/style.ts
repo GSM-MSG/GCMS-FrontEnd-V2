@@ -10,6 +10,7 @@ export const Layout = styled.div`
 `
 
 export const Wrapper = styled.div`
+  position: relative;
   width: 700px;
   display: flex;
   justify-content: space-between;
@@ -222,7 +223,8 @@ export const Footer = styled.footer`
 `
 
 export const SideBar = styled.div`
-  position: sticky;
+  position: absolute;
+  right: 0;
   top: 42px;
   width: 174px;
   height: 224px;

@@ -1,3 +1,4 @@
+import ConfirmModal from '@/components/Common/ConfirmModal'
 import { useFetch } from '@/hooks'
 import ClubDetailType from '@/type/common/ClubDetailType'
 import { useRouter } from 'next/router'
@@ -11,6 +12,7 @@ interface Props {
 const Notice = ({ data }: Props) => {
   const router = useRouter()
   const [isOpened, setIsOpened] = useState<boolean | undefined>(data?.isOpened)
+  const [isShow, setIsShow] = useState<boolean>(false)
   const { fetch: clubOpenClose, isLoading: isOpenCloseFetching } = useFetch({
     method: 'patch',
     url: `/club/${data?.id}/${data?.isOpened ? 'close' : 'open'}`,
@@ -36,42 +38,51 @@ const Notice = ({ data }: Props) => {
   }
 
   return (
-    <S.Wrapper>
-      <S.Label>공고</S.Label>
-      <S.Content>
-        <S.Left src={data?.bannerImg} />
+    <>
+      <S.Wrapper>
+        <S.Label>공고</S.Label>
+        <S.Content>
+          <S.Left src={data?.bannerImg} />
 
-        <S.Right>
-          <S.Title>{data?.name}</S.Title>
-          <S.Description>{data?.content}</S.Description>
-          <S.UtilContent>
-            <S.UtilSection>
-              <S.Title>동아리 모집</S.Title>
+          <S.Right>
+            <S.Title>{data?.name}</S.Title>
+            <S.Description>{data?.content}</S.Description>
+            <S.UtilContent>
+              <S.UtilSection>
+                <S.Title>동아리 모집</S.Title>
 
-              <S.SwitchInput
-                id='switch'
-                checked={!!isOpened}
-                readOnly
-                type='checkbox'
-                onClick={() => onReady(clubOpenClose)}
-              />
-              <S.Switch htmlFor='switch'>
-                <span>off</span>
-                <S.SwitchBtn />
-                <span>on</span>
-              </S.Switch>
-            </S.UtilSection>
+                <S.SwitchInput
+                  id='switch'
+                  checked={!!isOpened}
+                  readOnly
+                  type='checkbox'
+                  onClick={() => onReady(clubOpenClose)}
+                />
+                <S.Switch htmlFor='switch'>
+                  <span>off</span>
+                  <S.SwitchBtn />
+                  <span>on</span>
+                </S.Switch>
+              </S.UtilSection>
 
-            <S.UtilSection>
-              <S.Title>동아리 삭제</S.Title>
-              <S.DeleteBtn onClick={() => onReady(deleteClub)}>
-                삭제
-              </S.DeleteBtn>
-            </S.UtilSection>
-          </S.UtilContent>
-        </S.Right>
-      </S.Content>
-    </S.Wrapper>
+              <S.UtilSection>
+                <S.Title>동아리 삭제</S.Title>
+                <S.DeleteBtn onClick={() => setIsShow(true)}>삭제</S.DeleteBtn>
+              </S.UtilSection>
+            </S.UtilContent>
+          </S.Right>
+        </S.Content>
+      </S.Wrapper>
+
+      {isShow && (
+        <ConfirmModal
+          title='동아리 삭제하기'
+          description={`${data?.name}동아리를 정말로 삭제하시겠습니까?`}
+          onClose={() => setIsShow(false)}
+          onConfirm={() => onReady(deleteClub)}
+        />
+      )}
+    </>
   )
 }
 

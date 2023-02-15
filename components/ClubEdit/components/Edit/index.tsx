@@ -21,6 +21,7 @@ const Edit = ({ initialData, banner, activity }: Props) => {
     watch,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm<EditClubForm>({
     defaultValues: initialData,
     shouldUseNativeValidation: true,
@@ -65,7 +66,9 @@ const Edit = ({ initialData, banner, activity }: Props) => {
       <S.TitleSection>
         <S.Title>수정</S.Title>
         <div>
-          <S.CancelBtn type='button'>취소</S.CancelBtn>
+          <S.CancelBtn onClick={() => reset()} type='button'>
+            취소
+          </S.CancelBtn>
           <S.EditBtn type='submit'>수정완료</S.EditBtn>
         </div>
       </S.TitleSection>

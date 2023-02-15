@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 export const Header = styled.header`
   position: sticky;
   top: 0;
-  z-index: 1000;
   width: 100%;
   height: 61px;
   display: flex;
@@ -31,6 +30,9 @@ export const NavWrapper = styled.nav`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  a {
+    cursor: pointer;
+  }
 `
 export const ProfileWrapper = styled.div`
   width: 108px;

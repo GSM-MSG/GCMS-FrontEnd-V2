@@ -1,13 +1,19 @@
+import { RootState } from '@/store'
+import { useSelector } from 'react-redux'
 import * as S from './style'
 
 export default function ClubActivity() {
+  const { clubDetail } = useSelector((state: RootState) => ({
+    clubDetail: state.clubDetail,
+  }))
+
   return (
     <S.ClubActivity>
       <h3>동아리 활동</h3>
       <div>
-        <S.ActivityImg src='https://www.computerhope.com/jargon/h/img.png' />
-        <S.ActivityImg src='https://www.computerhope.com/jargon/h/img.png' />
-        <S.ActivityImg src='https://www.computerhope.com/jargon/h/img.png' />
+        {clubDetail.activityImgs.map((url, index) => {
+          return <S.ActivityImg key={index} src={url} />
+        })}
       </div>
     </S.ClubActivity>
   )

@@ -207,6 +207,13 @@ export const MemberProfile = styled.img`
   background: #c4c4c4;
 `
 
+export const SampelIMG = styled.div`
+  width: 48px;
+  background: #c4c4c4;
+  height: 48px;
+  border-radius: 50%;
+`
+
 export const Footer = styled.footer`
   width: 100%;
   height: 214px;

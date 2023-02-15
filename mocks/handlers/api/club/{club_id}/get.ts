@@ -5,9 +5,9 @@ import { data } from './data'
 const getClubDetail = rest.get(
   serverApi('/club/:clubID'),
   async (req, res, ctx) => {
-    const clubID = req.params.clubID
+    const clubID = req.params.clubID.toString()
 
-    return res(ctx.json(data.find((i) => i.id.toString() === clubID)))
+    return res(ctx.json(data.find((i) => i.id.toString().includes(clubID))))
   }
 )
 

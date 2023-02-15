@@ -11,7 +11,7 @@ const human = {
   name: 'name',
   grade: 1,
   classNum: 2,
-  num: 14,
+  number: 14,
   profileImg:
     'https://static-cdn.jtvnw.net/jtv_user_pictures/e3cc7eb1-babd-4ee2-8be4-107a55c2f987-profile_image-300x300.png',
 }

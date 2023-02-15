@@ -1,7 +1,10 @@
 import { useFetch } from '@/hooks'
+import { RootState } from '@/store'
+import { setClubDetail } from '@/store/clubDetail'
 import { ClubDetailType } from '@/type/common'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import ClubActivity from './ClubActivity'
 import ClubMember from './ClubMember'
 import Contact from './Contact'
@@ -12,21 +15,33 @@ import * as S from './style'
 export default function DetailPage() {
   const router = useRouter()
   const clubID = router.query.clubID?.toString()
+  const dispatch = useDispatch()
 
-  const { fetch } = useFetch<ClubDetailType>({
+  const { clubDetail } = useSelector((state: RootState) => ({
+    clubDetail: state.clubDetail,
+  }))
+
+  const { fetch, data } = useFetch<ClubDetailType>({
     url: `/club/${clubID}`,
     method: 'get',
+    onSuccess: (data) => {
+      dispatch(setClubDetail(data))
+    },
   })
 
   useEffect(() => {
-    fetch()
+    setTimeout(() => {
+      fetch()
+    }, 1000)
   }, [clubID])
+
+  if (!clubID || !data) return
 
   return (
     <S.Layout>
       <S.Wrapper>
         <S.Section>
-          <S.ClubBanner src='https://www.computerhope.com/jargon/h/img.png' />
+          <S.ClubBanner src={clubDetail.bannerImg} />
           <S.ClubInfo>
             <h3>MSG(맛소금)</h3>
             <Contact />

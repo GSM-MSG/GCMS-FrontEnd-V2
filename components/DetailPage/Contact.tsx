@@ -1,19 +1,29 @@
 import * as S from './style'
 import * as SVG from '@/assets/svg'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 export default function Contact() {
+  const { clubDetail } = useSelector((state: RootState) => ({
+    clubDetail: state.clubDetail,
+  }))
+
   return (
     <S.Contact>
       <div>
-        <S.ProfileImg src='https://www.computerhope.com/jargon/h/img.png' />
+        {clubDetail.head.profileImg ? (
+          <S.ProfileImg src={clubDetail.head.profileImg} />
+        ) : (
+          <S.SampelIMG />
+        )}
         <S.ContactInfo>
           <p>연략처</p>
           <span
             onClick={() => {
-              navigator.clipboard.writeText('ㄴㅁㅇㅁㅇ')
+              navigator.clipboard.writeText(clubDetail.contact)
             }}
           >
-            이현빈 #1793
+            {clubDetail.contact}
             <i>
               <SVG.CopyIcon />
             </i>

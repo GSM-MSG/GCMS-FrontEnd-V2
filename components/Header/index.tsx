@@ -13,7 +13,7 @@ export default function Header() {
         <S.Wrapper>
           <SVG.Logo />
           <S.NavWrapper>
-            <Link href='#'>홈</Link>
+            <Link href='/'>홈</Link>
             {isLoggned ? <Profile user={user} /> : <Link href='#'>로그인</Link>}
           </S.NavWrapper>
         </S.Wrapper>

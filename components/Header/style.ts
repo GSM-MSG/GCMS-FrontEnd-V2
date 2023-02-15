@@ -22,17 +22,7 @@ export const Wrapper = styled.div`
   align-items: center;
 `
 
-export const Logo = styled.h1`
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  pointer-events: none;
-`
-
 export const NavWrapper = styled.nav`
-  font-family: 'Pretendard';
-  font-style: normal;
   font-weight: 500;
   font-size: 13px;
   text-align: center;
@@ -69,8 +59,6 @@ export const SampleIMG = styled.div`
   background: #727272;
 `
 export const ClientName = styled.p`
-  font-family: 'Pretendard';
-  font-style: normal;
   font-weight: 500;
   font-size: 13px;
   color: #ffffff;

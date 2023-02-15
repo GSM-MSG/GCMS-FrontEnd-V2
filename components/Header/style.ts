@@ -61,6 +61,13 @@ export const ProfileIMG = styled.img`
   object-fit: cover;
   object-position: center;
 `
+
+export const SampleIMG = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #727272;
+`
 export const ClientName = styled.p`
   font-family: 'Pretendard';
   font-style: normal;

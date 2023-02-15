@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 export const Header = styled.header`
   position: sticky;
   top: 0;
+  z-index: 100;
   width: 100%;
   height: 61px;
   display: flex;

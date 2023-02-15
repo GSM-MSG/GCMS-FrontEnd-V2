@@ -20,7 +20,7 @@ const ClubCreationModal = ({ onClose }: Props) => {
   }))
 
   return (
-    <Portal>
+    <Portal onClose={onClose}>
       <S.Wrapper>
         <S.TopContent>
           <S.CloseButton onClick={onClose}>

@@ -262,7 +262,7 @@ export const SideBtn = styled.button<ApplyStateTpye>`
   background: #4164e1;
   ${({ isOpened, isApplied }) =>
     isOpened
-      ? !isApplied &&
+      ? isApplied &&
         'color: #FF6666;background: #391F21;border: 1px solid #FF6666;'
       : 'color: #C1C1C1;background: #373737;'}
   border-radius: 7px;

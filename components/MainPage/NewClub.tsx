@@ -27,7 +27,11 @@ export default function NewClub() {
       <S.NewClubList>
         {data &&
           data.map((i) => {
-            return <NewClubItem key={i.id} club={i} />
+            return (
+              <Link key={i.id} href={`/detail/${i.id}`}>
+                <NewClubItem club={i} />
+              </Link>
+            )
           })}
       </S.NewClubList>
     </S.NewClubWrapper>

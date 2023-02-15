@@ -18,7 +18,9 @@ export default function ClubList() {
   })
 
   useEffect(() => {
-    fetch()
+    setTimeout(() => {
+      fetch()
+    }, 300)
   }, [watch('club')])
 
   return (

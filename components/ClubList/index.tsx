@@ -19,7 +19,7 @@ export default function ClubList() {
 
   useEffect(() => {
     fetch()
-  }, [])
+  }, [watch('club')])
 
   return (
     <S.ClubWrapper>
@@ -29,7 +29,7 @@ export default function ClubList() {
           id='major'
           value='MAJOR'
           {...register('club', {
-            onChange: () => fetch(),
+            onChange: fetch,
           })}
         />
         <label htmlFor='major'>전공</label>
@@ -38,7 +38,7 @@ export default function ClubList() {
           id='freedom'
           value='FREEDOM'
           {...register('club', {
-            onChange: () => fetch(),
+            onChange: fetch,
           })}
         />
         <label htmlFor='freedom'>자율</label>
@@ -47,7 +47,7 @@ export default function ClubList() {
           id='editorial'
           value='EDITORIAL'
           {...register('club', {
-            onChange: () => fetch(),
+            onChange: fetch,
           })}
         />
         <label htmlFor='editorial'>사설</label>

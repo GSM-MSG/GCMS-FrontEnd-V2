@@ -1,3 +1,4 @@
+import getClubList from './api/club/get'
 import postLogin from './api/auth/post'
 import postAddClub from './api/club/post'
 import getMain from './api/get'
@@ -9,5 +10,6 @@ export const handlers = [
   getMain,
   getSearchUser,
   postAddClub,
+  getClubList,
   postLogin,
 ]

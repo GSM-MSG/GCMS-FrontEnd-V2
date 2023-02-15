@@ -292,6 +292,11 @@ export const NotionInfo = styled.div`
     font-weight: 500;
     font-size: 13px;
     color: #8be246;
+    > i {
+      position: relative;
+      top: 2px;
+      left: 3px;
+    }
   }
   @media (max-width: 750px) {
     flex-direction: row;

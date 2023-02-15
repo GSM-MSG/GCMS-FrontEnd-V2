@@ -1,6 +1,7 @@
 import { useFetch } from '@/hooks'
 import ClubDetailType from '@/type/common/ClubDetailType'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import * as S from './style'
 
 interface Props {
@@ -9,17 +10,30 @@ interface Props {
 
 const Notice = ({ data }: Props) => {
   const router = useRouter()
-  const { fetch: clubOpenClose } = useFetch({
+  const [isOpened, setIsOpened] = useState<boolean | undefined>(data?.isOpened)
+  const { fetch: clubOpenClose, isLoading: isOpenCloseFetching } = useFetch({
     method: 'patch',
     url: `/club/${data?.id}/${data?.isOpened ? 'close' : 'open'}`,
+    onSuccess: () => {
+      setIsOpened(!isOpened)
+    },
   })
-  const { fetch: deleteClub } = useFetch({
+  const { fetch: deleteClub, isLoading: isDeleteFetching } = useFetch({
     method: 'delete',
     url: `/club/${data?.id}`,
     onSuccess: () => {
       router.push('/')
     },
   })
+
+  useEffect(() => {
+    setIsOpened(data?.isOpened)
+  }, [data?.isOpened])
+
+  const onReady = async (query: () => Promise<void>) => {
+    if (isDeleteFetching || isOpenCloseFetching) return
+    query()
+  }
 
   return (
     <S.Wrapper>
@@ -36,9 +50,10 @@ const Notice = ({ data }: Props) => {
 
               <S.SwitchInput
                 id='switch'
-                defaultChecked={data?.isOpened}
+                checked={!!isOpened}
+                readOnly
                 type='checkbox'
-                onClick={() => clubOpenClose()}
+                onClick={() => onReady(clubOpenClose)}
               />
               <S.Switch htmlFor='switch'>
                 <span>off</span>
@@ -49,7 +64,9 @@ const Notice = ({ data }: Props) => {
 
             <S.UtilSection>
               <S.Title>동아리 삭제</S.Title>
-              <S.DeleteBtn onClick={() => deleteClub()}>삭제</S.DeleteBtn>
+              <S.DeleteBtn onClick={() => onReady(deleteClub)}>
+                삭제
+              </S.DeleteBtn>
             </S.UtilSection>
           </S.UtilContent>
         </S.Right>

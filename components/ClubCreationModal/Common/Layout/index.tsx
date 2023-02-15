@@ -1,6 +1,6 @@
 import { FormEventHandler, ReactNode } from 'react'
-import * as S from './Layout.style'
-import SubmitButton, { Props as SubmitButtonProps } from './SubmitButton'
+import * as S from './style'
+import SubmitButton, { Props as SubmitButtonProps } from '../SubmitButton'
 
 interface Props extends SubmitButtonProps {
   children: ReactNode

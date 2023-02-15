@@ -1,4 +1,4 @@
-import * as S from './Member.style'
+import * as S from './style'
 import MemberType from '@/type/common/MemberType'
 import { RootState } from '@/store'
 import { useDispatch, useSelector } from 'react-redux'

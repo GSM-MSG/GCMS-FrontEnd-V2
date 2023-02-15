@@ -4,6 +4,7 @@ import { createWrapper, HYDRATE } from 'next-redux-wrapper'
 import clubCreationSlice from './clubCreation'
 import clubCreationPageSlice from './clubCreationPage'
 import ImgsSlice from './imgs'
+import userSlice from './user'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   clubCreation: clubCreationSlice.reducer,
   clubCreationPage: clubCreationPageSlice.reducer,
   imgs: ImgsSlice.reducer,
+  user: userSlice.reducer,
 })
 export type RootState = ReturnType<typeof rootReducer>
 

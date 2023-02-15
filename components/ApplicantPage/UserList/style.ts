@@ -51,7 +51,7 @@ export const UserName = styled.h4`
 export const CheckBox = styled.div`
   width: 13px;
 `
-export const CheckBtn = styled.div`
+export const CheckBtn = styled.input`
   width: 13px;
   height: 13px;
   border-radius: 100%;

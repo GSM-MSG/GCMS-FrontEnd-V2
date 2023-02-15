@@ -28,3 +28,22 @@ export const Layer = styled.div`
     width: 100%;
   }
 `
+
+export const AllSelectBtn = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  color: #4164e1;
+`
+
+export const InputBox = styled.div`
+  position: relative;
+  > svg {
+    position: absolute;
+    left: 20px;
+    bottom: 16px;
+  }
+  input {
+    padding: 0.9rem 3rem;
+  }
+`

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { UserImg } from '../common/UserList.style'
+import { UserImg } from '../UserList/style'
 
 export const Layer = styled.div`
   width: 100%;

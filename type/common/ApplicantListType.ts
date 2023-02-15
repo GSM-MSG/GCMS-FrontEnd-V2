@@ -1,8 +1,7 @@
-import MemberScope from './MemberScope'
 import MemberType from './MemberType'
 
 interface ApplicantListType {
-  userScope: MemberScope
+  userScope: 'MEMBER' | 'HEAD'
   신청자List: MemberType[]
 }
 

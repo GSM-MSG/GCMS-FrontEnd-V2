@@ -11,7 +11,7 @@ export const UserContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   overflow-y: scroll;
-  height: calc(100vh - 640px);
+  height: calc(100vh - 639px);
 
   @media (max-height: 961px) {
     height: 323px;
@@ -30,12 +30,14 @@ export const UserWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
+  gap: 20px;
 `
 
 export const UserImg = styled.div`
   border-radius: 100%;
   background: #434343;
   overflow: hidden;
+  min-width: 32px;
   width: 32px;
   height: 32px;
 
@@ -47,8 +49,7 @@ export const UserImg = styled.div`
 `
 
 export const UserInfo = styled.div`
-  width: 84%;
-
+  width: 100%;
   small {
     font-size: 11px;
   }

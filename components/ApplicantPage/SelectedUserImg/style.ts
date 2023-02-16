@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { UserImg } from '../UserList/style'
 
 export const Layer = styled.div`
   width: 100%;
@@ -22,9 +21,18 @@ export const ImgWrapper = styled.div`
   position: relative;
 `
 
-export const Img = styled(UserImg)`
+export const ImgBox = styled.div`
+  border-radius: 100%;
+  background: #434343;
+  overflow: hidden;
   width: 40px;
   height: 40px;
+`
+
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `
 
 export const Delete = styled.div`

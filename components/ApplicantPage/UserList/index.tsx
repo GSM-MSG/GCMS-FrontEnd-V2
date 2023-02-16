@@ -1,5 +1,4 @@
 import * as S from './style'
-import Image from 'next/image'
 import { MemberType } from '@/type/common'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser, removeUser } from '@/store/applicant'
@@ -26,16 +25,11 @@ export default function UserList({ data, value }: UserListProps) {
           (item) =>
             item.name.includes(value) && (
               <S.UserWrapper key={item.uuid}>
-                <S.UserImg>
+                <S.UserImgBox>
                   {item.profileImg && (
-                    <Image
-                      src={item.profileImg}
-                      alt='profileImg'
-                      width={32}
-                      height={32}
-                    />
+                    <S.Img src={item.profileImg} alt='profileImg' />
                   )}
-                </S.UserImg>
+                </S.UserImgBox>
                 <S.UserInfo>
                   <S.UserName>{item.name}</S.UserName>
                   <small>

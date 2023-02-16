@@ -33,19 +33,19 @@ export const UserWrapper = styled.div`
   gap: 20px;
 `
 
-export const UserImg = styled.div`
+export const UserImgBox = styled.div`
   border-radius: 100%;
   background: #434343;
   overflow: hidden;
   min-width: 32px;
   width: 32px;
   height: 32px;
+`
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `
 
 export const UserInfo = styled.div`

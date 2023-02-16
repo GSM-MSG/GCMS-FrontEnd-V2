@@ -1,9 +1,22 @@
 import styled from '@emotion/styled'
 
+export const Wrapper = styled.div`
+  position: fixed;
+  width: 700px;
+  height: 50px;
+  bottom: 80px;
+  @media (max-width: 715px) {
+    right: 15px;
+    width: auto;
+    height: auto;
+  }
+`
+
 export const Btn = styled.div`
-  position: absolute;
-  top: 800px;
-  right: 0;
+  position: relative;
+  top: 0;
+  left: 650px;
+  bottom: 80px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -30,5 +43,10 @@ export const Btn = styled.div`
     height: 2px;
     background: #ffffff;
     transform: translate(-50%, -50%);
+  }
+
+  @media (max-width: 715px) {
+    top: 0;
+    left: 0;
   }
 `

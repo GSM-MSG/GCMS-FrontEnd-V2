@@ -4,5 +4,11 @@ import * as S from './style'
 export default function CreateClubBtn() {
   const { isLoggned } = useUser()
 
-  return isLoggned ? <S.Btn /> : <></>
+  return isLoggned ? (
+    <S.Wrapper>
+      <S.Btn />
+    </S.Wrapper>
+  ) : (
+    <></>
+  )
 }

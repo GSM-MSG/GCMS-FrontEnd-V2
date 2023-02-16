@@ -13,7 +13,6 @@ export default function MyPage() {
     grade: 0,
     classNum: 0,
     number: 0,
-    profileImg: '',
     clubs: [],
   }
   const [userData, setUserData] = useState<ProfileType>(userDefaultData)
@@ -57,7 +56,7 @@ export default function MyPage() {
           <S.ProfileContent>
             <S.ProfileImg>
               <Image
-                src={userData.profileImg}
+                src={userData?.profileImg ?? ''}
                 alt='profileImg'
                 width={60}
                 height={60}

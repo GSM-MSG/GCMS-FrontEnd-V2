@@ -12,7 +12,7 @@ export default function ClubMember() {
       <h3>동아리 구성원</h3>
       <div>
         <S.HeadProfile>
-          <S.MemberProfile src='https://www.computerhope.com/jargon/h/img.png' />
+          <S.SampelIMG />
           <S.HeadInfo>
             <p>담당 선생님</p>
             <span>{clubDetail.teacher}</span>

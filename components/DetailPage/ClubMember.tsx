@@ -31,9 +31,13 @@ export default function ClubMember() {
         </S.HeadProfile>
       </div>
       <span>
-        {clubDetail.member.map((data) => (
-          <S.MemberProfile key={data.uuid} src={data.profileImg} />
-        ))}
+        {clubDetail.member.map((data) =>
+          data.profileImg ? (
+            <S.MemberProfile key={data.uuid} src={data.profileImg} />
+          ) : (
+            <S.SampelIMG key={data.uuid} />
+          )
+        )}
       </span>
     </S.ClubMember>
   )

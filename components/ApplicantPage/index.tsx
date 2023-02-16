@@ -45,7 +45,7 @@ export default function ApplicantPage() {
         </S.InputBox>
         {data?.userScope === 'HEAD' && (
           <>
-            <SelectedUserImg seleted={applicant} />
+            <SelectedUserImg selected={applicant} />
             <S.AllSelectBox>
               <S.AllSelectBtn
                 onClick={() => dispatch(addAllUser(data.applicantList))}

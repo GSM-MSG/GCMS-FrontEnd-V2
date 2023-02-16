@@ -10,7 +10,7 @@ interface ClubDetailType {
   name: string
   content: string
   contact: string
-  teacher: string
+  teacher?: string
   isOpened: boolean
   notionLink: string
   activityImgs: string[]

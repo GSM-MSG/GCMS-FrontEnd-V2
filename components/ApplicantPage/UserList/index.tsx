@@ -1,14 +1,10 @@
 import * as S from './style'
 import Image from 'next/image'
-import { ApplicantListType, MemberType } from '@/type/common'
+import { MemberType } from '@/type/common'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser, removeUser } from '@/store/applicant'
 import { RootState } from '@/store'
-
-interface UserListProps {
-  data: ApplicantListType | null
-  value: string
-}
+import { UserListProps } from '@/type/components/ApplicantPage'
 
 export default function UserList({ data, value }: UserListProps) {
   const { applicant } = useSelector((state: RootState) => ({

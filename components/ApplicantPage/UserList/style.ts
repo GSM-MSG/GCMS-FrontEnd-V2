@@ -10,10 +10,20 @@ export const UserContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: scroll;
+  height: calc(100vh - 601px);
+
+  @media (max-height: 961px) {
+    height: 323px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 export const UserWrapper = styled.div`
   width: 100%;
-  height: 56px;
+  min-height: 56px;
   background: #2d2d2d;
   border-radius: 10px;
   display: flex;
@@ -52,8 +62,31 @@ export const CheckBox = styled.div`
   width: 13px;
 `
 export const CheckBtn = styled.input`
+  display: none;
+  &:checked + label {
+    border: 0.1rem solid #8be246;
+
+    ::after {
+      background: #575ce0;
+    }
+  }
+`
+
+export const CheckBtnLabel = styled.label`
   width: 13px;
   height: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #6a6a6a;
   border-radius: 100%;
-  border: 1px solid #888;
+  cursor: pointer;
+
+  ::after {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+  }
 `

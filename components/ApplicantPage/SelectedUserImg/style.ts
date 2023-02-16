@@ -4,11 +4,17 @@ import { UserImg } from '../UserList/style'
 export const Layer = styled.div`
   width: 100%;
   margin: 20px 0;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 export const ImgContainer = styled.div`
   display: flex;
   gap: 20px;
+  width: 100%;
 `
 
 export const ImgWrapper = styled.div`

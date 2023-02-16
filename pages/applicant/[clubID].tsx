@@ -1,5 +1,11 @@
 import ApplicantPage from '@/components/ApplicantPage'
+import Header from '@/components/Header'
 
 export default function Applicant() {
-  return <ApplicantPage></ApplicantPage>
+  return (
+    <>
+      <Header />
+      <ApplicantPage />
+    </>
+  )
 }

@@ -48,11 +48,15 @@ export default function UserList({ data, value }: UserListProps) {
                 </S.UserInfo>
                 <S.CheckBox>
                   {data.userScope === 'HEAD' && (
-                    <S.CheckBtn
-                      type='checkbox'
-                      onChange={() => onChange(item)}
-                      checked={!!applicant.find((i) => i.uuid === item.uuid)}
-                    />
+                    <>
+                      <S.CheckBtn
+                        id={item.uuid}
+                        type='checkbox'
+                        onChange={() => onChange(item)}
+                        checked={!!applicant.find((i) => i.uuid === item.uuid)}
+                      />
+                      <S.CheckBtnLabel htmlFor={item.uuid} />
+                    </>
                   )}
                 </S.CheckBox>
               </S.UserWrapper>

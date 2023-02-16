@@ -5,7 +5,7 @@ export const Positioner = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 80px;
+  padding-top: 30px;
 `
 
 export const Layer = styled.div`
@@ -13,14 +13,13 @@ export const Layer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 20px;
-  gap: 10px;
+  gap: 12px;
 
   small {
     color: rgba(255, 255, 255, 0.31);
   }
 
-  h3,
-  h5 {
+  h3 {
     margin: 0;
   }
 
@@ -29,11 +28,16 @@ export const Layer = styled.div`
   }
 `
 
-export const AllSelectBtn = styled.div`
+export const AllSelectBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: end;
+`
+
+export const AllSelectBtn = styled.button`
   color: #4164e1;
+  background: 0;
+  border: none;
 `
 
 export const InputBox = styled.div`

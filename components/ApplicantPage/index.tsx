@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import ClubNav from '../Common/ClubNav'
 import Input from '../Common/Input'
 import SelectedUserImg from './SelectedUserImg'
-import UserList from './UserList/UserList'
+import UserList from './UserList'
 import * as S from './style'
 import ChoiceUser from './ChoiceUser'
 import { useRouter } from 'next/router'
@@ -46,11 +46,13 @@ export default function ApplicantPage() {
         {data?.userScope === 'HEAD' && (
           <>
             <SelectedUserImg seleted={applicant} />
-            <S.AllSelectBtn>
-              <h5 onClick={() => dispatch(addAllUser(data.신청자List))}>
+            <S.AllSelectBox>
+              <S.AllSelectBtn
+                onClick={() => dispatch(addAllUser(data.신청자List))}
+              >
                 전부 선택
-              </h5>
-            </S.AllSelectBtn>
+              </S.AllSelectBtn>
+            </S.AllSelectBox>
           </>
         )}
         <UserList data={data} value={watch('value').trim()} />

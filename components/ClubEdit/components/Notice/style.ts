@@ -60,7 +60,7 @@ export const UtilSection = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  justify-content: space-around;
   align-items: start;
 `
 
@@ -103,6 +103,7 @@ export const SwitchBtn = styled.span`
 `
 
 export const DeleteBtn = styled.button`
+  height: 2rem;
   padding: 0;
   color: #4164e1;
   border: none;

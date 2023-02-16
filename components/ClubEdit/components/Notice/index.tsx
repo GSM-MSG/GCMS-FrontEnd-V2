@@ -4,6 +4,7 @@ import ClubDetailType from '@/type/common/ClubDetailType'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import * as S from './style'
+import Switch from './Switch'
 
 interface Props {
   data: ClubDetailType | null
@@ -51,18 +52,11 @@ const Notice = ({ data }: Props) => {
               <S.UtilSection>
                 <S.Title>동아리 모집</S.Title>
 
-                <S.SwitchInput
-                  id='switch'
-                  checked={!!isOpened}
-                  readOnly
-                  type='checkbox'
+                <Switch
+                  isOpened={isOpened}
+                  scope={data?.scope}
                   onClick={() => onReady(clubOpenClose)}
                 />
-                <S.Switch htmlFor='switch'>
-                  <span>off</span>
-                  <S.SwitchBtn />
-                  <span>on</span>
-                </S.Switch>
               </S.UtilSection>
 
               <S.UtilSection>

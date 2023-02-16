@@ -14,7 +14,7 @@ import * as S from './style'
 
 export default function ApplicantPage() {
   const { fetch, data } = useFetch<ApplicantListType>({
-    url: '/applicant',
+    url: '/applicant/1',
     method: 'get',
   })
   const { applicant } = useSelector((state: RootState) => ({

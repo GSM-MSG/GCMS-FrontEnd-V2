@@ -49,6 +49,7 @@ export const ClubNaem = styled.div`
   }
   svg {
     margin-right: 4px;
+    cursor: pointer;
   }
   p {
     font-weight: 600;

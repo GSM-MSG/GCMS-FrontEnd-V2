@@ -2,6 +2,7 @@ import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
 import * as S from './style'
 import * as SVG from '@/assets/svg'
+import Link from 'next/link'
 
 export default function ClubName() {
   const { clubDetail } = useSelector((state: RootState) => ({
@@ -18,7 +19,11 @@ export default function ClubName() {
     <S.ClubNaem>
       <p>#{clubType[clubDetail.type]} 동아리</p>
       <h3>
-        {scope.includes(clubDetail.scope) && <SVG.GearIcon />}
+        {scope.includes(clubDetail.scope) && (
+          <Link href={`/applicant/${clubDetail.id}`}>
+            <SVG.GearIcon />
+          </Link>
+        )}
         {clubDetail.name}
       </h3>
     </S.ClubNaem>

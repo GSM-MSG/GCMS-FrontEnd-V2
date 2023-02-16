@@ -20,8 +20,8 @@ export default function NewClub() {
     <S.NewClubWrapper>
       <S.NewClubHead>
         <p>새로 생긴 동아리들</p>
-        <Link href='#'>
-          전체 14개 <SVG.RightArrowIcon />
+        <Link href='/new'>
+          전체 {data?.length}개 <SVG.RightArrowIcon />
         </Link>
       </S.NewClubHead>
       <S.NewClubList>

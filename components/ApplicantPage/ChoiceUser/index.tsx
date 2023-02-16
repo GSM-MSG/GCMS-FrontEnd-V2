@@ -13,7 +13,7 @@ export default function ChoiceUser() {
   const dispatch = useDispatch()
   const [choice, setChoice] = useState('')
   const router = useRouter()
-  const { fetch: data, isLoading } = useFetch({
+  const { fetch: data } = useFetch({
     url: `/applicant/${router.query.clubID}/${choice}`,
     method: 'post',
   })
@@ -26,9 +26,9 @@ export default function ChoiceUser() {
   }
 
   useEffect(() => {
-    if (isLoading || choice === '') return
+    if (choice === '') return
     return onFetch()
-  }, [choice, isLoading])
+  }, [choice])
   return (
     <S.Positioner>
       <S.Layer>

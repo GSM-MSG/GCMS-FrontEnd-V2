@@ -37,4 +37,9 @@ export const BannerAndContent = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 1rem;
+
+  @media (max-width: 785px) {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
 `

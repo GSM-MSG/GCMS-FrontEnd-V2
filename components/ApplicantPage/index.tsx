@@ -11,10 +11,13 @@ import Input from '../Common/Input'
 import SelectedUserImg from './SelectedUserImg'
 import UserList from './UserList/UserList'
 import * as S from './style'
+import ChoiceUser from './ChoiceUser'
+import { useRouter } from 'next/router'
 
 export default function ApplicantPage() {
+  const router = useRouter()
   const { fetch, data } = useFetch<ApplicantListType>({
-    url: '/applicant/1',
+    url: `/applicant/${router.query.clubID}`,
     method: 'get',
   })
   const { applicant } = useSelector((state: RootState) => ({
@@ -50,8 +53,8 @@ export default function ApplicantPage() {
             </S.AllSelectBtn>
           </>
         )}
-
         <UserList data={data} value={watch('value').trim()} />
+        {data?.userScope === 'HEAD' && <ChoiceUser />}
       </S.Layer>
     </S.Positioner>
   )

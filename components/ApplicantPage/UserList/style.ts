@@ -11,7 +11,7 @@ export const UserContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   overflow-y: scroll;
-  height: calc(100vh - 601px);
+  height: calc(100vh - 640px);
 
   @media (max-height: 961px) {
     height: 323px;

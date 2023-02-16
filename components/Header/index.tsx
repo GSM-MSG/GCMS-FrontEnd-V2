@@ -14,11 +14,15 @@ export default function Header() {
     <>
       <S.Header>
         <S.Wrapper>
-          <SVG.Logo />
+          <Link href='/'>
+            <SVG.Logo />
+          </Link>
           <S.NavWrapper>
             <Link href='/'>홈</Link>
             {isLoggned ? (
-              <Profile user={user} />
+              <Link href='/my'>
+                <Profile user={user} />
+              </Link>
             ) : (
               <a onClick={() => setModal(true)}>로그인</a>
             )}

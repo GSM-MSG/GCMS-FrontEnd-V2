@@ -31,9 +31,9 @@ export default function ClubMember() {
         </S.HeadProfile>
       </div>
       <span>
-        {clubDetail.member.map((data) => {
-          return <S.MemberProfile key={data.uuid} src={data.profileImg} />
-        })}
+        {clubDetail.member.map((data) => (
+          <S.MemberProfile key={data.uuid} src={data.profileImg} />
+        ))}
       </span>
     </S.ClubMember>
   )

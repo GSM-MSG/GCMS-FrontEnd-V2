@@ -26,7 +26,7 @@ export default function UserList({ data, value }: UserListProps) {
   return (
     <S.Layer>
       <S.UserContainer>
-        {data?.신청자List.map(
+        {data?.applicantList.map(
           (item) =>
             item.name.includes(value) && (
               <S.UserWrapper key={item.uuid}>

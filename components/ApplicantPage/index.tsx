@@ -39,7 +39,7 @@ export default function ApplicantPage() {
           <SearchIcon />
           <Input
             placeholder='검색'
-            label={`총 ${data?.신청자List.length ?? 0}명`}
+            label={`총 ${data?.applicantList.length ?? 0}명`}
             register={register('value')}
           />
         </S.InputBox>
@@ -48,7 +48,7 @@ export default function ApplicantPage() {
             <SelectedUserImg seleted={applicant} />
             <S.AllSelectBox>
               <S.AllSelectBtn
-                onClick={() => dispatch(addAllUser(data.신청자List))}
+                onClick={() => dispatch(addAllUser(data.applicantList))}
               >
                 전부 선택
               </S.AllSelectBtn>

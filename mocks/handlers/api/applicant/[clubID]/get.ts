@@ -4,7 +4,7 @@ import { rest } from 'msw'
 
 const headData: ApplicantListType = {
   userScope: 'HEAD',
-  신청자List: [
+  applicantList: [
     {
       uuid: '12038',
       email: 's21001',
@@ -82,7 +82,7 @@ const headData: ApplicantListType = {
 
 const memberData: ApplicantListType = {
   userScope: 'MEMBER',
-  신청자List: [
+  applicantList: [
     {
       uuid: '12038',
       email: 's21001',

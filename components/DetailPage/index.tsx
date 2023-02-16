@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ClubActivity from './ClubActivity'
 import ClubMember from './ClubMember'
+import ClubName from './ClubName'
 import Contact from './Contact'
 import Description from './Description'
 import SideBar from './SideBar'
@@ -45,7 +46,7 @@ export default function DetailPage() {
           <S.Section>
             <S.ClubBanner src={clubDetail.bannerImg} />
             <S.ClubInfo>
-              <h3>MSG(맛소금)</h3>
+              <ClubName />
               <Contact />
               <Description />
             </S.ClubInfo>

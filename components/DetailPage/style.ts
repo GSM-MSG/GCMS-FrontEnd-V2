@@ -38,12 +38,30 @@ export const ClubBanner = styled.img`
 
 export const ClubInfo = styled.div`
   width: 100%;
+  margin-top: 14px;
+`
+
+export const ClubNaem = styled.div`
+  width: 100%;
+
+  > * {
+    margin: 0;
+  }
+  svg {
+    margin-right: 4px;
+  }
+  p {
+    font-weight: 600;
+    font-size: 13px;
+    color: #4164e1;
+  }
   h3 {
-    margin: 36px 0 0;
+    margin-top: 6px;
     font-weight: 700;
     font-size: 20px;
   }
 `
+
 export const Contact = styled.div`
   width: 100%;
   height: 87px;

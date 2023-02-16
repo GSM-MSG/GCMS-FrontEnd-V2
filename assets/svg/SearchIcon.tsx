@@ -16,7 +16,7 @@ export const SearchIcon = () => {
         cy='5.67568'
         r='4.92568'
         stroke='#8D8D8D'
-        stroke-width='1.5'
+        strokeWidth='1.5'
       />
     </svg>
   )

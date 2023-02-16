@@ -1,13 +1,33 @@
+import { useFetch } from '@/hooks'
 import ScopeType from '@/type/common/ScopeType'
+import { useEffect, useState } from 'react'
 import * as S from './style'
 
 interface Props {
-  isOpened?: boolean
-  onClick: () => void
+  clubId?: number
+  opened?: boolean
   scope?: ScopeType
 }
 
-const Switch = ({ isOpened, onClick, scope }: Props) => {
+const Switch = ({ clubId, opened, scope }: Props) => {
+  const [isOpened, setIsOpened] = useState<boolean | undefined>(opened)
+  const { fetch, isLoading } = useFetch({
+    method: 'patch',
+    url: `/club/${clubId}/${isOpened ? 'close' : 'open'}`,
+    onSuccess: () => {
+      setIsOpened(!isOpened)
+    },
+  })
+
+  const onClick = () => {
+    if (isLoading) return
+    fetch()
+  }
+
+  useEffect(() => {
+    setIsOpened(opened)
+  }, [opened])
+
   return (
     <>
       <S.SwitchInput

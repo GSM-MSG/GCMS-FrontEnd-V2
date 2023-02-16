@@ -15,8 +15,7 @@ export default function SelectedUserImg({
   return (
     <S.Layer>
       <S.ImgContainer>
-        {seleted.map((item) => {
-          return (
+        {seleted.map((item) => (
             <S.ImgWrapper key={item.uuid}>
               <S.Img>
                 {item.profileImg && (
@@ -32,8 +31,7 @@ export default function SelectedUserImg({
                 <XMark />
               </S.Delete>
             </S.ImgWrapper>
-          )
-        })}
+          ))}
       </S.ImgContainer>
     </S.Layer>
   )

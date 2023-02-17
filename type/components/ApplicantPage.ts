@@ -1,4 +1,4 @@
-import { ApplicantListType } from '../common'
+import { ApplicantListType, MemberType } from '../common'
 import { ApplicantInitialState } from '../store/applicant'
 
 export interface SelectedProps {
@@ -8,4 +8,9 @@ export interface SelectedProps {
 export interface UserListProps {
   data: ApplicantListType | null
   value: string
+}
+
+export interface UserItemProps {
+  item: MemberType
+  userScope: 'HEAD' | 'MEMBER'
 }

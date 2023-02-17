@@ -13,9 +13,10 @@ interface Props {
   initialData: Partial<EditClubForm>
   banner: string
   activity: string[]
+  updateData: () => Promise<void>
 }
 
-const Edit = ({ initialData, banner, activity }: Props) => {
+const Edit = ({ initialData, banner, activity, updateData }: Props) => {
   const {
     register,
     watch,
@@ -60,6 +61,7 @@ const Edit = ({ initialData, banner, activity }: Props) => {
       activityImgs,
       bannerImg,
     })
+    await updateData()
   }
 
   return (

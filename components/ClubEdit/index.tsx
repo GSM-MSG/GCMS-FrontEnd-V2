@@ -36,6 +36,7 @@ const ClubEdit = () => {
           banner={data.bannerImg}
           activity={data.activityImgs}
           initialData={clubData}
+          updateData={fetch}
         />
       )}
     </S.Wrapper>

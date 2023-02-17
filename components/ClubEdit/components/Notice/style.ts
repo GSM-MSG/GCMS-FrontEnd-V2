@@ -31,6 +31,7 @@ export const Left = styled.img`
 
 export const Right = styled.div`
   width: 100%;
+  min-height: 10rem;
   border-radius: 0.75rem;
   background: #212124;
   color: #fff;

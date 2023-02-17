@@ -33,6 +33,7 @@ const Edit = ({ initialData, banner, activity }: Props) => {
   const { fetch } = useFetch({
     method: 'patch',
     url: `/club/${router.query?.clubID}`,
+    successMessage: '수정에 성공했습니다',
   })
 
   const onUpload = async (

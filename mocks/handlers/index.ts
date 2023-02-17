@@ -7,6 +7,9 @@ import getSearchUser from './api/user/search/get'
 import patchProfileImg from './api/user/patch'
 import deleteUser from './api/user/delete'
 import deleteLogout from './api/auth/delete'
+import getClubDetail from './api/club/{club_id}/get'
+import postClubApply from './api/applicant/post'
+import deleteClubCancel from './api/applicant/delete'
 
 export const handlers = [
   getUser,
@@ -18,4 +21,7 @@ export const handlers = [
   patchProfileImg,
   deleteUser,
   deleteLogout,
+  getClubDetail,
+  postClubApply,
+  deleteClubCancel,
 ]

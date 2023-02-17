@@ -1,6 +1,6 @@
 export interface TokensType {
   accessToken: string
   refreshToken: string
-  accessExpiresAt: string
-  refreshExpiresAt: string
+  accessExp: string
+  refreshExp: string
 }

@@ -6,6 +6,7 @@ import clubCreationPageSlice from './clubCreationPage'
 import ImgsSlice from './imgs'
 import userSlice from './user'
 import applicantSlice from './applicant'
+import clubDetailSlice from './clubDetail'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   imgs: ImgsSlice.reducer,
   user: userSlice.reducer,
   applicant: applicantSlice.reducer,
+  clubDetail: clubDetailSlice.reducer,
 })
 export type RootState = ReturnType<typeof rootReducer>
 

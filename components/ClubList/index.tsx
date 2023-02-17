@@ -4,6 +4,7 @@ import { ClubListType, ClubType } from '@/type/common'
 import { useForm } from 'react-hook-form'
 import { useFetch } from '@/hooks'
 import { useEffect } from 'react'
+import Link from 'next/link'
 
 export default function ClubList() {
   const { register, watch } = useForm<{ club: ClubType }>({
@@ -44,7 +45,11 @@ export default function ClubList() {
       <S.ClubList>
         {data &&
           data.map((i) => {
-            return <ClubItem key={i.id} club={i} />
+            return (
+              <Link key={i.id} href={`detail/${i.id}`}>
+                <ClubItem club={i} />
+              </Link>
+            )
           })}
       </S.ClubList>
     </S.ClubWrapper>

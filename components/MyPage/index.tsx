@@ -62,26 +62,28 @@ export default function MyPage() {
               번
             </small>
           </S.ProfileContent>
-          <div onClick={() => setSetting(!isSetting)}>
+          <S.SettingButton onClick={() => setSetting(!isSetting)}>
             <SVG.KebabMenuIcon />
-          </div>
+          </S.SettingButton>
         </S.ProfileBox>
-        {isSetting && <ProfileSetting />}
-        <S.ClubBox>
-          <h2>내 동아리</h2>
-          <S.ClubContainer>
-            <S.ClubType>전공동아리</S.ClubType>
-            {ClubWrapper('MAJOR')}
-          </S.ClubContainer>
-          <S.ClubContainer>
-            <S.ClubType>자율동아리</S.ClubType>
-            {ClubWrapper('FREEDOM')}
-          </S.ClubContainer>
-          <S.ClubContainer>
-            <S.ClubType>사설동아리</S.ClubType>
-            {ClubWrapper('EDITIONAL')}
-          </S.ClubContainer>
-        </S.ClubBox>
+        <S.ContentBox>
+          <S.ClubBox>
+            <h2>내 동아리</h2>
+            <S.ClubContainer>
+              <S.ClubType>전공동아리</S.ClubType>
+              {ClubWrapper('MAJOR')}
+            </S.ClubContainer>
+            <S.ClubContainer>
+              <S.ClubType>자율동아리</S.ClubType>
+              {ClubWrapper('FREEDOM')}
+            </S.ClubContainer>
+            <S.ClubContainer>
+              <S.ClubType>사설동아리</S.ClubType>
+              {ClubWrapper('EDITIONAL')}
+            </S.ClubContainer>
+          </S.ClubBox>
+          {isSetting && <ProfileSetting />}
+        </S.ContentBox>
       </S.Layer>
     </S.Positionier>
   )

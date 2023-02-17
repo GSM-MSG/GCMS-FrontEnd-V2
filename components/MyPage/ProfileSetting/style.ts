@@ -4,6 +4,23 @@ export const Positioner = styled.div`
   position: absolute;
   top: 0;
   left: 710px;
+  min-width: 160px;
+
+  @media (max-width: 1100px) {
+    top: 37px;
+    left: 540px;
+  }
+
+  @media (max-width: 740px) {
+    left: calc(100vw - 24.3px * 7.4);
+  }
+
+  @media (max-width: 530px) {
+    position: relative;
+    width: 100%;
+    top: -54px;
+    left: 0;
+  }
 `
 
 export const Layer = styled.div`
@@ -28,7 +45,7 @@ export const Btn = styled.input`
     display: none;
 
     + label {
-      width: 100%;
+      min-width: 100%;
       height: 36px;
       background: #282828;
       color: #4164e1;

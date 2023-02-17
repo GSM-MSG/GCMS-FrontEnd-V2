@@ -10,7 +10,7 @@ export default function ClubNav() {
   const clubID = router.query.clubID
 
   const { fetch, data } = useFetch<ClubDetailType>({
-    url: `/club/${router.query.clubID}`,
+    url: `/club/${clubID}`,
     method: 'get',
   })
 

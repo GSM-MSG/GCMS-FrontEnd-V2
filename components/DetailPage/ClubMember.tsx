@@ -11,13 +11,15 @@ export default function ClubMember() {
     <S.ClubMember>
       <h3>동아리 구성원</h3>
       <div>
-        <S.HeadProfile>
-          <S.SampelIMG />
-          <S.HeadInfo>
-            <p>담당 선생님</p>
-            <span>{clubDetail.teacher}</span>
-          </S.HeadInfo>
-        </S.HeadProfile>
+        {clubDetail.teacher && (
+          <S.HeadProfile>
+            <S.SampelIMG />
+            <S.HeadInfo>
+              <p>담당 선생님</p>
+              <span>{clubDetail.teacher}</span>
+            </S.HeadInfo>
+          </S.HeadProfile>
+        )}
         <S.HeadProfile>
           {clubDetail.head.profileImg ? (
             <S.MemberProfile src={clubDetail.head.profileImg} />

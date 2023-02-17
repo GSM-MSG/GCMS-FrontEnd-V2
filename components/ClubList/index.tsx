@@ -14,8 +14,11 @@ export default function ClubList() {
   })
 
   const { fetch, data } = useFetch<ClubListType[]>({
-    url: `/club?type=${watch('club')}`,
+    url: `/club?type=${1}`,
     method: 'get',
+    errors: {
+      400: '해당 동아리 정보를 찾을수 없습니다.',
+    },
   })
 
   useEffect(() => {

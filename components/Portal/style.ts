@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   top: 0;
   left: 0;

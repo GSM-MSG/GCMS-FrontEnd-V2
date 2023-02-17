@@ -4,6 +4,7 @@ import { ClubListType, ClubType } from '@/type/common'
 import { useForm } from 'react-hook-form'
 import { useFetch } from '@/hooks'
 import { useEffect } from 'react'
+import Link from 'next/link'
 
 export default function ClubList() {
   const { register, watch } = useForm<{ club: ClubType }>({
@@ -24,38 +25,31 @@ export default function ClubList() {
   return (
     <S.ClubWrapper>
       <S.ClubOptionLayer>
-        <input
-          type='radio'
-          id='major'
-          value='MAJOR'
-          {...register('club', {
-            onChange: fetch,
-          })}
-        />
+        <input type='radio' id='major' value='MAJOR' {...register('club')} />
         <label htmlFor='major'>전공</label>
         <input
           type='radio'
           id='freedom'
           value='FREEDOM'
-          {...register('club', {
-            onChange: fetch,
-          })}
+          {...register('club')}
         />
         <label htmlFor='freedom'>자율</label>
         <input
           type='radio'
           id='editorial'
           value='EDITORIAL'
-          {...register('club', {
-            onChange: fetch,
-          })}
+          {...register('club')}
         />
         <label htmlFor='editorial'>사설</label>
       </S.ClubOptionLayer>
       <S.ClubList>
         {data &&
           data.map((i) => {
-            return <ClubItem key={i.id} club={i} />
+            return (
+              <Link key={i.id} href={`detail/${i.id}`}>
+                <ClubItem club={i} />
+              </Link>
+            )
           })}
       </S.ClubList>
     </S.ClubWrapper>

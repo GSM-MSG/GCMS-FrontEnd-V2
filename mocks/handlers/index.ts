@@ -7,6 +7,9 @@ import getSearchUser from './api/user/search/get'
 import getApplicantList from './api/applicant/[clubID]/get'
 import postAcceptApplicant from './api/applicant/[clubID]/accept/post'
 import postRejectApplicant from './api/applicant/[clubID]/reject/post'
+import getClubDetail from './api/club/{club_id}/get'
+import postClubApply from './api/applicant/post'
+import deleteClubCancel from './api/applicant/delete'
 
 export const handlers = [
   getUser,
@@ -18,4 +21,7 @@ export const handlers = [
   postRejectApplicant,
   getClubList,
   postLogin,
+  getClubDetail,
+  postClubApply,
+  deleteClubCancel,
 ]

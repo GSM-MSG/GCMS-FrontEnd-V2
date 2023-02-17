@@ -53,13 +53,13 @@ class TokenManager {
   setTokens(tokens: TokensType) {
     this._accessToken = tokens.accessToken
     this._refreshToken = tokens.refreshToken
-    this._accessExp = tokens.accessExpiresAt
-    this._refreshExp = tokens.refreshExpiresAt
+    this._accessExp = tokens.accessExp
+    this._refreshExp = tokens.refreshExp
 
     localStorage.setItem(accessToken, tokens.accessToken)
     localStorage.setItem(refreshToken, tokens.refreshToken)
-    localStorage.setItem(accessExp, tokens.accessExpiresAt)
-    localStorage.setItem(refreshExp, tokens.refreshExpiresAt)
+    localStorage.setItem(accessExp, tokens.accessExp)
+    localStorage.setItem(refreshExp, tokens.refreshExp)
   }
 
   get accessToken() {

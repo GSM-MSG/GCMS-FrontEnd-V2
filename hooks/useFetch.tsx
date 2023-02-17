@@ -52,7 +52,7 @@ const useFetch = <T,>({
           toast.error(errors[e.response.status], toastOption)
 
         if (isAxiosError(e) && e.response && e.response.status === 500)
-          toast.error('알 수 없는 에러가 발생했습니다')
+          toast.error('알 수 없는 에러가 발생했습니다', toastOption)
 
         if (onFailure) await onFailure(e)
       } finally {

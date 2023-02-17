@@ -17,13 +17,11 @@ export default function NewClub() {
       </S.NewClubHead>
       <S.NewClubList>
         {newClubs &&
-          newClubs.map((i) => {
-            return (
-              <Link key={i.id} href={`/detail/${i.id}`}>
-                <NewClubItem club={i} />
-              </Link>
-            )
-          })}
+          newClubs.map((i) => (
+            <Link key={i.id} href={`/detail/${i.id}`}>
+              <NewClubItem club={i} />
+            </Link>
+          ))}
       </S.NewClubList>
     </S.NewClubWrapper>
   )

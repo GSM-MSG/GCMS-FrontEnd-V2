@@ -10,6 +10,7 @@ export const Positionier = styled.div`
 `
 
 export const Layer = styled.div`
+  position: relative;
   width: 700px;
   display: flex;
   flex-direction: column;
@@ -61,6 +62,8 @@ export const ProfileImg = styled.div`
     object-fit: cover;
   }
 `
+
+export const SettingButton = styled.div``
 
 export const ClubBox = styled.div`
   width: 350px;

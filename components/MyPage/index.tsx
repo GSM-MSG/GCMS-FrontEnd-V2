@@ -3,7 +3,8 @@ import { useFetch } from '@/hooks'
 import { ProfileType } from '@/type/common'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import ProfileSetting from './ProfileSetting'
 import * as S from './style'
 
 export default function MyPage() {
@@ -11,10 +12,11 @@ export default function MyPage() {
     url: '/user',
     method: 'get',
   })
+  const [isSetting, setSetting] = useState<boolean>(false)
 
   useEffect(() => {
     fetch()
-  }, [fetch])
+  }, [])
 
   const ClubWrapper = (clubtype: string) => {
     return data?.clubs.map((item) => {
@@ -60,8 +62,11 @@ export default function MyPage() {
               번
             </small>
           </S.ProfileContent>
-          <SVG.KebabMenuIcon />
+          <div onClick={() => setSetting(!isSetting)}>
+            <SVG.KebabMenuIcon />
+          </div>
         </S.ProfileBox>
+        {isSetting && <ProfileSetting />}
         <S.ClubBox>
           <h2>내 동아리</h2>
           <S.ClubContainer>

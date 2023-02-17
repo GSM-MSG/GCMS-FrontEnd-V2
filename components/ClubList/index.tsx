@@ -25,31 +25,20 @@ export default function ClubList() {
   return (
     <S.ClubWrapper>
       <S.ClubOptionLayer>
-        <input
-          type='radio'
-          id='major'
-          value='MAJOR'
-          {...register('club', {
-            onChange: fetch,
-          })}
-        />
+        <input type='radio' id='major' value='MAJOR' {...register('club')} />
         <label htmlFor='major'>전공</label>
         <input
           type='radio'
           id='freedom'
           value='FREEDOM'
-          {...register('club', {
-            onChange: fetch,
-          })}
+          {...register('club')}
         />
         <label htmlFor='freedom'>자율</label>
         <input
           type='radio'
           id='editorial'
           value='EDITORIAL'
-          {...register('club', {
-            onChange: fetch,
-          })}
+          {...register('club')}
         />
         <label htmlFor='editorial'>사설</label>
       </S.ClubOptionLayer>

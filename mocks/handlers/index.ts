@@ -9,6 +9,11 @@ import getClubDetail from './api/club/[clubID]/get'
 import patchClubOpen from './api/club/[clubID]/open/patch'
 import patchClubClose from './api/club/[clubID]/close/patch'
 import deleteClub from './api/club/[clubID]/delete'
+import getApplicantList from './api/applicant/[clubID]/get'
+import postAcceptApplicant from './api/applicant/[clubID]/accept/post'
+import postRejectApplicant from './api/applicant/[clubID]/reject/post'
+import postClubApply from './api/applicant/post'
+import deleteClubCancel from './api/applicant/delete'
 
 export const handlers = [
   getUser,
@@ -20,6 +25,12 @@ export const handlers = [
   patchClubOpen,
   patchClubClose,
   deleteClub,
+  getApplicantList,
+  postAcceptApplicant,
+  postRejectApplicant,
   getClubList,
   postLogin,
+  getClubDetail,
+  postClubApply,
+  deleteClubCancel,
 ]

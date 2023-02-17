@@ -1,15 +1,27 @@
 import API from '@/api'
-import { Method } from 'axios'
+import toastOption from '@/lib/toastOption'
+import { ErrorsType } from '@/type/hooks/useFetch'
+import { isAxiosError, Method } from 'axios'
 import { useCallback, useState } from 'react'
+import { toast } from 'react-toastify'
 
 interface Props<T> {
   url: string
   method: Method
   onSuccess?: (data: T) => void | Promise<void>
   onFailure?: (e: unknown) => void | Promise<void>
+  successMessage?: string
+  errors?: ErrorsType
 }
 
-const useFetch = <T,>({ url, method, onSuccess, onFailure }: Props<T>) => {
+const useFetch = <T,>({
+  url,
+  method,
+  onSuccess,
+  onFailure,
+  successMessage,
+  errors,
+}: Props<T>) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [data, setData] = useState<T | null>(null)
 
@@ -24,15 +36,27 @@ const useFetch = <T,>({ url, method, onSuccess, onFailure }: Props<T>) => {
           data: body,
         })
 
+        if (successMessage) toast.success(successMessage, toastOption)
+
         setData(data)
         if (onSuccess) await onSuccess(data)
       } catch (e) {
+        if (!isAxiosError(e)) toast.error('알 수 없는 에러가 발생했습니다')
+
+        if (
+          isAxiosError(e) &&
+          errors &&
+          e.response &&
+          errors[e.response.status]
+        )
+          toast.error(errors[e.response.status], toastOption)
+
         if (onFailure) await onFailure(e)
       } finally {
         setIsLoading(false)
       }
     },
-    [url, method, onSuccess, onFailure]
+    [url, method, onSuccess, onFailure, successMessage, errors]
   )
 
   return { fetch, isLoading, data }

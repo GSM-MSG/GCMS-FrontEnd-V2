@@ -47,7 +47,7 @@ export default function MyPage() {
           <SVG.ProfileIcon />
           <S.ProfileContent>
             <S.ProfileImg>
-              {data?.profileImg !== '' && (
+              {data?.profileImg && (
                 <Image
                   src={data?.profileImg ?? ''}
                   alt='profileImg'

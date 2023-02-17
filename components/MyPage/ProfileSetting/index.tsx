@@ -39,10 +39,12 @@ export default function ProfileSetting() {
   }
 
   useEffect(() => {
-    if (apiConfig.url === '') return
-    fetch(apiConfig.data)
+    ;(async () => {
+      if (apiConfig.url === '') return
+      await fetch(apiConfig.data)
 
-    if (!isLoggned) router.replace('/')
+      if (!isLoggned) router.replace('/')
+    })()
   }, [apiConfig])
 
   return (

@@ -1,4 +1,4 @@
-import { ApplyStateTpye } from '@/type/components/ClubDetailSide'
+import { ApplyStateType } from '@/type/components/ClubDetailSide'
 import styled from '@emotion/styled'
 
 export const Layout = styled.div`
@@ -273,7 +273,7 @@ export const SideControl = styled.div`
   align-items: center;
 `
 
-export const SideBtn = styled.button<ApplyStateTpye>`
+export const SideBtn = styled.button<ApplyStateType>`
   width: 100%;
   height: 36px;
   border: none;

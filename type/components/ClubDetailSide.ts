@@ -1,4 +1,4 @@
-export type ApplyStateTpye = {
+export type ApplyStateType = {
   isOpened: boolean
   isApplied: boolean
 }

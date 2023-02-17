@@ -19,7 +19,7 @@ export default function ChoiceUser() {
   })
 
   const onFetch = () => {
-    applicant.filter(async (item) => {
+    applicant.forEach(async (item) => {
       await data(item.uuid)
       dispatch(removeUser(item.uuid))
     })

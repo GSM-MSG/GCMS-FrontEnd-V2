@@ -1,7 +1,6 @@
 import ClubType from './ClubType'
 import MemberType from './MemberType'
-
-type Scope = 'HEAD' | 'MEMBER' | 'USER' | 'OTHER'
+import ScopeType from './ScopeType'
 
 interface ClubDetailType {
   id: number
@@ -16,7 +15,7 @@ interface ClubDetailType {
   activityImgs: string[]
   head: MemberType
   member: MemberType[]
-  scope: Scope
+  scope: ScopeType
   isApplied: boolean
 }
 

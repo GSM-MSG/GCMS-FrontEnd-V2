@@ -11,10 +11,11 @@ import * as S from './style'
 
 const ClubEdit = () => {
   const router = useRouter()
+  const clubId = router.query.clubID
   const [clubData, setClubData] = useState<Partial<EditClubForm>>({})
   const { fetch, data } = useFetch<ClubDetailType>({
     method: 'get',
-    url: `/club/${router.query.clubID}`,
+    url: `/club/${clubId}`,
     onSuccess: (data) => {
       const di = new DataInitializer()
       setClubData(di.ClubDetailToEditClubForm(data))
@@ -22,8 +23,8 @@ const ClubEdit = () => {
   })
 
   useEffect(() => {
-    if (router.query.clubID) fetch()
-  }, [router.query.clubID])
+    if (clubId) fetch()
+  }, [clubId])
 
   return (
     <S.Wrapper>

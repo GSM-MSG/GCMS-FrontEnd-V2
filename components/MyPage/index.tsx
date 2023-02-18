@@ -16,7 +16,7 @@ export default function MyPage() {
 
   useEffect(() => {
     fetch()
-  }, [])
+  }, [fetch])
 
   const ClubWrapper = (clubtype: string) => {
     return data?.clubs.map((item) => {

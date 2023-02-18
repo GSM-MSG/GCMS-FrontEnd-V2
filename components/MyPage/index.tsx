@@ -1,35 +1,25 @@
 import * as SVG from '@/assets/svg'
+import { useFetch } from '@/hooks'
 import { ProfileType } from '@/type/common'
-import axios from 'axios'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import ProfileSetting from './ProfileSetting'
 import * as S from './style'
 
 export default function MyPage() {
-  const userDefaultData = {
-    uuid: '',
-    email: '',
-    name: '',
-    grade: 0,
-    classNum: 0,
-    number: 0,
-    clubs: [],
-  }
-  const [userData, setUserData] = useState<ProfileType>(userDefaultData)
+  const { fetch, data } = useFetch<ProfileType>({
+    url: '/user',
+    method: 'get',
+  })
+  const [isSetting, setSetting] = useState<boolean>(false)
 
   useEffect(() => {
-    setTimeout(async () => {
-      const { data } = await axios.get('/user', {
-        headers: {
-          Authorization: `Bearer ${'authorization'}`,
-        },
-      })
-      setUserData(data)
-    })
+    fetch()
   }, [])
 
   const ClubWrapper = (clubtype: string) => {
-    return userData.clubs.map((item) => {
+    return data?.clubs.map((item) => {
       if (item.type === clubtype)
         return (
           <S.ClubWrapper key={item.id}>
@@ -42,7 +32,9 @@ export default function MyPage() {
               />
             </S.ClubImg>
             <S.ClubName>{item.title}</S.ClubName>
-            <SVG.KebabMenuIcon />
+            <Link href={`/applicant/${item.id}`}>
+              <SVG.KebabMenuIcon />
+            </Link>
           </S.ClubWrapper>
         )
     })
@@ -55,35 +47,43 @@ export default function MyPage() {
           <SVG.ProfileIcon />
           <S.ProfileContent>
             <S.ProfileImg>
-              <Image
-                src={userData?.profileImg ?? ''}
-                alt='profileImg'
-                width={60}
-                height={60}
-              />
+              {data?.profileImg && (
+                <Image
+                  src={data?.profileImg ?? ''}
+                  alt='profileImg'
+                  width={60}
+                  height={60}
+                />
+              )}
             </S.ProfileImg>
-            <p>{userData.name}</p>
+            <p>{data?.name}님</p>
             <small>
-              {userData.grade}학년 {userData.classNum}반 {userData.number}번
+              {data?.grade ?? 0}학년 {data?.classNum ?? 0}반 {data?.number ?? 0}
+              번
             </small>
           </S.ProfileContent>
-          <SVG.KebabMenuIcon />
+          <S.SettingButton onClick={() => setSetting(!isSetting)}>
+            <SVG.KebabMenuIcon />
+          </S.SettingButton>
         </S.ProfileBox>
-        <S.ClubBox>
-          <h2>내 동아리</h2>
-          <S.ClubContainer>
-            <S.ClubType>전공동아리</S.ClubType>
-            {ClubWrapper('MAJOR')}
-          </S.ClubContainer>
-          <S.ClubContainer>
-            <S.ClubType>자율동아리</S.ClubType>
-            {ClubWrapper('FREEDOM')}
-          </S.ClubContainer>
-          <S.ClubContainer>
-            <S.ClubType>사설동아리</S.ClubType>
-            {ClubWrapper('EDITIONAL')}
-          </S.ClubContainer>
-        </S.ClubBox>
+        <S.ContentBox>
+          <S.ClubBox>
+            <h2>내 동아리</h2>
+            <S.ClubContainer>
+              <S.ClubType>전공동아리</S.ClubType>
+              {ClubWrapper('MAJOR')}
+            </S.ClubContainer>
+            <S.ClubContainer>
+              <S.ClubType>자율동아리</S.ClubType>
+              {ClubWrapper('FREEDOM')}
+            </S.ClubContainer>
+            <S.ClubContainer>
+              <S.ClubType>사설동아리</S.ClubType>
+              {ClubWrapper('EDITIONAL')}
+            </S.ClubContainer>
+          </S.ClubBox>
+          {isSetting && <ProfileSetting />}
+        </S.ContentBox>
       </S.Layer>
     </S.Positionier>
   )

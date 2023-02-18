@@ -3,11 +3,12 @@ import styled from '@emotion/styled'
 export const Wrapper = styled.div`
   position: fixed;
   width: 700px;
-  height: 50px;
-  bottom: 80px;
+  height: 0;
+  bottom: 130px;
   @media (max-width: 715px) {
     right: 15px;
     width: auto;
+    bottom: 80px;
     height: auto;
   }
 `

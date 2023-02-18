@@ -2,14 +2,14 @@ import styled from '@emotion/styled'
 
 export const Positionier = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 80px;
+  padding-top: 20px;
 `
 
 export const Layer = styled.div`
+  position: relative;
   width: 700px;
   display: flex;
   flex-direction: column;
@@ -18,9 +18,10 @@ export const Layer = styled.div`
     color: rgba(255, 255, 255, 0.31);
   }
 
-  @media (max-width: 800px) {
-    width: 87.5%;
+  @media (max-width: 740px) {
+    width: 100%;
     align-items: center;
+    padding: 0 20px;
   }
   @media (max-width: 400px) {
     > div {
@@ -62,8 +63,20 @@ export const ProfileImg = styled.div`
   }
 `
 
+export const SettingButton = styled.div``
+
+export const ContentBox = styled.div`
+  display: flex;
+  width: 700px;
+  gap: 10px;
+
+  @media (max-width: 740px) {
+    width: 100%;
+  }
+`
+
 export const ClubBox = styled.div`
-  width: 350px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -85,7 +98,7 @@ export const ClubType = styled.h4`
 `
 
 export const ClubWrapper = styled.div`
-  width: 100%;
+  width: 350px;
   height: 56px;
   background: #2d2d2d;
   border-radius: 10px;
@@ -93,6 +106,13 @@ export const ClubWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 16px;
+
+  @media (max-width: 740px) {
+    width: 50%;
+  }
+  @media (max-width: 530px) {
+    width: 100%;
+  }
 `
 export const ClubImg = styled(ProfileImg)`
   width: 40px;
@@ -102,4 +122,11 @@ export const ClubImg = styled(ProfileImg)`
 export const ClubName = styled(ClubType)`
   width: 72%;
   font-size: 15px;
+
+  @media (max-width: 740px) {
+    font-size: 12px;
+  }
+  @media (max-width: 530px) {
+    width: 62%;
+  }
 `

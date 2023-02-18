@@ -4,16 +4,20 @@ import InitMocks from '@/mocks'
 import wrapper from '@/store'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { Provider } from 'react-redux'
 
 InitMocks()
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, ...rest }: AppProps) {
+  const { store, props } = wrapper.useWrappedStore(rest)
   return (
     <>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...props.pageProps} />
+      </Provider>
       <ToastContainer />
     </>
   )
 }
 
-export default wrapper.withRedux(MyApp)
+export default MyApp

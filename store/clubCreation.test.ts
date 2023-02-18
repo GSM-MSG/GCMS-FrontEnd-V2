@@ -1,4 +1,4 @@
-import { store } from '@/store'
+import store from '@/store'
 import { addActivityImg, setClubType } from './clubCreation'
 
 describe('clubCreation store test', () => {

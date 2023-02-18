@@ -20,6 +20,18 @@ const Portal = ({ children, onClose }: Props) => {
     setIsCSR(true)
   }, [])
 
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      width: 100%;`
+    return () => {
+      const scrollY = document.body.style.top
+      document.body.style.cssText = ''
+      window.scrollTo(0, -parseInt(scrollY))
+    }
+  }, [])
+
   if (typeof window === 'undefined') return <></>
   if (!isCSR) return <></>
 

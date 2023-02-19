@@ -26,7 +26,7 @@ export default function Header() {
           </Link>
           <S.NavWrapper>
             <Link href='/'>홈</Link>
-            {!isLoggned ? (
+            {isLoggned ? (
               <Link href='/my'>
                 <Profile user={user} />
               </Link>

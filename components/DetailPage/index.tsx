@@ -5,6 +5,7 @@ import { ClubDetailType } from '@/type/common'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import SEO from '../SEO'
 import ClubActivity from './ClubActivity'
 import ClubMember from './ClubMember'
 import ClubName from './ClubName'
@@ -38,23 +39,26 @@ export default function DetailPage() {
   }, [clubID])
 
   return (
-    data && (
-      <S.Layout>
-        <S.Wrapper>
-          <S.Section>
-            <S.ClubBanner src={clubDetail.bannerImg} />
-            <S.ClubInfo>
-              <ClubName />
-              <Contact />
-              <Description />
-            </S.ClubInfo>
-            <ClubActivity />
-            <ClubMember />
-          </S.Section>
-          <SideBar />
-        </S.Wrapper>
-        <S.Footer />
-      </S.Layout>
-    )
+    <>
+      <SEO title={`GCMS | ${data?.name}`} />
+      {data && (
+        <S.Layout>
+          <S.Wrapper>
+            <S.Section>
+              <S.ClubBanner src={clubDetail.bannerImg} />
+              <S.ClubInfo>
+                <ClubName />
+                <Contact />
+                <Description />
+              </S.ClubInfo>
+              <ClubActivity />
+              <ClubMember />
+            </S.Section>
+            <SideBar />
+          </S.Wrapper>
+          <S.Footer />
+        </S.Layout>
+      )}
+    </>
   )
 }

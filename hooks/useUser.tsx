@@ -18,10 +18,8 @@ const useUser = () => {
       dispatch(setUser(data))
     },
     onFailure: () => {
-      if (router.route !== '/') return
-      router.replace('/')
+      router.route === '/' && router.replace('/')
     },
-    errors: { 401: '로그인을 해 주세요', 404: '로그인을 해 주세요' },
   })
 
   useEffect(() => {

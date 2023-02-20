@@ -10,12 +10,12 @@ import { setModal } from '@/store/loginModal'
 const Login = () => {
   const router = useRouter()
   const dispatch = useDispatch()
-  const onClose = dispatch(setModal())
+  const onClose = () => dispatch(setModal())
 
   return (
-    <Portal onClose={() => onClose}>
+    <Portal onClose={onClose}>
       <S.Wrapper>
-        <S.CancelBtn onClick={() => onClose}>
+        <S.CancelBtn onClick={onClose}>
           <SVG.XMark />
         </S.CancelBtn>
         <S.LogoWarppaer>

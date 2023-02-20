@@ -18,7 +18,7 @@ const useUser = () => {
       dispatch(setUser(data))
     },
     onFailure: () => {
-      router.route === '/' && router.replace('/')
+      router.route !== '/' && router.replace('/')
     },
   })
 

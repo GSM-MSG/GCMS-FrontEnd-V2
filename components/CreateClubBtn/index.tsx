@@ -1,13 +1,16 @@
-import useUser from '@/hooks/useUser'
+import { RootState } from '@/store'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import ClubCreationModal from '../ClubCreationModal'
 import * as S from './style'
 
 export default function CreateClubBtn() {
   const [modal, setModal] = useState(false)
-  const { isLoggned } = useUser()
+  const { user } = useSelector((state: RootState) => ({
+    user: state.user,
+  }))
 
-  if (!isLoggned) return <></>
+  if (!user) return <></>
 
   return (
     <>

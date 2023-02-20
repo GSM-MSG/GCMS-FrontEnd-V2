@@ -4,18 +4,18 @@ import { useRouter } from 'next/router'
 import * as S from './style'
 import { gauthLoginUri } from '@/lib/GauthLoginUrI'
 import * as SVG from '@/assets/svg'
+import { useDispatch } from 'react-redux'
+import { setModal } from '@/store/loginModal'
 
-interface Props {
-  onClose: () => void
-}
-
-const Login = ({ onClose }: Props) => {
+const Login = () => {
   const router = useRouter()
+  const dispatch = useDispatch()
+  const onClose = dispatch(setModal())
 
   return (
-    <Portal onClose={onClose}>
+    <Portal onClose={() => onClose}>
       <S.Wrapper>
-        <S.CancelBtn onClick={onClose}>
+        <S.CancelBtn onClick={() => onClose}>
           <SVG.XMark />
         </S.CancelBtn>
         <S.LogoWarppaer>

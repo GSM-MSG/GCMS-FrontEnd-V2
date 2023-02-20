@@ -36,7 +36,7 @@ export default function Header() {
           </S.NavWrapper>
         </S.Wrapper>
       </S.Header>
-      {loginModal && <Login onClose={() => dispatch(setModal())} />}
+      {loginModal && <Login />}
     </>
   )
 }

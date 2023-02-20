@@ -4,15 +4,18 @@ import { ClubListType, ClubType } from '@/type/common'
 import { useForm } from 'react-hook-form'
 import { useFetch } from '@/hooks'
 import { useEffect } from 'react'
-import useUser from '@/hooks/useUser'
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setModal } from '@/store/loginModal'
+import { RootState } from '@/store'
 
 export default function ClubList() {
-  const { isLoggned } = useUser()
   const dispatch = useDispatch()
   const router = useRouter()
+
+  const { user } = useSelector((state: RootState) => ({
+    user: state.user,
+  }))
 
   const { register, watch } = useForm<{ club: ClubType }>({
     defaultValues: {
@@ -59,9 +62,7 @@ export default function ClubList() {
               <div
                 key={i.id}
                 onClick={() => {
-                  isLoggned
-                    ? router.push(`detail/${i.id}`)
-                    : dispatch(setModal())
+                  user ? router.push(`detail/${i.id}`) : dispatch(setModal())
                 }}
               >
                 <ClubItem club={i} />

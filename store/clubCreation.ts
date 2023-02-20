@@ -52,6 +52,20 @@ const clubCreationSlice = createSlice({
     removeMember: (state, action: PayloadAction<string>) => {
       state.member = state.member.filter((i) => i.uuid !== action.payload)
     },
+
+    clearClubData: (state) => {
+      state = {
+        type: 'MAJOR',
+        name: '',
+        content: '',
+        bannerImg: '',
+        contact: '',
+        notionLink: '',
+        activityImgs: [],
+        member: [],
+      }
+      return state
+    },
   },
 })
 
@@ -63,6 +77,7 @@ export const {
   removeMember,
   setBannerImg,
   addActivityImg,
+  clearClubData,
 } = clubCreationSlice.actions
 
 export default clubCreationSlice

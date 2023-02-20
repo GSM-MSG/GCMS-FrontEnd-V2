@@ -46,7 +46,7 @@ const useFetch = <T,>({
           return
         }
 
-        if (e.response && e.response.status === 500) {
+        if (e.response && e.response.status >= 500) {
           toast.error('알 수 없는 에러가 발생했습니다', toastOption)
         } else if (typeof errors === 'string') {
           toast.error(errors, toastOption)

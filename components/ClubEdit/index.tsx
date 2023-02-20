@@ -8,6 +8,7 @@ import ClubNav from '../Common/ClubNav'
 import Edit from './components/Edit'
 import Notice from './components/Notice'
 import * as S from './style'
+import SEO from '@/components/SEO'
 
 const ClubEdit = () => {
   const router = useRouter()
@@ -27,20 +28,23 @@ const ClubEdit = () => {
   }, [clubId])
 
   return (
-    <S.Wrapper>
-      <ClubNav />
+    <>
+      <SEO title={`GCMS | ${data?.name}동아리 수정`} />
+      <S.Wrapper>
+        <ClubNav />
 
-      <Notice data={data} />
+        <Notice data={data} />
 
-      {data?.scope === 'HEAD' && (
-        <Edit
-          banner={data.bannerImg}
-          activity={data.activityImgs}
-          initialData={clubData}
-          updateData={fetch}
-        />
-      )}
-    </S.Wrapper>
+        {data?.scope === 'HEAD' && (
+          <Edit
+            banner={data.bannerImg}
+            activity={data.activityImgs}
+            initialData={clubData}
+            updateData={fetch}
+          />
+        )}
+      </S.Wrapper>
+    </>
   )
 }
 

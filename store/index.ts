@@ -6,6 +6,7 @@ import ImgsSlice from './imgs'
 import userSlice from './user'
 import applicantSlice from './applicant'
 import clubDetailSlice from './clubDetail'
+import loginModalSlice from './loginModal'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
@@ -17,6 +18,7 @@ const store = configureStore({
     user: userSlice.reducer,
     applicant: applicantSlice.reducer,
     clubDetail: clubDetailSlice.reducer,
+    loginModal: loginModalSlice.reducer,
   },
   devTools: NODE_ENV,
   middleware: (getDefaultMiddleware) =>

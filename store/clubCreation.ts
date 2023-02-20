@@ -63,6 +63,7 @@ const clubCreationSlice = createSlice({
         notionLink: '',
         activityImgs: [],
         member: [],
+        teacher: undefined,
       }
       return state
     },

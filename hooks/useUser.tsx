@@ -5,7 +5,6 @@ import { UserInitialState } from '@/type/store/user'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
 import useFetch from './useFetch'
 
 const useUser = () => {
@@ -19,10 +18,10 @@ const useUser = () => {
       dispatch(setUser(data))
     },
     onFailure: () => {
-      if (router.route === '/') return
+      if (router.route !== '/') return
       router.replace('/')
-      toast.error('로그인을 해 주세요')
     },
+    errors: { 401: '로그인을 해 주세요', 404: '로그인을 해 주세요' },
   })
 
   useEffect(() => {

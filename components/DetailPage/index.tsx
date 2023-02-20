@@ -40,7 +40,11 @@ export default function DetailPage() {
 
   return (
     <>
-      <SEO title={`GCMS | ${data?.name}`} />
+      <SEO
+        title={`GCMS | ${data?.name}`}
+        description={data?.content}
+        image={data?.bannerImg}
+      />
       {data && (
         <S.Layout>
           <S.Wrapper>

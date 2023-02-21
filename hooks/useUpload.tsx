@@ -18,9 +18,7 @@ const useUpload = () => {
 
     if (NODE_ENV === 'development') {
       setIsLoading(false)
-      return {
-        images: [...Array(5)].map(() => 'https://bit.ly/3YUgIDd'),
-      }
+      return [...Array(5)].map(() => 'https://bit.ly/3YUgIDd')
     }
 
     try {
@@ -28,7 +26,7 @@ const useUpload = () => {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       setIsLoading(false)
-      return data
+      return data.images
     } catch (e) {
       toast.error('이미지 업로드에 실패했습니다.', toastOption)
       setIsLoading(false)

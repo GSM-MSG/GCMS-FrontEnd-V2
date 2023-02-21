@@ -17,13 +17,10 @@ class TokenManager {
 
   validateToken(expiredString: string | null, token: string | null): boolean {
     if (!expiredString || !token) return false
-    const expiredAt = new Date(
-      new Date().setMinutes(new Date(expiredString).getMinutes() - 1)
-    )
+    const expiredAt = new Date(expiredString)
+    expiredAt.setMinutes(expiredAt.getMinutes() - 1)
 
-    if (expiredAt <= new Date()) return false
-
-    return true
+    return expiredAt >= new Date()
   }
 
   async tokenReissue(): Promise<boolean> {

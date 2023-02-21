@@ -1,23 +1,20 @@
 import * as S from './style'
 import * as SVG from '@/assets/svg'
 import { UseFormRegisterReturn } from 'react-hook-form'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
 
 interface Props {
   register: UseFormRegisterReturn
   error?: boolean
+  bannerImg?: string
 }
 
-const BannerImg = ({ register, error }: Props) => {
-  const { imgs } = useSelector((state: RootState) => ({ imgs: state.imgs }))
-
+const BannerImg = ({ register, error, bannerImg }: Props) => {
   return (
     <S.Wrapper>
       <S.Label error={error}>{error && '*'} 배너 사진</S.Label>
-      {imgs.bannerImg ? (
+      {bannerImg ? (
         <label htmlFor='bannerImg'>
-          <S.Img src={URL.createObjectURL(imgs.bannerImg)} alt='sdf' />
+          <S.Img src={bannerImg} alt='Banner image' />
         </label>
       ) : (
         <S.BannerInput error={error} htmlFor='bannerImg'>

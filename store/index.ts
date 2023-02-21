@@ -1,5 +1,4 @@
-import { AnyAction, combineReducers, configureStore } from '@reduxjs/toolkit'
-import { createWrapper, HYDRATE } from 'next-redux-wrapper'
+import { configureStore } from '@reduxjs/toolkit'
 
 import clubCreationSlice from './clubCreation'
 import clubCreationPageSlice from './clubCreationPage'
@@ -7,38 +6,25 @@ import ImgsSlice from './imgs'
 import userSlice from './user'
 import applicantSlice from './applicant'
 import clubDetailSlice from './clubDetail'
+import loginModalSlice from './loginModal'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
-const rootReducer = combineReducers({
-  clubCreation: clubCreationSlice.reducer,
-  clubCreationPage: clubCreationPageSlice.reducer,
-  imgs: ImgsSlice.reducer,
-  user: userSlice.reducer,
-  applicant: applicantSlice.reducer,
-  clubDetail: clubDetailSlice.reducer,
+const store = configureStore({
+  reducer: {
+    clubCreation: clubCreationSlice.reducer,
+    clubCreationPage: clubCreationPageSlice.reducer,
+    imgs: ImgsSlice.reducer,
+    user: userSlice.reducer,
+    applicant: applicantSlice.reducer,
+    clubDetail: clubDetailSlice.reducer,
+    loginModal: loginModalSlice.reducer,
+  },
+  devTools: NODE_ENV,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 })
-export type RootState = ReturnType<typeof rootReducer>
 
-const reducer = (state: RootState | undefined, action: AnyAction) => {
-  switch (action.type) {
-    case HYDRATE:
-      return { ...state, ...action.payload }
-    default:
-      return rootReducer(state, action)
-  }
-}
+export type RootState = ReturnType<typeof store.getState>
 
-const makeStore = () => {
-  return configureStore({
-    reducer,
-    devTools: NODE_ENV,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({ serializableCheck: false }),
-  })
-}
-
-const wrapper = createWrapper(makeStore, { debug: NODE_ENV })
-
-export const store = makeStore()
-export default wrapper
+export default store

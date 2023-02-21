@@ -17,13 +17,10 @@ class TokenManager {
 
   validateToken(expiredString: string | null, token: string | null): boolean {
     if (!expiredString || !token) return false
-    const expiredAt = new Date(
-      new Date().setMinutes(new Date(expiredString).getMinutes() - 1)
-    )
+    const expiredAt = new Date(expiredString)
+    expiredAt.setMinutes(expiredAt.getMinutes() - 1)
 
-    if (expiredAt <= new Date()) return false
-
-    return true
+    return expiredAt >= new Date()
   }
 
   async tokenReissue(): Promise<boolean> {
@@ -34,10 +31,10 @@ class TokenManager {
         '/auth',
         {},
         {
-          baseURL: process.env.SERVER_URL,
+          baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
           withCredentials: true,
           headers: {
-            Authorization: this._refreshToken,
+            'Refresh-Token': `Bearer ${this._refreshToken}`,
           },
         }
       )
@@ -60,6 +57,18 @@ class TokenManager {
     localStorage.setItem(refreshToken, tokens.refreshToken)
     localStorage.setItem(accessExp, tokens.accessExp)
     localStorage.setItem(refreshExp, tokens.refreshExp)
+  }
+
+  removeTokens() {
+    this._accessToken = null
+    this._refreshToken = null
+    this._accessExp = null
+    this._refreshExp = null
+
+    localStorage.removeItem(accessToken)
+    localStorage.removeItem(refreshToken)
+    localStorage.removeItem(accessExp)
+    localStorage.removeItem(refreshExp)
   }
 
   get accessToken() {

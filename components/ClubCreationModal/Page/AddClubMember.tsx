@@ -3,7 +3,8 @@ import { RootState } from '@/store'
 import { MemberType } from '@/type/common'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearClubData } from '@/store/clubCreation'
 import Input from '@/components/Common/Input'
 import Member from '../Common/Member'
 import SelectUserList from '../Common/SelectUserList'
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const AddClubMember = ({ onClose }: Props) => {
+  const dispatch = useDispatch()
   const { clubCreation } = useSelector((state: RootState) => ({
     clubCreation: state.clubCreation,
   }))
@@ -26,7 +28,10 @@ const AddClubMember = ({ onClose }: Props) => {
   const { fetch: addClub, isLoading } = useFetch({
     url: '/club',
     method: 'post',
-    onSuccess: onClose,
+    onSuccess: () => {
+      dispatch(clearClubData())
+      onClose()
+    },
   })
 
   useEffect(() => {

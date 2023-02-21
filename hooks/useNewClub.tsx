@@ -10,6 +10,9 @@ const useNewClub = () => {
     onSuccess: (data) => {
       setNewClubs(data)
     },
+    errors: {
+      400: '새로 생긴 동아리 정보를 찾을수 없습니다.',
+    },
   })
 
   useEffect(() => {

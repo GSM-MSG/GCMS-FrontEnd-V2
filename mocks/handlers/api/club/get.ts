@@ -69,7 +69,9 @@ const data = [
 
 const getClubList = rest.get(serverApi('/club'), async (req, res, ctx) => {
   const queryName = req.url.searchParams.get('type')
+  const typeValue = ['MAJOR', 'EDITORIAL', 'FREEDOM']
   if (!queryName) return res(ctx.json(data))
+  if (!typeValue.includes(queryName)) return res(ctx.status(400))
   return res(ctx.json(data.filter((i) => i.type.includes(queryName))))
 })
 

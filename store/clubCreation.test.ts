@@ -1,5 +1,5 @@
-import { store } from '@/store'
-import { addActivityImg, setClubType } from './clubCreation'
+import store from '@/store'
+import { addActivityImg, clearClubData, setClubType } from './clubCreation'
 
 describe('clubCreation store test', () => {
   it('club type should be undefined', () => {
@@ -33,6 +33,22 @@ describe('clubCreation store test', () => {
     expect(() =>
       store.dispatch(addActivityImg(['1', '2', '3', '4', '5']))
     ).toThrow(Error('Activity image maximum count is 4'))
+  })
+
+  it('should clear all data', () => {
+    store.dispatch(clearClubData())
+    const { clubCreation } = store.getState()
+
+    expect(clubCreation).toEqual({
+      type: 'MAJOR',
+      name: '',
+      content: '',
+      bannerImg: '',
+      contact: '',
+      notionLink: '',
+      activityImgs: [],
+      member: [],
+    })
   })
 })
 

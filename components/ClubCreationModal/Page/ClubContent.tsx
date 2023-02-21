@@ -28,7 +28,7 @@ const ClubContent = () => {
     <Layout onSubmit={handleSubmit(onSubmit)} back>
       <TextareaInput
         register={register('content', { required: true, maxLength: 200 })}
-        watch={watch}
+        content={watch('content')}
         error={!!errors.content}
       />
     </Layout>

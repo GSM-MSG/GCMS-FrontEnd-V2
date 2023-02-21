@@ -4,9 +4,19 @@ import { ClubListType, ClubType } from '@/type/common'
 import { useForm } from 'react-hook-form'
 import { useFetch } from '@/hooks'
 import { useEffect } from 'react'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
+import { setModal } from '@/store/loginModal'
+import { RootState } from '@/store'
 
 export default function ClubList() {
+  const dispatch = useDispatch()
+  const router = useRouter()
+
+  const { user } = useSelector((state: RootState) => ({
+    user: state.user,
+  }))
+
   const { register, watch } = useForm<{ club: ClubType }>({
     defaultValues: {
       club: 'MAJOR',
@@ -16,6 +26,9 @@ export default function ClubList() {
   const { fetch, data } = useFetch<ClubListType[]>({
     url: `/club?type=${watch('club')}`,
     method: 'get',
+    errors: {
+      400: '해당 동아리 정보를 찾을수 없습니다.',
+    },
   })
 
   useEffect(() => {
@@ -46,9 +59,16 @@ export default function ClubList() {
         {data &&
           data.map((i) => {
             return (
-              <Link key={i.id} href={`detail/${i.id}`}>
+              <div
+                key={i.id}
+                onClick={() => {
+                  user.name
+                    ? router.push(`detail/${i.id}`)
+                    : dispatch(setModal())
+                }}
+              >
                 <ClubItem club={i} />
-              </Link>
+              </div>
             )
           })}
       </S.ClubList>

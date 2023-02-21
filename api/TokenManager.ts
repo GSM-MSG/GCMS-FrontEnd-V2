@@ -34,10 +34,10 @@ class TokenManager {
         '/auth',
         {},
         {
-          baseURL: process.env.SERVER_URL,
+          baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
           withCredentials: true,
           headers: {
-            Authorization: this._refreshToken,
+            'Refresh-Token': `Bearer ${this._refreshToken}`,
           },
         }
       )

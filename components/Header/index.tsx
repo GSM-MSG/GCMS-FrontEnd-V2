@@ -3,12 +3,19 @@ import Link from 'next/link'
 import Profile from './Profile'
 import * as S from './style'
 import * as SVG from '@/assets/svg'
-import { useState } from 'react'
 import Login from '../Login'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@/store'
+import { setModal } from '@/store/loginModal'
 
 export default function Header() {
+  const dispatch = useDispatch()
+
+  const { loginModal } = useSelector((state: RootState) => ({
+    loginModal: state.loginModal,
+  }))
+
   const { user, isLoggned } = useUser()
-  const [modal, setModal] = useState(false)
 
   return (
     <>
@@ -24,12 +31,12 @@ export default function Header() {
                 <Profile user={user} />
               </Link>
             ) : (
-              <a onClick={() => setModal(true)}>로그인</a>
+              <a onClick={() => dispatch(setModal())}>로그인</a>
             )}
           </S.NavWrapper>
         </S.Wrapper>
       </S.Header>
-      {modal && <Login onClose={() => setModal(false)} />}
+      {loginModal && <Login />}
     </>
   )
 }

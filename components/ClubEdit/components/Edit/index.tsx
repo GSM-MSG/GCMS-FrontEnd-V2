@@ -45,10 +45,10 @@ const Edit = ({ initialData, banner, activity, updateData }: Props) => {
     if (!file) return
 
     const url = await upload([file])
-    if (!url) return
+    if (!url?.images || !url?.images[0]) return
 
-    if (type === 'bannerImg') return setBannerImg(url[0])
-    setActivityImgs([...activityImgs, url[0]])
+    if (type === 'bannerImg') return setBannerImg(url.images[0])
+    setActivityImgs([...activityImgs, url.images[0]])
   }
 
   const onRemove = (idx: number) => {

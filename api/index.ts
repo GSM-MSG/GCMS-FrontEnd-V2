@@ -17,7 +17,9 @@ API.interceptors.request.use(async (config) => {
   )
     await tokenManager.tokenReissue()
 
-  config.headers['Authorization'] = `Bearer ${tokenManager.accessToken}`
+  config.headers['Authorization'] = tokenManager.accessToken
+    ? `Bearer ${tokenManager.accessToken}`
+    : undefined
 
   return config
 })

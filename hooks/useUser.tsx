@@ -31,7 +31,7 @@ const useUser = () => {
     })()
   }, [])
 
-  return { user, isLoggned: !!user.name }
+  return { user, isLoggned: !!user.name, fetchUser: fetch }
 }
 
 export default useUser

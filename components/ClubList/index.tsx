@@ -62,7 +62,9 @@ export default function ClubList() {
               <div
                 key={i.id}
                 onClick={() => {
-                  user ? router.push(`detail/${i.id}`) : dispatch(setModal())
+                  user.name
+                    ? router.push(`detail/${i.id}`)
+                    : dispatch(setModal())
                 }}
               >
                 <ClubItem club={i} />

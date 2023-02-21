@@ -1,4 +1,5 @@
 import API from '@/api'
+import { ImageUploadResType } from '@/type/hooks/useUpload'
 import { useCallback, useState } from 'react'
 const NODE_ENV = process.env.NODE_ENV
 
@@ -15,14 +16,13 @@ const useUpload = () => {
 
     if (NODE_ENV === 'development') {
       setIsLoading(false)
-      return [...Array(5)].map(
-        () =>
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nextjs-logo.svg/1280px-Nextjs-logo.svg.png'
-      )
+      return {
+        images: [...Array(5)].map(() => 'https://bit.ly/3YUgIDd'),
+      }
     }
 
     try {
-      const { data } = await API.post<string[]>('/image', formData, {
+      const { data } = await API.post<ImageUploadResType>('/image', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       setIsLoading(false)

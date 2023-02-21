@@ -23,12 +23,12 @@ const ClubImgUpload = () => {
   const onSubmit = async () => {
     if (!imgs.bannerImg || isLoading) return
 
-    const files = await upload([...imgs.activityImgs, imgs.bannerImg])
+    const res = await upload([...imgs.activityImgs, imgs.bannerImg])
 
-    if (!files) return
+    if (!res?.images || !res.images.length) return
 
-    dispatch(addActivityImg(files.slice(0, files.length - 1)))
-    dispatch(setBannerImg(files[files.length - 1]))
+    dispatch(addActivityImg(res.images.slice(0, res.images.length - 1)))
+    dispatch(setBannerImg(res.images[res.images.length - 1]))
     dispatch(nextPage())
   }
 

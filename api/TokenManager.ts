@@ -43,6 +43,7 @@ class TokenManager {
 
       return true
     } catch (e) {
+      window.location.href = '/'
       return false
     }
   }

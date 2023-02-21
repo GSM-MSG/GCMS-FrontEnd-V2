@@ -22,7 +22,12 @@ export default function ClubMember() {
         )}
         <S.HeadProfile>
           {clubDetail.head.profileImg ? (
-            <S.MemberProfile src={clubDetail.head.profileImg} />
+            <S.MemberProfile
+              alt='progile img'
+              src={clubDetail.head.profileImg}
+              width={48}
+              height={48}
+            />
           ) : (
             <S.SampelIMG />
           )}
@@ -35,7 +40,13 @@ export default function ClubMember() {
       <span>
         {clubDetail.member.map((data) =>
           data.profileImg ? (
-            <S.MemberProfile key={data.uuid} src={data.profileImg} />
+            <S.MemberProfile
+              key={data.uuid}
+              alt='member progile img'
+              src={data.profileImg}
+              width={48}
+              height={48}
+            />
           ) : (
             <S.SampelIMG key={data.uuid} />
           )

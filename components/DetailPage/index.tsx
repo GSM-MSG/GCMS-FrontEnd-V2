@@ -50,7 +50,14 @@ export default function DetailPage() {
         <S.Layout>
           <S.Wrapper>
             <S.Section>
-              <S.ClubBanner src={clubDetail.bannerImg} />
+              <S.ClubBanner>
+                <S.NextImg
+                  alt='banner igm'
+                  src={clubDetail.bannerImg}
+                  width={100}
+                  height={100}
+                />
+              </S.ClubBanner>
               <S.ClubInfo>
                 <ClubName />
                 <Contact />

@@ -10,7 +10,7 @@ export default function CreateClubBtn() {
     user: state.user,
   }))
 
-  if (!user) return <></>
+  if (!user.name) return <></>
 
   return (
     <>

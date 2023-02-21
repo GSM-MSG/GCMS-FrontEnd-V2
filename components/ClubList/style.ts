@@ -12,6 +12,7 @@ export const ClubOptionLayer = styled.form`
     display: none;
   }
   input[type='radio'] + label {
+    cursor: pointer;
     width: 49px;
     height: 24px;
     display: flex;
@@ -40,6 +41,7 @@ export const ClubList = styled.div`
 `
 
 export const ClubItem = styled.div`
+  cursor: pointer;
   margin-top: 17px;
   width: 163.75px;
   aspect-ratio: auto 1 / 1.378;

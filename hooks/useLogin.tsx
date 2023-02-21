@@ -18,6 +18,9 @@ const useLogin = () => {
       }
       router.push('')
     },
+    onFailure: () => {
+      router.push('')
+    },
   })
 
   useEffect(() => {

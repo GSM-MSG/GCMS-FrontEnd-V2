@@ -9,6 +9,7 @@ const SideBtn = () => {
   }))
   const isOpened = clubDetail.isOpened
   const isApplied = clubDetail.isApplied
+  const isHead = clubDetail.scope === 'HEAD'
 
   const { fetch: apply } = useFetch({
     url: `applicant/${clubDetail.id}`,
@@ -28,7 +29,7 @@ const SideBtn = () => {
   })
 
   const handleAplly = () => {
-    if (clubDetail.scope === 'HEAD') {
+    if (isHead) {
       if (isOpened) return close()
       else return open()
     }
@@ -38,7 +39,7 @@ const SideBtn = () => {
   }
 
   const btnMessage = () => {
-    if (clubDetail.scope === 'HEAD') {
+    if (isHead) {
       if (isOpened) return '동아리 닫기'
       else return '동아리 열기'
     }
@@ -48,7 +49,12 @@ const SideBtn = () => {
   }
 
   return (
-    <S.SideBtn isOpened={isOpened} isApplied={isApplied} onClick={handleAplly}>
+    <S.SideBtn
+      isOpened={isOpened}
+      isApplied={isApplied}
+      onClick={handleAplly}
+      isHead={isHead}
+    >
       {btnMessage()}
     </S.SideBtn>
   )

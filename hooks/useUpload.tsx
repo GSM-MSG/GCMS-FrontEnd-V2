@@ -1,6 +1,8 @@
 import API from '@/api'
+import toastOption from '@/lib/toastOption'
 import { ImageUploadResType } from '@/type/hooks/useUpload'
 import { useCallback, useState } from 'react'
+import { toast } from 'react-toastify'
 const NODE_ENV = process.env.NODE_ENV
 
 const useUpload = () => {
@@ -28,6 +30,7 @@ const useUpload = () => {
       setIsLoading(false)
       return data
     } catch (e) {
+      toast.error('이미지 업로드에 실패했습니다.', toastOption)
       setIsLoading(false)
     }
   }, [])

@@ -44,6 +44,7 @@ class TokenManager {
 
       return true
     } catch (e) {
+      this.removeTokens()
       window.location.href = '/'
       return false
     }

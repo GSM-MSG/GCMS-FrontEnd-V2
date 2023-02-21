@@ -60,6 +60,11 @@ class TokenManager {
   }
 
   removeTokens() {
+    this._accessToken = null
+    this._refreshToken = null
+    this._accessExp = null
+    this._refreshExp = null
+
     localStorage.removeItem(accessToken)
     localStorage.removeItem(refreshToken)
     localStorage.removeItem(accessExp)

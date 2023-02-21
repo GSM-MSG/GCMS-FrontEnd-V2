@@ -59,6 +59,13 @@ class TokenManager {
     localStorage.setItem(refreshExp, tokens.refreshExp)
   }
 
+  removeTokens() {
+    localStorage.removeItem(accessToken)
+    localStorage.removeItem(refreshToken)
+    localStorage.removeItem(accessExp)
+    localStorage.removeItem(refreshExp)
+  }
+
   get accessToken() {
     return this._accessToken
   }

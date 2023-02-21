@@ -54,17 +54,7 @@ const clubCreationSlice = createSlice({
     },
 
     clearClubData: (state) => {
-      state = {
-        type: 'MAJOR',
-        name: '',
-        content: '',
-        bannerImg: '',
-        contact: '',
-        notionLink: '',
-        activityImgs: [],
-        member: [],
-        teacher: undefined,
-      }
+      state = initialState
       return state
     },
   },

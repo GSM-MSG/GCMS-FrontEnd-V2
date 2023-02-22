@@ -17,10 +17,6 @@ const SideBtn = () => {
   const isMember = clubDetail.scope === 'MEMBER'
   const isOther = clubDetail.scope === 'OTHER'
 
-  console.log(`scope : ${clubDetail.scope}`)
-  console.log(`isOpened : ${clubDetail.isOpened}`)
-  console.log(`isApplied : ${clubDetail.isApplied}`)
-
   const { fetch: apply } = useFetch({
     url: `applicant/${clubDetail.id}`,
     method: 'post',

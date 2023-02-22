@@ -12,7 +12,12 @@ export default function Contact() {
     <S.Contact>
       <div>
         {clubDetail.head.profileImg ? (
-          <S.ProfileImg src={clubDetail.head.profileImg} />
+          <S.ProfileImg
+            alt='progile img'
+            src={clubDetail.head.profileImg}
+            width={33}
+            height={33}
+          />
         ) : (
           <S.SampelIMG />
         )}

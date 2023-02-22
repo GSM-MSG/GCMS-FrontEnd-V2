@@ -9,7 +9,7 @@ class TokenManager {
   private _refreshExp: string | null = null
 
   constructor() {
-    if (typeof window === undefined) return
+    if (typeof window === 'undefined') return
     this._accessToken = localStorage.getItem(accessToken)
     this._refreshToken = localStorage.getItem(refreshToken)
     this._accessExp = localStorage.getItem(accessExp)

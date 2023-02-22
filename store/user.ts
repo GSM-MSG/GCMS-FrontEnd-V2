@@ -1,8 +1,14 @@
-import { UserInitialState } from '@/type/store/user'
+import UserInitialState from '@/type/store/UserType'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const initialState: UserInitialState = {
+  uuid: '',
+  email: '',
   name: '',
+  grade: 0,
+  classNum: 0,
+  number: 0,
+  clubs: [],
 }
 
 const userSlice = createSlice({
@@ -13,11 +19,8 @@ const userSlice = createSlice({
       state = action.payload
       return state
     },
-    removeUser: (state) => {
-      state = {
-        name: '',
-      }
-      return state
+    removeUser: () => {
+      return initialState
     },
   },
 })

@@ -45,7 +45,7 @@ export const data = [
     type: 'MAJOR',
     isOpened: true,
     scope: 'HEAD',
-    isApplied: true,
+    isApplied: false,
     ...detailData,
   },
   {

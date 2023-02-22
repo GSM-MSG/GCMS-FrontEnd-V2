@@ -284,7 +284,7 @@ export const SideBtn = styled.button<ApplyStateType>`
   border-radius: 7px;
 
   ${({ isHead, isApplied, isOpened, isMember }) => {
-    if ((isHead && !isOpened) || (!isHead && !isApplied)) return ''
+    if ((isHead && !isOpened) || (!isHead && !isApplied && !isMember)) return ''
 
     if (isOpened || isMember)
       return 'color: #FF6666;background: #391F21;border: 1px solid #FF6666;'

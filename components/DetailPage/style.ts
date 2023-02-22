@@ -1,5 +1,6 @@
 import { ApplyStateType } from '@/type/components/ClubDetailSide'
 import styled from '@emotion/styled'
+import Image from 'next/image'
 
 export const Layout = styled.div`
   width: 100%;
@@ -28,12 +29,14 @@ export const Section = styled.section`
   }
 `
 
-export const ClubBanner = styled.img`
+export const ClubBanner = styled.div`
   width: 100%;
   height: 332px;
   background: #373737;
   border-radius: 10px;
-  object-fit: contain;
+  img {
+    object-fit: contain;
+  }
 `
 
 export const ClubInfo = styled.div`
@@ -78,7 +81,7 @@ export const Contact = styled.div`
     border-radius: 1px;
   }
 `
-export const ProfileImg = styled.img`
+export const ProfileImg = styled(Image)`
   width: 33px;
   height: 33px;
   border-radius: 50%;
@@ -145,10 +148,11 @@ export const ClubActivity = styled.div`
     }
   }
 `
-export const ActivityImg = styled.img`
+export const ActivityImg = styled.div`
   width: 250px;
   aspect-ratio: 1/1;
   object-fit: contain;
+  overflow: hidden;
   background: linear-gradient(0deg, #373737, #373737), url(image.png);
   border-radius: 10px;
   @media (max-width: 750px) {
@@ -219,7 +223,7 @@ export const HeadInfo = styled.div`
   }
 `
 
-export const MemberProfile = styled.img`
+export const MemberProfile = styled(Image)`
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -324,4 +328,9 @@ export const NotionInfo = styled.div`
       white-space: nowrap;
     }
   }
+`
+
+export const NextImg = styled(Image)`
+  width: 100% !important;
+  height: 100% !important;
 `

@@ -21,24 +21,22 @@ export default function DetailPage() {
         description={clubDetail.content}
         image={clubDetail.bannerImg}
       />
-      {clubDetail.id && (
-        <S.Layout>
-          <S.Wrapper>
-            <S.Section>
-              <S.ClubBanner src={clubDetail.bannerImg} />
-              <S.ClubInfo>
-                <ClubName />
-                <Contact />
-                <Description />
-              </S.ClubInfo>
-              <ClubActivity />
-              <ClubMember />
-            </S.Section>
-            <SideBar />
-          </S.Wrapper>
-          <S.Footer />
-        </S.Layout>
-      )}
+      <S.Layout>
+        <S.Wrapper>
+          <S.Section>
+            <S.ClubBanner src={clubDetail.bannerImg} />
+            <S.ClubInfo>
+              <ClubName />
+              <Contact />
+              <Description />
+            </S.ClubInfo>
+            <ClubActivity />
+            <ClubMember />
+          </S.Section>
+          <SideBar />
+        </S.Wrapper>
+        <S.Footer />
+      </S.Layout>
     </>
   )
 }

@@ -42,6 +42,7 @@ const clubDetailSlice = createSlice({
     },
   },
 })
-export const { setClubDetail } = clubDetailSlice.actions
+export const { setClubDetail, setIsOpened, setIsApplied } =
+  clubDetailSlice.actions
 
 export default clubDetailSlice

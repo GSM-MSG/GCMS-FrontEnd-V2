@@ -63,7 +63,7 @@ export const ClubImg = styled.img`
   aspect-ratio: 1 / 1;
   background: #2d2d2f;
   border-radius: 10px;
-  object-fit: contain;
+  object-fit: cover;
 `
 
 export const ClubTitle = styled.div`

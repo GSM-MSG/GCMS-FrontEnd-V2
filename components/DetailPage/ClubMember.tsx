@@ -23,7 +23,7 @@ export default function ClubMember() {
         <S.HeadProfile>
           {clubDetail.head.profileImg ? (
             <S.MemberProfile
-              alt='progile img'
+              alt='profile img'
               src={clubDetail.head.profileImg}
               width={48}
               height={48}

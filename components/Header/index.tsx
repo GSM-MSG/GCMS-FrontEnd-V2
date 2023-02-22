@@ -1,4 +1,3 @@
-import useUser from '@/hooks/useUser'
 import Link from 'next/link'
 import Profile from './Profile'
 import * as S from './style'
@@ -11,11 +10,10 @@ import { setModal } from '@/store/loginModal'
 export default function Header() {
   const dispatch = useDispatch()
 
-  const { loginModal } = useSelector((state: RootState) => ({
+  const { loginModal, user } = useSelector((state: RootState) => ({
     loginModal: state.loginModal,
+    user: state.user,
   }))
-
-  const { user, isLoggned } = useUser()
 
   return (
     <>
@@ -26,7 +24,7 @@ export default function Header() {
           </Link>
           <S.NavWrapper>
             <Link href='/'>홈</Link>
-            {isLoggned ? (
+            {user.name ? (
               <Link href='/my'>
                 <Profile user={user} />
               </Link>

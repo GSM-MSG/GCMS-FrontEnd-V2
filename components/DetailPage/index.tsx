@@ -35,7 +35,7 @@ export default function DetailPage() {
   })
 
   useEffect(() => {
-    fetch()
+    if (clubID) fetch()
   }, [clubID])
 
   return (

@@ -3,12 +3,13 @@ import { TokensType } from '@/type/api/TokenManager'
 import axios from 'axios'
 
 class TokenManager {
-  private _accessToken: string | null
-  private _refreshToken: string | null
-  private _accessExp: string | null
-  private _refreshExp: string | null
+  private _accessToken: string | null = null
+  private _refreshToken: string | null = null
+  private _accessExp: string | null = null
+  private _refreshExp: string | null = null
 
   constructor() {
+    if (typeof window === undefined) return
     this._accessToken = localStorage.getItem(accessToken)
     this._refreshToken = localStorage.getItem(refreshToken)
     this._accessExp = localStorage.getItem(accessExp)
@@ -43,6 +44,8 @@ class TokenManager {
 
       return true
     } catch (e) {
+      this.removeTokens()
+      window.location.href = '/'
       return false
     }
   }
@@ -57,6 +60,18 @@ class TokenManager {
     localStorage.setItem(refreshToken, tokens.refreshToken)
     localStorage.setItem(accessExp, tokens.accessExp)
     localStorage.setItem(refreshExp, tokens.refreshExp)
+  }
+
+  removeTokens() {
+    this._accessToken = null
+    this._refreshToken = null
+    this._accessExp = null
+    this._refreshExp = null
+
+    localStorage.removeItem(accessToken)
+    localStorage.removeItem(refreshToken)
+    localStorage.removeItem(accessExp)
+    localStorage.removeItem(refreshExp)
   }
 
   get accessToken() {

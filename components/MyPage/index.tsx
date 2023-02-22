@@ -1,7 +1,6 @@
 import * as SVG from '@/assets/svg'
 import { useFetch } from '@/hooks'
 import { ProfileType } from '@/type/common'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import SEO from '../SEO'
@@ -17,7 +16,7 @@ export default function MyPage() {
 
   useEffect(() => {
     fetch()
-  }, [fetch])
+  }, [])
 
   const ClubWrapper = (clubtype: string) => {
     return data?.clubs.map((item) => {

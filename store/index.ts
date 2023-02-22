@@ -8,7 +8,6 @@ import applicantSlice from './applicant'
 import clubDetailSlice from './clubDetail'
 import loginModalSlice from './loginModal'
 import { createWrapper, HYDRATE } from 'next-redux-wrapper'
-import memberSlice from './member'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
@@ -20,7 +19,6 @@ const rootReducer = combineReducers({
   applicant: applicantSlice.reducer,
   clubDetail: clubDetailSlice.reducer,
   loginModal: loginModalSlice.reducer,
-  member: memberSlice.reducer,
 })
 
 const reducer = (state: RootState | undefined, action: AnyAction) => {

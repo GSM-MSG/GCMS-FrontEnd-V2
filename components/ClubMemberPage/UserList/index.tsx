@@ -3,7 +3,6 @@ import UserItem from './UserItem'
 import { MemberListProps } from '@/type/components/MemberPage'
 
 export default function UserList({ data, value }: MemberListProps) {
-  console.log(data)
   return (
     <S.Layer>
       <S.UserContainer>

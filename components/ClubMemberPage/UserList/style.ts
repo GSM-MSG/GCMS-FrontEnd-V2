@@ -8,7 +8,7 @@ export const Layer = styled.div`
 
 export const UserContainer = styled.div`
   width: 100%;
-  height: 100%;
+  max-height: 500px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -23,7 +23,6 @@ export const UserWrapper = styled.div`
   background: #242427;
   display: flex;
   border-radius: 10px;
-  overflow-x: hidden;
 `
 
 export const UserBox = styled.div`

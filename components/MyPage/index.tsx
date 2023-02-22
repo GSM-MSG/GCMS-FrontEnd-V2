@@ -25,12 +25,7 @@ export default function MyPage() {
         return (
           <S.ClubWrapper key={item.id}>
             <S.ClubImg>
-              <Image
-                src={item.bannerImg}
-                alt='bannerImg'
-                width={50}
-                height={50}
-              />
+              <img src={item.bannerImg} alt='bannerImg' />
             </S.ClubImg>
             <S.ClubName>{item.title}</S.ClubName>
             <Link href={`/applicant/${item.id}`}>
@@ -51,12 +46,7 @@ export default function MyPage() {
             <S.ProfileContent>
               <S.ProfileImg>
                 {data?.profileImg && (
-                  <Image
-                    src={data?.profileImg ?? ''}
-                    alt='profileImg'
-                    width={60}
-                    height={60}
-                  />
+                  <img src={data?.profileImg} alt='profileImg' />
                 )}
               </S.ProfileImg>
               <p>{data?.name}님</p>

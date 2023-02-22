@@ -283,10 +283,10 @@ export const SideBtn = styled.button<ApplyStateType>`
   background: #4164e1;
   border-radius: 7px;
 
-  ${({ isHead, isApplied, isOpened }) => {
+  ${({ isHead, isApplied, isOpened, isMember }) => {
     if ((isHead && !isOpened) || (!isHead && !isApplied)) return ''
 
-    if (isOpened)
+    if (isOpened || isMember)
       return 'color: #FF6666;background: #391F21;border: 1px solid #FF6666;'
     return 'color: #C1C1C1;background: #373737; cursor: auto;'
   }}

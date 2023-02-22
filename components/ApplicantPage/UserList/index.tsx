@@ -9,11 +9,7 @@ export default function UserList({ data, value }: UserListProps) {
         {data?.applicantList.map(
           (item) =>
             item.name.includes(value) && (
-              <UserItem
-                item={item}
-                key={item.uuid}
-                userScope={data.userScope}
-              />
+              <UserItem item={item} key={item.uuid} userScope={data.scope} />
             )
         )}
       </S.UserContainer>

@@ -43,7 +43,7 @@ export default function ApplicantPage() {
             register={register('value')}
           />
         </S.InputBox>
-        {data?.userScope === 'HEAD' && (
+        {data?.scope === 'HEAD' && (
           <>
             <SelectedUserImg selected={applicant} />
             <S.AllSelectBox>
@@ -56,7 +56,7 @@ export default function ApplicantPage() {
           </>
         )}
         <UserList data={data} value={watch('value').trim()} />
-        {data?.userScope === 'HEAD' && <ChoiceUser />}
+        {data?.scope === 'HEAD' && <ChoiceUser />}
       </S.Layer>
     </S.Positioner>
   )

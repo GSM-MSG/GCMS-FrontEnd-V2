@@ -283,10 +283,13 @@ export const SideBtn = styled.button<ApplyStateType>`
   background: #4164e1;
   border-radius: 7px;
 
-  ${({ isHead, isApplied, isOpened, isMember }) => {
-    if ((isHead && !isOpened) || (!isHead && !isApplied && !isMember)) return ''
-
-    if (isOpened || isMember)
+  ${({ isHead, isApplied, isOpened, isMember, isOther }) => {
+    if (
+      (isHead && !isOpened) ||
+      (!isHead && !isApplied && !isMember && !isOther)
+    )
+      return ''
+    else if ((isOpened || isMember) && !isOther)
       return 'color: #FF6666;background: #391F21;border: 1px solid #FF6666;'
     return 'color: #C1C1C1;background: #373737; cursor: auto;'
   }}

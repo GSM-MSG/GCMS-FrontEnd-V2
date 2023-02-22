@@ -77,7 +77,7 @@ export const data = [
     type: 'EDITORIAL',
     isOpened: true,
     scope: 'OTHER',
-    isApplied: true,
+    isApplied: false,
     ...detailData,
   },
   {
@@ -109,7 +109,7 @@ export const data = [
     type: 'FREEDOM',
     isOpened: true,
     scope: 'OTHER',
-    isApplied: true,
+    isApplied: false,
     ...detailData,
   },
 ]

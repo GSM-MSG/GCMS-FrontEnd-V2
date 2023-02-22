@@ -3,4 +3,5 @@ export type ApplyStateType = {
   isApplied: boolean
   isHead: boolean
   isMember: boolean
+  isOther: boolean
 }

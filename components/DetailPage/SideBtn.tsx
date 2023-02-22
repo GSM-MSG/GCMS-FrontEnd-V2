@@ -15,6 +15,11 @@ const SideBtn = () => {
   const isApplied = clubDetail.isApplied
   const isHead = clubDetail.scope === 'HEAD'
   const isMember = clubDetail.scope === 'MEMBER'
+  const isOther = clubDetail.scope === 'OTHER'
+
+  console.log(`scope : ${clubDetail.scope}`)
+  console.log(`isOpened : ${clubDetail.isOpened}`)
+  console.log(`isApplied : ${clubDetail.isApplied}`)
 
   const { fetch: apply } = useFetch({
     url: `applicant/${clubDetail.id}`,
@@ -68,7 +73,7 @@ const SideBtn = () => {
       else return open()
     } else if (isMember) return exit()
 
-    if (!isOpened) return
+    if (!isOpened || isOther) return
     if (isApplied) return cancel()
     apply()
   }
@@ -79,6 +84,7 @@ const SideBtn = () => {
       else return '동아리 열기'
     } else if (isMember) return '탈퇴하기'
 
+    if (isOther) return '지원 불가'
     if (!isOpened) return '준비중'
     if (isApplied) return '신청 취소'
     else return '지원하기'
@@ -91,6 +97,7 @@ const SideBtn = () => {
       onClick={handleAplly}
       isHead={isHead}
       isMember={isMember}
+      isOther={isOther}
     >
       {btnMessage()}
     </S.SideBtn>

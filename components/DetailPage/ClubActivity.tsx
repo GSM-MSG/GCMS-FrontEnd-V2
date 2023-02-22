@@ -11,7 +11,7 @@ export default function ClubActivity() {
     <S.ClubActivity>
       <h3>동아리 활동</h3>
       <div>
-        {clubDetail.activityImgs.map((url, index) => (
+        {clubDetail.activityImgs?.map((url, index) => (
           <S.ActivityImg key={index}>
             <S.NextImg alt='activity img' src={url} width={250} height={250} />
           </S.ActivityImg>

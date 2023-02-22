@@ -11,7 +11,7 @@ export default function Contact() {
   return (
     <S.Contact>
       <div>
-        {clubDetail.head.profileImg ? (
+        {clubDetail.head?.profileImg ? (
           <S.ProfileImg
             alt='progile img'
             src={clubDetail.head.profileImg}

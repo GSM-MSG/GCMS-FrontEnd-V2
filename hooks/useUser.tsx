@@ -1,7 +1,7 @@
 import InitMocks from '@/mocks'
 import { RootState } from '@/store'
 import { setUser } from '@/store/user'
-import UserType from '@/type/store/userType'
+import UserInitialState from '@/type/store/user'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,7 +11,7 @@ const useUser = () => {
   const { user } = useSelector((state: RootState) => ({ user: state.user }))
   const dispatch = useDispatch()
   const router = useRouter()
-  const { fetch } = useFetch<UserType>({
+  const { fetch } = useFetch<UserInitialState>({
     method: 'get',
     url: '/user',
     onSuccess: (data) => {

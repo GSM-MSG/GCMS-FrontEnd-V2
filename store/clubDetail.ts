@@ -32,6 +32,14 @@ const clubDetailSlice = createSlice({
       state = action.payload
       return state
     },
+    setIsOpened: (state) => {
+      state.isOpened = !state.isOpened
+      return state
+    },
+    setIsApplied: (state) => {
+      state.isApplied = !state.isApplied
+      return state
+    },
   },
 })
 export const { setClubDetail } = clubDetailSlice.actions

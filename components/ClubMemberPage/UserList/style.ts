@@ -8,21 +8,27 @@ export const Layer = styled.div`
 
 export const UserContainer = styled.div`
   width: 100%;
-  max-height: 500px;
+  max-height: 520px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow-y: scroll;
+
+  @media (min-height: 962px) {
+    max-height: calc(100vh - 441px);
+  }
 
   &::-webkit-scrollbar {
     display: none;
   }
 `
 export const UserWrapper = styled.div`
+  position: relative;
   width: 100%;
   background: #242427;
   display: flex;
   border-radius: 10px;
+  z-index: 0;
 `
 
 export const UserBox = styled.div`
@@ -35,6 +41,12 @@ export const UserBox = styled.div`
   justify-content: space-between;
   padding: 0 16px;
   gap: 20px;
+  transition: 0.5s;
+
+  @media (max-width: 539px) {
+    width: ${({ option }: { option: boolean }) =>
+      option ? 'calc(100% - 100px)' : '100%'};
+  }
 `
 
 export const UserImgBox = styled.div`
@@ -118,13 +130,18 @@ export const CheckBtnLabel = styled.label`
 `
 
 export const OptionBox = styled.div`
+  position: absolute;
+  right: 0;
   width: 20%;
+  min-width: 100px;
+  height: 100%;
   display: flex;
   justify-content: center;
+  z-index: -1;
 `
 
 export const OptionBtn = styled.button`
-  width: 100%;
+  width: 101%;
   background: none;
   border: none;
   color: #545454;

@@ -57,12 +57,10 @@ export default function UserItem({ item, scope }: MemberItemProps) {
           )}
         </S.CheckBox>
       </S.UserBox>
-      {isSelected && (
-        <S.OptionBox>
-          <S.OptionBtn onClick={() => onKick(item.uuid)}>추방</S.OptionBtn>
-          <S.OptionBtn onClick={() => onDelegate(item.uuid)}>위임</S.OptionBtn>
-        </S.OptionBox>
-      )}
+      <S.OptionBox>
+        <S.OptionBtn onClick={() => onKick(item.uuid)}>추방</S.OptionBtn>
+        <S.OptionBtn onClick={() => onDelegate(item.uuid)}>위임</S.OptionBtn>
+      </S.OptionBox>
     </S.UserWrapper>
   )
 }

@@ -1,4 +1,4 @@
-import { UserInitialState } from '@/type/store/user'
+import UserInitialState from '@/type/store/user'
 import * as S from './style'
 
 interface Props {

@@ -21,7 +21,7 @@ export default function ClubMember() {
           </S.HeadProfile>
         )}
         <S.HeadProfile>
-          {clubDetail.head.profileImg ? (
+          {clubDetail.head?.profileImg ? (
             <S.MemberProfile
               alt='profile img'
               src={clubDetail.head.profileImg}
@@ -33,12 +33,12 @@ export default function ClubMember() {
           )}
           <S.HeadInfo>
             <p>동아리 부장</p>
-            <span>{clubDetail.head.name}</span>
+            <span>{clubDetail.head?.name}</span>
           </S.HeadInfo>
         </S.HeadProfile>
       </div>
       <span>
-        {clubDetail.member.map((data) =>
+        {clubDetail.member?.map((data) =>
           data.profileImg ? (
             <S.MemberProfile
               key={data.uuid}

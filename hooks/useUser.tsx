@@ -1,7 +1,7 @@
 import InitMocks from '@/mocks'
 import { RootState } from '@/store'
 import { setUser } from '@/store/user'
-import { UserInitialState } from '@/type/store/user'
+import UserInitialState from '@/type/store/user'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'

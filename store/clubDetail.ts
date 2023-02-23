@@ -1,4 +1,4 @@
-import { ClubDetailType } from '@/type/common'
+import { ClubDetailType, ScopeType } from '@/type/common'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const initialState: ClubDetailType = {
@@ -40,9 +40,13 @@ const clubDetailSlice = createSlice({
       state.isApplied = !state.isApplied
       return state
     },
+    setScope: (state, action: PayloadAction<ScopeType>) => {
+      state.scope = action.payload
+      return state
+    },
   },
 })
-export const { setClubDetail, setIsOpened, setIsApplied } =
+export const { setClubDetail, setIsOpened, setIsApplied, setScope } =
   clubDetailSlice.actions
 
 export default clubDetailSlice

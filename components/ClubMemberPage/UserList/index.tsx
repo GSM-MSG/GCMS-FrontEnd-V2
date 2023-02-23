@@ -1,15 +1,15 @@
 import * as S from './style'
-import { UserListProps } from '@/type/components/ApplicantPage'
 import UserItem from './UserItem'
+import { MemberListProps } from '@/type/components/MemberPage'
 
-export default function UserList({ data, value }: UserListProps) {
+export default function UserList({ data, value }: MemberListProps) {
   return (
     <S.Layer>
       <S.UserContainer>
-        {data?.applicantList.map(
+        {data?.clubMember?.map(
           (item) =>
             item.name.includes(value) && (
-              <UserItem item={item} key={item.uuid} userScope={data.scope} />
+              <UserItem item={item} key={item.uuid} scope={data.scope} />
             )
         )}
       </S.UserContainer>

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import * as S from './style'
 
-export default function Error404Page() {
+export default function NotFoundPage() {
   return (
     <S.Positioner>
       <S.Layer>

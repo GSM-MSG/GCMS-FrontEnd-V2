@@ -1,5 +1,5 @@
-import Error404Page from '@/components/404Page'
+import NotFoundPage from '@/components/NotFoundPage'
 
-export default function Error404() {
-  return <Error404Page />
+export default function NotFound() {
+  return <NotFoundPage />
 }

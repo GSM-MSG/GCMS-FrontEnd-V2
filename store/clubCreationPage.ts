@@ -18,5 +18,5 @@ const clubCreationPageSlice = createSlice({
   },
 })
 
-export const { nextPage, backPage } = clubCreationPageSlice.actions
+export const { nextPage, backPage, resetPage } = clubCreationPageSlice.actions
 export default clubCreationPageSlice

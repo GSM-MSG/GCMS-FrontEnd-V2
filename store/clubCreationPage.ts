@@ -12,6 +12,9 @@ const clubCreationPageSlice = createSlice({
       if (state <= 1) throw new Error('There is no previous page')
       return (state -= 1)
     },
+    resetPage: () => {
+      return 1
+    },
   },
 })
 

@@ -26,7 +26,7 @@ export default function MyPage() {
             <S.ClubImg>
               <img src={item.bannerImg} alt='bannerImg' />
             </S.ClubImg>
-            <S.ClubName>{item.title}</S.ClubName>
+            <S.ClubName>{item.name}</S.ClubName>
             <Link href={`/applicant/${item.id}`}>
               <SVG.KebabMenuIcon />
             </Link>

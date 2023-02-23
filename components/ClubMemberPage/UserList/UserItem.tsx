@@ -3,32 +3,44 @@ import { MemberItemProps } from '@/type/components/MemberPage'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import * as S from './style'
+import TokenManager from '@/api/TokenManager'
 
 export default function UserItem({ item, scope }: MemberItemProps) {
   const router = useRouter()
   const clubID = router.query.clubID
   const [isSelected, setSelected] = useState<boolean>(false)
+  const tokenManager = new TokenManager()
 
   const { fetch: kick } = useFetch({
     url: `/club-member/${clubID}`,
     method: 'post',
     successMessage: '회원 추방에 성공하셨습니다',
+    onSuccess: () => {
+      router.push('/')
+    },
   })
 
   const { fetch: delegate } = useFetch({
     url: `/club-member/${clubID}`,
     method: 'patch',
     successMessage: '부장 위임에 성공하셨습니다',
+    onSuccess: () => {
+      router.push('/')
+    },
   })
 
   const onKick = async (uuid: string) => {
     const isConfirm = confirm(`정말로 회원 추방을 하시겠습니까?`)
-    if (isConfirm) await kick({ uuid: uuid })
+    if (!isConfirm) return
+    tokenManager.removeTokens()
+    await kick({ uuid: uuid })
   }
 
   const onDelegate = async (uuid: string) => {
     const isConfirm = confirm(`정말로 부장 위임을 하시겠습니까?`)
-    if (isConfirm) await delegate({ uuid: uuid })
+    if (!isConfirm) return
+    tokenManager.removeTokens()
+    await delegate({ uuid: uuid })
   }
   return (
     <S.UserWrapper>

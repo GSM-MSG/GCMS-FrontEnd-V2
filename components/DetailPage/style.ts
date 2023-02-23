@@ -34,8 +34,9 @@ export const ClubBanner = styled.div`
   height: 332px;
   background: #373737;
   border-radius: 10px;
+  overflow: hidden;
   img {
-    object-fit: contain;
+    object-fit: cover;
   }
 `
 
@@ -151,10 +152,12 @@ export const ClubActivity = styled.div`
 export const ActivityImg = styled.div`
   width: 250px;
   aspect-ratio: 1/1;
-  object-fit: contain;
   overflow: hidden;
   background: linear-gradient(0deg, #373737, #373737), url(image.png);
   border-radius: 10px;
+  img {
+    object-fit: cover;
+  }
   @media (max-width: 750px) {
     width: 42vw;
   }

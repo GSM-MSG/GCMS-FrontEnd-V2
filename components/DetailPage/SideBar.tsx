@@ -17,7 +17,7 @@ export default function SideBar() {
         <SideBtn />
         <S.NotionInfo>
           <p>{clubDetail.name}이/가 더 궁금하다면?</p>
-          <Link href={clubDetail.notionLink}>
+          <Link href={`${clubDetail.notionLink}`}>
             노션 보러가기
             <i>
               <SVG.ShortcutsIcon />

@@ -1,6 +1,7 @@
 import * as SVG from '@/assets/svg'
 import { useFetch } from '@/hooks'
 import { ClubType, ProfileType } from '@/type/common'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import SEO from '../SEO'
@@ -24,7 +25,12 @@ export default function MyPage() {
         return (
           <S.ClubWrapper key={item.id}>
             <S.ClubImg>
-              <img src={item.bannerImg} alt='bannerImg' />
+              <Image
+                src={item.bannerImg}
+                alt='bannerImg'
+                width={50}
+                height={50}
+              />
             </S.ClubImg>
             <S.ClubName>{item.name}</S.ClubName>
             <Link href={`/applicant/${item.id}`}>
@@ -45,7 +51,12 @@ export default function MyPage() {
             <S.ProfileContent>
               <S.ProfileImg>
                 {data?.profileImg && (
-                  <img src={data?.profileImg} alt='profileImg' />
+                  <Image
+                    src={data.profileImg}
+                    alt='profileImg'
+                    width={60}
+                    height={60}
+                  />
                 )}
               </S.ProfileImg>
               <p>{data?.name}님</p>

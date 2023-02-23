@@ -1,3 +1,4 @@
+import { checkUrls } from '@/lib/checkUrlList'
 import InitMocks from '@/mocks'
 import { RootState } from '@/store'
 import { setUser } from '@/store/user'
@@ -11,6 +12,7 @@ const useUser = () => {
   const { user } = useSelector((state: RootState) => ({ user: state.user }))
   const dispatch = useDispatch()
   const router = useRouter()
+  const checkUrl = checkUrls.includes(router.route)
   const { fetch } = useFetch<UserInitialState>({
     method: 'get',
     url: '/user',
@@ -18,7 +20,7 @@ const useUser = () => {
       dispatch(setUser(data))
     },
     onFailure: () => {
-      router.route !== '/' && router.replace('/')
+      !checkUrl && router.replace('/')
     },
   })
 

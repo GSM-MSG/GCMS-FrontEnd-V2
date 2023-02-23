@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useFetch from './useFetch'
 
-const useUser = () => {
+const useLoggedIn = () => {
   const { user } = useSelector((state: RootState) => ({ user: state.user }))
   const dispatch = useDispatch()
   const router = useRouter()
@@ -36,4 +36,4 @@ const useUser = () => {
   return { user, isLoggned: !!user.name, fetchUser: fetch }
 }
 
-export default useUser
+export default useLoggedIn

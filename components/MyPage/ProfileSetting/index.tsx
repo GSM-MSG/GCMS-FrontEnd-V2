@@ -4,16 +4,21 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { ApiType, OnDeleteType } from '@/type/components/MyPage'
 import useLoggedIn from '@/hooks/useLoggedIn'
 import { useRouter } from 'next/router'
+import TokenManager from '@/api/TokenManager'
 
 export default function ProfileSetting() {
   const [apiConfig, setApiConfig] = useState<ApiType>({
     url: '',
     method: 'get',
   })
+  const tokenManager = new TokenManager()
 
   const { fetch } = useFetch({
     url: apiConfig.url,
     method: apiConfig.method,
+    onSuccess: () => {
+      tokenManager.removeTokens()
+    },
   })
   const { upload } = useUpload()
   const { isLoggned } = useLoggedIn()

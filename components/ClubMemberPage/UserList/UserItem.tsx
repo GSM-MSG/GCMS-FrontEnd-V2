@@ -6,16 +6,17 @@ import * as S from './style'
 
 export default function UserItem({ item, scope }: MemberItemProps) {
   const router = useRouter()
+  const clubID = router.query.clubID
   const [isSelected, setSelected] = useState<boolean>(false)
 
   const { fetch: kick } = useFetch({
-    url: `/club-member/${router.query.clubID}`,
+    url: `/club-member/${clubID}`,
     method: 'post',
     successMessage: '회원 추방에 성공하셨습니다',
   })
 
   const { fetch: delegate } = useFetch({
-    url: `/club-member/${router.query.clubID}`,
+    url: `/club-member/${clubID}`,
     method: 'patch',
     successMessage: '부장 위임에 성공하셨습니다',
   })

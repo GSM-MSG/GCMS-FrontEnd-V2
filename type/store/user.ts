@@ -1,13 +1,7 @@
+import { MemberType } from '../common'
 import ClubType from '../common/ClubType'
 
-type UserInitialState = {
-  uuid: string
-  email: string
-  name: string
-  grade: number
-  classNum: number
-  number: number
-  profileImg?: string
+interface UserInitialState extends MemberType {
   clubs: ClubInfoType[]
 }
 

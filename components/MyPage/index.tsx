@@ -1,6 +1,6 @@
 import * as SVG from '@/assets/svg'
 import { useFetch } from '@/hooks'
-import { ProfileType } from '@/type/common'
+import { ClubType, ProfileType } from '@/type/common'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import SEO from '../SEO'
@@ -18,7 +18,7 @@ export default function MyPage() {
     fetch()
   }, [])
 
-  const ClubWrapper = (clubtype: string) => {
+  const ClubWrapper = (clubtype: ClubType) => {
     return data?.clubs.map((item) => {
       if (item.type === clubtype)
         return (
@@ -71,7 +71,7 @@ export default function MyPage() {
               </S.ClubContainer>
               <S.ClubContainer>
                 <S.ClubType>사설동아리</S.ClubType>
-                {ClubWrapper('EDITIONAL')}
+                {ClubWrapper('EDITORIAL')}
               </S.ClubContainer>
             </S.ClubBox>
             {isSetting && <ProfileSetting />}

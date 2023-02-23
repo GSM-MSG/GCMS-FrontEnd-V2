@@ -10,6 +10,7 @@ import Member from '../Common/Member'
 import SelectUserList from '../Common/SelectUserList'
 import SubmitButton from '../Common/SubmitButton'
 import * as S from './AddClubMember.style'
+import { resetPage } from '@/store/clubCreationPage'
 
 interface Props {
   onClose: () => void
@@ -30,6 +31,7 @@ const AddClubMember = ({ onClose }: Props) => {
     method: 'post',
     onSuccess: () => {
       dispatch(clearClubData())
+      dispatch(resetPage())
       onClose()
     },
   })

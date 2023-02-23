@@ -1,6 +1,6 @@
 import { accessToken, refreshToken, accessExp, refreshExp } from '@/lib/token'
 import { TokensType } from '@/type/api/TokenManager'
-import axios from 'axios'
+import axios, { isAxiosError } from 'axios'
 
 class TokenManager {
   private _accessToken: string | null = null
@@ -24,9 +24,19 @@ class TokenManager {
     return expiredAt >= new Date()
   }
 
-  async tokenReissue(): Promise<boolean> {
+  async tokenReissue() {
     if (!this.validateToken(this._refreshExp, this._refreshToken)) return false
 
+    let res = await this.refreshQuery()
+    if (res === 401) res = await this.refreshQuery()
+
+    if (!res) {
+      this.removeTokens()
+      window.location.href = '/'
+    }
+  }
+
+  private async refreshQuery() {
     try {
       const { data } = await axios.patch<TokensType>(
         '/auth',
@@ -41,11 +51,9 @@ class TokenManager {
       )
 
       this.setTokens(data)
-
       return true
     } catch (e) {
-      this.removeTokens()
-      window.location.href = '/'
+      if (isAxiosError(e) && e.response?.status === 401) return 401
       return false
     }
   }

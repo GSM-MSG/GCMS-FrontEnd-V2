@@ -113,6 +113,12 @@ export const ClubWrapper = styled.div`
   @media (max-width: 530px) {
     width: 100%;
   }
+
+  a {
+    width: 9px;
+    display: flex;
+    justify-content: center;
+  }
 `
 export const ClubImg = styled(ProfileImg)`
   width: 40px;

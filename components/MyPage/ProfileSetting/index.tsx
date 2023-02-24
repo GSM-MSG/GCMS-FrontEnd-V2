@@ -7,21 +7,24 @@ import { useRouter } from 'next/router'
 import TokenManager from '@/api/TokenManager'
 
 export default function ProfileSetting() {
+  const { upload } = useUpload()
+  const { isLoggned } = useLoggedIn()
+  const router = useRouter()
+
   const [apiConfig, setApiConfig] = useState<ApiType>({
     url: '',
     method: 'get',
   })
+
   const { fetch } = useFetch({
     url: apiConfig.url,
     method: apiConfig.method,
     onSuccess: () => {
       const tokenManager = new TokenManager()
       tokenManager.removeTokens()
+      router.push('/')
     },
   })
-  const { upload } = useUpload()
-  const { isLoggned } = useLoggedIn()
-  const router = useRouter()
 
   const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = await e.currentTarget.files?.item(0)

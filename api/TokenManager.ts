@@ -1,6 +1,6 @@
 import { accessToken, refreshToken, accessExp, refreshExp } from '@/lib/token'
 import { TokensType } from '@/type/api/TokenManager'
-import axios, { isAxiosError } from 'axios'
+import axios from 'axios'
 
 class TokenManager {
   private _accessToken: string | null = null
@@ -27,10 +27,9 @@ class TokenManager {
   async tokenReissue() {
     if (!this.validateToken(this._refreshExp, this._refreshToken)) return false
 
-    let res = await this.refreshQuery()
-    if (res === 401) res = await this.refreshQuery()
+    const res = await this.refreshQuery()
 
-    if (!res || res === 401) {
+    if (!res) {
       this.removeTokens()
       window.location.href = '/'
     }
@@ -38,6 +37,9 @@ class TokenManager {
 
   private async refreshQuery() {
     try {
+      const CancelToken = axios.CancelToken
+      const source = CancelToken.source()
+
       const { data } = await axios.patch<TokensType>(
         '/auth',
         {},
@@ -47,13 +49,13 @@ class TokenManager {
           headers: {
             'Refresh-Token': `Bearer ${this._refreshToken}`,
           },
+          cancelToken: source.token,
         }
       )
 
       this.setTokens(data)
       return true
     } catch (e) {
-      if (isAxiosError(e) && e.response?.status === 401) return 401
       return false
     }
   }

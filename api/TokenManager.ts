@@ -30,7 +30,7 @@ class TokenManager {
     let res = await this.refreshQuery()
     if (res === 401) res = await this.refreshQuery()
 
-    if (!res) {
+    if (!res || res === 401) {
       this.removeTokens()
       window.location.href = '/'
     }

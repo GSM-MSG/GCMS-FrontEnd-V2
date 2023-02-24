@@ -1,4 +1,5 @@
 import { ClubListType } from '@/type/common'
+import Image from 'next/image'
 import * as S from './style'
 
 interface Props {
@@ -9,12 +10,7 @@ export default function ClubItem({ club }: Props) {
   return (
     <S.ClubItem>
       <S.ClubImg>
-        <S.NextImg
-          alt='banerr img'
-          src={club.bannerImg}
-          width={100}
-          height={100}
-        />
+        <Image alt='banerr img' src={club.bannerImg} fill />
       </S.ClubImg>
       <S.ClubTitle>
         <h3>{club.name}</h3>

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import Image from 'next/image'
 
 export const ClubWrapper = styled.div`
   width: 100%;
@@ -68,6 +67,7 @@ export const ClubImg = styled.div`
   aspect-ratio: 1 / 1;
   background: #2d2d2f;
   border-radius: 10px;
+  position: relative;
   img {
     object-fit: cover;
   }
@@ -93,8 +93,4 @@ export const ClubTitle = styled.div`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
-`
-export const NextImg = styled(Image)`
-  width: 100% !important;
-  height: 100% !important;
 `

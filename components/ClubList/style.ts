@@ -68,6 +68,7 @@ export const ClubImg = styled.div`
   background: #2d2d2f;
   border-radius: 10px;
   position: relative;
+  overflow: hidden;
   img {
     object-fit: cover;
   }

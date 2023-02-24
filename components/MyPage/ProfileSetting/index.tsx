@@ -11,12 +11,11 @@ export default function ProfileSetting() {
     url: '',
     method: 'get',
   })
-  const tokenManager = new TokenManager()
-
   const { fetch } = useFetch({
     url: apiConfig.url,
     method: apiConfig.method,
     onSuccess: () => {
+      const tokenManager = new TokenManager()
       tokenManager.removeTokens()
     },
   })

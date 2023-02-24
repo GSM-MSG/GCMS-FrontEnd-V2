@@ -21,28 +21,28 @@ const getUser = rest.get(serverApi('/user'), (_req, res, ctx) => {
           bannerImg:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZ2tjhm-hB80ErkhPt0zxaYo6iKW0tsKPdQ&usqp=CAU',
 
-          title: '테스트',
+          name: '테스트',
         },
         {
           id: 2,
           type: 'FREEDOM',
           bannerImg:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZ2tjhm-hB80ErkhPt0zxaYo6iKW0tsKPdQ&usqp=CAU',
-          title: '테스트2',
+          name: '테스트2',
         },
         {
           id: 3,
           type: 'FREEDOM',
           bannerImg:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZ2tjhm-hB80ErkhPt0zxaYo6iKW0tsKPdQ&usqp=CAU',
-          title: '테스트3',
+          name: '테스트3',
         },
         {
           id: 4,
-          type: 'EDITIONAL',
+          type: 'EDITORIAL',
           bannerImg:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZ2tjhm-hB80ErkhPt0zxaYo6iKW0tsKPdQ&usqp=CAU',
-          title: '테스트4',
+          name: '테스트4',
         },
       ],
     })

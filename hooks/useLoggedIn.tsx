@@ -8,7 +8,11 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useFetch from './useFetch'
 
-const useLoggedIn = () => {
+type Props = {
+  onFetch?: boolean
+}
+
+const useLoggedIn = ({ onFetch = true }: Props) => {
   const { user } = useSelector((state: RootState) => ({ user: state.user }))
   const dispatch = useDispatch()
   const router = useRouter()
@@ -25,7 +29,7 @@ const useLoggedIn = () => {
   })
 
   useEffect(() => {
-    if (user.name) return
+    if (user.name || !onFetch) return
     ;(async () => {
       await InitMocks()
 

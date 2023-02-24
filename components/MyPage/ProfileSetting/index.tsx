@@ -8,7 +8,7 @@ import TokenManager from '@/api/TokenManager'
 
 export default function ProfileSetting() {
   const { upload } = useUpload()
-  const { isLoggned } = useLoggedIn()
+  const { isLoggned } = useLoggedIn({})
   const router = useRouter()
 
   const [apiConfig, setApiConfig] = useState<ApiType>({

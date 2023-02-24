@@ -16,10 +16,8 @@ export const Positioner = styled.div`
   }
 
   @media (max-width: 530px) {
-    position: relative;
-    width: 100%;
-    top: -54px;
-    left: 0;
+    min-width: 100px;
+    top: 160px;
   }
 `
 

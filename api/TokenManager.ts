@@ -62,7 +62,7 @@ class TokenManager {
   }
 
   private addMinuteDate(currentDate: string, addMinute: number): Date {
-    const expiredAt = new Date(currentDate)
+    const expiredAt = currentDate ? new Date(currentDate) : new Date()
     expiredAt.setMinutes(expiredAt.getMinutes() - addMinute)
 
     return expiredAt

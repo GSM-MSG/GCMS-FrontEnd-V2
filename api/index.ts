@@ -6,6 +6,8 @@ const API = axios.create({
   withCredentials: true,
 })
 
+let refreshTime = ''
+
 API.interceptors.request.use(async (config) => {
   const tokenManager = new TokenManager()
 
@@ -15,7 +17,7 @@ API.interceptors.request.use(async (config) => {
       tokenManager.accessToken
     )
   )
-    await tokenManager.tokenReissue()
+    refreshTime = await tokenManager.tokenReissue(refreshTime)
 
   config.headers['Authorization'] = tokenManager.accessToken
     ? `Bearer ${tokenManager.accessToken}`

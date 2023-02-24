@@ -18,28 +18,30 @@ class TokenManager {
 
   validateToken(expiredString: string | null, token: string | null): boolean {
     if (!expiredString || !token) return false
-    const expiredAt = new Date(expiredString)
-    expiredAt.setMinutes(expiredAt.getMinutes() - 1)
 
-    return expiredAt >= new Date()
+    return this.addMinuteDate(expiredString, -1) >= new Date()
   }
 
-  async tokenReissue() {
-    if (!this.validateToken(this._refreshExp, this._refreshToken)) return false
+  async tokenReissue(refreshTime: string): Promise<string> {
+    if (
+      !this.validateToken(this._refreshExp, this._refreshToken) ||
+      this.addMinuteDate(refreshTime, 1) >= new Date()
+    )
+      return refreshToken
 
     const res = await this.refreshQuery()
 
     if (!res) {
       this.removeTokens()
       window.location.href = '/'
+      return ''
     }
+
+    return new Date().toString()
   }
 
   private async refreshQuery() {
     try {
-      const CancelToken = axios.CancelToken
-      const source = CancelToken.source()
-
       const { data } = await axios.patch<TokensType>(
         '/auth',
         {},
@@ -49,7 +51,6 @@ class TokenManager {
           headers: {
             'Refresh-Token': `Bearer ${this._refreshToken}`,
           },
-          cancelToken: source.token,
         }
       )
 
@@ -58,6 +59,13 @@ class TokenManager {
     } catch (e) {
       return false
     }
+  }
+
+  private addMinuteDate(currentDate: string, addMinute: number): Date {
+    const expiredAt = new Date(currentDate)
+    expiredAt.setMinutes(expiredAt.getMinutes() - addMinute)
+
+    return expiredAt
   }
 
   setTokens(tokens: TokensType) {

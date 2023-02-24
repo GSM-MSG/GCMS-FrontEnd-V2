@@ -27,7 +27,7 @@ class TokenManager {
       !this.validateToken(this._refreshExp, this._refreshToken) ||
       this.addMinuteDate(refreshTime, 1) >= new Date()
     )
-      return refreshToken
+      return refreshTime
 
     const res = await this.refreshQuery()
 

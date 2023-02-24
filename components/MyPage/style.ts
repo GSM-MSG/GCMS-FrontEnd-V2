@@ -63,7 +63,13 @@ export const ProfileImg = styled.div`
   }
 `
 
-export const SettingButton = styled.div``
+export const SettingButton = styled.div`
+  width: 9px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+`
 
 export const ContentBox = styled.div`
   display: flex;

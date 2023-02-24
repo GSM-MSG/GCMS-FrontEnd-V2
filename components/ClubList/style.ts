@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Image from 'next/image'
 
 export const ClubWrapper = styled.div`
   width: 100%;
@@ -62,12 +63,14 @@ export const ClubItem = styled.div`
     width: 80vw;
   }
 `
-export const ClubImg = styled.img`
+export const ClubImg = styled.div`
   width: 100%;
   aspect-ratio: 1 / 1;
   background: #2d2d2f;
   border-radius: 10px;
-  object-fit: cover;
+  img {
+    object-fit: cover;
+  }
 `
 
 export const ClubTitle = styled.div`
@@ -90,4 +93,8 @@ export const ClubTitle = styled.div`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
+`
+export const NextImg = styled(Image)`
+  width: 100% !important;
+  height: 100% !important;
 `

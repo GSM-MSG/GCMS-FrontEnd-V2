@@ -7,22 +7,22 @@ import { ClubDetailType } from '@/type/common'
 
 export default function ClubNav() {
   const router = useRouter()
-  const clubID = router.query.clubID
+  const clubId = router.query.clubID
 
   const { fetch, data } = useFetch<ClubDetailType>({
-    url: `/club/${clubID}`,
+    url: `/club/${clubId}`,
     method: 'get',
   })
 
   useEffect(() => {
-    fetch()
-  }, [fetch])
+    if (clubId) fetch()
+  }, [clubId])
 
   return (
     <S.Layer>
       <h3>{data?.name ?? ''}</h3>
       <S.NavContainer>
-        <S.NavWrapper href={`/applicant/${clubID}`}>
+        <S.NavWrapper href={`/applicant/${clubId}`}>
           <S.IconBox>
             <SVG.MemoPadIcon />
           </S.IconBox>
@@ -30,7 +30,7 @@ export default function ClubNav() {
             <small>신청자 목록</small>
           </S.NavTitle>
         </S.NavWrapper>
-        <S.NavWrapper href={`/member/${clubID}`}>
+        <S.NavWrapper href={`/member/${clubId}`}>
           <S.IconBox>
             <SVG.PersonIcon />
           </S.IconBox>
@@ -38,7 +38,7 @@ export default function ClubNav() {
             <small>동아리 멤버</small>
           </S.NavTitle>
         </S.NavWrapper>
-        <S.NavWrapper href={`/edit/${clubID}`}>
+        <S.NavWrapper href={`/edit/${clubId}`}>
           <S.IconBox>
             <SVG.School />
           </S.IconBox>

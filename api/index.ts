@@ -21,7 +21,7 @@ API.interceptors.request.use(async (config) => {
       tokenManager.refreshToken
     )
   ) {
-    store.dispatch(reissueToken(store.getState().reissue))
+    await store.dispatch(reissueToken(store.getState().reissue))
   }
 
   config.headers['Authorization'] = tokenManager.accessToken

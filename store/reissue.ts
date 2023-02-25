@@ -22,7 +22,8 @@ export const reissueToken = createAsyncThunk(
         baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
         withCredentials: true,
         headers: {
-          'Refresh-Token': `Bearer ${tokenManager.refreshToken}`,
+          'Refresh-Token':
+            tokenManager.refreshToken && `Bearer ${tokenManager.refreshToken}`,
         },
       }
     )
@@ -53,7 +54,7 @@ const reissueSlice = createSlice({
       tokenManager.removeTokens()
 
       state.isLoading = false
-      window.location.href = '/'
+      if (window.location.pathname !== '/') window.location.href = '/'
     })
   },
 })

@@ -44,6 +44,7 @@ const reissueSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(reissueToken.pending, (state) => {
+      state.refreshDate = new Date().toString()
       state.isLoading = true
     })
     builder.addCase(reissueToken.fulfilled, (state) => {

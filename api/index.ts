@@ -1,3 +1,5 @@
+import { reissueToken } from '@/store/reissue'
+import { store } from '@/store'
 import axios from 'axios'
 import TokenManager from './TokenManager'
 
@@ -6,8 +8,6 @@ const API = axios.create({
   withCredentials: true,
 })
 
-let refreshTime = ''
-
 API.interceptors.request.use(async (config) => {
   const tokenManager = new TokenManager()
 
@@ -15,9 +15,14 @@ API.interceptors.request.use(async (config) => {
     !tokenManager.validateToken(
       tokenManager.accessExp,
       tokenManager.accessToken
+    ) &&
+    tokenManager.validateToken(
+      tokenManager.refreshExp,
+      tokenManager.refreshToken
     )
-  )
-    refreshTime = await tokenManager.tokenReissue(refreshTime)
+  ) {
+    await store.dispatch(reissueToken(store.getState().reissue))
+  }
 
   config.headers['Authorization'] = tokenManager.accessToken
     ? `Bearer ${tokenManager.accessToken}`

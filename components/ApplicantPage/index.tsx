@@ -16,8 +16,9 @@ import { useRouter } from 'next/router'
 
 export default function ApplicantPage() {
   const router = useRouter()
+  const clubId = router.query.clubID
   const { fetch, data } = useFetch<ApplicantListType>({
-    url: `/applicant/${router.query.clubID}`,
+    url: `/applicant/${clubId}`,
     method: 'get',
   })
   const { applicant } = useSelector((state: RootState) => ({
@@ -27,8 +28,8 @@ export default function ApplicantPage() {
   const { register, watch } = useForm({ defaultValues: { value: '' } })
 
   useEffect(() => {
-    fetch()
-  }, [fetch])
+    if (clubId) fetch()
+  }, [clubId])
 
   return (
     <S.Positioner>

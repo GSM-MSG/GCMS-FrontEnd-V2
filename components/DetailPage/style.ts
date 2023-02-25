@@ -290,13 +290,9 @@ export const SideBtn = styled.button<ApplyStateType>`
   background: #4164e1;
   border-radius: 7px;
 
-  ${({ isHead, isApplied, isOpened, isMember, isOther }) => {
-    if (
-      (isHead && !isOpened) ||
-      (!isHead && !isApplied && !isMember && !isOther)
-    )
-      return ''
-    else if ((isOpened || isMember) && !isOther)
+  ${({ btnMessage }) => {
+    if (['동아리 열기', '지원하기'].includes(btnMessage)) return ''
+    else if (['동아리 닫기', '탈퇴하기', '신청 취소'].includes(btnMessage))
       return 'color: #FF6666;background: #391F21;border: 1px solid #FF6666;'
     return 'color: #C1C1C1;background: #373737; cursor: auto;'
   }}

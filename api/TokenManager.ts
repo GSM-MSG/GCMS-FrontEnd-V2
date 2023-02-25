@@ -22,46 +22,41 @@ class TokenManager {
     return this.addMinuteDate(expiredString, -1) >= new Date()
   }
 
-  async tokenReissue(refreshTime: string): Promise<string> {
-    if (
-      !this.validateToken(this._refreshExp, this._refreshToken) ||
-      this.addMinuteDate(refreshTime, 1) >= new Date()
+  // async tokenReissue(refreshTime: string): Promise<string> {
+  //   if (
+  //     !this.validateToken(this._refreshExp, this._refreshToken) ||
+  //     this.addMinuteDate(refreshTime, 1) >= new Date()
+  //   )
+  //     return refreshTime
+
+  //   const res = await this.refreshQuery()
+
+  //   if (!res) {
+  //     this.removeTokens()
+  //     window.location.href = '/'
+  //     return ''
+  //   }
+
+  //   return new Date().toString()
+  // }
+
+  async refreshQuery() {
+    const { data } = await axios.patch<TokensType>(
+      '/auth',
+      {},
+      {
+        baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
+        withCredentials: true,
+        headers: {
+          'Refresh-Token': `Bearer ${this._refreshToken}`,
+        },
+      }
     )
-      return refreshTime
-
-    const res = await this.refreshQuery()
-
-    if (!res) {
-      this.removeTokens()
-      window.location.href = '/'
-      return ''
-    }
-
-    return new Date().toString()
+    this.setTokens(data)
+    return data
   }
 
-  private async refreshQuery() {
-    try {
-      const { data } = await axios.patch<TokensType>(
-        '/auth',
-        {},
-        {
-          baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
-          withCredentials: true,
-          headers: {
-            'Refresh-Token': `Bearer ${this._refreshToken}`,
-          },
-        }
-      )
-
-      this.setTokens(data)
-      return true
-    } catch (e) {
-      return false
-    }
-  }
-
-  private addMinuteDate(currentDate: string, addMinute: number): Date {
+  addMinuteDate(currentDate: string, addMinute: number): Date {
     const expiredAt = currentDate ? new Date(currentDate) : new Date()
     expiredAt.setMinutes(expiredAt.getMinutes() - addMinute)
 

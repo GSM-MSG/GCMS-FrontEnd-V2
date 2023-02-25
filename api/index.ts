@@ -1,4 +1,4 @@
-import { refreshToken } from '@/store/api'
+import { reissueToken } from '@/store/reissue'
 import { store } from '@/store'
 import axios from 'axios'
 import TokenManager from './TokenManager'
@@ -21,8 +21,7 @@ API.interceptors.request.use(async (config) => {
       tokenManager.refreshToken
     )
   ) {
-    const apiStore = store.getState().api
-    store.dispatch(refreshToken(apiStore))
+    store.dispatch(reissueToken(store.getState().reissue))
   }
 
   config.headers['Authorization'] = tokenManager.accessToken

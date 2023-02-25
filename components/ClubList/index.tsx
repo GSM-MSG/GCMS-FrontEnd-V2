@@ -1,49 +1,62 @@
 import ClubItem from './ClubItem'
 import * as S from './style'
-import { ClubListType, ClubType } from '@/type/common'
-import { useForm } from 'react-hook-form'
+import { ClubListType } from '@/type/common'
 import { useFetch } from '@/hooks'
 import { useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export default function ClubList() {
-  const { register, watch } = useForm<{ club: ClubType }>({
-    defaultValues: {
-      club: 'MAJOR',
-    },
-  })
+  const router = useRouter()
+  const clubType = router.query.type?.toString()
 
   const { fetch, data } = useFetch<ClubListType[]>({
-    url: `/club?type=${watch('club')}`,
+    url: `/club?type=${clubType || 'MAJOR'}`,
     method: 'get',
     errors: {
       400: '해당 동아리 정보를 찾을수 없습니다.',
     },
   })
 
+  const pushQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const clubValue = e.target.value
+    router.push({
+      pathname: '/',
+      query: clubValue && { type: encodeURI(clubValue) },
+    })
+  }
+
   useEffect(() => {
     fetch()
-  }, [watch('club')])
+  }, [clubType])
 
   return (
     <S.ClubWrapper>
       <S.ClubOptionLayer>
-        <input type='radio' id='major' value='MAJOR' {...register('club')} />
-        <label htmlFor='major'>전공</label>
         <input
           type='radio'
-          id='freedom'
+          id={'MAJOR'}
+          value=''
+          checked={!clubType}
+          onChange={pushQuery}
+        />
+        <label htmlFor={'MAJOR'}>전공</label>
+        <input
+          type='radio'
+          id={'FREEDOM'}
           value='FREEDOM'
-          {...register('club')}
+          checked={clubType === 'FREEDOM'}
+          onChange={pushQuery}
         />
-        <label htmlFor='freedom'>자율</label>
+        <label htmlFor={'FREEDOM'}>자율</label>
         <input
           type='radio'
-          id='editorial'
+          id={'EDITORIAL'}
           value='EDITORIAL'
-          {...register('club')}
+          checked={clubType === 'EDITORIAL'}
+          onChange={pushQuery}
         />
-        <label htmlFor='editorial'>사설</label>
+        <label htmlFor={'EDITORIAL'}>사설</label>
       </S.ClubOptionLayer>
       <S.ClubList>
         {data &&

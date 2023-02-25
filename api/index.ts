@@ -15,7 +15,7 @@ API.interceptors.request.use(async (config) => {
     !tokenManager.validateToken(
       tokenManager.accessExp,
       tokenManager.accessToken
-    ) ||
+    ) &&
     tokenManager.validateToken(
       tokenManager.refreshExp,
       tokenManager.refreshToken

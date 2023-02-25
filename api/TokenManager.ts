@@ -8,11 +8,7 @@ class TokenManager {
   private _refreshExp: string | null = null
 
   constructor() {
-    if (typeof window === 'undefined') return
-    this._accessToken = localStorage.getItem(accessToken)
-    this._refreshToken = localStorage.getItem(refreshToken)
-    this._accessExp = localStorage.getItem(accessExp)
-    this._refreshExp = localStorage.getItem(refreshExp)
+    this.initToken()
   }
 
   validateToken(expiredString: string | null, token: string | null): boolean {
@@ -26,6 +22,14 @@ class TokenManager {
     expiredAt.setMinutes(expiredAt.getMinutes() - addMinute)
 
     return expiredAt
+  }
+
+  initToken() {
+    if (typeof window === 'undefined') return
+    this._accessToken = localStorage.getItem(accessToken)
+    this._refreshToken = localStorage.getItem(refreshToken)
+    this._accessExp = localStorage.getItem(accessExp)
+    this._refreshExp = localStorage.getItem(refreshExp)
   }
 
   setTokens(tokens: TokensType) {

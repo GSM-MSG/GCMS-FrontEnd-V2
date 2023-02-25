@@ -8,7 +8,7 @@ import useLoggedIn from './useLoggedIn'
 const useLogin = () => {
   const router = useRouter()
   const gauthCode = router.query.code?.toString()
-  const { fetchUser } = useLoggedIn()
+  const { fetchUser } = useLoggedIn({ onFetch: false })
   const { fetch } = useFetch<TokensType>({
     url: 'auth',
     method: 'post',

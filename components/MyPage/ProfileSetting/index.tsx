@@ -10,7 +10,7 @@ import { removeUser } from '@/store/user'
 
 export default function ProfileSetting() {
   const { upload } = useUpload()
-  const { isLoggned } = useLoggedIn()
+  const { isLoggned } = useLoggedIn({})
   const router = useRouter()
   const dispatch = useDispatch()
 

@@ -5,11 +5,14 @@ import { ApiType, OnDeleteType } from '@/type/components/MyPage'
 import useLoggedIn from '@/hooks/useLoggedIn'
 import { useRouter } from 'next/router'
 import TokenManager from '@/api/TokenManager'
+import { useDispatch } from 'react-redux'
+import { removeUser } from '@/store/user'
 
 export default function ProfileSetting() {
   const { upload } = useUpload()
   const { isLoggned } = useLoggedIn({})
   const router = useRouter()
+  const dispatch = useDispatch()
 
   const [apiConfig, setApiConfig] = useState<ApiType>({
     url: '',
@@ -22,6 +25,7 @@ export default function ProfileSetting() {
     onSuccess: () => {
       const tokenManager = new TokenManager()
       tokenManager.removeTokens()
+      dispatch(removeUser())
       router.push('/')
     },
   })

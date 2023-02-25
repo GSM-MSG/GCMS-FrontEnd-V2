@@ -3,7 +3,7 @@ import { ApplicantListType } from '@/type/common'
 import { rest } from 'msw'
 
 const headData: ApplicantListType = {
-  userScope: 'HEAD',
+  scope: 'HEAD',
   applicantList: [
     {
       uuid: '12038',
@@ -81,7 +81,7 @@ const headData: ApplicantListType = {
 }
 
 const memberData: ApplicantListType = {
-  userScope: 'MEMBER',
+  scope: 'MEMBER',
   applicantList: [
     {
       uuid: '12038',

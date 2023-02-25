@@ -3,12 +3,13 @@ import { TokensType } from '@/type/api/TokenManager'
 import axios from 'axios'
 
 class TokenManager {
-  private _accessToken: string | null
-  private _refreshToken: string | null
-  private _accessExp: string | null
-  private _refreshExp: string | null
+  private _accessToken: string | null = null
+  private _refreshToken: string | null = null
+  private _accessExp: string | null = null
+  private _refreshExp: string | null = null
 
   constructor() {
+    if (typeof window === 'undefined') return
     this._accessToken = localStorage.getItem(accessToken)
     this._refreshToken = localStorage.getItem(refreshToken)
     this._accessExp = localStorage.getItem(accessExp)
@@ -17,15 +18,29 @@ class TokenManager {
 
   validateToken(expiredString: string | null, token: string | null): boolean {
     if (!expiredString || !token) return false
-    const expiredAt = new Date(expiredString)
-    expiredAt.setMinutes(expiredAt.getMinutes() - 1)
 
-    return expiredAt >= new Date()
+    return this.addMinuteDate(expiredString, -1) >= new Date()
   }
 
-  async tokenReissue(): Promise<boolean> {
-    if (!this.validateToken(this._refreshExp, this._refreshToken)) return false
+  async tokenReissue(refreshTime: string): Promise<string> {
+    if (
+      !this.validateToken(this._refreshExp, this._refreshToken) ||
+      this.addMinuteDate(refreshTime, 1) >= new Date()
+    )
+      return refreshTime
 
+    const res = await this.refreshQuery()
+
+    if (!res) {
+      this.removeTokens()
+      window.location.href = '/'
+      return ''
+    }
+
+    return new Date().toString()
+  }
+
+  private async refreshQuery() {
     try {
       const { data } = await axios.patch<TokensType>(
         '/auth',
@@ -40,11 +55,17 @@ class TokenManager {
       )
 
       this.setTokens(data)
-
       return true
     } catch (e) {
       return false
     }
+  }
+
+  private addMinuteDate(currentDate: string, addMinute: number): Date {
+    const expiredAt = currentDate ? new Date(currentDate) : new Date()
+    expiredAt.setMinutes(expiredAt.getMinutes() - addMinute)
+
+    return expiredAt
   }
 
   setTokens(tokens: TokensType) {

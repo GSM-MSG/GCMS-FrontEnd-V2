@@ -1,16 +1,22 @@
+import { checkUrls } from '@/lib/checkUrlList'
 import InitMocks from '@/mocks'
 import { RootState } from '@/store'
 import { setUser } from '@/store/user'
-import { UserInitialState } from '@/type/store/user'
+import UserInitialState from '@/type/store/user'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useFetch from './useFetch'
 
-const useUser = () => {
+interface Props {
+  onFetch?: boolean
+}
+
+const useLoggedIn = ({ onFetch = true }: Props) => {
   const { user } = useSelector((state: RootState) => ({ user: state.user }))
   const dispatch = useDispatch()
   const router = useRouter()
+  const checkUrl = checkUrls.includes(router.route)
   const { fetch } = useFetch<UserInitialState>({
     method: 'get',
     url: '/user',
@@ -18,12 +24,12 @@ const useUser = () => {
       dispatch(setUser(data))
     },
     onFailure: () => {
-      router.route !== '/' && router.replace('/')
+      !checkUrl && router.replace('/')
     },
   })
 
   useEffect(() => {
-    if (user.name) return
+    if (user.name || !onFetch) return
     ;(async () => {
       await InitMocks()
 
@@ -34,4 +40,4 @@ const useUser = () => {
   return { user, isLoggned: !!user.name, fetchUser: fetch }
 }
 
-export default useUser
+export default useLoggedIn

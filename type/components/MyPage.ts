@@ -1,4 +1,5 @@
 import { Method } from 'axios'
+import { ClubType, ProfileType } from '../common'
 
 export interface ApiType {
   url: string
@@ -12,4 +13,9 @@ export interface OnDeleteType {
   url: string
   method: Method
   message: string
+}
+
+export interface ClubItemType {
+  clubType: ClubType
+  data: ProfileType | null
 }

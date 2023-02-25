@@ -8,10 +8,14 @@ export const ClubWrapper = styled.div`
 export const ClubOptionLayer = styled.form`
   display: flex;
   gap: 6px;
+  font-weight: 500;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
   input[type='radio'] {
     display: none;
   }
   input[type='radio'] + label {
+    cursor: pointer;
     width: 49px;
     height: 24px;
     display: flex;
@@ -22,6 +26,7 @@ export const ClubOptionLayer = styled.form`
     border-radius: 20px;
   }
   input[type='radio']:checked + label {
+    font-weight: 600;
     border: 1px solid #5e7dea;
     color: #5e7dea;
   }
@@ -40,6 +45,7 @@ export const ClubList = styled.div`
 `
 
 export const ClubItem = styled.div`
+  cursor: pointer;
   margin-top: 17px;
   width: 163.75px;
   aspect-ratio: auto 1 / 1.378;
@@ -53,15 +59,19 @@ export const ClubItem = styled.div`
     width: 40vw;
   }
   @media (max-width: 420px) {
-    width: 90%;
+    width: 80vw;
   }
 `
-export const ClubImg = styled.img`
+export const ClubImg = styled.div`
   width: 100%;
   aspect-ratio: 1 / 1;
   background: #2d2d2f;
   border-radius: 10px;
-  object-fit: contain;
+  position: relative;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+  }
 `
 
 export const ClubTitle = styled.div`

@@ -2,9 +2,9 @@ import * as SVG from '@/assets/svg'
 import { useFetch } from '@/hooks'
 import { ProfileType } from '@/type/common'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import SEO from '../SEO'
+import ClubItem from './ClubItem'
 import ProfileSetting from './ProfileSetting'
 import * as S from './style'
 
@@ -19,28 +19,6 @@ export default function MyPage() {
     fetch()
   }, [])
 
-  const ClubWrapper = (clubtype: string) => {
-    return data?.clubs.map((item) => {
-      if (item.type === clubtype)
-        return (
-          <S.ClubWrapper key={item.id}>
-            <S.ClubImg>
-              <Image
-                src={item.bannerImg}
-                alt='bannerImg'
-                width={50}
-                height={50}
-              />
-            </S.ClubImg>
-            <S.ClubName>{item.title}</S.ClubName>
-            <Link href={`/applicant/${item.id}`}>
-              <SVG.KebabMenuIcon />
-            </Link>
-          </S.ClubWrapper>
-        )
-    })
-  }
-
   return (
     <>
       <SEO title={`GCMS | ${data?.name}`} />
@@ -52,7 +30,7 @@ export default function MyPage() {
               <S.ProfileImg>
                 {data?.profileImg && (
                   <Image
-                    src={data?.profileImg ?? ''}
+                    src={data.profileImg}
                     alt='profileImg'
                     width={60}
                     height={60}
@@ -74,15 +52,15 @@ export default function MyPage() {
               <h2>내 동아리</h2>
               <S.ClubContainer>
                 <S.ClubType>전공동아리</S.ClubType>
-                {ClubWrapper('MAJOR')}
+                <ClubItem clubType='MAJOR' data={data} />
               </S.ClubContainer>
               <S.ClubContainer>
                 <S.ClubType>자율동아리</S.ClubType>
-                {ClubWrapper('FREEDOM')}
+                <ClubItem clubType='FREEDOM' data={data} />
               </S.ClubContainer>
               <S.ClubContainer>
                 <S.ClubType>사설동아리</S.ClubType>
-                {ClubWrapper('EDITIONAL')}
+                <ClubItem clubType='EDITORIAL' data={data} />
               </S.ClubContainer>
             </S.ClubBox>
             {isSetting && <ProfileSetting />}

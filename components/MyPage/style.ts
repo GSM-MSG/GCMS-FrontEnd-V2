@@ -63,7 +63,13 @@ export const ProfileImg = styled.div`
   }
 `
 
-export const SettingButton = styled.div``
+export const SettingButton = styled.div`
+  width: 9px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+`
 
 export const ContentBox = styled.div`
   display: flex;
@@ -95,38 +101,4 @@ export const ClubContainer = styled.div`
 export const ClubType = styled.h4`
   color: rgba(255, 255, 255, 0.31);
   margin: 0;
-`
-
-export const ClubWrapper = styled.div`
-  width: 350px;
-  height: 56px;
-  background: #2d2d2d;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px;
-
-  @media (max-width: 740px) {
-    width: 50%;
-  }
-  @media (max-width: 530px) {
-    width: 100%;
-  }
-`
-export const ClubImg = styled(ProfileImg)`
-  width: 40px;
-  height: 40px;
-`
-
-export const ClubName = styled(ClubType)`
-  width: 72%;
-  font-size: 15px;
-
-  @media (max-width: 740px) {
-    font-size: 12px;
-  }
-  @media (max-width: 530px) {
-    width: 62%;
-  }
 `

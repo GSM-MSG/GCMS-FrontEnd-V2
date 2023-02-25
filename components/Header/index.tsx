@@ -6,9 +6,11 @@ import Login from '../Login'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { setModal } from '@/store/loginModal'
+import useLoggedIn from '@/hooks/useLoggedIn'
 
 export default function Header() {
   const dispatch = useDispatch()
+  useLoggedIn({})
 
   const { loginModal, user } = useSelector((state: RootState) => ({
     loginModal: state.loginModal,

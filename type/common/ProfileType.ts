@@ -9,7 +9,7 @@ interface ClubInfoType {
   id: number
   type: ClubType
   bannerImg: string
-  title: string
+  name: string
 }
 
 export default ProfileType

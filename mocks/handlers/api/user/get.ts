@@ -11,31 +11,38 @@ const getUser = rest.get(serverApi('/user'), (_req, res, ctx) => {
       grade: 2,
       classNum: 1,
       number: 9,
-      profileImg: '',
+      profileImg:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZ2tjhm-hB80ErkhPt0zxaYo6iKW0tsKPdQ&usqp=CAU',
+
       clubs: [
         {
           id: 1,
           type: 'MAJOR',
-          bannerImg: '',
-          title: '테스트',
+          bannerImg:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZ2tjhm-hB80ErkhPt0zxaYo6iKW0tsKPdQ&usqp=CAU',
+
+          name: '테스트',
         },
         {
           id: 2,
           type: 'FREEDOM',
-          bannerUrl: '',
-          title: '테스트2',
+          bannerImg:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZ2tjhm-hB80ErkhPt0zxaYo6iKW0tsKPdQ&usqp=CAU',
+          name: '테스트2',
         },
         {
           id: 3,
           type: 'FREEDOM',
-          bannerUrl: '',
-          title: '테스트3',
+          bannerImg:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZ2tjhm-hB80ErkhPt0zxaYo6iKW0tsKPdQ&usqp=CAU',
+          name: '테스트3',
         },
         {
           id: 4,
-          type: 'EDITIONAL',
-          bannerUrl: '',
-          title: '테스트4',
+          type: 'EDITORIAL',
+          bannerImg:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkZ2tjhm-hB80ErkhPt0zxaYo6iKW0tsKPdQ&usqp=CAU',
+          name: '테스트4',
         },
       ],
     })

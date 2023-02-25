@@ -2,10 +2,18 @@ import * as S from './style'
 import { useFetch, useUpload } from '@/hooks'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { ApiType, OnDeleteType } from '@/type/components/MyPage'
-import useUser from '@/hooks/useUser'
+import useLoggedIn from '@/hooks/useLoggedIn'
 import { useRouter } from 'next/router'
+import TokenManager from '@/api/TokenManager'
+import { useDispatch } from 'react-redux'
+import { removeUser } from '@/store/user'
 
 export default function ProfileSetting() {
+  const { upload } = useUpload()
+  const { isLoggned } = useLoggedIn({})
+  const router = useRouter()
+  const dispatch = useDispatch()
+
   const [apiConfig, setApiConfig] = useState<ApiType>({
     url: '',
     method: 'get',
@@ -14,10 +22,13 @@ export default function ProfileSetting() {
   const { fetch } = useFetch({
     url: apiConfig.url,
     method: apiConfig.method,
+    onSuccess: () => {
+      const tokenManager = new TokenManager()
+      tokenManager.removeTokens()
+      dispatch(removeUser())
+      router.push('/')
+    },
   })
-  const { upload } = useUpload()
-  const { isLoggned } = useUser()
-  const router = useRouter()
 
   const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = await e.currentTarget.files?.item(0)

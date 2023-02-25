@@ -6,7 +6,7 @@ export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow-y: scroll;
+  overflow-y: auto;
   gap: 1.5rem;
 `
 

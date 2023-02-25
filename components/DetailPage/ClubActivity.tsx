@@ -1,5 +1,6 @@
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
+import Image from 'next/image'
 import * as S from './style'
 
 export default function ClubActivity() {
@@ -13,7 +14,7 @@ export default function ClubActivity() {
       <div>
         {clubDetail.activityImgs?.map((url, index) => (
           <S.ActivityImg key={index}>
-            <S.NextImg alt='activity img' src={url} width={250} height={250} />
+            <Image alt='activity img' src={url} fill sizes='100%' />
           </S.ActivityImg>
         ))}
       </div>

@@ -30,6 +30,7 @@ export const Section = styled.section`
 `
 
 export const ClubBanner = styled.div`
+  position: relative;
   width: 100%;
   height: 332px;
   background: #373737;
@@ -151,6 +152,7 @@ export const ClubActivity = styled.div`
 `
 export const ActivityImg = styled.div`
   width: 250px;
+  position: relative;
   aspect-ratio: 1/1;
   overflow: hidden;
   background: linear-gradient(0deg, #373737, #373737), url(image.png);
@@ -327,9 +329,4 @@ export const NotionInfo = styled.div`
       white-space: nowrap;
     }
   }
-`
-
-export const NextImg = styled(Image)`
-  width: 100% !important;
-  height: 100% !important;
 `

@@ -87,14 +87,7 @@ const SideBtn = () => {
   }
 
   return (
-    <S.SideBtn
-      isOpened={isOpened}
-      isApplied={isApplied}
-      onClick={handleAplly}
-      isHead={isHead}
-      isMember={isMember}
-      isOther={isOther}
-    >
+    <S.SideBtn btnMessage={btnMessage()} onClick={handleAplly}>
       {btnMessage()}
     </S.SideBtn>
   )

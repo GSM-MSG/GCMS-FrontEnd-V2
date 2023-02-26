@@ -58,7 +58,7 @@ const ClubInfoInput = () => {
         label='담당 선생님'
         placeholder='담당 선생님 성함을 입력해주세요.'
         optional
-        description='담당 선생님은 전공 동아리 외에는 입력하지 않아도 되요.'
+        description='담당 선생님은 전공 동아리 외에는 입력하지 않아도 돼요.'
         register={register('teacher')}
       />
     </Layout>

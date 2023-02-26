@@ -34,6 +34,8 @@ const AddClubMember = ({ onClose }: Props) => {
       dispatch(resetPage())
       onClose()
     },
+    successMessage: '동아리 생성에 성공했습니다',
+    errors: '동아리 생성에 실패했습니다',
   })
 
   useEffect(() => {

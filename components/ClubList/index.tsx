@@ -1,22 +1,16 @@
 import ClubItem from './ClubItem'
 import * as S from './style'
-import { ClubListType } from '@/type/common'
-import { useFetch } from '@/hooks'
-import { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
 export default function ClubList() {
   const router = useRouter()
   const clubType = router.query.type?.toString()
-
-  const { fetch, data } = useFetch<ClubListType[]>({
-    url: `/club?type=${clubType || 'MAJOR'}`,
-    method: 'get',
-    errors: {
-      400: '해당 동아리 정보를 찾을수 없습니다.',
-    },
-  })
+  const { clubList } = useSelector((state: RootState) => ({
+    clubList: state.clubList,
+  }))
 
   const pushQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     const clubValue = e.target.value
@@ -25,10 +19,6 @@ export default function ClubList() {
       query: clubValue && { type: encodeURI(clubValue) },
     })
   }
-
-  useEffect(() => {
-    fetch()
-  }, [clubType])
 
   return (
     <S.ClubWrapper>
@@ -59,14 +49,11 @@ export default function ClubList() {
         <label htmlFor={'EDITORIAL'}>사설</label>
       </S.ClubOptionLayer>
       <S.ClubList>
-        {data &&
-          data.map((i) => {
-            return (
-              <Link key={i.id} href={`detail/${i.id}`}>
-                <ClubItem club={i} />
-              </Link>
-            )
-          })}
+        {clubList.map((i) => (
+          <Link key={i.id} href={`detail/${i.id}`}>
+            <ClubItem club={i} />
+          </Link>
+        ))}
       </S.ClubList>
     </S.ClubWrapper>
   )

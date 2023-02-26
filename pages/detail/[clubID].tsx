@@ -1,6 +1,7 @@
 import API from '@/api'
 import DetailPage from '@/components/DetailPage'
 import Header from '@/components/Header'
+import NotFoundPage from '@/components/NotFoundPage'
 import { useFetch } from '@/hooks'
 import wrapper from '@/store'
 import { setClubDetail, setIsApplied, setScope } from '@/store/clubDetail'
@@ -46,7 +47,7 @@ export default function Detail({ ok }: Props) {
     if (ok && clubId) fetch()
   }, [clubId])
 
-  if (!ok) return 'falied'
+  if (!ok) return <NotFoundPage />
 
   return (
     <>

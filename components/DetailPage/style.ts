@@ -212,6 +212,7 @@ export const HeadInfo = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
   > * {
     margin: 0;

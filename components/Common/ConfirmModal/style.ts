@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-  background: rgba(30, 30, 30);
+  background: rgb(30, 30, 30);
   padding-top: 1rem;
   border-radius: 1rem;
   text-align: center;

@@ -20,9 +20,7 @@ export default function ChoiceUser({ onSubmit }: choiceUserProps) {
   const { fetch: data } = useFetch({
     url: `/applicant/${router.query.clubID}/${choice}`,
     method: 'post',
-    onSuccess: () => {
-      onSubmit()
-    },
+    onSuccess: onSubmit,
   })
 
   const onFetch = () => {

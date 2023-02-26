@@ -50,7 +50,10 @@ const ClubInfoInput = () => {
       <Input
         label='노션 링크'
         placeholder='url을 입력해주세요.'
-        register={register('notionLink', { required: true })}
+        register={register('notionLink', {
+          required: true,
+          pattern: /https?:\/\//,
+        })}
         error={!!errors.notionLink}
       />
 

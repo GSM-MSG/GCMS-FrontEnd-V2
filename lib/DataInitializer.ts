@@ -10,7 +10,7 @@ class DataInitializer {
       contact: data.contact,
       teacher: data.teacher,
       notionLink: data.notionLink,
-      member: [data.head.uuid, ...data.member.map((i) => i.uuid)],
+      member: [...data.member.map((i) => i.uuid)],
     }
   }
 }

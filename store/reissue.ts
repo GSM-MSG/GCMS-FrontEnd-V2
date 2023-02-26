@@ -7,7 +7,7 @@ import { RootState } from '.'
 import delay from '@/lib/delay'
 
 export const reissueToken = createAsyncThunk(
-  'api/refreshToken',
+  'reissue/reissueToken',
   async (_, { getState, dispatch }) => {
     const tokenManager = new TokenManager()
     const { reissue } = getState() as RootState

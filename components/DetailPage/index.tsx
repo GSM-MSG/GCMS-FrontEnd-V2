@@ -1,4 +1,5 @@
 import { RootState } from '@/store'
+import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import SEO from '../SEO'
 import ClubActivity from './ClubActivity'
@@ -25,11 +26,11 @@ export default function DetailPage() {
         <S.Wrapper>
           <S.Section>
             <S.ClubBanner>
-              <S.NextImg
+              <Image
                 alt='banner igm'
                 src={clubDetail.bannerImg}
-                width={100}
-                height={100}
+                fill
+                sizes='100%'
               />
             </S.ClubBanner>
             <S.ClubInfo>

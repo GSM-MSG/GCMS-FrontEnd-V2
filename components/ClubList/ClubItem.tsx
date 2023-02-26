@@ -10,7 +10,7 @@ export default function ClubItem({ club }: Props) {
   return (
     <S.ClubItem>
       <S.ClubImg>
-        <Image alt='banner img' src={club.bannerImg} fill />
+        <Image alt='banner img' src={club.bannerImg} fill sizes='100%' />
       </S.ClubImg>
       <S.ClubTitle>
         <h3>{club.name}</h3>

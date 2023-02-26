@@ -18,10 +18,10 @@ const useLogin = () => {
         tokenManager.setTokens(data)
       }
       fetchUser()
-      router.push('')
+      router.replace('')
     },
     onFailure: () => {
-      router.push('')
+      router.replace('')
     },
   })
 

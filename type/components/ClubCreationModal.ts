@@ -12,7 +12,7 @@ export interface ErrorProps {
 }
 
 export interface ImgUploadFormType {
-  bannerImg: FileList | File
+  bannerImg: FileList
   activityImgs: FileList
 }
 

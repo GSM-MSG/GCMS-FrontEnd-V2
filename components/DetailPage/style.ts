@@ -202,7 +202,6 @@ export const ClubMember = styled.div`
 `
 
 export const HeadProfile = styled.div`
-  width: 105px;
   height: 48px;
   display: flex;
   align-items: center;

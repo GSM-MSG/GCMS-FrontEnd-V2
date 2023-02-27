@@ -10,20 +10,22 @@ export default function ClubItem({ clubType, data }: ClubItemType) {
       {data?.clubs.map((item) => {
         if (item.type === clubType)
           return (
-            <S.ClubItem key={item.id}>
-              <S.ClubImg>
-                <Image
-                  src={item.bannerImg}
-                  alt='bannerImg'
-                  width={50}
-                  height={50}
-                />
-              </S.ClubImg>
-              <S.ClubName>{item.name}</S.ClubName>
-              <Link href={`/applicant/${item.id}`}>
-                <SVG.KebabMenuIcon />
-              </Link>
-            </S.ClubItem>
+            <Link href={`/detail/${item.id}`}>
+              <S.ClubItem key={item.id}>
+                <S.ClubImg>
+                  <Image
+                    src={item.bannerImg}
+                    alt='bannerImg'
+                    width={50}
+                    height={50}
+                  />
+                </S.ClubImg>
+                <S.ClubName>{item.name}</S.ClubName>
+                <Link href={`/applicant/${item.id}`}>
+                  <SVG.KebabMenuIcon />
+                </Link>
+              </S.ClubItem>
+            </Link>
           )
       })}
     </>

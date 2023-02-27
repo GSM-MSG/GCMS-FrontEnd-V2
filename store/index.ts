@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
 const reducer = (state: RootState | undefined, action: AnyAction) => {
   switch (action.type) {
     case HYDRATE:
-      return { ...state, ...action.payload }
+      return { ...state, ...action.payload, user: { ...state?.user } }
     default:
       return rootReducer(state, action)
   }

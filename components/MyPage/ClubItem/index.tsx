@@ -10,7 +10,7 @@ export default function ClubItem({ clubType, data }: ClubItemType) {
       {data?.clubs.map((item) => {
         if (item.type === clubType)
           return (
-            <Link href={`/detail/${item.id}`}>
+            <Link key={item.id} href={`/detail/${item.id}`}>
               <S.ClubItem key={item.id}>
                 <S.ClubImg>
                   <Image

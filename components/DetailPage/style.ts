@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
   width: 700px;
   display: flex;
   justify-content: space-between;
+  margin-top: 42px;
   @media (max-width: 750px) {
     width: 100%;
     flex-direction: column;
@@ -23,7 +24,6 @@ export const Wrapper = styled.div`
 `
 export const Section = styled.section`
   width: 510px;
-  margin-top: 42px;
   @media (max-width: 750px) {
     width: 100%;
   }
@@ -252,9 +252,9 @@ export const Footer = styled.footer`
 `
 
 export const SideBar = styled.div`
-  position: absolute;
+  position: sticky;
   right: 0;
-  top: 42px;
+  top: 72px;
   width: 174px;
   height: 224px;
   background: #242425;

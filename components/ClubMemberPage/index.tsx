@@ -9,17 +9,18 @@ import Input from '../Common/Input'
 import * as S from './style'
 import UserList from './UserList'
 
-export default function ApplicantPage() {
+export default function ClubMemberPage() {
   const router = useRouter()
+  const clubId = router.query.clubID
   const { fetch, data } = useFetch<MemberListType>({
-    url: `/club-member/${router.query.clubID}`,
+    url: `/club-member/${clubId}`,
     method: 'get',
   })
   const { register, watch } = useForm({ defaultValues: { value: '' } })
 
   useEffect(() => {
-    fetch()
-  }, [])
+    if (clubId) fetch()
+  }, [clubId])
 
   return (
     <S.Positioner>

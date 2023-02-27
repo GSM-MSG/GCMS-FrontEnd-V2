@@ -31,7 +31,7 @@ export default function ProfileSetting() {
   })
 
   const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = await e.currentTarget.files?.item(0)
+    const file = e.currentTarget.files?.item(0)
 
     if (!file) return
     const data = await upload([file])
@@ -61,7 +61,12 @@ export default function ProfileSetting() {
   return (
     <S.Positioner>
       <S.Layer>
-        <S.Btn type='file' id='imgUpload' onChange={(e) => onChange(e)} />
+        <S.Btn
+          type='file'
+          accept='image/*'
+          id='imgUpload'
+          onChange={(e) => onChange(e)}
+        />
         <label htmlFor='imgUpload'>이미지 변경</label>
         <S.Btn
           type='button'

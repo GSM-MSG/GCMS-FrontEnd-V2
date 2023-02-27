@@ -28,7 +28,7 @@ export default function Header() {
             <Link href='/'>홈</Link>
             {user.name ? (
               <Link href='/my'>
-                <Profile user={user} />
+                <Profile />
               </Link>
             ) : (
               <a onClick={() => dispatch(setModal())}>로그인</a>

@@ -1,7 +1,7 @@
-import UserInitialState from '@/type/store/user'
+import ProfileType from '@/type/common/ProfileType'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const initialState: UserInitialState = {
+const initialState: ProfileType = {
   uuid: '',
   email: '',
   name: '',
@@ -15,7 +15,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<UserInitialState>) => {
+    setUser: (state, action: PayloadAction<ProfileType>) => {
       state = action.payload
       return state
     },

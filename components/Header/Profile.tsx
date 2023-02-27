@@ -1,11 +1,13 @@
-import UserInitialState from '@/type/store/user'
+import { RootState } from '@/store'
+import { useSelector } from 'react-redux'
 import * as S from './style'
 
-interface Props {
-  user: UserInitialState
-}
+export default function Profile() {
+  const { user } = useSelector((state: RootState) => ({
+    loginModal: state.loginModal,
+    user: state.user,
+  }))
 
-export default function Profile({ user }: Props) {
   return (
     <S.ProfileWrapper>
       {user.profileImg ? (

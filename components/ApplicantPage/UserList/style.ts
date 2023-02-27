@@ -33,6 +33,7 @@ export const UserWrapper = styled.label`
   justify-content: space-between;
   padding: 0 16px;
   gap: 20px;
+  cursor: pointer;
 `
 
 export const UserImgBox = styled.div`

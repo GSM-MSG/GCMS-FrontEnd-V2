@@ -21,12 +21,8 @@ export const UserContainer = styled.div`
     display: none;
   }
 `
-type UserWrapperType = {
-  checked: boolean
-  head: boolean
-}
 
-export const UserWrapper = styled.div<UserWrapperType>`
+export const UserWrapper = styled.label`
   position: relative;
   width: 100%;
   min-height: 56px;
@@ -37,31 +33,6 @@ export const UserWrapper = styled.div<UserWrapperType>`
   justify-content: space-between;
   padding: 0 16px;
   gap: 20px;
-
-  ::before {
-    content: '';
-    cursor: pointer;
-    position: absolute;
-    right: 17px;
-    top: 50%;
-    width: 12px;
-    height: 12px;
-    border: 1px solid ${({ checked }) => (checked ? '#8be246' : '#6a6a6a')};
-    border-radius: 100%;
-    transform: translateY(-50%);
-  }
-  ::after {
-    content: '';
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    right: 21px;
-    width: 7px;
-    height: 7px;
-    background: ${({ checked }) => (checked ? '#575ce0' : 'none')};
-    border-radius: 100%;
-    transform: translateY(-50%);
-  }
 `
 
 export const UserImgBox = styled.div`

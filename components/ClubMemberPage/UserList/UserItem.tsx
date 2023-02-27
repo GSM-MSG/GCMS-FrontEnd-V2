@@ -43,7 +43,7 @@ export default function UserItem({ item, scope }: MemberItemProps) {
           </small>
         </S.UserInfo>
         <S.CheckBox>
-          {scope === 'HEAD' && (
+          {scope === 'HEAD' && item.scope !== 'HEAD' && (
             <>
               <S.CheckBtn
                 id={item.uuid}
@@ -58,12 +58,10 @@ export default function UserItem({ item, scope }: MemberItemProps) {
           )}
         </S.CheckBox>
       </S.UserBox>
-      {item.scope !== 'HEAD' && (
-        <S.OptionBox>
-          <S.OptionBtn onClick={() => onKick(item.uuid)}>추방</S.OptionBtn>
-          <S.OptionBtn onClick={() => onDelegate(item.uuid)}>위임</S.OptionBtn>
-        </S.OptionBox>
-      )}
+      <S.OptionBox>
+        <S.OptionBtn onClick={() => onKick(item.uuid)}>추방</S.OptionBtn>
+        <S.OptionBtn onClick={() => onDelegate(item.uuid)}>위임</S.OptionBtn>
+      </S.OptionBox>
     </S.UserWrapper>
   )
 }

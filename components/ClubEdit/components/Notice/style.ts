@@ -68,7 +68,7 @@ export const UtilSection = styled.div`
 export const SwitchInput = styled.input`
   display: none;
 
-  :checked ~ label span:nth-child(2) {
+  :checked ~ label span:nth-of-type(2) {
     right: auto;
     right: calc(100% - 2rem);
     background: #4164e1;

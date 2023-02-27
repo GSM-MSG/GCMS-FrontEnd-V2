@@ -6,7 +6,11 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './style'
 
-export default function ChoiceUser() {
+interface choiceUserProps {
+  onSubmit: () => Promise<void>
+}
+
+export default function ChoiceUser({ onSubmit }: choiceUserProps) {
   const { applicant } = useSelector((state: RootState) => ({
     applicant: state.applicant,
   }))
@@ -16,11 +20,12 @@ export default function ChoiceUser() {
   const { fetch: data } = useFetch({
     url: `/applicant/${router.query.clubID}/${choice}`,
     method: 'post',
+    onSuccess: onSubmit,
   })
 
   const onFetch = () => {
     applicant.forEach(async (item) => {
-      await data(item.uuid)
+      await data({ uuid: item.uuid })
       dispatch(removeUser(item.uuid))
     })
   }

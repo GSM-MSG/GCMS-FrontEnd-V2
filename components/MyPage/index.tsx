@@ -19,6 +19,7 @@ export default function MyPage() {
 
   const onSubmit = () => {
     fetchUser()
+    setSetting(false)
   }
 
   return (

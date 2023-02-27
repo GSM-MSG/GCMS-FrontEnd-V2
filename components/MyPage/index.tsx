@@ -1,5 +1,5 @@
 import * as SVG from '@/assets/svg'
-import { useLoggedIn } from '@/hooks'
+import useLoggedIn from '@/hooks/useLoggedIn'
 import { RootState } from '@/store'
 import Image from 'next/image'
 import { useState } from 'react'

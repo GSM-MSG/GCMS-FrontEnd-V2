@@ -21,7 +21,11 @@ const SideBtn = () => {
     url: `applicant/${clubDetail.id}`,
     method: 'post',
     successMessage: '지원에 성공했습니다',
-    errors: '지원에 실패했습니다',
+    errors: {
+      401: '다시 로그인해 주세요',
+      403: '이미 다른 동아리에 지원을 하고 있습니다',
+      404: '동아리를 찾을 수 없습니다',
+    },
     onSuccess: () => {
       dispatch(setIsApplied())
     },

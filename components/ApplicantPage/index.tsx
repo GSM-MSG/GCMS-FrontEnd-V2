@@ -57,7 +57,7 @@ export default function ApplicantPage() {
           </>
         )}
         <UserList data={data} value={watch('value').trim()} />
-        {data?.scope === 'HEAD' && <ChoiceUser />}
+        {data?.scope === 'HEAD' && <ChoiceUser onSubmit={() => fetch()} />}
       </S.Layer>
     </S.Positioner>
   )

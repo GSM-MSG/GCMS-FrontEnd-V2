@@ -12,6 +12,7 @@ export default function UserItem({ item, userScope }: UserItemProps) {
   const dispatch = useDispatch()
 
   const onChange = (item: MemberType) => {
+    if (userScope !== 'HEAD') return
     if (applicant.find((seleted) => seleted.uuid === item.uuid)) {
       dispatch(removeUser(item.uuid))
       return
@@ -19,7 +20,11 @@ export default function UserItem({ item, userScope }: UserItemProps) {
     dispatch(addUser(item))
   }
   return (
-    <S.UserWrapper>
+    <S.UserWrapper
+      onClick={() => onChange(item)}
+      head={userScope === 'HEAD'}
+      checked={!!applicant.find((i) => i.uuid === item.uuid)}
+    >
       <S.UserImgBox>
         {item.profileImg && <S.Img src={item.profileImg} alt='profileImg' />}
       </S.UserImgBox>
@@ -29,7 +34,7 @@ export default function UserItem({ item, userScope }: UserItemProps) {
           {item.grade}학년 {item.classNum}반 {item.number}번
         </small>
       </S.UserInfo>
-      <S.CheckBox>
+      {/* <S.CheckBox>
         {userScope === 'HEAD' && (
           <>
             <S.CheckBtn
@@ -41,7 +46,7 @@ export default function UserItem({ item, userScope }: UserItemProps) {
             <S.CheckBtnLabel htmlFor={item.uuid} />
           </>
         )}
-      </S.CheckBox>
+      </S.CheckBox> */}
     </S.UserWrapper>
   )
 }

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Link from 'next/link'
 import { ClubType, ProfileImg } from '../style'
 
 export const ClubItem = styled.div`
@@ -19,7 +20,6 @@ export const ClubItem = styled.div`
   }
 
   a {
-    width: 9px;
     display: flex;
     justify-content: center;
   }
@@ -41,7 +41,6 @@ export const ClubName = styled(ClubType)`
   }
 `
 
-export const ClubManageBtn = styled.span`
+export const ClubManageBtn = styled(Link)`
   padding: 0.5rem;
-  cursor: pointer;
 `

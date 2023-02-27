@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
   width: 700px;
   display: flex;
   justify-content: space-between;
+  margin-top: 42px;
   @media (max-width: 750px) {
     width: 100%;
     flex-direction: column;
@@ -23,7 +24,6 @@ export const Wrapper = styled.div`
 `
 export const Section = styled.section`
   width: 510px;
-  margin-top: 42px;
   @media (max-width: 750px) {
     width: 100%;
   }
@@ -195,8 +195,7 @@ export const ClubMember = styled.div`
     }
   }
   @media (max-width: 750px) {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
     margin-top: 60px;
   }
 `
@@ -235,6 +234,7 @@ export const MemberProfile = styled(Image)`
   object-fit: cover;
   object-position: center;
   background: #c4c4c4;
+  flex: none;
 `
 
 export const SampelIMG = styled.div`
@@ -242,6 +242,7 @@ export const SampelIMG = styled.div`
   background: #c4c4c4;
   height: 48px;
   border-radius: 50%;
+  flex: none;
 `
 
 export const Footer = styled.footer`
@@ -251,9 +252,9 @@ export const Footer = styled.footer`
 `
 
 export const SideBar = styled.div`
-  position: absolute;
+  position: sticky;
   right: 0;
-  top: 42px;
+  top: 72px;
   width: 174px;
   height: 224px;
   background: #242425;

@@ -3,8 +3,11 @@ import Link from 'next/link'
 import * as S from './style'
 import * as SVG from '@/assets/svg'
 import { ClubItemType } from '@/type/components/MyPage'
+import { useRouter } from 'next/router'
 
 export default function ClubItem({ clubType, data }: ClubItemType) {
+  const router = useRouter()
+
   return (
     <>
       {data?.clubs.map((item) => {
@@ -21,9 +24,11 @@ export default function ClubItem({ clubType, data }: ClubItemType) {
                   />
                 </S.ClubImg>
                 <S.ClubName>{item.name}</S.ClubName>
-                <Link href={`/applicant/${item.id}`}>
+                <S.ClubManageBtn
+                  onClick={() => router.push(`/applicant/${item.id}`)}
+                >
                   <SVG.KebabMenuIcon />
-                </Link>
+                </S.ClubManageBtn>
               </S.ClubItem>
             </Link>
           )

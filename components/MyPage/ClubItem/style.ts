@@ -40,3 +40,8 @@ export const ClubName = styled(ClubType)`
     width: 62%;
   }
 `
+
+export const ClubManageBtn = styled.span`
+  padding: 0.5rem;
+  cursor: pointer;
+`

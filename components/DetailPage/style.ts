@@ -234,7 +234,7 @@ export const MemberProfile = styled(Image)`
   object-fit: cover;
   object-position: center;
   background: #c4c4c4;
-  flex: 0 0 auto;
+  flex-shrink: 0;
 `
 
 export const SampelIMG = styled.div`
@@ -242,7 +242,7 @@ export const SampelIMG = styled.div`
   background: #c4c4c4;
   height: 48px;
   border-radius: 50%;
-  flex: 0 0 auto;
+  flex-shrink: 0;
 `
 
 export const Footer = styled.footer`

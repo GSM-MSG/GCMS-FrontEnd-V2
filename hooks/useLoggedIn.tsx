@@ -2,7 +2,7 @@ import { checkUrls } from '@/lib/checkUrlList'
 import InitMocks from '@/mocks'
 import { RootState } from '@/store'
 import { setUser } from '@/store/user'
-import UserInitialState from '@/type/store/user'
+import ProfileType from '@/type/common/ProfileType'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,7 +17,7 @@ const useLoggedIn = ({ onFetch = true }: Props) => {
   const dispatch = useDispatch()
   const router = useRouter()
   const checkUrl = checkUrls.includes(router.route)
-  const { fetch } = useFetch<UserInitialState>({
+  const { fetch } = useFetch<ProfileType>({
     method: 'get',
     url: '/user',
     onSuccess: (data) => {

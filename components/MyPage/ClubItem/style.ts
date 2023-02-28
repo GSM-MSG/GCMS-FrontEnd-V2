@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
+import Link from 'next/link'
 import { ClubType, ProfileImg } from '../style'
 
-export const ClubItem = styled.div`
+export const ClubItem = styled(Link)`
   width: 350px;
   height: 56px;
   background: #2d2d2d;

@@ -8,7 +8,11 @@ import TokenManager from '@/api/TokenManager'
 import { useDispatch } from 'react-redux'
 import { removeUser } from '@/store/user'
 
-export default function ProfileSetting() {
+interface profileSetingProps {
+  onSubmit: () => void
+}
+
+export default function ProfileSetting({ onSubmit }: profileSetingProps) {
   const { upload } = useUpload()
   const { isLoggned } = useLoggedIn({})
   const router = useRouter()
@@ -19,7 +23,7 @@ export default function ProfileSetting() {
     method: 'get',
   })
 
-  const { fetch } = useFetch({
+  const { fetch: Delete } = useFetch({
     url: apiConfig.url,
     method: apiConfig.method,
     onSuccess: () => {
@@ -30,6 +34,12 @@ export default function ProfileSetting() {
     },
   })
 
+  const { fetch: imgData } = useFetch({
+    url: '/user',
+    method: 'patch',
+    onSuccess: onSubmit,
+  })
+
   const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.currentTarget.files?.item(0)
 
@@ -37,10 +47,8 @@ export default function ProfileSetting() {
     const data = await upload([file])
 
     if (!data) return
-    setApiConfig({
-      url: '/user',
-      method: 'patch',
-      data: { profileImg: data[0] },
+    imgData({
+      profileImg: data[0],
     })
   }
 
@@ -52,7 +60,7 @@ export default function ProfileSetting() {
   useEffect(() => {
     ;(async () => {
       if (apiConfig.url === '') return
-      await fetch(apiConfig.data)
+      await Delete()
 
       if (!isLoggned) router.replace('/')
     })()

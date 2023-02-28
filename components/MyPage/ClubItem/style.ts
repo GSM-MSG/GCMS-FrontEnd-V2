@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import Link from 'next/link'
 import { ClubType, ProfileImg } from '../style'
 
-export const ClubItem = styled(Link)`
+export const ClubItem = styled.div`
   width: 350px;
   height: 56px;
   background: #2d2d2d;
@@ -11,6 +11,7 @@ export const ClubItem = styled(Link)`
   align-items: center;
   justify-content: space-between;
   padding: 16px;
+  cursor: pointer;
 
   @media (max-width: 740px) {
     width: 50%;
@@ -20,7 +21,6 @@ export const ClubItem = styled(Link)`
   }
 
   a {
-    width: 9px;
     display: flex;
     justify-content: center;
   }
@@ -40,4 +40,8 @@ export const ClubName = styled(ClubType)`
   @media (max-width: 530px) {
     width: 62%;
   }
+`
+
+export const ClubManageBtn = styled(Link)`
+  padding: 0.5rem;
 `

@@ -21,7 +21,9 @@ export const UserContainer = styled.div`
     display: none;
   }
 `
-export const UserWrapper = styled.div`
+
+export const UserWrapper = styled.label`
+  position: relative;
   width: 100%;
   min-height: 56px;
   background: #2d2d2d;
@@ -31,6 +33,7 @@ export const UserWrapper = styled.div`
   justify-content: space-between;
   padding: 0 16px;
   gap: 20px;
+  cursor: pointer;
 `
 
 export const UserImgBox = styled.div`

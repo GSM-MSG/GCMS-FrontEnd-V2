@@ -19,7 +19,7 @@ export default function UserItem({ item, userScope }: UserItemProps) {
     dispatch(addUser(item))
   }
   return (
-    <S.UserWrapper>
+    <S.UserWrapper htmlFor={item.uuid}>
       <S.UserImgBox>
         {item.profileImg && <S.Img src={item.profileImg} alt='profileImg' />}
       </S.UserImgBox>
@@ -38,7 +38,7 @@ export default function UserItem({ item, userScope }: UserItemProps) {
               onChange={() => onChange(item)}
               checked={!!applicant.find((i) => i.uuid === item.uuid)}
             />
-            <S.CheckBtnLabel htmlFor={item.uuid} />
+            <S.CheckBtnLabel htmlFor={item.uuid}></S.CheckBtnLabel>
           </>
         )}
       </S.CheckBox>

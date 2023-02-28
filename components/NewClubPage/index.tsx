@@ -1,4 +1,4 @@
-import useNewClub from '@/hooks/useNewClub'
+import { useNewClub } from '@/hooks'
 import ClubList from '../ClubList'
 import * as S from './style'
 

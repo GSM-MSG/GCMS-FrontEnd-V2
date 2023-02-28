@@ -2,7 +2,7 @@ import Link from 'next/link'
 import NewClubItem from './NewClubItem'
 import * as S from './style'
 import * as SVG from '@/assets/svg'
-import useNewClub from '@/hooks/useNewClub'
+import { useNewClub } from '@/hooks'
 
 export default function NewClub() {
   const { newClubs } = useNewClub()

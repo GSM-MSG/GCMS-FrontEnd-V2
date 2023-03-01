@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 import { MemberListType } from '@/type/common'
 import { useFetch } from '@/hooks'
-import UserList from './UserList'
+import UserList from '../UserList'
 export default function StuSearch() {
   const { fetch, data } = useFetch<MemberListType>({
     url: `/club-member/${33}`,

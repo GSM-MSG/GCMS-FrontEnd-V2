@@ -1,5 +1,5 @@
-import StuInfo from './StuInfo'
-import StuSearch from './StuSearch'
+import StuInfo from './StuInfo/StuInfo'
+import StuSearch from './StuSearch/StuSearch'
 import * as S from './style'
 
 export default function StuListPage() {

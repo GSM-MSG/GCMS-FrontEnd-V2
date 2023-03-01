@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import * as UserList from '@/components/ClubMemberPage/UserList/style'
-//UserList
 
 export const UserListLayer = styled(UserList.Layer)``
 

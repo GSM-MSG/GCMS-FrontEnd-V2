@@ -3,7 +3,7 @@ import * as SVG from '@/assets/svg'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
-import ClubItem from '../MyPage/ClubItem'
+import ClubItem from '../../MyPage/ClubItem'
 
 export default function StuInfo() {
   const { user } = useSelector((state: RootState) => ({

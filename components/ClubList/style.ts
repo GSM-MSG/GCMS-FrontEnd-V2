@@ -35,9 +35,7 @@ export const ClubOptionLayer = styled.form`
         background: #5a5a5a;
         border-radius: 1px;
       }
-      ::before {
-        right: -12px;
-      }
+
       ::after {
         left: -12px;
       }

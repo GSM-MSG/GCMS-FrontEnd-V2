@@ -20,7 +20,9 @@ export default function ClubNav() {
 
   return (
     <S.Layer>
-      <h3>{data?.name ?? ''}</h3>
+      <div>
+        <S.ClubName href={`/detail/${clubId}`}>{data?.name ?? ''}</S.ClubName>
+      </div>
       <S.NavContainer>
         <S.NavWrapper href={`/applicant/${clubId}`}>
           <S.IconBox>

@@ -10,7 +10,7 @@ import { useLoggedIn } from '@/hooks'
 
 export default function Header() {
   const dispatch = useDispatch()
-  useLoggedIn({})
+  // useLoggedIn({})
 
   const { loginModal, user } = useSelector((state: RootState) => ({
     loginModal: state.loginModal,

@@ -7,11 +7,11 @@ import { removeActivityFile } from '@/store/imgs'
 
 interface Props {
   register: UseFormRegisterReturn
+  imgs: string[]
 }
 
-const ClubImgs = ({ register }: Props) => {
+const ClubImgs = ({ register, imgs }: Props) => {
   const dispatch = useDispatch()
-  const { imgs } = useSelector((store: RootState) => ({ imgs: store.imgs }))
 
   return (
     <S.Wrapper>
@@ -27,15 +27,12 @@ const ClubImgs = ({ register }: Props) => {
         <S.ImgInput htmlFor='imgs'>
           <SVG.Pictures />
           <S.ImgCount>
-            <S.ImgCountHightlight>
-              {imgs.activityImgs.length}
-            </S.ImgCountHightlight>{' '}
-            / 4
+            <S.ImgCountHightlight>{imgs?.length}</S.ImgCountHightlight> / 4
           </S.ImgCount>
         </S.ImgInput>
 
-        {imgs.activityImgs.map((i, idx) => (
-          <S.Img key={idx} src={URL.createObjectURL(i)}>
+        {imgs?.map((i, idx) => (
+          <S.Img key={idx} src={i}>
             <S.RemoveImg onClick={() => dispatch(removeActivityFile(idx))}>
               <SVG.XMark width='10' height='10' />
             </S.RemoveImg>

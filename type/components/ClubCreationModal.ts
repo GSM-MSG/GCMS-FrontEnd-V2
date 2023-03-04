@@ -19,3 +19,5 @@ export interface ImgUploadFormType {
 export interface ContentFormType {
   content: string
 }
+
+export type ClubImgUploadType = 'banner' | 'activity'

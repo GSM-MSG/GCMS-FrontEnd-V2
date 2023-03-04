@@ -7,9 +7,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { setModal } from '@/store/loginModal'
 import { useLoggedIn } from '@/hooks'
+import { useRouter } from 'next/router'
 
 export default function Header() {
   const dispatch = useDispatch()
+  const router = useRouter()
+  const path = router.pathname
   useLoggedIn({})
 
   const { loginModal, user } = useSelector((state: RootState) => ({
@@ -24,8 +27,23 @@ export default function Header() {
           <Link href='/'>
             <SVG.Logo />
           </Link>
-          <S.NavWrapper>
-            <Link href='/'>홈</Link>
+
+          <S.Navs>
+            <S.Nav active={path === '/'} href='/'>
+              홈
+            </S.Nav>
+            <S.Nav active={path === '/stulist'} href='/stulist'>
+              학생관리
+            </S.Nav>
+            <S.Nav active={path === '/permission'} href='/permission'>
+              동아리 관리
+            </S.Nav>
+            <S.Nav active={path === '/statistics'} href='/statistics'>
+              통계
+            </S.Nav>
+          </S.Navs>
+
+          <S.UserInfo>
             {user.name ? (
               <Link href='/my'>
                 <Profile />
@@ -33,7 +51,7 @@ export default function Header() {
             ) : (
               <a onClick={() => dispatch(setModal())}>로그인</a>
             )}
-          </S.NavWrapper>
+          </S.UserInfo>
         </S.Wrapper>
       </S.Header>
       {loginModal && <Login />}

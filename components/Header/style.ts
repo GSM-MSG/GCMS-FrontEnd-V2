@@ -1,4 +1,6 @@
+import NavActiveType from '@/type/components/Header'
 import styled from '@emotion/styled'
+import Link from 'next/link'
 
 export const Header = styled.header`
   position: sticky;
@@ -22,7 +24,18 @@ export const Wrapper = styled.div`
   align-items: center;
 `
 
-export const NavWrapper = styled.nav`
+export const Navs = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const Nav = styled(Link)<NavActiveType>`
+  padding: 0.5rem 1rem;
+  color: ${({ active }) => (active ? '#fff' : 'rgba(255, 255, 255, 0.5)')};
+`
+
+export const UserInfo = styled.nav`
   font-weight: 500;
   font-size: 13px;
   text-align: center;

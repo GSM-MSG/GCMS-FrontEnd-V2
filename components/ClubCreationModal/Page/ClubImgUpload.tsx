@@ -15,8 +15,7 @@ import { ChangeEvent } from 'react'
 
 const ClubImgUpload = () => {
   const dispatch = useDispatch()
-  const { imgs, clubCreation } = useSelector((state: RootState) => ({
-    imgs: state.imgs,
+  const { clubCreation } = useSelector((state: RootState) => ({
     clubCreation: state.clubCreation,
   }))
   const {

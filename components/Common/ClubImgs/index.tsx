@@ -1,9 +1,8 @@
 import * as S from './style'
 import * as SVG from '@/assets/svg'
 import { UseFormRegisterReturn } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/store'
-import { removeActivityFile } from '@/store/imgs'
+import { useDispatch } from 'react-redux'
+import { removeActivityImg } from '@/store/clubCreation'
 
 interface Props {
   register: UseFormRegisterReturn
@@ -33,7 +32,7 @@ const ClubImgs = ({ register, imgs }: Props) => {
 
         {imgs?.map((i, idx) => (
           <S.Img key={idx} src={i}>
-            <S.RemoveImg onClick={() => dispatch(removeActivityFile(idx))}>
+            <S.RemoveImg onClick={() => dispatch(removeActivityImg(idx))}>
               <SVG.XMark width='10' height='10' />
             </S.RemoveImg>
           </S.Img>

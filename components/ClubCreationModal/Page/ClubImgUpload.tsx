@@ -21,12 +21,13 @@ const ClubImgUpload = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<ImgUploadFormType>()
   const { upload, isLoading } = useUpload()
 
   const onSubmit = async () => {
-    if (!clubCreation.bannerImg) return
+    if (!clubCreation.bannerImg) return setError('bannerImg', {})
 
     dispatch(nextPage())
   }

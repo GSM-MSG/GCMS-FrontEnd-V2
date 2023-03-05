@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Link from 'next/link'
 
 export const Layer = styled.div`
   width: 100%;
@@ -102,20 +103,32 @@ export const ClubInfo = styled.div`
   align-items: center;
 `
 
-export const ClubName = styled.h4`
+export const ClubName = styled(Link)`
   font-size: 14px;
   margin: 0;
   white-space: nowrap;
   flex-basis: 9em;
+  transition: 0.2s;
+
+  &:hover {
+    color: #4164e1;
+  }
 
   @media (max-width: 600px) {
     flex-basis: 6em;
   }
 `
 
-export const ClubKind = styled(ClubName)`
+export const ClubKind = styled.h4`
   color: #888;
   flex-basis: 8em;
+  font-size: 14px;
+  margin: 0;
+  white-space: nowrap;
+
+  @media (max-width: 600px) {
+    flex-basis: 6em;
+  }
 `
 export const ClubDescription = styled(ClubKind)`
   text-overflow: ellipsis;

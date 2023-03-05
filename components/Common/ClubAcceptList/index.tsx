@@ -51,7 +51,9 @@ const ClubAcceptList = ({ inputLabel }: Props) => {
                 </S.ClubImgBox>
                 <S.ClubInfo>
                   <S.ClubKind>{ClubType(item.type)}</S.ClubKind>
-                  <S.ClubName>{item.name}</S.ClubName>
+                  <S.ClubName href={`/detail/${item.id}`}>
+                    {item.name}
+                  </S.ClubName>
                   <S.ClubDescription>{item.content}</S.ClubDescription>
                 </S.ClubInfo>
                 <S.OptionBox>

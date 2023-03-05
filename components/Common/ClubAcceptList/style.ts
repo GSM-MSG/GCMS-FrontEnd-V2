@@ -27,10 +27,6 @@ export const ClubContainer = styled.div`
   overflow-y: scroll;
   margin-top: 30px;
 
-  @media (min-height: 962px) {
-    max-height: calc(100vh - 441px);
-  }
-
   &::-webkit-scrollbar {
     display: none;
   }
@@ -43,13 +39,25 @@ export const Header = styled.div`
 
   small {
     :nth-of-type(1) {
-      flex-basis: 9%;
+      flex-basis: 60px;
     }
     :nth-of-type(2) {
       flex-basis: 15%;
     }
     :nth-of-type(3) {
       flex-basis: 17%;
+    }
+
+    @media (max-width: 600px) {
+      :nth-of-type(1) {
+        flex-basis: 4em;
+      }
+      :nth-of-type(2) {
+        flex-basis: 6.2em;
+      }
+      :nth-of-type(4) {
+        display: none;
+      }
     }
   }
 `
@@ -69,6 +77,7 @@ export const ClubBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   padding: 0 16px;
   transition: 0.5s;
 `
@@ -77,7 +86,7 @@ export const ClubImgBox = styled.div`
   border-radius: 100%;
   background: #434343;
   overflow: hidden;
-  width: 40px;
+  min-width: 40px;
   height: 40px;
 `
 
@@ -98,6 +107,10 @@ export const ClubName = styled.h4`
   margin: 0;
   white-space: nowrap;
   flex-basis: 9em;
+
+  @media (max-width: 600px) {
+    flex-basis: 6em;
+  }
 `
 
 export const ClubKind = styled(ClubName)`
@@ -110,7 +123,8 @@ export const ClubDescription = styled(ClubKind)`
   overflow: hidden;
   flex-basis: 20em;
 
-  @media (max-width: 740px) {
+  @media (max-width: 600px) {
+    display: none;
   }
 `
 

@@ -9,7 +9,7 @@ interface Props {
   inputLabel?: string
 }
 
-const ClubAcceptList = ({ inputLabel }: Props) => {
+const ClubPermissionList = ({ inputLabel }: Props) => {
   const { register, watch } = useForm({ defaultValues: { value: '' } })
 
   const ClubType = (type: ClubType) => {
@@ -69,4 +69,4 @@ const ClubAcceptList = ({ inputLabel }: Props) => {
   )
 }
 
-export default ClubAcceptList
+export default ClubPermissionList

@@ -22,7 +22,7 @@ const userSlice = createSlice({
       return state
     },
     setUserProfile: (state, action: PayloadAction<UserProfileType>) => {
-      state = { ...initialState, ...action.payload }
+      state = { ...state, ...action.payload }
       return state
     },
     removeUser: () => {

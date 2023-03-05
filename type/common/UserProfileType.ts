@@ -1,8 +1,9 @@
 import RoleType from './RoleType'
 
-interface UserProfileType extends RoleType {
+interface UserProfileType {
   name: string
   profileImg?: string
+  role: RoleType
 }
 
 export default UserProfileType

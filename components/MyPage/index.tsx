@@ -37,6 +37,7 @@ export default function MyPage() {
   }
 
   useEffect(() => {
+    if (user.uuid) return
     fetch()
   }, [])
 

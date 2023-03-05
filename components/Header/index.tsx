@@ -51,6 +51,10 @@ export default function Header() {
             ) : (
               <a onClick={() => dispatch(setModal())}>로그인</a>
             )}
+
+            <S.SidebarIcon>
+              <SVG.HamburgerBar />
+            </S.SidebarIcon>
           </S.UserInfo>
         </S.Wrapper>
       </S.Header>

@@ -22,16 +22,26 @@ export const Wrapper = styled.div`
   padding: 10px;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 `
 
 export const Navs = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
+
+  @media (max-width: 500px) {
+    & > a {
+      display: none;
+    }
+  }
 `
 
 export const Nav = styled(Link)<NavActiveType>`
   padding: 0.5rem 1rem;
+
+  font-size: 0.8rem;
   color: ${({ active }) =>
     active === 'true' ? '#fff' : 'rgba(255, 255, 255, 0.5)'};
 `
@@ -45,10 +55,23 @@ export const UserInfo = styled.nav`
   justify-content: center;
   align-items: center;
   gap: 20px;
+
   a {
     cursor: pointer;
   }
 `
+
+export const SidebarIcon = styled.div`
+  display: flex;
+  cursor: pointer;
+
+  @media (min-width: 500px) {
+    & > svg {
+      display: none;
+    }
+  }
+`
+
 export const ProfileWrapper = styled.div`
   width: 108px;
   height: 40px;

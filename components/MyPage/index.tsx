@@ -1,26 +1,44 @@
 import * as SVG from '@/assets/svg'
-import { useLoggedIn } from '@/hooks'
+import { useFetch } from '@/hooks'
 import { RootState } from '@/store'
+import { setUser } from '@/store/user'
+import { ProfileType } from '@/type/common'
 import Image from 'next/image'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import SEO from '../SEO'
 import ClubItem from './ClubItem'
 import ProfileSetting from './ProfileSetting'
 import * as S from './style'
 
 export default function MyPage() {
+  const dispatch = useDispatch()
+  const router = useRouter()
   const [isSetting, setSetting] = useState<boolean>(false)
-  const { fetchUser } = useLoggedIn({})
+  const { fetch } = useFetch<ProfileType>({
+    method: 'get',
+    url: '/user',
+    onSuccess: (data) => {
+      dispatch(setUser(data))
+    },
+    onFailure: () => {
+      router.replace('/')
+    },
+  })
 
   const { user } = useSelector((state: RootState) => ({
     user: state.user,
   }))
 
   const onSubmit = () => {
-    fetchUser()
+    fetch()
     setSetting(false)
   }
+
+  useEffect(() => {
+    fetch()
+  }, [])
 
   return (
     <>

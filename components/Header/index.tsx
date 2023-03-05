@@ -7,10 +7,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { setModal } from '@/store/loginModal'
 import { useLoggedIn } from '@/hooks'
+import { useRouter } from 'next/router'
 
 export default function Header() {
   const dispatch = useDispatch()
-  useLoggedIn({})
+  const router = useRouter()
+  useLoggedIn({ onFetch: router.route !== '/my' })
 
   const { loginModal, user } = useSelector((state: RootState) => ({
     loginModal: state.loginModal,

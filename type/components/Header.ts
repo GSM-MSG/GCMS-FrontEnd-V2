@@ -1,5 +1,5 @@
 interface NavActiveType {
-  active: boolean
+  active: 'true' | 'false'
 }
 
 export default NavActiveType

@@ -29,16 +29,16 @@ export default function Header() {
           </Link>
 
           <S.Navs>
-            <S.Nav active={path === '/'} href='/'>
+            <S.Nav active={`${path === '/'}`} href='/'>
               홈
             </S.Nav>
-            <S.Nav active={path === '/stulist'} href='/stulist'>
+            <S.Nav active={`${path === '/stulist'}`} href='/stulist'>
               학생관리
             </S.Nav>
-            <S.Nav active={path === '/permission'} href='/permission'>
+            <S.Nav active={`${path === '/permission'}`} href='/permission'>
               동아리 관리
             </S.Nav>
-            <S.Nav active={path === '/statistics'} href='/statistics'>
+            <S.Nav active={`${path === '/statistics'}`} href='/statistics'>
               통계
             </S.Nav>
           </S.Navs>

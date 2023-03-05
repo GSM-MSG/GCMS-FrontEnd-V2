@@ -32,7 +32,8 @@ export const Navs = styled.div`
 
 export const Nav = styled(Link)<NavActiveType>`
   padding: 0.5rem 1rem;
-  color: ${({ active }) => (active ? '#fff' : 'rgba(255, 255, 255, 0.5)')};
+  color: ${({ active }) =>
+    active === 'true' ? '#fff' : 'rgba(255, 255, 255, 0.5)'};
 `
 
 export const UserInfo = styled.nav`

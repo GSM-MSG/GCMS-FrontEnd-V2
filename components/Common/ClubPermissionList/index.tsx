@@ -1,26 +1,33 @@
 import { SearchIcon } from '@/assets/svg'
 import { useFetch } from '@/hooks'
 import { ClubListType, ClubType } from '@/type/common'
-import { useEffect } from 'react'
+import { ListProps, SubmitType } from '@/type/components/ClubPermission'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Input from '../Input'
 import * as S from './style'
 
-interface Props {
-  inputLabel?: string
-}
-
-const ClubPermissionList = ({ inputLabel }: Props) => {
+const ClubPermissionList = ({ inputLabel }: ListProps) => {
   const { register, watch } = useForm({ defaultValues: { value: '' } })
+  const [apiData, setApiData] = useState<SubmitType>({
+    id: 1,
+    method: 'PATCH',
+  })
 
   const { fetch, data } = useFetch<ClubListType[]>({
-    url: '/admin',
+    url: `/admin/${apiData.id}`,
     method: 'GET',
   })
 
+  const { fetch: submit } = useFetch<SubmitType>({
+    url: `/admin/${apiData.id}`,
+    method: apiData.method,
+  })
+
   useEffect(() => {
+    submit()
     fetch()
-  }, [])
+  }, [apiData])
 
   const ClubType = (type: ClubType) => {
     switch (type) {
@@ -69,8 +76,20 @@ const ClubPermissionList = ({ inputLabel }: Props) => {
                     <S.ClubDescription>{item.content}</S.ClubDescription>
                   </S.ClubInfo>
                   <S.OptionBox>
-                    <S.OptionBtn>허가</S.OptionBtn>
-                    <S.OptionBtn>거부</S.OptionBtn>
+                    <S.OptionBtn
+                      onClick={() =>
+                        setApiData({ id: item.id, method: 'PATCH' })
+                      }
+                    >
+                      허가
+                    </S.OptionBtn>
+                    <S.OptionBtn
+                      onClick={() =>
+                        setApiData({ id: item.id, method: 'DELETE' })
+                      }
+                    >
+                      거부
+                    </S.OptionBtn>
                   </S.OptionBox>
                 </S.ClubBox>
               </S.ClubWrapper>

@@ -41,6 +41,11 @@ const clubCreationSlice = createSlice({
       state.activityImgs = action.payload
     },
 
+    removeActivityImg: (state, { payload }: PayloadAction<number>) => {
+      state.activityImgs = state.activityImgs.filter((_, i) => i !== payload)
+      return state
+    },
+
     setContent: (state, action: PayloadAction<string>) => {
       state.content = action.payload
     },
@@ -68,6 +73,7 @@ export const {
   removeMember,
   setBannerImg,
   addActivityImg,
+  removeActivityImg,
   clearClubData,
 } = clubCreationSlice.actions
 

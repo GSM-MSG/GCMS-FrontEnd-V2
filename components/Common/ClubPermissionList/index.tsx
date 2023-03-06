@@ -22,7 +22,7 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
   useEffect(() => {
     if (apiData.id === 0) return
     submit()
-    onFetch()
+    onFetch && onFetch()
   }, [apiData])
 
   const ClubType = (type: ClubType) => {

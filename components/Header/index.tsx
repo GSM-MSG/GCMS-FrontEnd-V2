@@ -13,7 +13,7 @@ export default function Header() {
   const dispatch = useDispatch()
   const router = useRouter()
   const path = router.pathname
-  useLoggedIn({})
+  useLoggedIn({ onFetch: router.route !== '/my' })
 
   const { loginModal, user } = useSelector((state: RootState) => ({
     loginModal: state.loginModal,

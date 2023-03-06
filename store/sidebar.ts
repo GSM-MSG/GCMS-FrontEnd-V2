@@ -12,9 +12,12 @@ const sidebarSlice = createSlice({
     show: () => {
       return true
     },
+    toggle: (state) => {
+      return !state
+    },
   },
 })
 
-export const { hide, show } = sidebarSlice.actions
+export const { hide, show, toggle } = sidebarSlice.actions
 
 export default sidebarSlice

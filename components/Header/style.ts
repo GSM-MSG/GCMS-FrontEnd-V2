@@ -1,11 +1,11 @@
-import NavActiveType from '@/type/components/Header'
+import { IsAdmin, NavActiveType } from '@/type/components/Header'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 
 export const Header = styled.header`
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 200;
   width: 100%;
   height: 61px;
   display: flex;
@@ -25,10 +25,10 @@ export const Wrapper = styled.div`
   gap: 1rem;
 `
 
-export const Navs = styled.div`
+export const Navs = styled.div<IsAdmin>`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: ${({ isAdmin }) => (isAdmin ? 'center' : 'end')};
   flex: 1;
 
   @media (max-width: 500px) {

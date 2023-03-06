@@ -1,5 +1,7 @@
-interface NavActiveType {
+export interface NavActiveType {
   active: 'true' | 'false'
 }
 
-export default NavActiveType
+export interface IsAdmin {
+  isAdmin: boolean
+}

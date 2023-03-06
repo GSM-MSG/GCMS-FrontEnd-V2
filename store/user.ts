@@ -9,7 +9,7 @@ const initialState: ProfileType = {
   grade: 0,
   classNum: 0,
   number: 0,
-  role: 'ROLE_ADMIN',
+  role: 'ROLE_STUDENT',
   clubs: [],
 }
 

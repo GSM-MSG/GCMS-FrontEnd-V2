@@ -4,7 +4,7 @@ import { ClubListType } from '../common'
 export interface ListProps {
   inputLabel?: string
   data: ClubListType[] | null
-  onFetch: () => void
+  onFetch?: () => void
 }
 
 export interface SubmitType {

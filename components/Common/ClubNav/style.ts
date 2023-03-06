@@ -8,6 +8,19 @@ export const Layer = styled.div`
   margin-bottom: 20px;
 `
 
+export const ClubName = styled(Link)`
+  display: inline;
+  height: 20px;
+  font-weight: 700;
+  font-size: 17px;
+  color: #fcffff;
+  transition: 0.3s;
+
+  :hover {
+    color: #4164e1;
+  }
+`
+
 export const NavContainer = styled.div`
   display: flex;
   gap: 40px;

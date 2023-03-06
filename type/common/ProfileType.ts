@@ -1,7 +1,12 @@
 import ClubType from './ClubType'
-import MemberType from './MemberType'
+import UserProfileType from './UserProfileType'
 
-interface ProfileType extends MemberType {
+interface ProfileType extends UserProfileType {
+  uuid: string
+  email: string
+  grade: number
+  classNum: number
+  number: number
   clubs: ClubInfoType[]
 }
 

@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   width: 710px;
   height: 100%;
   display: flex;
-  padding: 10px;
+  padding: 0.625rem 1.5rem;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
@@ -32,7 +32,7 @@ export const Navs = styled.div<IsAdmin>`
   flex: 1;
 
   @media (max-width: 500px) {
-    & > a {
+    & > a:nth-child(n + 2) {
       display: none;
     }
   }

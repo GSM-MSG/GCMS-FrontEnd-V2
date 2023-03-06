@@ -1,22 +1,17 @@
 import { SearchIcon } from '@/assets/svg'
 import { useFetch } from '@/hooks'
-import { ClubListType, ClubType } from '@/type/common'
+import { ClubType } from '@/type/common'
 import { ListProps, SubmitType } from '@/type/components/ClubPermission'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Input from '../Input'
 import * as S from './style'
 
-const ClubPermissionList = ({ inputLabel }: ListProps) => {
+const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
   const { register, watch } = useForm({ defaultValues: { value: '' } })
   const [apiData, setApiData] = useState<SubmitType>({
-    id: 1,
+    id: 0,
     method: 'PATCH',
-  })
-
-  const { fetch, data } = useFetch<ClubListType[]>({
-    url: `/admin/${apiData.id}`,
-    method: 'GET',
   })
 
   const { fetch: submit } = useFetch<SubmitType>({
@@ -25,8 +20,9 @@ const ClubPermissionList = ({ inputLabel }: ListProps) => {
   })
 
   useEffect(() => {
+    if (apiData.id === 0) return
     submit()
-    fetch()
+    onFetch()
   }, [apiData])
 
   const ClubType = (type: ClubType) => {

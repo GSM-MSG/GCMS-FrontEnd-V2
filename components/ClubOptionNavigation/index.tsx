@@ -14,7 +14,7 @@ const ClubOptionNavigation = ({ type, onChange }: Props) => {
         id={'MAJOR'}
         value=''
         checked={!type}
-        onChange={() => onChange('')}
+        onChange={(e) => onChange(e.target.value)}
       />
       <label htmlFor={'MAJOR'}>전공</label>
       <input
@@ -22,7 +22,7 @@ const ClubOptionNavigation = ({ type, onChange }: Props) => {
         id={'FREEDOM'}
         value='FREEDOM'
         checked={type === 'FREEDOM'}
-        onChange={() => onChange('FREEDOM')}
+        onChange={(e) => onChange(e.target.value)}
       />
       <label htmlFor={'FREEDOM'}>자율</label>
       <input
@@ -30,7 +30,7 @@ const ClubOptionNavigation = ({ type, onChange }: Props) => {
         id={'EDITORIAL'}
         value='EDITORIAL'
         checked={type === 'EDITORIAL'}
-        onChange={() => onChange('EDITORIAL')}
+        onChange={(e) => onChange(e.target.value)}
       />
       <label htmlFor={'EDITORIAL'}>사설</label>
     </S.Wrapper>

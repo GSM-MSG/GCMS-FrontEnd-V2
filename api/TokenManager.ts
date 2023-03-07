@@ -14,7 +14,7 @@ class TokenManager {
   validateToken(expiredString: string | null, token: string | null): boolean {
     if (!expiredString || !token) return false
 
-    return this.calculatMinutes(expiredString, -1) >= new Date()
+    return this.calculatMinutes(expiredString, 1) >= new Date()
   }
 
   calculatMinutes(currentDate: string, addMinute: number): Date {

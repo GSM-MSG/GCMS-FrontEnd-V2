@@ -10,6 +10,7 @@ import { createWrapper, HYDRATE } from 'next-redux-wrapper'
 import reissueSlice from './reissue'
 import clubListSlice from './clubList'
 import uuidSlice from './uuid'
+import sidebarSlice from './sidebar'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   reissue: reissueSlice.reducer,
   clubList: clubListSlice.reducer,
   uuid: uuidSlice.reducer,
+  sidebar: sidebarSlice.reducer,
 })
 
 const reducer = (state: RootState | undefined, action: AnyAction) => {

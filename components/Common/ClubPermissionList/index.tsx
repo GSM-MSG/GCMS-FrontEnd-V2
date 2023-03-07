@@ -1,6 +1,7 @@
 import { SearchIcon } from '@/assets/svg'
 import { useFetch } from '@/hooks'
-import { ClubListType, ClubType } from '@/type/common'
+import RequestClubType from '@/lib/requestClubType'
+import { ClubListType } from '@/type/common'
 import { SubmitType } from '@/type/components/ClubPermission'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -31,17 +32,6 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
     onFetch && onFetch()
   }, [apiData])
 
-  const ClubType = (type: ClubType) => {
-    switch (type) {
-      case 'MAJOR':
-        return '전공 동아리'
-      case 'FREEDOM':
-        return '자율 동아리'
-      case 'EDITORIAL':
-        return '사설 동아리'
-    }
-  }
-
   return (
     <S.Layer>
       <S.InputBox>
@@ -68,7 +58,7 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
                   <S.Img src={item.bannerImg} alt='bannerImg' />
                 </S.ClubImgBox>
                 <S.ClubInfo>
-                  <S.ClubKind>{ClubType(item.type)}</S.ClubKind>
+                  <S.ClubKind>{RequestClubType(item.type)}</S.ClubKind>
                   <S.ClubName href={`/detail/${item.id}`}>
                     {item.name}
                   </S.ClubName>

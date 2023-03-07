@@ -60,43 +60,37 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
           <small>설명</small>
         </S.Header>
         {data
-          ?.filter((i) => {
-            return i.name.includes(watch('value').trim())
-          })
-          .map((item) => {
-            return (
-              <S.ClubWrapper key={item.id}>
-                <S.ClubBox>
-                  <S.ClubImgBox>
-                    <S.Img src={item.bannerImg} alt='bannerImg' />
-                  </S.ClubImgBox>
-                  <S.ClubInfo>
-                    <S.ClubKind>{ClubType(item.type)}</S.ClubKind>
-                    <S.ClubName href={`/detail/${item.id}`}>
-                      {item.name}
-                    </S.ClubName>
-                    <S.ClubDescription>{item.content}</S.ClubDescription>
-                  </S.ClubInfo>
-                  <S.OptionBox>
-                    <S.OptionBtn
-                      onClick={() =>
-                        setApiData({ id: item.id, method: 'PATCH' })
-                      }
-                    >
-                      허가
-                    </S.OptionBtn>
-                    <S.OptionBtn
-                      onClick={() =>
-                        setApiData({ id: item.id, method: 'DELETE' })
-                      }
-                    >
-                      거부
-                    </S.OptionBtn>
-                  </S.OptionBox>
-                </S.ClubBox>
-              </S.ClubWrapper>
-            )
-          })}
+          ?.filter((i) => i.name.includes(watch('value').trim()))
+          .map((item) => (
+            <S.ClubWrapper key={item.id}>
+              <S.ClubBox>
+                <S.ClubImgBox>
+                  <S.Img src={item.bannerImg} alt='bannerImg' />
+                </S.ClubImgBox>
+                <S.ClubInfo>
+                  <S.ClubKind>{ClubType(item.type)}</S.ClubKind>
+                  <S.ClubName href={`/detail/${item.id}`}>
+                    {item.name}
+                  </S.ClubName>
+                  <S.ClubDescription>{item.content}</S.ClubDescription>
+                </S.ClubInfo>
+                <S.OptionBox>
+                  <S.OptionBtn
+                    onClick={() => setApiData({ id: item.id, method: 'PATCH' })}
+                  >
+                    허가
+                  </S.OptionBtn>
+                  <S.OptionBtn
+                    onClick={() =>
+                      setApiData({ id: item.id, method: 'DELETE' })
+                    }
+                  >
+                    거부
+                  </S.OptionBtn>
+                </S.OptionBox>
+              </S.ClubBox>
+            </S.ClubWrapper>
+          ))}
       </S.ClubContainer>
     </S.Layer>
   )

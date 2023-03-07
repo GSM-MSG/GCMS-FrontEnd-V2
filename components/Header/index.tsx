@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 export default function Header() {
   const dispatch = useDispatch()
   const router = useRouter()
-  useLoggedIn({ onFetch: router.route !== '/my' })
+  // useLoggedIn({ onFetch: router.route !== '/my' })
 
   const { loginModal, user } = useSelector((state: RootState) => ({
     loginModal: state.loginModal,

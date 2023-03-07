@@ -2,7 +2,7 @@ import { UseFormRegisterReturn } from 'react-hook-form'
 import * as S from './style'
 
 interface Props {
-  label: string
+  label?: string
   placeholder: string
   description?: string
   errorPlaceholder?: string

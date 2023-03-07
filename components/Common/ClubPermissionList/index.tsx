@@ -1,11 +1,17 @@
 import { SearchIcon } from '@/assets/svg'
 import { useFetch } from '@/hooks'
-import { ClubType } from '@/type/common'
-import { ListProps, SubmitType } from '@/type/components/ClubPermission'
+import { ClubListType, ClubType } from '@/type/common'
+import { SubmitType } from '@/type/components/ClubPermission'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Input from '../Input'
 import * as S from './style'
+
+interface ListProps {
+  inputLabel?: string
+  data: ClubListType[] | null
+  onFetch?: () => void
+}
 
 const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
   const { register, watch } = useForm({ defaultValues: { value: '' } })

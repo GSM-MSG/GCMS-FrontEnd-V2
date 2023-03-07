@@ -2,12 +2,17 @@ import { CircleProps } from '@/type/components/Statistics'
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-  display: inline-flex;
+  display: flex;
+  width: 100%;
   align-items: center;
   gap: 2rem;
   background: #212123;
   padding: 2rem;
   border-radius: 0.75rem;
+
+  @media (max-width: 450px) {
+    justify-content: center;
+  }
 `
 
 export const LeftContent = styled.div`
@@ -48,7 +53,7 @@ export const RightContent = styled.div`
   flex-direction: column;
   gap: 1rem;
 
-  @media (max-width: 550px) {
+  @media (max-width: 450px) {
     display: none;
   }
 `

@@ -7,7 +7,7 @@ interface Props {
   onChange: (type: ClubOptionType) => void
 }
 
-const ClubOptionNavigation = ({ type, onChange }: Props) => {
+const ClubOptionPick = ({ type, onChange }: Props) => {
   return (
     <S.Wrapper>
       <S.Input
@@ -35,4 +35,4 @@ const ClubOptionNavigation = ({ type, onChange }: Props) => {
   )
 }
 
-export default ClubOptionNavigation
+export default ClubOptionPick

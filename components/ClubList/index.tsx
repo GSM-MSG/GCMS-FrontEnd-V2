@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
-import ClubOptionNavigation from '../ClubOptionNavigation'
+import ClubOptionPick from '../ClubOptionPick'
 import { ClubType } from '@/type/common'
 import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
 
@@ -24,7 +24,7 @@ export default function ClubList() {
 
   return (
     <S.ClubWrapper>
-      <ClubOptionNavigation type={clubType} onChange={onChange} />
+      <ClubOptionPick type={clubType} onChange={onChange} />
 
       <S.ClubList>
         {clubList.map((i) => (

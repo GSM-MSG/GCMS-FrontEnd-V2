@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+export * from '@/components/MyPage/style'
 
 export const ProfileLayer = styled.div`
   width: 100%;

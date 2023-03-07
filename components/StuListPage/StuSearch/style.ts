@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+export * from '@/components/ClubMemberPage/style'
 
 export const StuSearchWrapper = styled.div`
   width: 100%;

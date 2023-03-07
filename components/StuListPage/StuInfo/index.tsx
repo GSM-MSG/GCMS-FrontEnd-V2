@@ -1,5 +1,4 @@
 import * as S from './style'
-import * as MyPage from '@/components/MyPage/style'
 import * as SVG from '@/assets/svg'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
@@ -25,10 +24,10 @@ export default function StuInfo() {
 
   return (
     <S.ProfileLayer>
-      <MyPage.ProfileBox>
+      <S.ProfileBox>
         <SVG.ProfileIcon />
-        <MyPage.ProfileContent>
-          <MyPage.ProfileImg>
+        <S.ProfileContent>
+          <S.ProfileImg>
             {data?.profileImg && (
               <Image
                 src={data.profileImg}
@@ -37,27 +36,27 @@ export default function StuInfo() {
                 height={60}
               />
             )}
-          </MyPage.ProfileImg>
+          </S.ProfileImg>
           <p>{data?.nickname && data?.nickname + '님'}</p>
           <small>
             {data?.grade ?? 0}학년 {data?.classNum ?? 0}반 {data?.number ?? 0}번
           </small>
-        </MyPage.ProfileContent>
-      </MyPage.ProfileBox>
-      <MyPage.ClubBox>
-        <MyPage.ClubContainer>
-          <MyPage.ClubType>전공동아리</MyPage.ClubType>
+        </S.ProfileContent>
+      </S.ProfileBox>
+      <S.ClubBox>
+        <S.ClubContainer>
+          <S.ClubType>전공동아리</S.ClubType>
           {data && <ClubItem clubType='MAJOR' data={data} />}
-        </MyPage.ClubContainer>
-        <MyPage.ClubContainer>
-          <MyPage.ClubType>자율동아리</MyPage.ClubType>
+        </S.ClubContainer>
+        <S.ClubContainer>
+          <S.ClubType>자율동아리</S.ClubType>
           {data && <ClubItem clubType='FREEDOM' data={data} />}
-        </MyPage.ClubContainer>
-        <MyPage.ClubContainer>
-          <MyPage.ClubType>사설동아리</MyPage.ClubType>
+        </S.ClubContainer>
+        <S.ClubContainer>
+          <S.ClubType>사설동아리</S.ClubType>
           {data && <ClubItem clubType='EDITORIAL' data={data} />}
-        </MyPage.ClubContainer>
-      </MyPage.ClubBox>
+        </S.ClubContainer>
+      </S.ClubBox>
     </S.ProfileLayer>
   )
 }

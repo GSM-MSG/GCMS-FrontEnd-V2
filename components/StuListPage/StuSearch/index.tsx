@@ -1,5 +1,4 @@
 import * as S from './style'
-import * as ClubMemberPage from '@/components/ClubMemberPage/style'
 import * as SVG from '@/assets/svg'
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
@@ -20,10 +19,10 @@ export default function StuSearch() {
 
   return (
     <S.StuSearchWrapper>
-      <ClubMemberPage.InputBox>
+      <S.InputBox>
         <SVG.SearchIcon />
         <S.InputTag placeholder='검색' {...register('value')} />
-      </ClubMemberPage.InputBox>
+      </S.InputBox>
       {!!data && <UserList data={data} value={watch('value').trim()} />}
     </S.StuSearchWrapper>
   )

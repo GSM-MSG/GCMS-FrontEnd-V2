@@ -40,7 +40,7 @@ export const Tab = styled.label`
 export const Input = styled.input`
   display: none;
 
-  input[type='radio']:checked + label {
+  &:checked + label {
     font-weight: 700;
     color: #ffffff;
   }

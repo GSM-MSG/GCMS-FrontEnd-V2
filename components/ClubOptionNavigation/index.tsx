@@ -1,38 +1,36 @@
 import { ClubType } from '@/type/common'
+import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
 import * as S from './style'
 
 interface Props {
-  type: ClubType
-  onChange: (type: Omit<ClubType, 'MAJOR'> | '') => void
+  type: ClubType | undefined
+  onChange: (type: ClubOptionType) => void
 }
 
 const ClubOptionNavigation = ({ type, onChange }: Props) => {
   return (
     <S.Wrapper>
-      <input
+      <S.Input
         type='radio'
         id={'MAJOR'}
-        value=''
         checked={!type}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={() => onChange('')}
       />
-      <label htmlFor={'MAJOR'}>전공</label>
-      <input
+      <S.Tab htmlFor={'MAJOR'}>전공</S.Tab>
+      <S.Input
         type='radio'
         id={'FREEDOM'}
-        value='FREEDOM'
         checked={type === 'FREEDOM'}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={() => onChange('FREEDOM')}
       />
-      <label htmlFor={'FREEDOM'}>자율</label>
-      <input
+      <S.Tab htmlFor={'FREEDOM'}>자율</S.Tab>
+      <S.Input
         type='radio'
         id={'EDITORIAL'}
-        value='EDITORIAL'
         checked={type === 'EDITORIAL'}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={() => onChange('EDITORIAL')}
       />
-      <label htmlFor={'EDITORIAL'}>사설</label>
+      <S.Tab htmlFor={'EDITORIAL'}>사설</S.Tab>
     </S.Wrapper>
   )
 }

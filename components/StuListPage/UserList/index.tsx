@@ -1,13 +1,6 @@
 import * as S from './style'
 
-import {
-  Img,
-  UserBox,
-  UserImgBox,
-  UserInfo,
-  UserName,
-  UserWrapper,
-} from '@/components/ClubMemberPage/UserList/style'
+import * as ClubMember from '@/components/ClubMemberPage/UserList/style'
 
 import { setUuid } from '@/store/uuid'
 import { useDispatch } from 'react-redux'
@@ -22,8 +15,8 @@ export default function UserList({ data, value }: Props) {
   const dispatch = useDispatch()
 
   return (
-    <S.UserListLayer>
-      <S.UserListContainer>
+    <ClubMember.Layer>
+      <ClubMember.UserContainer>
         {data?.map(
           (item) =>
             item.nickname.includes(value) && (
@@ -31,25 +24,28 @@ export default function UserList({ data, value }: Props) {
                 key={item.uuid}
                 onClick={() => dispatch(setUuid(item.uuid))}
               >
-                <UserWrapper>
-                  <UserBox option={false}>
-                    <UserImgBox>
+                <ClubMember.UserWrapper>
+                  <ClubMember.UserBox option={false}>
+                    <ClubMember.UserImgBox>
                       {item.profileImg && (
-                        <Img src={item.profileImg} alt='profileImg' />
+                        <ClubMember.Img
+                          src={item.profileImg}
+                          alt='profileImg'
+                        />
                       )}
-                    </UserImgBox>
-                    <UserInfo>
-                      <UserName>{item.nickname}</UserName>
+                    </ClubMember.UserImgBox>
+                    <ClubMember.UserInfo>
+                      <ClubMember.UserName>{item.nickname}</ClubMember.UserName>
                       <small>
                         {item.grade}학년 {item.classNum}반 {item.number}번
                       </small>
-                    </UserInfo>
-                  </UserBox>
-                </UserWrapper>
+                    </ClubMember.UserInfo>
+                  </ClubMember.UserBox>
+                </ClubMember.UserWrapper>
               </S.ItemWrapper>
             )
         )}
-      </S.UserListContainer>
-    </S.UserListLayer>
+      </ClubMember.UserContainer>
+    </ClubMember.Layer>
   )
 }

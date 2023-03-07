@@ -1,14 +1,14 @@
 import * as S from './style'
+import * as ClubMemberPage from '@/components/ClubMemberPage/style'
 import * as SVG from '@/assets/svg'
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
-
-import { MemberListType } from '@/type/common'
 import { useFetch } from '@/hooks'
 import UserList from '../UserList'
+import AdminUserListType from '@/type/common/AdminUserListType'
 export default function StuSearch() {
-  const { fetch, data } = useFetch<MemberListType>({
-    url: `/club-member/${33}`,
+  const { fetch, data } = useFetch<AdminUserListType[]>({
+    url: `/admin/user`,
     method: 'get',
   })
 
@@ -20,19 +20,11 @@ export default function StuSearch() {
 
   return (
     <S.StuSearchWrapper>
-      <S.InputBox>
+      <ClubMemberPage.InputBox>
         <SVG.SearchIcon />
         <S.InputTag placeholder='검색' {...register('value')} />
-      </S.InputBox>
-      {!!data && (
-        <UserList
-          data={data}
-          value={watch('value').trim()}
-          onClick={() => {
-            console.log(1)
-          }}
-        />
-      )}
+      </ClubMemberPage.InputBox>
+      {!!data && <UserList data={data} value={watch('value').trim()} />}
     </S.StuSearchWrapper>
   )
 }

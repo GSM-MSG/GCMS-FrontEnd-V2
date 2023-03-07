@@ -10,7 +10,7 @@ interface ProfileType extends UserProfileType {
   clubs: ClubInfoType[]
 }
 
-interface ClubInfoType {
+export interface ClubInfoType {
   id: number
   type: ClubType
   bannerImg: string

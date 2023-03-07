@@ -1,20 +1,51 @@
 import * as S from './style'
-import { MemberListProps } from '@/type/components/MemberPage'
-import UserItem from '@/components/ClubMemberPage/UserList/UserItem'
 
-interface Props extends MemberListProps {
-  onClick: () => void
+import {
+  Img,
+  UserBox,
+  UserImgBox,
+  UserInfo,
+  UserName,
+  UserWrapper,
+} from '@/components/ClubMemberPage/UserList/style'
+
+import { setUuid } from '@/store/uuid'
+import { useDispatch } from 'react-redux'
+import AdminMemberType from '@/type/common/AdminUserListType'
+
+interface Props {
+  data: AdminMemberType[]
+  value: string
 }
 
-export default function UserList({ data, value, onClick }: Props) {
+export default function UserList({ data, value }: Props) {
+  const dispatch = useDispatch()
+
   return (
     <S.UserListLayer>
       <S.UserListContainer>
-        {data?.clubMember?.map(
+        {data?.map(
           (item) =>
-            item.name.includes(value) && (
-              <S.ItemWrapper key={item.uuid} onClick={() => onClick()}>
-                <UserItem item={item} scope={data.scope} />
+            item.nickname.includes(value) && (
+              <S.ItemWrapper
+                key={item.uuid}
+                onClick={() => dispatch(setUuid(item.uuid))}
+              >
+                <UserWrapper>
+                  <UserBox option={false}>
+                    <UserImgBox>
+                      {item.profileImg && (
+                        <Img src={item.profileImg} alt='profileImg' />
+                      )}
+                    </UserImgBox>
+                    <UserInfo>
+                      <UserName>{item.nickname}</UserName>
+                      <small>
+                        {item.grade}학년 {item.classNum}반 {item.number}번
+                      </small>
+                    </UserInfo>
+                  </UserBox>
+                </UserWrapper>
               </S.ItemWrapper>
             )
         )}

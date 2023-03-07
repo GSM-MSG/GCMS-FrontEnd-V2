@@ -1,10 +1,8 @@
 import styled from '@emotion/styled'
-import * as ClubMemberPage from '@/components/ClubMemberPage/style'
 
 export const StuSearchWrapper = styled.div`
   width: 100%;
 `
-export const InputBox = styled(ClubMemberPage.InputBox)``
 
 export const InputTag = styled.input`
   width: 100%;

@@ -1,5 +1,5 @@
 import { MouseEvent } from 'react'
-import * as S from '@/components/MyPage/ClubItem/style'
+import * as S from './style'
 import * as SVG from '@/assets/svg'
 import AdminDetailType from '@/type/common/AdminDetailType'
 import { useRouter } from 'next/router'
@@ -20,7 +20,7 @@ export default function ClubItem({ clubType, data }: Props) {
       {data?.clubs
         .filter((i) => i.type === clubType)
         .map((item) => (
-          <S.ClubItem
+          <S.MemberClubItem
             key={item.id}
             onClick={() => router.push(`/detail/${item.id}`)}
           >
@@ -36,7 +36,7 @@ export default function ClubItem({ clubType, data }: Props) {
             <S.ClubManageBtn onClick={onClick} href={`/applicant/${item.id}`}>
               <SVG.KebabMenuIcon />
             </S.ClubManageBtn>
-          </S.ClubItem>
+          </S.MemberClubItem>
         ))}
     </>
   )

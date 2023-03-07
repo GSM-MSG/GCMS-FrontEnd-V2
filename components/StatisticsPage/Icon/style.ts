@@ -11,7 +11,10 @@ export const Wrapper = styled.div`
 
 export const IconWrapper = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   background: #242425;
-  padding: 1.2rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 0.8rem;
 `

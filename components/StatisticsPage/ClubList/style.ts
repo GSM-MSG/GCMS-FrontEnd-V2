@@ -12,6 +12,12 @@ export const TitleSection = styled.div`
 
 export const Title = styled.span`
   color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+
+  &:nth-of-type(1) {
+    width: 2.5rem;
+    margin-right: 0.5rem;
+  }
 
   &:nth-of-type(3) {
     margin-right: 1rem;
@@ -36,6 +42,7 @@ export const ClubBanner = styled.img`
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 100%;
+  margin-right: 0.5rem;
 `
 
 export const ClubKind = styled.div`

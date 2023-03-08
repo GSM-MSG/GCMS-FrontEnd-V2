@@ -1,4 +1,5 @@
 import { useFetch } from '@/hooks'
+import RequestClubType from '@/lib/requestClubType'
 import { ClubListType } from '@/type/common'
 import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
 import { useEffect } from 'react'
@@ -32,7 +33,7 @@ const ClubList = ({ type, search }: Props) => {
         .map((i) => (
           <S.ClubSection href={`/detail/${i.id}`} key={i.id}>
             <S.ClubBanner src={i.bannerImg} />
-            <S.ClubKind>{i.type}</S.ClubKind>
+            <S.ClubKind>{RequestClubType(i.type)}</S.ClubKind>
             <S.ClubTitle>{i.name}</S.ClubTitle>
             <S.ClubContent>{i.content}</S.ClubContent>
           </S.ClubSection>

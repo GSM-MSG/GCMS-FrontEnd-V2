@@ -1,5 +1,5 @@
 import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
-import { ChangeEvent, useRef, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import ClubList from './ClubList'
 import FileDownload from './FileDownload'
 import Statistics from './Statistics'

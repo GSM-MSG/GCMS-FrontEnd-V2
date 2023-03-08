@@ -42,6 +42,7 @@ export const ClubKind = styled.div`
   color: rgba(255, 255, 255, 0.5);
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 `
 
 export const ClubTitle = styled.h4`

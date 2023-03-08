@@ -46,7 +46,11 @@ export default function MyPage() {
                 {user?.number ?? 0}번
               </small>
             </S.ProfileContent>
-            <S.SettingButton onClick={() => setSetting(!isSetting)}>
+            <S.SettingButton
+              onClick={() => setSetting(!isSetting)}
+              onBlur={() => setSetting(false)}
+              tabIndex={0}
+            >
               <SVG.KebabMenuIcon />
             </S.SettingButton>
           </S.ProfileBox>

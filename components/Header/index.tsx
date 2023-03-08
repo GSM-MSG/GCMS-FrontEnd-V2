@@ -14,7 +14,6 @@ import { toggle } from '@/store/sidebar'
 export default function Header() {
   const dispatch = useDispatch()
   const router = useRouter()
-  useLoggedIn({ onFetch: router.route !== '/my' })
 
   const { loginModal, user, isShow } = useSelector((state: RootState) => ({
     loginModal: state.loginModal,

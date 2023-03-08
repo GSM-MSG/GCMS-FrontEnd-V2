@@ -37,7 +37,7 @@ const FileDownload = ({ type, onChange }: Props) => {
         />
         <Icon
           onClick={clubDownload}
-          icon={<SVG.PersonIcon />}
+          icon={<SVG.Human />}
           text='동아리별 출력'
         />
       </S.Icons>

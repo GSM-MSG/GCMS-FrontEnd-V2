@@ -6,9 +6,10 @@ import * as S from './style'
 
 interface Props {
   type: ClubOptionType
+  search: string
 }
 
-const ClubList = ({ type }: Props) => {
+const ClubList = ({ type, search }: Props) => {
   const { fetch, data } = useFetch<ClubListType[]>({
     method: 'get',
     url: `/club?type=${type || 'MAJOR'}`,
@@ -26,14 +27,16 @@ const ClubList = ({ type }: Props) => {
         <S.Title>이름</S.Title>
         <S.Title>설명</S.Title>
       </S.TitleSection>
-      {data?.map((i) => (
-        <S.ClubSection href={`/detail/${i.id}`} key={i.id}>
-          <S.ClubBanner src={i.bannerImg} />
-          <S.ClubKind>{i.type}</S.ClubKind>
-          <S.ClubTitle>{i.name}</S.ClubTitle>
-          <S.ClubContent>{i.content}</S.ClubContent>
-        </S.ClubSection>
-      ))}
+      {data
+        ?.filter((i) => i.name.includes(search))
+        .map((i) => (
+          <S.ClubSection href={`/detail/${i.id}`} key={i.id}>
+            <S.ClubBanner src={i.bannerImg} />
+            <S.ClubKind>{i.type}</S.ClubKind>
+            <S.ClubTitle>{i.name}</S.ClubTitle>
+            <S.ClubContent>{i.content}</S.ClubContent>
+          </S.ClubSection>
+        ))}
     </S.Wrapper>
   )
 }

@@ -26,6 +26,10 @@ export const ClubSection = styled(Link)`
   align-items: center;
   grid-template-columns: 1fr 1.5fr 2fr 5fr;
   border-radius: 1rem;
+
+  :nth-of-type(n + 2) {
+    margin-top: 1rem;
+  }
 `
 
 export const ClubBanner = styled.img`

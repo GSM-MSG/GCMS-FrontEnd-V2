@@ -1,24 +1,31 @@
 import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
-import { useState } from 'react'
+import { ChangeEvent, useRef, useState } from 'react'
 import ClubList from './ClubList'
-import Input from '../Common/Input'
 import FileDownload from './FileDownload'
 import Statistics from './Statistics'
 import * as S from './style'
+import * as SVG from '@/assets/svg'
 
 const StatisticsPage = () => {
   const [type, setType] = useState<ClubOptionType>('')
+  const [search, setSearch] = useState<string>('')
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setSearch(e.target.value)
 
   return (
     <S.Wrapper>
       <S.Top>
         <Statistics />
       </S.Top>
-      <Input placeholder='검색' />
+      <S.InputWrapper>
+        <SVG.SearchIcon />
+        <input onChange={onChange} value={search} placeholder='검색' />
+      </S.InputWrapper>
 
       <FileDownload type={type} onChange={setType} />
 
-      <ClubList type={type} />
+      <ClubList type={type} search={search} />
     </S.Wrapper>
   )
 }

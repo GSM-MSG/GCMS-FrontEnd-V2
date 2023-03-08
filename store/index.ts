@@ -2,7 +2,6 @@ import { configureStore, combineReducers, AnyAction } from '@reduxjs/toolkit'
 
 import clubCreationSlice from './clubCreation'
 import clubCreationPageSlice from './clubCreationPage'
-import ImgsSlice from './imgs'
 import userSlice from './user'
 import applicantSlice from './applicant'
 import clubDetailSlice from './clubDetail'
@@ -10,19 +9,22 @@ import loginModalSlice from './loginModal'
 import { createWrapper, HYDRATE } from 'next-redux-wrapper'
 import reissueSlice from './reissue'
 import clubListSlice from './clubList'
+import uuidSlice from './uuid'
+import sidebarSlice from './sidebar'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
 const rootReducer = combineReducers({
   clubCreation: clubCreationSlice.reducer,
   clubCreationPage: clubCreationPageSlice.reducer,
-  imgs: ImgsSlice.reducer,
   user: userSlice.reducer,
   applicant: applicantSlice.reducer,
   clubDetail: clubDetailSlice.reducer,
   loginModal: loginModalSlice.reducer,
   reissue: reissueSlice.reducer,
   clubList: clubListSlice.reducer,
+  uuid: uuidSlice.reducer,
+  sidebar: sidebarSlice.reducer,
 })
 
 const reducer = (state: RootState | undefined, action: AnyAction) => {

@@ -1,4 +1,4 @@
-import { CircleProps } from '@/type/components/Statistics'
+import { CircleProps, GraphProps } from '@/type/components/Statistics'
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
@@ -26,11 +26,14 @@ export const Text = styled.div`
   color: rgba(255, 255, 255, 0.5);
 `
 
-export const DoughnutGraph = styled.div`
+export const DoughnutGraph = styled.div<GraphProps>`
   width: 10rem;
   height: 10rem;
   border-radius: 100%;
-  background: conic-gradient(#4164e1 0% 25%, #3d3c3c 25% 56%);
+  background: conic-gradient(
+    #4164e1 0% ${({ applicantPercent }) => applicantPercent}%,
+    #3d3c3c ${({ applicantPercent }) => applicantPercent}% 100%
+  );
   display: flex;
   justify-content: center;
   align-items: center;

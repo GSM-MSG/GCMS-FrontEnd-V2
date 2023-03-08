@@ -16,7 +16,7 @@ const StatisticsPage = () => {
   return (
     <S.Wrapper>
       <S.Top>
-        <Statistics />
+        <Statistics type={type} />
       </S.Top>
       <S.InputWrapper>
         <SVG.SearchIcon />

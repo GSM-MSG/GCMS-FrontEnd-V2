@@ -1,12 +1,32 @@
 import * as S from './style'
+import { useFetch } from '@/hooks'
+import { useEffect } from 'react'
+import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
+import { GraphInfoType } from '@/type/components/Statistics'
 
-const Statistics = () => {
+interface Props {
+  type: ClubOptionType
+}
+
+const Statistics = ({ type }: Props) => {
+  const { data, fetch } = useFetch<GraphInfoType>({
+    method: 'get',
+    url: `/admin/club/statistics?clubType=${type || 'MAJOR'}`,
+  })
+  const percent = data ? (data.applicantCount / data.total) * 100 : 0
+
+  useEffect(() => {
+    fetch()
+  }, [type])
+
   return (
     <S.Wrapper>
       <S.LeftContent>
-        <S.Text>전체 210명</S.Text>
-        <S.DoughnutGraph>
-          <S.ApplyPersonCount>140명 신청함</S.ApplyPersonCount>
+        <S.Text>전체 {data?.total}명</S.Text>
+        <S.DoughnutGraph applicantPercent={percent}>
+          <S.ApplyPersonCount>
+            {data?.applicantCount}명 신청함
+          </S.ApplyPersonCount>
         </S.DoughnutGraph>
       </S.LeftContent>
 

@@ -14,7 +14,7 @@ export const reissueToken = createAsyncThunk(
 
     if (
       reissue.isLoading ||
-      tokenManager.calculatMinutes(reissue.refreshDate, 1) >= new Date()
+      tokenManager.calculateMinutes(reissue.refreshDate, 1) >= new Date()
     ) {
       while ((getState() as RootState).reissue.isLoading) {
         await delay(100)

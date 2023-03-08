@@ -4,6 +4,7 @@ import Icon from '../Icon'
 import * as S from './style'
 import * as SVG from '@/assets/svg'
 import { useExcelDownload } from '@/hooks'
+import RequestClubType from '@/lib/requestClubType'
 
 interface Props {
   type: ClubOptionType
@@ -11,16 +12,17 @@ interface Props {
 }
 
 const FileDownload = ({ type, onChange }: Props) => {
+  const clubTypeKorean = RequestClubType(type || 'MAJOR')
   const { download: clubDownload } = useExcelDownload({
     method: 'get',
     url: `/admin/excel/club?clubType=${type || 'MAJOR'}`,
-    fileName: `${type || 'MAJOR'}/동아리별 출력`,
+    fileName: `${clubTypeKorean}/동아리별 출력`,
   })
 
   const { download: classDownload } = useExcelDownload({
     method: 'get',
     url: `/admin/excel/club/grade?clubType=${type || 'MAJOR'}`,
-    fileName: `${type || 'MAJOR'}/동아리별 출력`,
+    fileName: `${clubTypeKorean}/동아리별 출력`,
   })
 
   return (

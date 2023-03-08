@@ -1,8 +1,9 @@
 import * as SVG from '@/assets/svg'
 import { useFetch } from '@/hooks'
+import RequestClubType from '@/lib/requestClubType'
 import { RootState } from '@/store'
 import { setUser } from '@/store/user'
-import { ProfileType } from '@/type/common'
+import { ClubType, ProfileType } from '@/type/common'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
@@ -18,6 +19,7 @@ export default function MyPage() {
   const [isSetting, setSetting] = useState<boolean>(false)
   const modalRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLDivElement>(null)
+  const clubTypes: ClubType[] = ['MAJOR', 'FREEDOM', 'EDITORIAL']
   const { fetch } = useFetch<ProfileType>({
     method: 'get',
     url: '/user',
@@ -39,11 +41,8 @@ export default function MyPage() {
   }
 
   useEffect(() => {
-    if (user.uuid) return
-    fetch()
-  }, [])
+    if (!user.uuid) fetch()
 
-  useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (
         e.target instanceof Node &&
@@ -95,18 +94,12 @@ export default function MyPage() {
           <S.ContentBox>
             <S.ClubBox>
               <h2>내 동아리</h2>
-              <S.ClubContainer>
-                <S.ClubType>전공동아리</S.ClubType>
-                <ClubItem clubType='MAJOR' data={user} />
-              </S.ClubContainer>
-              <S.ClubContainer>
-                <S.ClubType>자율동아리</S.ClubType>
-                <ClubItem clubType='FREEDOM' data={user} />
-              </S.ClubContainer>
-              <S.ClubContainer>
-                <S.ClubType>사설동아리</S.ClubType>
-                <ClubItem clubType='EDITORIAL' data={user} />
-              </S.ClubContainer>
+              {clubTypes.map((item, key) => (
+                <S.ClubContainer key={key}>
+                  <S.ClubType>{RequestClubType(item)}</S.ClubType>
+                  <ClubItem clubType={item} data={user} />
+                </S.ClubContainer>
+              ))}
             </S.ClubBox>
             {isSetting && (
               <div ref={modalRef}>

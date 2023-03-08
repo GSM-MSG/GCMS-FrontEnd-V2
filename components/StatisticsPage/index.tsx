@@ -1,5 +1,6 @@
 import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
 import { useState } from 'react'
+import ClubList from './ClubList'
 import Input from '../Common/Input'
 import FileDownload from './FileDownload'
 import Statistics from './Statistics'
@@ -16,6 +17,8 @@ const StatisticsPage = () => {
       <Input placeholder='검색' />
 
       <FileDownload type={type} onChange={setType} />
+
+      <ClubList type={type} />
     </S.Wrapper>
   )
 }

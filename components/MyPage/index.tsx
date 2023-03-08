@@ -5,7 +5,7 @@ import { setUser } from '@/store/user'
 import { ProfileType } from '@/type/common'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SEO from '../SEO'
 import ClubItem from './ClubItem'
@@ -16,6 +16,8 @@ export default function MyPage() {
   const dispatch = useDispatch()
   const router = useRouter()
   const [isSetting, setSetting] = useState<boolean>(false)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLDivElement>(null)
   const { fetch } = useFetch<ProfileType>({
     method: 'get',
     url: '/user',
@@ -39,6 +41,24 @@ export default function MyPage() {
   useEffect(() => {
     if (user.uuid) return
     fetch()
+  }, [])
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (
+        e.target instanceof Node &&
+        modalRef.current &&
+        buttonRef.current &&
+        !modalRef.current.contains(e.target) &&
+        !buttonRef.current.contains(e.target)
+      )
+        setSetting(false)
+    }
+
+    document.addEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
   }, [])
 
   return (
@@ -67,8 +87,7 @@ export default function MyPage() {
             </S.ProfileContent>
             <S.SettingButton
               onClick={() => setSetting(!isSetting)}
-              onBlur={() => setSetting(false)}
-              tabIndex={0}
+              ref={buttonRef}
             >
               <SVG.KebabMenuIcon />
             </S.SettingButton>
@@ -89,7 +108,11 @@ export default function MyPage() {
                 <ClubItem clubType='EDITORIAL' data={user} />
               </S.ClubContainer>
             </S.ClubBox>
-            {isSetting && <ProfileSetting onSubmit={() => onSubmit()} />}
+            {isSetting && (
+              <div ref={modalRef}>
+                <ProfileSetting onSubmit={() => onSubmit()} />
+              </div>
+            )}
           </S.ContentBox>
         </S.Layer>
       </S.Positionier>

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Link from 'next/link'
 
 export const Wrapper = styled.div``
 
@@ -17,7 +18,7 @@ export const Title = styled.span`
   }
 `
 
-export const ClubSection = styled.div`
+export const ClubSection = styled(Link)`
   background: #282829;
   padding: 1rem;
   width: 100%;

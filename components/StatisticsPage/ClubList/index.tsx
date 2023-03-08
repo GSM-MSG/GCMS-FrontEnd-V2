@@ -1,4 +1,7 @@
+import { useFetch } from '@/hooks'
+import { ClubListType } from '@/type/common'
 import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
+import { useEffect } from 'react'
 import * as S from './style'
 
 interface Props {
@@ -6,6 +9,15 @@ interface Props {
 }
 
 const ClubList = ({ type }: Props) => {
+  const { fetch, data } = useFetch<ClubListType[]>({
+    method: 'get',
+    url: `/club?type=${type || 'MAJOR'}`,
+  })
+
+  useEffect(() => {
+    fetch()
+  }, [type])
+
   return (
     <S.Wrapper>
       <S.TitleSection>
@@ -14,12 +26,14 @@ const ClubList = ({ type }: Props) => {
         <S.Title>이름</S.Title>
         <S.Title>설명</S.Title>
       </S.TitleSection>
-      <S.ClubSection>
-        <S.ClubBanner />
-        <S.ClubKind>사설동아리</S.ClubKind>
-        <S.ClubTitle>더모먼트</S.ClubTitle>
-        <S.ClubContent>더모먼트는 진짜진짜 지리는 동아리입니다</S.ClubContent>
-      </S.ClubSection>
+      {data?.map((i) => (
+        <S.ClubSection href={`/detail/${i.id}`} key={i.id}>
+          <S.ClubBanner src={i.bannerImg} />
+          <S.ClubKind>{i.type}</S.ClubKind>
+          <S.ClubTitle>{i.name}</S.ClubTitle>
+          <S.ClubContent>{i.content}</S.ClubContent>
+        </S.ClubSection>
+      ))}
     </S.Wrapper>
   )
 }

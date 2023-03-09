@@ -11,6 +11,7 @@ import SelectUserList from '../Common/SelectUserList'
 import SubmitButton from '../Common/SubmitButton'
 import * as S from './AddClubMember.style'
 import { resetPage } from '@/store/clubCreationPage'
+import Navigation from '../Common/Navigation'
 
 interface Props {
   onClose: () => void
@@ -59,6 +60,8 @@ const AddClubMember = ({ onClose }: Props) => {
 
   return (
     <S.Wrapper>
+      <Navigation />
+
       <Input
         label='동아리원'
         placeholder='너, 내 동료가 돼라'

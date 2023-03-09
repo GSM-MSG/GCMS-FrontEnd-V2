@@ -9,6 +9,7 @@ import ClubInfoInput from './Page/ClubInfoInput'
 import ClubImgUpload from './Page/ClubImgUpload'
 import ClubContent from './Page/ClubContent'
 import AddClubMember from './Page/AddClubMember'
+import Confirm from './Page/Confirm'
 
 interface Props {
   onClose: () => void
@@ -29,13 +30,12 @@ const ClubCreationModal = ({ onClose }: Props) => {
           <S.Title>동아리 개설</S.Title>
         </S.TopContent>
 
-        <Navigation />
-
         {page === 1 && <ClubKindSelection />}
         {page === 2 && <ClubInfoInput />}
         {page === 3 && <ClubImgUpload />}
         {page === 4 && <ClubContent />}
         {page === 5 && <AddClubMember onClose={onClose} />}
+        {page === 6 && <Confirm />}
       </S.Wrapper>
     </Portal>
   )

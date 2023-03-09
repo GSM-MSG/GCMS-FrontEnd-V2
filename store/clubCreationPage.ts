@@ -5,7 +5,7 @@ const clubCreationPageSlice = createSlice({
   initialState: 1,
   reducers: {
     nextPage: (state) => {
-      if (state >= 5) throw new Error('There is no next page')
+      if (state >= 6) throw new Error('There is no next page')
       return (state += 1)
     },
     backPage: (state) => {

@@ -6,9 +6,10 @@ export interface Props {
   back?: boolean
   complete?: boolean
   onClick?: () => Promise<void>
+  message?: string
 }
 
-const SubmitButton = ({ back, complete, onClick }: Props) => {
+const SubmitButton = ({ back, complete, onClick, message }: Props) => {
   const dispatch = useDispatch()
 
   return (
@@ -19,7 +20,8 @@ const SubmitButton = ({ back, complete, onClick }: Props) => {
         </S.BackButton>
       )}
       <S.Button onClick={onClick} type='submit'>
-        {complete ? '만들기' : '다음'}
+        {message}
+        {!message && (complete ? '만들기' : '다음')}
       </S.Button>
     </S.Wrapper>
   )

@@ -13,7 +13,7 @@ const Confirm = () => {
         </S.Description>
       </S.Content>
 
-      <SubmitButton />
+      <SubmitButton message='확인' />
     </S.Wrapper>
   )
 }

@@ -55,10 +55,14 @@ export const UserInfo = styled.nav`
   justify-content: center;
   align-items: center;
   gap: 20px;
+`
 
-  a {
-    cursor: pointer;
-  }
+export const LoginButton = styled.button`
+  border: none;
+  background: transparent;
+  color: #727272;
+  font-size: 0.9rem;
+  padding: 0.3rem;
 `
 
 export const SidebarIcon = styled.div`

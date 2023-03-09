@@ -58,7 +58,9 @@ export default function Header() {
                 <Profile />
               </Link>
             ) : (
-              <a onClick={() => dispatch(setModal())}>로그인</a>
+              <S.LoginButton onClick={() => dispatch(setModal())}>
+                로그인
+              </S.LoginButton>
             )}
 
             {isAdmin && (

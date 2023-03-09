@@ -10,6 +10,7 @@ export const ClubItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   padding: 16px;
   cursor: pointer;
 

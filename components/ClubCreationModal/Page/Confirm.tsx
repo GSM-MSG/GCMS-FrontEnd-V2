@@ -2,7 +2,11 @@ import * as S from './Confirm.style'
 import * as SVG from '@/assets/svg'
 import SubmitButton from '../Common/SubmitButton'
 
-const Confirm = () => {
+interface Props {
+  onClose: () => void
+}
+
+const Confirm = ({ onClose }: Props) => {
   return (
     <S.Wrapper>
       <S.Content>
@@ -13,7 +17,7 @@ const Confirm = () => {
         </S.Description>
       </S.Content>
 
-      <SubmitButton message='확인' />
+      <SubmitButton onClick={onClose} message='확인' />
     </S.Wrapper>
   )
 }

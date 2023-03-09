@@ -5,7 +5,7 @@ import * as S from './style'
 export interface Props {
   back?: boolean
   complete?: boolean
-  onClick?: () => Promise<void>
+  onClick?: () => Promise<void> | void
   message?: string
 }
 

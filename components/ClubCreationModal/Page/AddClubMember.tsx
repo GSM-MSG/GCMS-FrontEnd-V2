@@ -10,14 +10,10 @@ import Member from '../Common/Member'
 import SelectUserList from '../Common/SelectUserList'
 import SubmitButton from '../Common/SubmitButton'
 import * as S from './AddClubMember.style'
-import { resetPage } from '@/store/clubCreationPage'
+import { nextPage } from '@/store/clubCreationPage'
 import Navigation from '../Common/Navigation'
 
-interface Props {
-  onClose: () => void
-}
-
-const AddClubMember = ({ onClose }: Props) => {
+const AddClubMember = () => {
   const dispatch = useDispatch()
   const { clubCreation } = useSelector((state: RootState) => ({
     clubCreation: state.clubCreation,
@@ -32,8 +28,7 @@ const AddClubMember = ({ onClose }: Props) => {
     method: 'post',
     onSuccess: () => {
       dispatch(clearClubData())
-      dispatch(resetPage())
-      onClose()
+      dispatch(nextPage())
     },
     successMessage: '동아리 생성에 성공했습니다',
     errors: '동아리 생성에 실패했습니다',

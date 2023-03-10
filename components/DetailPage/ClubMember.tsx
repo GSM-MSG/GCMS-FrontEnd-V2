@@ -1,3 +1,4 @@
+import { ProfileSrc } from '@/lib/ProfileSrc'
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
 import * as S from './style'
@@ -23,7 +24,7 @@ export default function ClubMember() {
         <S.HeadProfile>
           <S.MemberProfile
             alt='profile img'
-            src={clubDetail.head.profileImg || '/png/Profile.png'}
+            src={clubDetail.head.profileImg || ProfileSrc}
             width={48}
             height={48}
           />
@@ -38,7 +39,7 @@ export default function ClubMember() {
           <S.MemberWrapper key={data.uuid}>
             <S.MemberProfile
               alt='member progile img'
-              src={data.profileImg || '/png/Profile.png'}
+              src={data.profileImg || ProfileSrc}
               width={48}
               height={48}
             />

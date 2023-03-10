@@ -1,5 +1,6 @@
 import * as SVG from '@/assets/svg'
 import { useFetch } from '@/hooks'
+import { ProfileSrc } from '@/lib/ProfileSrc'
 import RequestClubType from '@/lib/requestClubType'
 import { RootState } from '@/store'
 import { setUser } from '@/store/user'
@@ -70,7 +71,7 @@ export default function MyPage() {
             <S.ProfileContent>
               <S.ProfileImg>
                 <Image
-                  src={user.profileImg || '/png/Profile.png'}
+                  src={user.profileImg || ProfileSrc}
                   alt='profileImg'
                   width={60}
                   height={60}

@@ -21,16 +21,12 @@ export default function ClubMember() {
           </S.HeadProfile>
         )}
         <S.HeadProfile>
-          {clubDetail.head?.profileImg ? (
-            <S.MemberProfile
-              alt='profile img'
-              src={clubDetail.head.profileImg}
-              width={48}
-              height={48}
-            />
-          ) : (
-            <S.SampelIMG />
-          )}
+          <S.MemberProfile
+            alt='profile img'
+            src={clubDetail.head.profileImg || '/png/Profile.png'}
+            width={48}
+            height={48}
+          />
           <S.HeadInfo>
             <p>동아리 부장</p>
             <span>{clubDetail.head?.name}</span>
@@ -40,16 +36,12 @@ export default function ClubMember() {
       <span>
         {clubDetail.member?.map((data) => (
           <S.MemberWrapper key={data.uuid}>
-            {data.profileImg ? (
-              <S.MemberProfile
-                alt='member progile img'
-                src={data.profileImg}
-                width={48}
-                height={48}
-              />
-            ) : (
-              <S.SampelIMG key={data.uuid} />
-            )}
+            <S.MemberProfile
+              alt='member progile img'
+              src={data.profileImg || '/png/Profile.png'}
+              width={48}
+              height={48}
+            />
             <p>{data.name}</p>
           </S.MemberWrapper>
         ))}

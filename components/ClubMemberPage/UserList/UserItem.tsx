@@ -1,3 +1,4 @@
+import ProfileImg from '@/components/Common/ProfileImg'
 import { useFetch } from '@/hooks'
 import { MemberItemProps } from '@/type/components/MemberPage'
 import { useRouter } from 'next/router'
@@ -34,7 +35,7 @@ export default function UserItem({ item, scope }: MemberItemProps) {
     <S.UserWrapper>
       <S.UserBox option={isSelected}>
         <S.UserImgBox>
-          {item.profileImg && <S.Img src={item.profileImg} alt='profileImg' />}
+          <ProfileImg src={item.profileImg} alt='profileImg' />
         </S.UserImgBox>
         <S.UserInfo>
           <S.UserName>{item.name}</S.UserName>

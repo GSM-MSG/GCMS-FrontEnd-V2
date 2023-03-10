@@ -69,14 +69,12 @@ export default function MyPage() {
             <SVG.ProfileIcon />
             <S.ProfileContent>
               <S.ProfileImg>
-                {user?.profileImg && (
-                  <Image
-                    src={user.profileImg}
-                    alt='profileImg'
-                    width={60}
-                    height={60}
-                  />
-                )}
+                <Image
+                  src={user.profileImg || '/png/Profile.png'}
+                  alt='profileImg'
+                  width={60}
+                  height={60}
+                />
               </S.ProfileImg>
               <p>{user?.name}님</p>
               <small>

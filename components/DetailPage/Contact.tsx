@@ -13,16 +13,12 @@ export default function Contact() {
   return (
     <S.Contact>
       <div>
-        {clubDetail.head?.profileImg ? (
-          <S.ProfileImg
-            alt='progile img'
-            src={clubDetail.head.profileImg}
-            width={33}
-            height={33}
-          />
-        ) : (
-          <S.SampelIMG />
-        )}
+        <S.ProfileImg
+          alt='progile img'
+          src={clubDetail.head.profileImg || '/png/Profile.png'}
+          width={33}
+          height={33}
+        />
         <S.ContactInfo>
           <p>연략처</p>
           <span

@@ -1,20 +1,39 @@
 import Link from 'next/link'
 import * as S from './style'
 import * as SVG from '@/assets/svg'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
-import SideBtn from './SideBtn'
+import Switch from '../Common/Switch'
+import { useFetch } from '@/hooks'
+import { setIsOpened } from '@/store/clubDetail'
 
 export default function SideBar() {
-  const { clubDetail } = useSelector((state: RootState) => ({
+  const dispatch = useDispatch()
+  const { clubDetail, user } = useSelector((state: RootState) => ({
     clubDetail: state.clubDetail,
+    user: state.user,
   }))
+
+  const { fetch, isLoading } = useFetch({
+    method: 'patch',
+    url: `/club/${clubDetail.id}/${clubDetail.isOpened ? 'close' : 'open'}`,
+    errors: '동아리 열기/닫기에 실패했습니다',
+    onSuccess: () => {
+      dispatch(setIsOpened())
+    },
+  })
+
+  const onClick = () => !isLoading && fetch()
 
   return (
     <S.SideBar>
       <S.SideTopContent>
         <S.ClubTitle>{clubDetail.name}</S.ClubTitle>
-        <SideBtn />
+        <Switch
+          toggle={clubDetail.isOpened}
+          disabled={clubDetail.scope !== 'HEAD' || user.role !== 'ROLE_ADMIN'}
+          onClick={onClick}
+        />
       </S.SideTopContent>
 
       <S.SideControl>

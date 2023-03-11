@@ -294,7 +294,7 @@ export const SideControl = styled.div`
 export const SideTopContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 `
 
 export const ClubTitle = styled.h5`

@@ -12,9 +12,12 @@ export default function SideBar() {
 
   return (
     <S.SideBar>
-      <h3>{clubDetail.name}</h3>
-      <S.SideControl>
+      <S.SideTopContent>
+        <S.ClubTitle>{clubDetail.name}</S.ClubTitle>
         <SideBtn />
+      </S.SideTopContent>
+
+      <S.SideControl>
         <S.NotionInfo>
           <p>{clubDetail.name}이/가 더 궁금하다면?</p>
           <Link href={`${clubDetail.notionLink}`}>

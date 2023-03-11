@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
   width: 700px;
   display: flex;
   justify-content: space-between;
+  align-items: start;
   margin-top: 42px;
   @media (max-width: 750px) {
     width: 100%;
@@ -266,16 +267,14 @@ export const SideBar = styled.div`
   right: 0;
   top: 72px;
   width: 174px;
-  height: 224px;
   background: #242425;
   border-radius: 10px;
   padding: 12px 14px 34px;
-  > h3 {
-    font-weight: 700;
-    font-size: 13px;
-    color: #c7c7c7;
-    margin: 0;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+
   @media (max-width: 750px) {
     position: relative;
     width: 80%;
@@ -286,11 +285,23 @@ export const SideBar = styled.div`
 export const SideControl = styled.div`
   padding-top: 12px;
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+`
+
+export const SideTopContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`
+
+export const ClubTitle = styled.h5`
+  font-weight: 700;
+  font-size: 13px;
+  color: #c7c7c7;
+  margin: 0;
 `
 
 export const SideBtn = styled.button<ApplyStateType>`

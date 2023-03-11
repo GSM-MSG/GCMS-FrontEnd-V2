@@ -17,6 +17,7 @@ const SideBtn = () => {
   const isApplied = clubDetail.isApplied
   const isHead = clubDetail.scope === 'HEAD'
   const isOther = clubDetail.scope === 'OTHER'
+  const isMember = clubDetail.scope === 'MEMBER'
   const isAdmin = user.role === 'ROLE_ADMIN'
 
   const { fetch: apply } = useFetch({
@@ -67,12 +68,14 @@ const SideBtn = () => {
 
   return (
     <>
-      {isHead || isAdmin ? (
+      {isHead || isAdmin || isMember ? (
         <S.ClubControls>
-          <S.ClubControl>
-            <Switch toggle={clubDetail.isOpened} onClick={openAndClose} />
-            <S.ClubControlTitle>동아리 모집</S.ClubControlTitle>
-          </S.ClubControl>
+          {!isMember && (
+            <S.ClubControl>
+              <Switch toggle={clubDetail.isOpened} onClick={openAndClose} />
+              <S.ClubControlTitle>동아리 모집</S.ClubControlTitle>
+            </S.ClubControl>
+          )}
 
           <S.ClubControl>
             <Link href={`/applicant/${clubDetail.id}`}>

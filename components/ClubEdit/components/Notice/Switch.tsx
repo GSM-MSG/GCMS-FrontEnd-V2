@@ -1,6 +1,9 @@
+import Switch from '@/components/Common/Switch'
 import { useFetch } from '@/hooks'
+import { RootState } from '@/store'
 import ScopeType from '@/type/common/ScopeType'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import * as S from './style'
 
 interface Props {
@@ -9,19 +12,20 @@ interface Props {
   scope?: ScopeType
 }
 
-const Switch = ({ clubId, opened, scope }: Props) => {
+const SwitchBtn = ({ clubId, opened, scope }: Props) => {
+  const { user } = useSelector((state: RootState) => ({ ...state }))
   const [isOpened, setIsOpened] = useState<boolean | undefined>(opened)
   const { fetch, isLoading } = useFetch({
     method: 'patch',
     url: `/club/${clubId}/${isOpened ? 'close' : 'open'}`,
+    errors: '동아리 열기/닫기에 실패했습니다',
     onSuccess: () => {
       setIsOpened(!isOpened)
     },
   })
 
   const onClick = () => {
-    if (isLoading) return
-    fetch()
+    !isLoading && fetch()
   }
 
   useEffect(() => {
@@ -29,22 +33,12 @@ const Switch = ({ clubId, opened, scope }: Props) => {
   }, [opened])
 
   return (
-    <>
-      <S.SwitchInput
-        id='switch'
-        checked={!!isOpened}
-        readOnly
-        type='checkbox'
-        disabled={scope !== 'HEAD'}
-        onClick={onClick}
-      />
-      <S.Switch htmlFor='switch'>
-        <span>off</span>
-        <S.SwitchBtn />
-        <span>on</span>
-      </S.Switch>
-    </>
+    <Switch
+      toggle={!!isOpened}
+      onClick={onClick}
+      disabled={!(scope === 'HEAD' || user.role === 'ROLE_ADMIN')}
+    />
   )
 }
 
-export default Switch
+export default SwitchBtn

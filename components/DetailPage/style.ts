@@ -342,8 +342,8 @@ export const SideBtn = styled.button<ApplyStateType>`
   border-radius: 7px;
 
   ${({ btnMessage }) => {
-    if (['동아리 열기', '지원하기'].includes(btnMessage)) return ''
-    else if (['동아리 닫기', '탈퇴하기', '신청 취소'].includes(btnMessage))
+    if (btnMessage === '지원하기') return ''
+    else if (btnMessage === '신청 취소')
       return 'color: #0B0B0B;background: #84D644;border: 1px solid #0B0B0B;'
     return 'color: #B5B5B5;background: #797979; cursor: auto;'
   }}

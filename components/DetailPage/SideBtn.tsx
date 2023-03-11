@@ -1,21 +1,23 @@
 import { useFetch } from '@/hooks'
 import { RootState } from '@/store'
 import { setIsApplied, setIsOpened } from '@/store/clubDetail'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
+import Switch from '../Common/Switch'
 import * as S from './style'
+import * as SVG from '@/assets/svg'
 
 const SideBtn = () => {
-  const { clubDetail } = useSelector((state: RootState) => ({
+  const { clubDetail, user } = useSelector((state: RootState) => ({
     clubDetail: state.clubDetail,
+    user: state.user,
   }))
-  const router = useRouter()
   const dispatch = useDispatch()
   const isOpened = clubDetail.isOpened
   const isApplied = clubDetail.isApplied
   const isHead = clubDetail.scope === 'HEAD'
-  const isMember = clubDetail.scope === 'MEMBER'
   const isOther = clubDetail.scope === 'OTHER'
+  const isAdmin = user.role === 'ROLE_ADMIN'
 
   const { fetch: apply } = useFetch({
     url: `applicant/${clubDetail.id}`,
@@ -39,61 +41,52 @@ const SideBtn = () => {
       dispatch(setIsApplied())
     },
   })
-  const { fetch: open } = useFetch({
-    url: `club/${clubDetail.id}/open`,
+  const { fetch, isLoading } = useFetch({
     method: 'patch',
-    successMessage: '동아리 열기에 성공했습니다',
-    errors: '동아리 열기에 실패했습니다',
+    url: `/club/${clubDetail.id}/${clubDetail.isOpened ? 'close' : 'open'}`,
+    errors: '동아리 열기/닫기에 실패했습니다',
     onSuccess: () => {
       dispatch(setIsOpened())
-    },
-  })
-  const { fetch: close } = useFetch({
-    url: `club/${clubDetail.id}/close`,
-    method: 'patch',
-    successMessage: '동아리 닫기에 성공했습니다',
-    errors: '동아리 닫기에 실패했습니다',
-    onSuccess: () => {
-      dispatch(setIsOpened())
-    },
-  })
-  const { fetch: exit } = useFetch({
-    url: `club/${clubDetail.id}/exit`,
-    method: 'delete',
-    successMessage: '동아리 탈퇴에 성공했습니다',
-    errors: '동아리 탈퇴에 실패했습니다',
-    onSuccess: () => {
-      router.push('/')
     },
   })
 
   const handleAplly = () => {
-    if (isHead) {
-      if (isOpened) return close()
-      else return open()
-    } else if (isMember) return exit()
-
-    if (!isOpened || isOther) return
-    if (isApplied) return cancel()
-    apply()
+    if (isOther || isOpened) return
+    if (isApplied) cancel()
+    else apply()
   }
 
   const btnMessage = () => {
-    if (isHead) {
-      if (isOpened) return '동아리 닫기'
-      else return '동아리 열기'
-    } else if (isMember) return '탈퇴하기'
-
     if (isOther) return '지원 불가'
-    if (!isOpened) return '준비중'
+    if (!isOpened) return '마감'
     if (isApplied) return '신청 취소'
     else return '지원하기'
   }
 
+  const openAndClose = () => !isLoading && fetch()
+
   return (
-    <S.SideBtn btnMessage={btnMessage()} onClick={handleAplly}>
-      {btnMessage()}
-    </S.SideBtn>
+    <>
+      {isHead || isAdmin ? (
+        <S.ClubControls>
+          <S.ClubControl>
+            <Switch toggle={clubDetail.isOpened} onClick={openAndClose} />
+            <S.ClubControlTitle>동아리 모집</S.ClubControlTitle>
+          </S.ClubControl>
+
+          <S.ClubControl>
+            <Link href={`/applicant/${clubDetail.id}`}>
+              <SVG.GearIcon />
+              <S.ClubControlTitle>설정</S.ClubControlTitle>
+            </Link>
+          </S.ClubControl>
+        </S.ClubControls>
+      ) : (
+        <S.SideBtn btnMessage={btnMessage()} onClick={handleAplly}>
+          {btnMessage()}
+        </S.SideBtn>
+      )}
+    </>
   )
 }
 

@@ -297,6 +297,33 @@ export const SideTopContent = styled.div`
   gap: 1rem;
 `
 
+export const ClubControls = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+`
+
+export const ClubControl = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+`
+
+export const ClubControlTitle = styled.div`
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+`
+
 export const ClubTitle = styled.h5`
   font-weight: 700;
   font-size: 13px;

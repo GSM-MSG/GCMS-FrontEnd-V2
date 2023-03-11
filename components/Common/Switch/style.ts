@@ -23,7 +23,7 @@ export const Switch = styled.label`
   position: relative;
   font-size: 0.8rem;
 
-  span:nth-child(1) {
+  span:nth-of-child(1) {
     color: #939393;
   }
 `

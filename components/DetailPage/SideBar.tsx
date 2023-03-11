@@ -29,11 +29,25 @@ export default function SideBar() {
     <S.SideBar>
       <S.SideTopContent>
         <S.ClubTitle>{clubDetail.name}</S.ClubTitle>
-        <Switch
-          toggle={clubDetail.isOpened}
-          disabled={clubDetail.scope !== 'HEAD' || user.role !== 'ROLE_ADMIN'}
-          onClick={onClick}
-        />
+        <S.ClubControls>
+          <S.ClubControl>
+            <Switch
+              toggle={clubDetail.isOpened}
+              disabled={
+                !(clubDetail.scope === 'HEAD' || user.role === 'ROLE_ADMIN')
+              }
+              onClick={onClick}
+            />
+            <S.ClubControlTitle>동아리 모집</S.ClubControlTitle>
+          </S.ClubControl>
+
+          <S.ClubControl>
+            <Link href={`/applicant/${clubDetail.id}`}>
+              <SVG.GearIcon />
+              <S.ClubControlTitle>설정</S.ClubControlTitle>
+            </Link>
+          </S.ClubControl>
+        </S.ClubControls>
       </S.SideTopContent>
 
       <S.SideControl>

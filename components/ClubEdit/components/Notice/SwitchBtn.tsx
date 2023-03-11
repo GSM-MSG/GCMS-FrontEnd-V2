@@ -4,7 +4,6 @@ import { RootState } from '@/store'
 import ScopeType from '@/type/common/ScopeType'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import * as S from './style'
 
 interface Props {
   clubId?: number

@@ -37,24 +37,25 @@ export const Header = styled.div`
   width: 100%;
   padding: 0 16px;
   display: flex;
+  padding-right: 20%;
 
   small {
     :nth-of-type(1) {
-      flex-basis: 60px;
+      min-width: 4.2em;
     }
     :nth-of-type(2) {
-      flex-basis: 15%;
+      flex-basis: 6.5em;
     }
     :nth-of-type(3) {
-      flex-basis: 17%;
+      flex-basis: 29%;
+    }
+    :nth-of-type(4) {
+      width: 45%;
     }
 
     @media (max-width: 600px) {
-      :nth-of-type(1) {
-        flex-basis: 4em;
-      }
       :nth-of-type(2) {
-        flex-basis: 6.2em;
+        flex-basis: 6.7em;
       }
       :nth-of-type(4) {
         display: none;
@@ -65,21 +66,19 @@ export const Header = styled.div`
 
 export const ClubWrapper = styled.div`
   width: 100%;
-  background: #242427;
+  min-height: 56px;
+  background: #2d2d2d;
   display: flex;
+  align-items: center;
   border-radius: 10px;
+  padding: 0 16px;
 `
 
 export const ClubBox = styled.div`
-  width: 100%;
-  min-height: 56px;
-  background: #2d2d2d;
-  border-radius: 10px;
+  width: 80%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 0 16px;
+  gap: 1em;
   transition: 0.5s;
 `
 
@@ -87,9 +86,9 @@ export const ClubImgBox = styled.div`
   border-radius: 100%;
   background: #434343;
   overflow: hidden;
-  min-width: 40px;
-  width: 40px;
-  height: 40px;
+  min-width: 2.5em;
+  width: 2.5em;
+  height: 2.5em;
 `
 
 export const Img = styled.img`
@@ -99,43 +98,48 @@ export const Img = styled.img`
 `
 
 export const ClubInfo = styled.div`
-  width: 70%;
+  font-size: 0.9em;
+  width: 100%;
   display: flex;
   align-items: center;
+  gap: 1em;
+  overflow: hidden;
 `
 
 export const ClubName = styled(Link)`
-  font-size: 14px;
   margin: 0;
   white-space: nowrap;
-  flex-basis: 9em;
+  flex-basis: 12em;
   transition: 0.2s;
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
 
   &:hover {
     color: #4164e1;
   }
 
   @media (max-width: 600px) {
-    flex-basis: 6em;
+    flex-basis: auto;
+    width: 30%;
   }
 `
 
 export const ClubKind = styled.h4`
   color: #888;
-  flex-basis: 8em;
-  font-size: 14px;
+  flex-basis: 6em;
   margin: 0;
   white-space: nowrap;
+  word-wrap: break-word;
 
   @media (max-width: 600px) {
-    flex-basis: 6em;
+    flex-basis: 5em;
   }
 `
 export const ClubDescription = styled(ClubKind)`
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  overflow: hidden;
   flex-basis: 20em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media (max-width: 600px) {
     display: none;
@@ -143,7 +147,7 @@ export const ClubDescription = styled(ClubKind)`
 `
 
 export const OptionBox = styled.div`
-  width: 18%;
+  width: 20%;
   height: 100%;
   display: flex;
   justify-content: end;
@@ -158,5 +162,9 @@ export const OptionBtn = styled.button`
 
   &:hover {
     color: #4164e1;
+  }
+
+  @media (max-width: 740px) {
+    min-width: 2.5em;
   }
 `

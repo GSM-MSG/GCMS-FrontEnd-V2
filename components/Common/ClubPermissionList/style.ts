@@ -88,6 +88,7 @@ export const ClubImgBox = styled.div`
   background: #434343;
   overflow: hidden;
   min-width: 40px;
+  width: 40px;
   height: 40px;
 `
 

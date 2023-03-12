@@ -5,15 +5,11 @@ import { useEffect } from 'react'
 import { useFetch } from '@/hooks'
 import UserList from '../UserList'
 import AdminUserListType from '@/type/common/AdminUserListType'
-import { useRouter } from 'next/router'
+
 export default function StuSearch() {
-  const router = useRouter()
   const { fetch, data } = useFetch<AdminUserListType[]>({
     url: `/admin/user`,
     method: 'get',
-    errors: {
-      403: () => router.push('/'),
-    },
   })
 
   const { register, watch } = useForm({ defaultValues: { value: '' } })

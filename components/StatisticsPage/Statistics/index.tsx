@@ -3,20 +3,15 @@ import { useFetch } from '@/hooks'
 import { useEffect } from 'react'
 import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
 import { GraphInfoType } from '@/type/components/Statistics'
-import { useRouter } from 'next/router'
 
 interface Props {
   type: ClubOptionType
 }
 
 const Statistics = ({ type }: Props) => {
-  const router = useRouter()
   const { data, fetch } = useFetch<GraphInfoType>({
     method: 'get',
     url: `/admin/club/statistics?clubType=${type || 'MAJOR'}`,
-    errors: {
-      403: () => router.push('/'),
-    },
   })
   const percent = data ? (data.applicantCount / data.total) * 100 : 0
 

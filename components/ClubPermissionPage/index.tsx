@@ -1,18 +1,13 @@
 import { useFetch } from '@/hooks'
 import { ClubListType } from '@/type/common'
-import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import ClubPermissionList from '../Common/ClubPermissionList'
 import * as S from './style'
 
 export default function ClubPermissionPage() {
-  const router = useRouter()
   const { fetch, data } = useFetch<ClubListType[]>({
     url: '/admin',
     method: 'GET',
-    errors: {
-      403: () => router.push('/'),
-    },
   })
 
   useEffect(() => {

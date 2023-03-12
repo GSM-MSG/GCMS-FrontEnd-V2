@@ -22,9 +22,6 @@ const ClubEdit = () => {
       const di = new DataInitializer()
       setClubData(di.ClubDetailToEditClubForm(data))
     },
-    errors: {
-      403: () => router.push('/'),
-    },
   })
 
   useEffect(() => {

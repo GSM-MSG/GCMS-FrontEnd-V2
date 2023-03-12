@@ -2,6 +2,7 @@ import API from '@/api'
 import toastOption from '@/lib/toastOption'
 import { ErrorsType } from '@/type/hooks/useFetch'
 import { isAxiosError, Method } from 'axios'
+import Router from 'next/router'
 import { useCallback, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -51,13 +52,12 @@ const useFetch = <T,>({
         } else if (typeof errors === 'string') {
           toast.error(errors, toastOption)
         } else if (errors && e.response && errors[e.response.status]) {
-          const errorHandle = errors[e.response.status]
-          typeof errorHandle === 'string'
-            ? toast.error(errorHandle, toastOption)
-            : errorHandle()
+          toast.error(errors[e.response.status], toastOption)
         }
 
         if (onFailure) await onFailure(e)
+
+        Router.push('/')
       } finally {
         setIsLoading(false)
       }

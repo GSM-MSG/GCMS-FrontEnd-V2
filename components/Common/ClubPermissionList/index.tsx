@@ -24,12 +24,14 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
   const { fetch: submit } = useFetch<SubmitType>({
     url: `/admin/${apiData.id}`,
     method: apiData.method,
+    onSuccess: () => {
+      if (onFetch !== undefined) onFetch()
+    },
   })
 
   useEffect(() => {
     if (apiData.id === 0) return
     submit()
-    onFetch && onFetch()
   }, [apiData])
 
   return (

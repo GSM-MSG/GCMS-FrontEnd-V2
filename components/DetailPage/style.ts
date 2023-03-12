@@ -269,7 +269,7 @@ export const SideBar = styled.div`
   width: 174px;
   background: #242425;
   border-radius: 10px;
-  padding: 12px 14px 34px;
+  padding: 1rem 1rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -277,9 +277,9 @@ export const SideBar = styled.div`
 
   @media (max-width: 750px) {
     position: relative;
-    width: 80%;
+    width: 100%;
+    max-width: max-content;
     margin: 0 auto;
-    height: 140px;
   }
 `
 export const SideControl = styled.div`
@@ -295,6 +295,10 @@ export const SideTopContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 750px) {
+    align-items: center;
+  }
 `
 
 export const ClubControls = styled.div`
@@ -303,6 +307,10 @@ export const ClubControls = styled.div`
   align-items: center;
   justify-content: start;
   gap: 1rem;
+
+  @media (max-width: 750px) {
+    justify-content: center;
+  }
 `
 
 export const ClubControl = styled.div`
@@ -357,7 +365,6 @@ export const NotionInfo = styled.div`
     margin: 0;
   }
   > p {
-    width: 70%;
     font-weight: 400;
     font-size: 13px;
     color: #858585;
@@ -373,7 +380,12 @@ export const NotionInfo = styled.div`
     }
   }
   @media (max-width: 750px) {
-    flex-direction: row;
+    align-items: center;
+
+    p {
+      text-align: center;
+      word-break: keep-all;
+    }
     a {
       white-space: nowrap;
     }

@@ -51,7 +51,10 @@ const useFetch = <T,>({
         } else if (typeof errors === 'string') {
           toast.error(errors, toastOption)
         } else if (errors && e.response && errors[e.response.status]) {
-          toast.error(errors[e.response.status], toastOption)
+          const errorHandle = errors[e.response.status]
+          typeof errorHandle === 'string'
+            ? toast.error(errorHandle, toastOption)
+            : errorHandle()
         }
 
         if (onFailure) await onFailure(e)

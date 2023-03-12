@@ -1,3 +1,3 @@
 export interface ErrorsType {
-  [status: number]: string
+  [status: number]: string | (() => void)
 }

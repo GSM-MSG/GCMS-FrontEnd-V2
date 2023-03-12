@@ -66,7 +66,8 @@ export const ClubItem = styled.div`
   aspect-ratio: auto 1 / 1.378;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 1rem;
+
   @media (max-width: 800px) {
     width: 180px;
   }
@@ -90,13 +91,16 @@ export const ClubImg = styled.div`
 `
 
 export const ClubTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
   h3 {
     font-weight: 600;
     font-size: 15px;
     margin: 0;
   }
   p {
-    margin: 8px 0 0 0;
     width: 100%;
     font-weight: 500;
     font-size: 12px;

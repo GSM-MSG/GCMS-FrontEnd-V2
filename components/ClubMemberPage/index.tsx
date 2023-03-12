@@ -15,6 +15,9 @@ export default function ClubMemberPage() {
   const { fetch, data } = useFetch<MemberListType>({
     url: `/club-member/${clubId}`,
     method: 'get',
+    errors: {
+      403: () => router.push('/'),
+    },
   })
   const { register, watch } = useForm({ defaultValues: { value: '' } })
 

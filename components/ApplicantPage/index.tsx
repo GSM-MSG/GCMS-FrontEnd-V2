@@ -20,6 +20,9 @@ export default function ApplicantPage() {
   const { fetch, data } = useFetch<ApplicantListType>({
     url: `/applicant/${clubId}`,
     method: 'get',
+    errors: {
+      403: () => router.push('/'),
+    },
   })
   const { applicant } = useSelector((state: RootState) => ({
     applicant: state.applicant,

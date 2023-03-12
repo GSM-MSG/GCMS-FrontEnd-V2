@@ -11,6 +11,7 @@ import reissueSlice from './reissue'
 import clubListSlice from './clubList'
 import uuidSlice from './uuid'
 import sidebarSlice from './sidebar'
+import confirmModalSlice from './confirmModal'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   clubList: clubListSlice.reducer,
   uuid: uuidSlice.reducer,
   sidebar: sidebarSlice.reducer,
+  confirmModal: confirmModalSlice.reducer,
 })
 
 const reducer = (state: RootState | undefined, action: AnyAction) => {

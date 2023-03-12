@@ -32,7 +32,7 @@ export default function UserItem({ item, scope }: MemberItemProps) {
   }
   return (
     <S.UserWrapper>
-      <S.UserBox option={isSelected}>
+      <S.UserBox selected={isSelected}>
         <S.UserImgBox>
           {item.profileImg && <S.Img src={item.profileImg} alt='profileImg' />}
         </S.UserImgBox>

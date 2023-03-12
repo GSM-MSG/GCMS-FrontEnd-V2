@@ -32,7 +32,8 @@ export const UserWrapper = styled.div`
 `
 
 export const UserBox = styled.div`
-  width: ${({ option }: { option: boolean }) => (option ? '80%' : '100%')};
+  width: ${({ selected }: { selected: boolean }) =>
+    selected ? '80%' : '100%'};
   min-height: 56px;
   background: #2d2d2d;
   border-radius: 10px;
@@ -44,8 +45,8 @@ export const UserBox = styled.div`
   transition: 0.5s;
 
   @media (max-width: 539px) {
-    width: ${({ option }: { option: boolean }) =>
-      option ? 'calc(100% - 100px)' : '100%'};
+    width: ${({ selected }: { selected: boolean }) =>
+      selected ? 'calc(100% - 100px)' : '100%'};
   }
 `
 

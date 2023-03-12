@@ -16,10 +16,13 @@ const ClubContent = () => {
     register,
     handleSubmit,
     watch,
+    setError,
     formState: { errors },
   } = useForm<ContentFormType>({ defaultValues: { content } })
 
   const onSubmit = (form: ContentFormType) => {
+    if (!form.content.replaceAll(' ', '')) return setError('content', {})
+
     dispatch(setContent(form.content))
     dispatch(nextPage())
   }

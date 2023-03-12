@@ -14,10 +14,10 @@ class TokenManager {
   validateToken(expiredString: string | null, token: string | null): boolean {
     if (!expiredString || !token) return false
 
-    return this.calculatMinutes(expiredString, -1) >= new Date()
+    return this.calculateMinutes(expiredString, 1) >= new Date()
   }
 
-  calculatMinutes(currentDate: string, addMinute: number): Date {
+  calculateMinutes(currentDate: string, addMinute: number): Date {
     const expiredAt = currentDate ? new Date(currentDate) : new Date()
     expiredAt.setMinutes(expiredAt.getMinutes() - addMinute)
 

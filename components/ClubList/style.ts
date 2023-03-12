@@ -6,29 +6,44 @@ export const ClubWrapper = styled.div`
   margin: 12px 0 16px;
 `
 export const ClubOptionLayer = styled.form`
-  display: flex;
-  gap: 6px;
-  font-weight: 500;
+  display: inline-flex;
+  gap: 24px;
+  font-weight: 400;
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.6);
+  padding: 8px 15px;
+  border-radius: 17px;
+  background: #313134;
+  color: rgba(255, 255, 255, 0.4);
   input[type='radio'] {
     display: none;
   }
   input[type='radio'] + label {
+    transition: 0.5s;
     cursor: pointer;
-    width: 49px;
-    height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
+    :nth-of-type(2) {
+      position: relative;
+      ::before,
+      ::after {
+        content: '';
+        width: 2px;
+        height: 10px;
+        position: absolute;
+        right: -12px;
+        background: #5a5a5a;
+        border-radius: 1px;
+      }
+
+      ::after {
+        left: -12px;
+      }
+    }
   }
   input[type='radio']:checked + label {
-    font-weight: 600;
-    border: 1px solid #5e7dea;
-    color: #5e7dea;
+    font-weight: 700;
+    color: #ffffff;
   }
 `
 
@@ -51,7 +66,8 @@ export const ClubItem = styled.div`
   aspect-ratio: auto 1 / 1.378;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 1rem;
+
   @media (max-width: 800px) {
     width: 180px;
   }
@@ -75,13 +91,16 @@ export const ClubImg = styled.div`
 `
 
 export const ClubTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
   h3 {
     font-weight: 600;
     font-size: 15px;
     margin: 0;
   }
   p {
-    margin: 8px 0 0 0;
     width: 100%;
     font-weight: 500;
     font-size: 12px;

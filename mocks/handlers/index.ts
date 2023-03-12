@@ -20,6 +20,9 @@ import deleteClubCancel from './api/applicant/delete'
 import getClubMemberList from './api/club-member/[clubID]/get'
 import postKickMember from './api/club-member/[clubID]/post'
 import patchDelegateHead from './api/club-member/[clubID]/patch'
+import getClubPermission from './api/admin/get'
+import patchClubPermission from './api/admin/[clubID]/patch'
+import deleteClubPermission from './api/admin/[clubID]/delete'
 
 export const handlers = [
   getUser,
@@ -44,4 +47,7 @@ export const handlers = [
   getClubMemberList,
   postKickMember,
   patchDelegateHead,
+  getClubPermission,
+  patchClubPermission,
+  deleteClubPermission,
 ]

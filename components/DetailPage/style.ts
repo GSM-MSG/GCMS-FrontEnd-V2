@@ -182,7 +182,7 @@ export const ClubMember = styled.div`
     gap: 26px;
   }
   > span {
-    margin-top: 20px;
+    margin-top: 42px;
     width: 100%;
     display: flex;
     gap: 9px;
@@ -224,6 +224,16 @@ export const HeadInfo = styled.div`
   span {
     font-weight: 500;
     font-size: 13px;
+  }
+`
+export const MemberWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    font-size: 13px;
+    line-height: 16px;
+    color: rgba(255, 255, 255, 0.5);
   }
 `
 

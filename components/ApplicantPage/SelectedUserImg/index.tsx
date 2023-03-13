@@ -20,6 +20,7 @@ export default function SelectedUserImg({ selected = [] }: SelectedProps) {
             <S.Delete onClick={() => dispatch(removeUser(item.uuid))}>
               <XMark width='8' height='7' />
             </S.Delete>
+            <small>{item.name}</small>
           </S.ImgWrapper>
         ))}
       </S.ImgContainer>

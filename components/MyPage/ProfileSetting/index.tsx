@@ -66,8 +66,7 @@ export default function ProfileSetting({ onSubmit }: profileSetingProps) {
   }
 
   const onConfirm = () => {
-    if (!isLoggned) return
-    deleteQuery()
+    if (isLoggned) deleteQuery()
   }
 
   return (

@@ -19,6 +19,7 @@ export default function ChoiceUser({ onSubmit }: choiceUserProps) {
   const [choice, setChoice] = useState('')
   const [isShow, setIsShow] = useState<boolean>(false)
   const router = useRouter()
+  const passKorean = choice === 'accept' ? '합격' : '불합격'
   const { fetch: data } = useFetch({
     url: `/applicant/${router.query.clubID}/${choice}`,
     method: 'post',
@@ -47,10 +48,8 @@ export default function ChoiceUser({ onSubmit }: choiceUserProps) {
       </S.Positioner>
       {isShow && (
         <ConfirmModal
-          title={`지원자 ${choice === 'accept' ? '합격' : '불합격'}`}
-          description={`정말 ${
-            choice === 'accept' ? '합격' : '불합격'
-          }시키겠습니까?`}
+          title={`지원자 ${passKorean}`}
+          description={`정말 ${passKorean}시키겠습니까?`}
           onClose={() => setIsShow(false)}
           onConfirm={onConfirm}
         />

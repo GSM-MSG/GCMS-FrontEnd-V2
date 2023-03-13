@@ -1,8 +1,7 @@
 import ConfirmModal from '@/components/Common/ConfirmModal'
 import { useFetch } from '@/hooks'
-import { showModal } from '@/store/confirmModal'
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
+import { useState } from 'react'
 import * as S from './style'
 
 interface Props {
@@ -12,8 +11,8 @@ interface Props {
 }
 
 const ClubLeaveAndDeleteBtn = ({ clubId, clubName, type }: Props) => {
-  const dispatch = useDispatch()
   const router = useRouter()
+  const [isShow, setIsShow] = useState<boolean>(false)
   const { fetch, isLoading } = useFetch({
     method: 'delete',
     url: `/club/${clubId}${type === '탈퇴' ? '/exit' : ''}`,
@@ -30,15 +29,16 @@ const ClubLeaveAndDeleteBtn = ({ clubId, clubName, type }: Props) => {
   return (
     <>
       <S.Title>동아리 {type}</S.Title>
-      <S.DeleteBtn onClick={() => dispatch(showModal())}>
-        {type}하기
-      </S.DeleteBtn>
+      <S.DeleteBtn onClick={() => setIsShow(true)}>{type}하기</S.DeleteBtn>
 
-      <ConfirmModal
-        title={`동아리 ${type}하기`}
-        description={`${clubName}동아리를 정말로 ${type}하시겠습니까?`}
-        onConfirm={onClick}
-      />
+      {isShow && (
+        <ConfirmModal
+          title={`동아리 ${type}하기`}
+          description={`${clubName}동아리를 정말로 ${type}하시겠습니까?`}
+          onConfirm={onClick}
+          onClose={() => setIsShow(false)}
+        />
+      )}
     </>
   )
 }

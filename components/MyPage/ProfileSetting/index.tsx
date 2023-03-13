@@ -1,14 +1,13 @@
 import * as S from './style'
 import { useFetch, useUpload } from '@/hooks'
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react'
-import { ApiType, OnDeleteType } from '@/type/components/MyPage'
+import { ChangeEvent, useState } from 'react'
+import { OnDeleteType } from '@/type/components/MyPage'
 import { useLoggedIn } from '@/hooks'
 import { useRouter } from 'next/router'
 import TokenManager from '@/api/TokenManager'
 import { useDispatch } from 'react-redux'
 import { removeUser } from '@/store/user'
 import ConfirmModal from '@/components/Common/ConfirmModal'
-import { showModal } from '@/store/confirmModal'
 
 interface profileSetingProps {
   onSubmit: () => void
@@ -17,6 +16,7 @@ interface profileSetingProps {
 export default function ProfileSetting({ onSubmit }: profileSetingProps) {
   const { upload } = useUpload()
   const { isLoggned } = useLoggedIn({})
+  const [isShow, setIsShow] = useState<boolean>(false)
   const [queryState, setQueryState] = useState<OnDeleteType>({
     title: '',
     message: '',
@@ -62,7 +62,7 @@ export default function ProfileSetting({ onSubmit }: profileSetingProps) {
       title,
       message,
     })
-    dispatch(showModal())
+    setIsShow(true)
   }
 
   const onConfirm = () => {
@@ -107,11 +107,14 @@ export default function ProfileSetting({ onSubmit }: profileSetingProps) {
           />
         </S.Layer>
       </S.Positioner>
-      <ConfirmModal
-        title={queryState.title}
-        description={queryState.message}
-        onConfirm={onConfirm}
-      />
+      {isShow && (
+        <ConfirmModal
+          title={queryState.title}
+          description={queryState.message}
+          onConfirm={onConfirm}
+          onClose={() => setIsShow(false)}
+        />
+      )}
     </>
   )
 }

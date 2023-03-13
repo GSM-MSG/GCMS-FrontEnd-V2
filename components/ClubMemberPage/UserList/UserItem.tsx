@@ -1,49 +1,14 @@
-import ConfirmModal from '@/components/Common/ConfirmModal'
-import { useFetch } from '@/hooks'
-import { showModal } from '@/store/confirmModal'
-import ConfirmStateType from '@/type/common/ConfirmStateType'
 import { MemberItemProps } from '@/type/components/MemberPage'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import KickUser from './KickUser'
 import * as S from './style'
+import DelegateUser from './DelegateUser'
+import { useState } from 'react'
 
 export default function UserItem({ item, scope }: MemberItemProps) {
   const router = useRouter()
-  const clubID = router.query.clubID
-  const dispatch = useDispatch()
+  const clubID = router.query.clubID?.toString() || ''
   const [isSelected, setSelected] = useState<boolean>(false)
-  const [uuid, setUuid] = useState<string>('')
-  const [confirmState, setConfirmState] = useState<ConfirmStateType>({
-    title: '',
-    description: '',
-  })
-
-  const { fetch: kick } = useFetch({
-    url: `/club-member/${clubID}`,
-    method: 'post',
-    successMessage: '회원 추방에 성공하셨습니다',
-  })
-
-  const { fetch: delegate } = useFetch({
-    url: `/club-member/${clubID}`,
-    method: 'patch',
-    successMessage: '부장 위임에 성공하셨습니다',
-  })
-
-  const onClick = (title: string, description: string, uuid: string) => {
-    setConfirmState({
-      title,
-      description,
-    })
-    setUuid(uuid)
-    dispatch(showModal())
-  }
-
-  const onConfirm = () => {
-    if (confirmState.title === '회원 추방') kick({ uuid })
-    else delegate({ uuid })
-  }
 
   return (
     <>
@@ -61,7 +26,7 @@ export default function UserItem({ item, scope }: MemberItemProps) {
             </small>
           </S.UserInfo>
           <S.CheckBox>
-            {scope === 'HEAD' && item.scope !== 'HEAD' && (
+            {['HEAD', 'ADMIN'].includes(scope) && item.scope !== 'HEAD' && (
               <>
                 <S.CheckBtn
                   id={item.uuid}
@@ -77,35 +42,10 @@ export default function UserItem({ item, scope }: MemberItemProps) {
           </S.CheckBox>
         </S.UserBox>
         <S.OptionBox>
-          <S.OptionBtn
-            onClick={() =>
-              onClick(
-                '회원 추방',
-                '정말로 회원 추방을 하시겠습니까?',
-                item.uuid
-              )
-            }
-          >
-            추방
-          </S.OptionBtn>
-          <S.OptionBtn
-            onClick={() =>
-              onClick(
-                '부장 위임',
-                '정말로 부장 위임을 하시겠습니까?',
-                item.uuid
-              )
-            }
-          >
-            위임
-          </S.OptionBtn>
+          <KickUser clubId={clubID} uuid={item.uuid} />
+          <DelegateUser clubId={clubID} uuid={item.uuid} />
         </S.OptionBox>
       </S.UserWrapper>
-      <ConfirmModal
-        title={confirmState.title}
-        description={confirmState.description}
-        onConfirm={onConfirm}
-      />
     </>
   )
 }

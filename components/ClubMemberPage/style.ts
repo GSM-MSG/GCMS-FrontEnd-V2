@@ -9,10 +9,10 @@ export const Positioner = styled.div`
 `
 
 export const Layer = styled.div`
-  width: 700px;
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  width: 90%;
+  max-width: 43.75rem;
   gap: 12px;
 
   small {
@@ -21,10 +21,6 @@ export const Layer = styled.div`
 
   h3 {
     margin: 0;
-  }
-
-  @media (max-width: 700px) {
-    width: 100%;
   }
 `
 

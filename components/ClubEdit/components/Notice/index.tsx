@@ -1,7 +1,7 @@
 import ClubDetailType from '@/type/common/ClubDetailType'
 import ClubLeaveAndDeleteBtn from './ClubLeaveAndDeleteBtn'
 import * as S from './style'
-import Switch from './Switch'
+import SwitchBtn from './SwitchBtn'
 
 interface Props {
   data: ClubDetailType | null
@@ -22,7 +22,7 @@ const Notice = ({ data }: Props) => {
               <S.UtilSection>
                 <S.Title>동아리 모집</S.Title>
 
-                <Switch
+                <SwitchBtn
                   clubId={data?.id}
                   opened={data?.isOpened}
                   scope={data?.scope}

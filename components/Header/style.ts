@@ -32,7 +32,7 @@ export const Navs = styled.div<IsAdmin>`
   flex: 1;
 
   @media (max-width: 500px) {
-    & > a:nth-child(n + ${({ isAdmin }) => (isAdmin ? 1 : 2)}) {
+    & > a:nth-of-type(n + ${({ isAdmin }) => (isAdmin ? 1 : 2)}) {
       display: none;
     }
   }

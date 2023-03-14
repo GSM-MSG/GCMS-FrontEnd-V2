@@ -1,4 +1,6 @@
+import { RootState } from '@/store'
 import ClubDetailType from '@/type/common/ClubDetailType'
+import { useSelector } from 'react-redux'
 import ClubLeaveAndDeleteBtn from './ClubLeaveAndDeleteBtn'
 import * as S from './style'
 import SwitchBtn from './SwitchBtn'
@@ -8,6 +10,7 @@ interface Props {
 }
 
 const Notice = ({ data }: Props) => {
+  const { user } = useSelector((state: RootState) => ({ ...state }))
   return (
     <>
       <S.Wrapper>
@@ -30,7 +33,7 @@ const Notice = ({ data }: Props) => {
               </S.UtilSection>
 
               <S.UtilSection>
-                {data?.scope === 'HEAD' && (
+                {(data?.scope === 'HEAD' || user.role === 'ROLE_ADMIN') && (
                   <ClubLeaveAndDeleteBtn
                     clubId={data?.id}
                     clubName={data?.name}

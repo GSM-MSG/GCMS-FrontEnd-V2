@@ -10,7 +10,7 @@ export default function CreateClubBtn() {
     user: state.user,
   }))
 
-  if (!user.name) return <></>
+  if (!user.name || user.role === 'ROLE_ADMIN') return <></>
 
   return (
     <>

@@ -2,7 +2,7 @@ import { UserProfileType } from '@/type/common'
 import ProfileType from '@/type/common/ProfileType'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const initialState: ProfileType = {
+export const initialState: ProfileType = {
   uuid: '',
   email: '',
   name: '',

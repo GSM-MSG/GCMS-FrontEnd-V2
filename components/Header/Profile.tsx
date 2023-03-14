@@ -1,5 +1,6 @@
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
+import ProfileImg from '../Common/ProfileImg'
 import * as S from './style'
 
 export default function Profile() {
@@ -10,11 +11,9 @@ export default function Profile() {
 
   return (
     <S.ProfileWrapper>
-      {user.profileImg ? (
-        <S.ProfileIMG src={user.profileImg} />
-      ) : (
-        <S.SampleIMG />
-      )}
+      <S.ProfileIMG>
+        <ProfileImg alt='profile img' src={user.profileImg} />
+      </S.ProfileIMG>
       <S.ClientName>{user.name}</S.ClientName>
     </S.ProfileWrapper>
   )

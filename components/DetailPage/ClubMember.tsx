@@ -1,5 +1,7 @@
+import { ProfileSrc } from '@/lib/ProfileSrc'
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
+import ProfileImg from '../Common/ProfileImg'
 import * as S from './style'
 
 export default function ClubMember() {
@@ -13,7 +15,7 @@ export default function ClubMember() {
       <div>
         {clubDetail.teacher && (
           <S.HeadProfile>
-            <S.SampelIMG />
+            <ProfileImg alt='profile igm' />
             <S.HeadInfo>
               <p>담당 선생님</p>
               <span>{clubDetail.teacher}</span>
@@ -21,16 +23,12 @@ export default function ClubMember() {
           </S.HeadProfile>
         )}
         <S.HeadProfile>
-          {clubDetail.head?.profileImg ? (
-            <S.MemberProfile
-              alt='profile img'
-              src={clubDetail.head.profileImg}
-              width={48}
-              height={48}
-            />
-          ) : (
-            <S.SampelIMG />
-          )}
+          <S.MemberProfile
+            alt='profile img'
+            src={clubDetail.head.profileImg || ProfileSrc}
+            width={48}
+            height={48}
+          />
           <S.HeadInfo>
             <p>동아리 부장</p>
             <span>{clubDetail.head?.name}</span>
@@ -40,16 +38,12 @@ export default function ClubMember() {
       <span>
         {clubDetail.member?.map((data) => (
           <S.MemberWrapper key={data.uuid}>
-            {data.profileImg ? (
-              <S.MemberProfile
-                alt='member progile img'
-                src={data.profileImg}
-                width={48}
-                height={48}
-              />
-            ) : (
-              <S.SampelIMG key={data.uuid} />
-            )}
+            <S.MemberProfile
+              alt='member progile img'
+              src={data.profileImg || ProfileSrc}
+              width={48}
+              height={48}
+            />
             <p>{data.name}</p>
           </S.MemberWrapper>
         ))}

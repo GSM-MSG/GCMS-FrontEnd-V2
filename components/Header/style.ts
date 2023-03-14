@@ -88,20 +88,18 @@ export const ProfileWrapper = styled.div`
   cursor: pointer;
 `
 
-export const ProfileIMG = styled.img`
+export const ProfileIMG = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: center;
+  position: relative;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
 `
 
-export const SampleIMG = styled.div`
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #727272;
-`
 export const ClientName = styled.p`
   font-weight: 500;
   font-size: 13px;

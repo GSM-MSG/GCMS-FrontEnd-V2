@@ -3,6 +3,7 @@ import { removeMember } from '@/store/clubCreation'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './style'
 import * as SVG from '@/assets/svg'
+import ProfileImg from '@/components/Common/ProfileImg'
 
 const SelectUserList = () => {
   const dispatch = useDispatch()
@@ -26,13 +27,9 @@ const SelectUserList = () => {
             <S.RemoveBtn onClick={() => onClick(i.uuid)}>
               <SVG.XMark />
             </S.RemoveBtn>
-
-            {i?.profileImg ? (
-              <S.UserImg src={i.profileImg} />
-            ) : (
-              <S.UserImgSample />
-            )}
-
+            <S.UserImg>
+              <ProfileImg src={i.profileImg} alt='profile img' />
+            </S.UserImg>
             <S.Name>{i.name}</S.Name>
           </S.UserWrapper>
         ))}

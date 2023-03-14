@@ -45,11 +45,16 @@ export const RemoveBtn = styled.button`
   right: 0;
 `
 
-export const UserImg = styled.img`
+export const UserImg = styled.div`
   width: 3rem;
   height: 3rem;
   border-radius: 100%;
   flex-shrink: 0;
+  position: relative;
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
 `
 
 export const UserImgSample = styled.div`

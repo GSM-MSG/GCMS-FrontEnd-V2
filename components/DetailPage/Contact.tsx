@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
 import { toast } from 'react-toastify'
 import toastOption from '@/lib/toastOption'
+import { ProfileSrc } from '@/lib/ProfileSrc'
 
 export default function Contact() {
   const { clubDetail } = useSelector((state: RootState) => ({
@@ -13,16 +14,12 @@ export default function Contact() {
   return (
     <S.Contact>
       <div>
-        {clubDetail.head?.profileImg ? (
-          <S.ProfileImg
-            alt='progile img'
-            src={clubDetail.head.profileImg}
-            width={33}
-            height={33}
-          />
-        ) : (
-          <S.SampelIMG />
-        )}
+        <S.ProfileImg
+          alt='progile img'
+          src={clubDetail.head.profileImg || ProfileSrc}
+          width={33}
+          height={33}
+        />
         <S.ContactInfo>
           <p>연략처</p>
           <span

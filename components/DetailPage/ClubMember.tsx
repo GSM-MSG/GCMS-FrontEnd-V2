@@ -1,6 +1,7 @@
 import { ProfileSrc } from '@/lib/ProfileSrc'
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
+import ProfileImg from '../Common/ProfileImg'
 import * as S from './style'
 
 export default function ClubMember() {
@@ -14,7 +15,7 @@ export default function ClubMember() {
       <div>
         {clubDetail.teacher && (
           <S.HeadProfile>
-            <S.SampelIMG />
+            <ProfileImg alt='profile igm' />
             <S.HeadInfo>
               <p>담당 선생님</p>
               <span>{clubDetail.teacher}</span>

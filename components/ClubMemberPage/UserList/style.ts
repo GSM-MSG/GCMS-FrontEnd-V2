@@ -1,3 +1,4 @@
+import { SelectType } from '@/type/components/ClubCreationModal'
 import styled from '@emotion/styled'
 
 export const Layer = styled.div`
@@ -31,8 +32,8 @@ export const UserWrapper = styled.div`
   z-index: 0;
 `
 
-export const UserBox = styled.div`
-  width: ${({ option }: { option: boolean }) => (option ? '80%' : '100%')};
+export const UserBox = styled.div<SelectType>`
+  width: ${({ select }) => (select ? '80%' : '100%')};
   min-height: 56px;
   background: #2d2d2d;
   border-radius: 10px;
@@ -44,8 +45,7 @@ export const UserBox = styled.div`
   transition: 0.5s;
 
   @media (max-width: 539px) {
-    width: ${({ option }: { option: boolean }) =>
-      option ? 'calc(100% - 100px)' : '100%'};
+    width: ${({ select }) => (select ? 'calc(100% - 100px)' : '100%')};
   }
 `
 

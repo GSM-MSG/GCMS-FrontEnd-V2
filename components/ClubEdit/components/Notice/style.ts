@@ -52,6 +52,7 @@ export const Description = styled.p`
 
 export const UtilContent = styled.div`
   height: 100%;
+  margin-top: 1rem;
   display: flex;
   justify-content: start;
   gap: 3rem;
@@ -61,8 +62,8 @@ export const UtilSection = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: start;
+  gap: 1rem;
 `
 
 export const SwitchInput = styled.input`
@@ -104,7 +105,7 @@ export const SwitchBtn = styled.span`
 `
 
 export const DeleteBtn = styled.button`
-  height: 2rem;
+  height: 1.5rem;
   padding: 0;
   color: #4164e1;
   border: none;

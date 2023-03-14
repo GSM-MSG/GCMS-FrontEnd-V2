@@ -19,6 +19,13 @@ export const ImgContainer = styled.div`
 export const ImgWrapper = styled.div`
   width: 48px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  small {
+    margin-left: 2.5px;
+  }
 `
 
 export const ImgBox = styled.div`

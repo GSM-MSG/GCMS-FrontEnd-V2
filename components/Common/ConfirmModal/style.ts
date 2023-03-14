@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   padding-top: 1rem;
   border-radius: 1rem;
   text-align: center;
+  min-width: 20rem;
 `
 
 export const Title = styled.h2`

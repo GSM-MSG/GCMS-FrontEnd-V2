@@ -1,12 +1,13 @@
 import * as S from './style'
 import { useFetch, useUpload } from '@/hooks'
-import { ChangeEvent, useEffect, useState } from 'react'
-import { ApiType, OnDeleteType } from '@/type/components/MyPage'
+import { ChangeEvent, useState } from 'react'
+import { OnDeleteType } from '@/type/components/MyPage'
 import { useLoggedIn } from '@/hooks'
 import { useRouter } from 'next/router'
 import TokenManager from '@/api/TokenManager'
 import { useDispatch } from 'react-redux'
 import { removeUser } from '@/store/user'
+import ConfirmModal from '@/components/Common/ConfirmModal'
 
 interface profileSetingProps {
   onSubmit: () => void
@@ -15,17 +16,19 @@ interface profileSetingProps {
 export default function ProfileSetting({ onSubmit }: profileSetingProps) {
   const { upload } = useUpload()
   const { isLoggned } = useLoggedIn({})
-  const router = useRouter()
-  const dispatch = useDispatch()
-
-  const [apiConfig, setApiConfig] = useState<ApiType>({
+  const [isShow, setIsShow] = useState<boolean>(false)
+  const [queryState, setQueryState] = useState<OnDeleteType>({
+    title: '',
+    message: '',
     url: '',
     method: 'get',
   })
+  const router = useRouter()
+  const dispatch = useDispatch()
 
-  const { fetch: Delete } = useFetch({
-    url: apiConfig.url,
-    method: apiConfig.method,
+  const { fetch: deleteQuery } = useFetch({
+    url: queryState.url,
+    method: queryState.method,
     onSuccess: () => {
       const tokenManager = new TokenManager()
       tokenManager.removeTokens()
@@ -52,53 +55,65 @@ export default function ProfileSetting({ onSubmit }: profileSetingProps) {
     })
   }
 
-  const onDelete = ({ url, method, message }: OnDeleteType) => {
-    const confirmCheck = confirm(message)
-    if (confirmCheck) setApiConfig({ url: url, method: method })
+  const onDelete = ({ url, method, title, message }: OnDeleteType) => {
+    setQueryState({
+      url,
+      method,
+      title,
+      message,
+    })
+    setIsShow(true)
   }
 
-  useEffect(() => {
-    ;(async () => {
-      if (apiConfig.url === '') return
-      await Delete()
-
-      if (!isLoggned) router.replace('/')
-    })()
-  }, [apiConfig])
+  const onConfirm = () => {
+    if (isLoggned) deleteQuery()
+  }
 
   return (
-    <S.Positioner>
-      <S.Layer>
-        <S.Btn
-          type='file'
-          accept='image/*'
-          id='imgUpload'
-          onChange={(e) => onChange(e)}
+    <>
+      <S.Positioner>
+        <S.Layer>
+          <S.Btn
+            type='file'
+            accept='image/*'
+            id='imgUpload'
+            onChange={(e) => onChange(e)}
+          />
+          <label htmlFor='imgUpload'>이미지 변경</label>
+          <S.Btn
+            type='button'
+            value='로그아웃'
+            onClick={() =>
+              onDelete({
+                url: '/auth',
+                method: 'delete',
+                title: '로그아웃',
+                message: '정말로 로그아웃을 하시겠습니까?',
+              })
+            }
+          />
+          <S.Btn
+            type='button'
+            value='서비스 탈퇴'
+            onClick={() =>
+              onDelete({
+                url: '/user',
+                method: 'delete',
+                title: '서비스 탈퇴',
+                message: '정말로 회원 탈퇴를 하시겠습니까?',
+              })
+            }
+          />
+        </S.Layer>
+      </S.Positioner>
+      {isShow && (
+        <ConfirmModal
+          title={queryState.title}
+          description={queryState.message}
+          onConfirm={onConfirm}
+          onClose={() => setIsShow(false)}
         />
-        <label htmlFor='imgUpload'>이미지 변경</label>
-        <S.Btn
-          type='button'
-          value='로그아웃'
-          onClick={() =>
-            onDelete({
-              url: '/auth',
-              method: 'delete',
-              message: '정말로 로그아웃을 하시겠습니까?',
-            })
-          }
-        />
-        <S.Btn
-          type='button'
-          value='서비스 탈퇴'
-          onClick={() =>
-            onDelete({
-              url: '/user',
-              method: 'delete',
-              message: '정말로 회원 탈퇴를 하시겠습니까?',
-            })
-          }
-        />
-      </S.Layer>
-    </S.Positioner>
+      )}
+    </>
   )
 }

@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
   width: 700px;
   display: flex;
   justify-content: space-between;
+  align-items: start;
   margin-top: 42px;
   @media (max-width: 750px) {
     width: 100%;
@@ -266,31 +267,76 @@ export const SideBar = styled.div`
   right: 0;
   top: 72px;
   width: 174px;
-  height: 224px;
   background: #242425;
   border-radius: 10px;
-  padding: 12px 14px 34px;
-  > h3 {
-    font-weight: 700;
-    font-size: 13px;
-    color: #c7c7c7;
-    margin: 0;
-  }
+  padding: 1rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+
   @media (max-width: 750px) {
     position: relative;
-    width: 80%;
+    width: 100%;
+    max-width: max-content;
     margin: 0 auto;
-    height: 140px;
   }
 `
 export const SideControl = styled.div`
   padding-top: 12px;
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+`
+
+export const SideTopContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (max-width: 750px) {
+    align-items: center;
+  }
+`
+
+export const ClubControls = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+
+  @media (max-width: 750px) {
+    justify-content: center;
+  }
+`
+
+export const ClubControl = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+`
+
+export const ClubControlTitle = styled.div`
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+`
+
+export const ClubTitle = styled.h5`
+  font-weight: 700;
+  font-size: 13px;
+  color: #c7c7c7;
+  margin: 0;
 `
 
 export const SideBtn = styled.button<ApplyStateType>`
@@ -304,10 +350,10 @@ export const SideBtn = styled.button<ApplyStateType>`
   border-radius: 7px;
 
   ${({ btnMessage }) => {
-    if (['동아리 열기', '지원하기'].includes(btnMessage)) return ''
-    else if (['동아리 닫기', '탈퇴하기', '신청 취소'].includes(btnMessage))
-      return 'color: #FF6666;background: #391F21;border: 1px solid #FF6666;'
-    return 'color: #C1C1C1;background: #373737; cursor: auto;'
+    if (btnMessage === '지원하기') return ''
+    else if (btnMessage === '신청 취소')
+      return 'color: #0B0B0B;background: #84D644;border: 1px solid #0B0B0B;'
+    return 'color: #B5B5B5;background: #797979; cursor: auto;'
   }}
 `
 
@@ -319,7 +365,6 @@ export const NotionInfo = styled.div`
     margin: 0;
   }
   > p {
-    width: 70%;
     font-weight: 400;
     font-size: 13px;
     color: #858585;
@@ -335,7 +380,12 @@ export const NotionInfo = styled.div`
     }
   }
   @media (max-width: 750px) {
-    flex-direction: row;
+    align-items: center;
+
+    p {
+      text-align: center;
+      word-break: keep-all;
+    }
     a {
       white-space: nowrap;
     }

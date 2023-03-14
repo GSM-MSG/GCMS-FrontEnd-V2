@@ -24,12 +24,14 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
   const { fetch: submit } = useFetch<SubmitType>({
     url: `/admin/${apiData.id}`,
     method: apiData.method,
+    onSuccess: () => {
+      if (onFetch !== undefined) onFetch()
+    },
   })
 
   useEffect(() => {
     if (apiData.id === 0) return
     submit()
-    onFetch && onFetch()
   }, [apiData])
 
   return (
@@ -64,21 +66,19 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
                   </S.ClubName>
                   <S.ClubDescription>{item.content}</S.ClubDescription>
                 </S.ClubInfo>
-                <S.OptionBox>
-                  <S.OptionBtn
-                    onClick={() => setApiData({ id: item.id, method: 'PATCH' })}
-                  >
-                    허가
-                  </S.OptionBtn>
-                  <S.OptionBtn
-                    onClick={() =>
-                      setApiData({ id: item.id, method: 'DELETE' })
-                    }
-                  >
-                    거부
-                  </S.OptionBtn>
-                </S.OptionBox>
               </S.ClubBox>
+              <S.OptionBox>
+                <S.OptionBtn
+                  onClick={() => setApiData({ id: item.id, method: 'PATCH' })}
+                >
+                  허가
+                </S.OptionBtn>
+                <S.OptionBtn
+                  onClick={() => setApiData({ id: item.id, method: 'DELETE' })}
+                >
+                  거부
+                </S.OptionBtn>
+              </S.OptionBox>
             </S.ClubWrapper>
           ))}
       </S.ClubContainer>

@@ -19,7 +19,7 @@ export default function StuInfo() {
   })
 
   useEffect(() => {
-    fetch()
+    if (uuid) fetch()
   }, [uuid])
 
   return (

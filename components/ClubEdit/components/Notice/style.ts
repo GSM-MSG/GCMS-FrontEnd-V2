@@ -48,6 +48,7 @@ export const Title = styled.h4`
 export const Description = styled.p`
   opacity: 0.51;
   margin: 0.5rem 0;
+  word-break: break-all;
 `
 
 export const UtilContent = styled.div`

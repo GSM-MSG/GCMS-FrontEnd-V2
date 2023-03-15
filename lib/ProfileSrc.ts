@@ -1,1 +1,1 @@
-export const ProfileSrc = '/png/Profile.png'
+export const ProfileSrc = '/svg/Profile.svg'

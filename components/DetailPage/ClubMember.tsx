@@ -1,7 +1,6 @@
 import { ProfileSrc } from '@/lib/ProfileSrc'
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
-import ProfileImg from '../Common/ProfileImg'
 import * as S from './style'
 
 export default function ClubMember() {
@@ -15,7 +14,12 @@ export default function ClubMember() {
       <div>
         {clubDetail.teacher && (
           <S.HeadProfile>
-            <ProfileImg alt='profile igm' />
+            <S.MemberProfile
+              alt='profile img'
+              src={ProfileSrc}
+              width={48}
+              height={48}
+            />
             <S.HeadInfo>
               <p>담당 선생님</p>
               <span>{clubDetail.teacher}</span>

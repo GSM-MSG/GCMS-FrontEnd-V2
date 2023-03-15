@@ -13,7 +13,7 @@ export default function UserItem({ item, scope }: MemberItemProps) {
   return (
     <>
       <S.UserWrapper>
-        <S.UserBox option={isSelected}>
+        <S.UserBox select={isSelected}>
           <S.UserImgBox>
             {item.profileImg && (
               <S.Img src={item.profileImg} alt='profileImg' />

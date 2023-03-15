@@ -12,6 +12,7 @@ export interface ApiType {
 export interface OnDeleteType {
   url: string
   method: Method
+  title: string
   message: string
 }
 

@@ -8,14 +8,14 @@ interface Props {
   onClose: () => void
 }
 
-const ConfirmModal = ({ title, description, onClose, onConfirm }: Props) => {
+const ConfirmModal = ({ title, description, onConfirm, onClose }: Props) => {
   const onClick = () => {
     onConfirm()
     onClose()
   }
 
   return (
-    <Portal>
+    <Portal onClose={onClose}>
       <S.Wrapper>
         <S.Title>{title}</S.Title>
         <S.Description>{description}</S.Description>

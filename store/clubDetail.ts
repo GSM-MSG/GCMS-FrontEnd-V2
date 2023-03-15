@@ -1,7 +1,7 @@
 import { ClubDetailType, ScopeType } from '@/type/common'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const initialState: ClubDetailType = {
+export const initialState: ClubDetailType = {
   id: 0,
   type: 'MAJOR',
   bannerImg: '',

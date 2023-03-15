@@ -22,7 +22,7 @@ export default function UserList({ data, value }: Props) {
                 onClick={() => dispatch(setUuid(item.uuid))}
               >
                 <S.UserWrapper>
-                  <S.UserBox option={false}>
+                  <S.UserBox select={false}>
                     <S.UserImgBox>
                       {item.profileImg && (
                         <S.Img src={item.profileImg} alt='profileImg' />

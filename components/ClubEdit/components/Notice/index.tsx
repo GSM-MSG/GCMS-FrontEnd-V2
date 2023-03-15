@@ -4,7 +4,7 @@ import * as S from './style'
 import SwitchBtn from './SwitchBtn'
 
 interface Props {
-  data: ClubDetailType | null
+  data: ClubDetailType | undefined
 }
 
 const Notice = ({ data }: Props) => {

@@ -10,13 +10,12 @@ import { useRouter } from 'next/router'
 import { EditClubForm } from '@/type/components/ClubEdit'
 
 interface Props {
-  initialData: Partial<EditClubForm>
+  initialData?: EditClubForm
   banner: string
   activity: string[]
-  updateData: () => Promise<void>
 }
 
-const Edit = ({ initialData, banner, activity, updateData }: Props) => {
+const Edit = ({ initialData, banner, activity }: Props) => {
   const {
     register,
     watch,
@@ -61,7 +60,6 @@ const Edit = ({ initialData, banner, activity, updateData }: Props) => {
       activityImgs,
       bannerImg,
     })
-    await updateData()
   }
 
   return (

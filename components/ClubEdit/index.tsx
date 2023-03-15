@@ -1,31 +1,15 @@
-import { useFetch } from '@/hooks'
-import DataInitializer from '@/lib/DataInitializer'
-import ClubDetailType from '@/type/common/ClubDetailType'
-import { EditClubForm } from '@/type/components/ClubEdit'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
 import ClubNav from '../Common/ClubNav'
 import Edit from './components/Edit'
 import Notice from './components/Notice'
 import * as S from './style'
 import SEO from '@/components/SEO'
+import { useGetClubDetailQuery } from '@/store/ClubDetailApi'
 
 const ClubEdit = () => {
   const router = useRouter()
-  const clubId = router.query.clubID
-  const [clubData, setClubData] = useState<Partial<EditClubForm>>({})
-  const { fetch, data } = useFetch<ClubDetailType>({
-    method: 'get',
-    url: `/club/${clubId}`,
-    onSuccess: (data) => {
-      const di = new DataInitializer()
-      setClubData(di.ClubDetailToEditClubForm(data))
-    },
-  })
-
-  useEffect(() => {
-    if (clubId) fetch()
-  }, [clubId])
+  const clubId = router.query.clubID?.toString() || ''
+  const { data } = useGetClubDetailQuery(clubId, { skip: !clubId })
 
   return (
     <>
@@ -36,12 +20,7 @@ const ClubEdit = () => {
         <Notice data={data} />
 
         {data?.scope === 'HEAD' && (
-          <Edit
-            banner={data.bannerImg}
-            activity={data.activityImgs}
-            initialData={clubData}
-            updateData={fetch}
-          />
+          <Edit banner={data.bannerImg} activity={data.activityImgs} />
         )}
       </S.Wrapper>
     </>

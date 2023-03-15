@@ -16,6 +16,18 @@ const initialState = {
 
 const spy = jest.spyOn(redux, 'useSelector')
 
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      push: () => undefined,
+      route: '/',
+      pathname: '',
+      query: '',
+      asPath: '',
+    }
+  },
+}))
+
 describe('Sidebar button test', () => {
   it('button element text should be 지원하기', () => {
     spy.mockReturnValue({

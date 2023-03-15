@@ -18,7 +18,7 @@ const ClubEdit = () => {
     method: 'get',
     url: `/club/${clubId}`,
     onSuccess: (data) => {
-      if (!['MEMBER', 'HEAD'].includes(data?.scope)) router.push('/')
+      if (!['MEMBER', 'HEAD', 'ADMIN'].includes(data?.scope)) router.push('/')
       const di = new DataInitializer()
       setClubData(di.ClubDetailToEditClubForm(data))
     },

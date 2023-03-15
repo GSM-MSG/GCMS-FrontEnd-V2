@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useFetch } from '@/hooks'
 import UserList from '../UserList'
 import AdminUserListType from '@/type/common/AdminUserListType'
+
 export default function StuSearch() {
   const { fetch, data } = useFetch<AdminUserListType[]>({
     url: `/admin/user`,

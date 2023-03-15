@@ -3,6 +3,7 @@ import MemberType from '@/type/common/MemberType'
 import { RootState } from '@/store'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeMember, setMember } from '@/store/clubCreation'
+import ProfileImg from '@/components/Common/ProfileImg'
 
 interface Props {
   member: MemberType
@@ -26,12 +27,9 @@ const Member = ({ member }: Props) => {
   return (
     <S.Wrapper htmlFor={`check${member.uuid}`}>
       <S.UserInfo>
-        {member?.profileImg ? (
-          <S.UserImg src={member.profileImg} />
-        ) : (
-          <S.UserSampleImg />
-        )}
-
+        <S.UserImg>
+          <ProfileImg src={member.profileImg} alt='profile img' />
+        </S.UserImg>
         <S.GradeInfo>
           <S.UserName>{member.name}</S.UserName>
           <S.MemberDescription>

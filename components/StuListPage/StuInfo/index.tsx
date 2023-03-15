@@ -7,6 +7,7 @@ import { useFetch } from '@/hooks'
 import { useEffect } from 'react'
 import AdminDetailType from '@/type/common/AdminDetailType'
 import ClubItem from './ClubItem'
+import { ProfileSrc } from '@/lib/ProfileSrc'
 
 export default function StuInfo() {
   const { uuid } = useSelector((state: RootState) => ({
@@ -28,14 +29,12 @@ export default function StuInfo() {
         <SVG.ProfileIcon />
         <S.ProfileContent>
           <S.ProfileImg>
-            {data?.profileImg && (
-              <Image
-                src={data.profileImg}
-                alt='profileImg'
-                width={60}
-                height={60}
-              />
-            )}
+            <Image
+              src={data?.profileImg || ProfileSrc}
+              alt='profileImg'
+              width={60}
+              height={60}
+            />
           </S.ProfileImg>
           <p>{data?.nickname && data?.nickname + '님'}</p>
           <small>

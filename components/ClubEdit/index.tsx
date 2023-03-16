@@ -36,7 +36,7 @@ const ClubEdit = () => {
 
         <Notice data={data} />
 
-        {data?.scope === 'HEAD' && (
+        {data && ['ADMIN', 'HEAD'].includes(data?.scope) && (
           <Edit
             banner={data.bannerImg}
             activity={data.activityImgs}

@@ -26,10 +26,11 @@ export default function ApplicantPage() {
   }))
   const dispatch = useDispatch()
   const { register, watch } = useForm({ defaultValues: { value: '' } })
+  const isAllSelected = data?.applicantList.length === applicant.length
 
   const onClick = () => {
     if (!data) return
-    if (data?.applicantList.length === applicant.length) {
+    if (isAllSelected) {
       return dispatch(removeAllUser())
     }
     dispatch(addAllUser(data?.applicantList))
@@ -56,7 +57,9 @@ export default function ApplicantPage() {
           <>
             <SelectedUserImg selected={applicant} />
             <S.AllSelectBox>
-              <S.AllSelectBtn onClick={onClick}>전부 선택</S.AllSelectBtn>
+              <S.AllSelectBtn onClick={onClick}>
+                {isAllSelected ? '전체 삭제' : '전체 선택'}
+              </S.AllSelectBtn>
             </S.AllSelectBox>
           </>
         )}

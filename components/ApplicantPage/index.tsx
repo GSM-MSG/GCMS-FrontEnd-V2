@@ -58,7 +58,7 @@ export default function ApplicantPage() {
             <SelectedUserImg selected={applicant} />
             <S.AllSelectBox>
               <S.AllSelectBtn onClick={onClick}>
-                {isAllSelected ? '전체 삭제' : '전체 선택'}
+                전체 {isAllSelected ? '삭제' : '선택'}
               </S.AllSelectBtn>
             </S.AllSelectBox>
           </>

@@ -5,6 +5,7 @@ import Notice from './components/Notice'
 import * as S from './style'
 import SEO from '@/components/SEO'
 import { useGetClubDetailQuery } from '@/store/ClubDetailApi'
+import dataInitializer from '@/lib/DataInitializer'
 
 const ClubEdit = () => {
   const router = useRouter()
@@ -20,7 +21,11 @@ const ClubEdit = () => {
         <Notice data={data} />
 
         {data?.scope === 'HEAD' && (
-          <Edit banner={data.bannerImg} activity={data.activityImgs} />
+          <Edit
+            initialData={dataInitializer.ClubDetailToEditClubForm(data)}
+            banner={data.bannerImg}
+            activity={data.activityImgs}
+          />
         )}
       </S.Wrapper>
     </>

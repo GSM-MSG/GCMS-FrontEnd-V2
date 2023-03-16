@@ -4,13 +4,14 @@ import Textarea from '@/components/Common/Textarea'
 import { useForm } from 'react-hook-form'
 import * as S from './style'
 import ClubImgs from '../ClubImgs'
-import { useFetch, useUpload } from '@/hooks'
+import { useUpload } from '@/hooks'
 import { ChangeEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { EditClubForm } from '@/type/components/ClubEdit'
+import { useSetClubDetailMutation } from '@/store/ClubDetailApi'
 
 interface Props {
-  initialData?: EditClubForm
+  initialData: Partial<EditClubForm>
   banner: string
   activity: string[]
 }
@@ -27,14 +28,11 @@ const Edit = ({ initialData, banner, activity }: Props) => {
     shouldUseNativeValidation: true,
   })
   const router = useRouter()
+  const clubId = router.query.clubID?.toString()
   const { upload } = useUpload()
   const [activityImgs, setActivityImgs] = useState<string[]>(activity)
   const [bannerImg, setBannerImg] = useState<string>(banner)
-  const { fetch } = useFetch({
-    method: 'patch',
-    url: `/club/${router.query?.clubID}`,
-    successMessage: '수정에 성공했습니다',
-  })
+  const [mutation] = useSetClubDetailMutation()
 
   const onUpload = async (
     e: ChangeEvent<HTMLInputElement>,
@@ -55,10 +53,13 @@ const Edit = ({ initialData, banner, activity }: Props) => {
   }
 
   const onSubmit = async (form: EditClubForm) => {
-    await fetch({
-      ...form,
-      activityImgs,
-      bannerImg,
+    mutation({
+      clubId,
+      body: {
+        ...form,
+        activityImgs,
+        bannerImg,
+      },
     })
   }
 

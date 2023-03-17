@@ -6,11 +6,16 @@ import * as S from './style'
 import SEO from '@/components/SEO'
 import { useGetClubDetailQuery } from '@/store/ClubDetailApi'
 import dataInitializer from '@/lib/DataInitializer'
+import { useEffect } from 'react'
 
 const ClubEdit = () => {
   const router = useRouter()
   const clubId = router.query.clubID?.toString() || ''
   const { data } = useGetClubDetailQuery(clubId, { skip: !clubId })
+
+  useEffect(() => {
+    if (data && ['USER', 'OTHER'].includes(data.scope)) router.push('/')
+  }, [clubId])
 
   return (
     <>
@@ -20,7 +25,7 @@ const ClubEdit = () => {
 
         <Notice data={data} />
 
-        {data?.scope === 'HEAD' && (
+        {data && ['ADMIN', 'HEAD'].includes(data?.scope) && (
           <Edit
             initialData={dataInitializer.ClubDetailToEditClubForm(data)}
             banner={data.bannerImg}

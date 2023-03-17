@@ -247,15 +247,6 @@ export const MemberProfile = styled(Image)`
   background: #c4c4c4;
   flex: none;
 `
-
-export const SampelIMG = styled.div`
-  width: 48px;
-  background: #c4c4c4;
-  height: 48px;
-  border-radius: 50%;
-  flex: none;
-`
-
 export const Footer = styled.footer`
   width: 100%;
   height: 214px;

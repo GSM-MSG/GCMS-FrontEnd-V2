@@ -2,6 +2,7 @@ import API from '@/api'
 import toastOption from '@/lib/toastOption'
 import { ErrorsType } from '@/type/hooks/useFetch'
 import { isAxiosError, Method } from 'axios'
+import { useRouter } from 'next/router'
 import { useCallback, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -24,6 +25,7 @@ const useFetch = <T,>({
 }: Props<T>) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [data, setData] = useState<T | null>(null)
+  const router = useRouter()
 
   const fetch = useCallback(
     async (body?: any) => {
@@ -55,6 +57,8 @@ const useFetch = <T,>({
         }
 
         if (onFailure) await onFailure(e)
+
+        router.push('/')
       } finally {
         setIsLoading(false)
       }

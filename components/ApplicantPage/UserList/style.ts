@@ -37,18 +37,13 @@ export const UserWrapper = styled.label`
 `
 
 export const UserImgBox = styled.div`
+  position: relative;
   border-radius: 100%;
   background: #434343;
   overflow: hidden;
   min-width: 32px;
   width: 32px;
   height: 32px;
-`
-
-export const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 `
 
 export const UserInfo = styled.div`

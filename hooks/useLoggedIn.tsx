@@ -26,6 +26,7 @@ const useLoggedIn = ({ onFetch = true }: Props) => {
     onFailure: () => {
       !checkUrl && router.replace('/')
     },
+    autoPushToggle: false,
   })
 
   useEffect(() => {

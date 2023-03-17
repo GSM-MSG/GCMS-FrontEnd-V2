@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as S from './style'
 
 export default function UserItem({ item, userScope }: UserItemProps) {
-  const { applicant } = useSelector((state: RootState) => ({
-    applicant: state.applicant,
+  const { applicant, user } = useSelector((state: RootState) => ({
+    ...state,
   }))
   const dispatch = useDispatch()
 
@@ -19,6 +19,7 @@ export default function UserItem({ item, userScope }: UserItemProps) {
     }
     dispatch(addUser(item))
   }
+
   return (
     <S.UserWrapper htmlFor={item.uuid}>
       <S.UserImgBox>
@@ -31,7 +32,7 @@ export default function UserItem({ item, userScope }: UserItemProps) {
         </small>
       </S.UserInfo>
       <S.CheckBox>
-        {userScope === 'HEAD' && (
+        {(userScope === 'HEAD' || user.role === 'ROLE_ADMIN') && (
           <>
             <S.CheckBtn
               id={item.uuid}

@@ -24,7 +24,7 @@ export default function UserItem({ item, scope }: MemberItemProps) {
           </small>
         </S.UserInfo>
         <S.CheckBox>
-          {scope === 'HEAD' && item.scope !== 'HEAD' && (
+          {['HEAD', 'ADMIN'].includes(scope) && item.scope !== 'HEAD' && (
             <>
               <S.CheckBtn
                 id={item.uuid}

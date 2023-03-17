@@ -9,6 +9,8 @@ import { ChangeEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { EditClubForm } from '@/type/components/ClubEdit'
 import { useSetClubDetailMutation } from '@/store/ClubDetailApi'
+import { toast } from 'react-toastify'
+import toastOption from '@/lib/toastOption'
 
 interface Props {
   initialData: Partial<EditClubForm>
@@ -60,6 +62,10 @@ const Edit = ({ initialData, banner, activity }: Props) => {
         activityImgs,
         bannerImg,
       },
+    }).then((res) => {
+      if ('error' in res)
+        return toast.error('동아리 수정에 실패했습니다', toastOption)
+      toast.success('동아리 수정에 성공했습니다', toastOption)
     })
   }
 

@@ -1,13 +1,14 @@
+import customBaseQuery from '@/lib/customBaseQuery'
 import { ClubDetailType } from '@/type/common'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react'
 
 const clubDetailApi = createApi({
   reducerPath: 'clubDetailApi',
   tagTypes: ['clubDetail'],
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_SERVER_URL }),
+  baseQuery: customBaseQuery,
   endpoints: (builder) => ({
     getClubDetail: builder.query<ClubDetailType, string>({
-      query: (clubId) => `/club/${clubId}`,
+      query: (clubId) => ({ url: `/club/${clubId}` }),
       providesTags: (_, __, id) => [{ type: 'clubDetail', id }],
     }),
     setClubDetail: builder.mutation({
@@ -16,6 +17,7 @@ const clubDetailApi = createApi({
         method: 'PATCH',
         body,
       }),
+      invalidatesTags: (_, __, arg) => [{ type: 'clubDetail', id: arg.clubId }],
     }),
   }),
 })

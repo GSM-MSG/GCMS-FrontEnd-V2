@@ -4,19 +4,21 @@ import Textarea from '@/components/Common/Textarea'
 import { useForm } from 'react-hook-form'
 import * as S from './style'
 import ClubImgs from '../ClubImgs'
-import { useFetch, useUpload } from '@/hooks'
+import { useUpload } from '@/hooks'
 import { ChangeEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { EditClubForm } from '@/type/components/ClubEdit'
+import { useSetClubDetailMutation } from '@/store/ClubDetailApi'
+import { toast } from 'react-toastify'
+import toastOption from '@/lib/toastOption'
 
 interface Props {
   initialData: Partial<EditClubForm>
   banner: string
   activity: string[]
-  updateData: () => Promise<void>
 }
 
-const Edit = ({ initialData, banner, activity, updateData }: Props) => {
+const Edit = ({ initialData, banner, activity }: Props) => {
   const {
     register,
     watch,
@@ -28,14 +30,11 @@ const Edit = ({ initialData, banner, activity, updateData }: Props) => {
     shouldUseNativeValidation: true,
   })
   const router = useRouter()
+  const clubId = router.query.clubID?.toString()
   const { upload } = useUpload()
   const [activityImgs, setActivityImgs] = useState<string[]>(activity)
   const [bannerImg, setBannerImg] = useState<string>(banner)
-  const { fetch } = useFetch({
-    method: 'patch',
-    url: `/club/${router.query?.clubID}`,
-    successMessage: '수정에 성공했습니다',
-  })
+  const [mutation] = useSetClubDetailMutation()
 
   const onUpload = async (
     e: ChangeEvent<HTMLInputElement>,
@@ -56,12 +55,18 @@ const Edit = ({ initialData, banner, activity, updateData }: Props) => {
   }
 
   const onSubmit = async (form: EditClubForm) => {
-    await fetch({
-      ...form,
-      activityImgs,
-      bannerImg,
+    mutation({
+      clubId,
+      body: {
+        ...form,
+        activityImgs,
+        bannerImg,
+      },
+    }).then((res) => {
+      if ('error' in res)
+        return toast.error('동아리 수정에 실패했습니다', toastOption)
+      toast.success('동아리 수정에 성공했습니다', toastOption)
     })
-    await updateData()
   }
 
   return (

@@ -2,6 +2,13 @@ import ClubDetailType from '@/type/common/ClubDetailType'
 import { EditClubForm } from '@/type/components/ClubEdit'
 
 class DataInitializer {
+  static instance: DataInitializer
+
+  constructor() {
+    if (DataInitializer.instance) return DataInitializer.instance
+    DataInitializer.instance = this
+  }
+
   ClubDetailToEditClubForm(data: ClubDetailType): Partial<EditClubForm> {
     return {
       type: data.type,
@@ -15,4 +22,6 @@ class DataInitializer {
   }
 }
 
-export default DataInitializer
+const dataInitializer = new DataInitializer()
+
+export default dataInitializer

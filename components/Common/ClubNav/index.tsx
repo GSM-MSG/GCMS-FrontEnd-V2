@@ -1,22 +1,12 @@
 import * as SVG from '@/assets/svg'
-import { useFetch } from '@/hooks'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import * as S from './style'
-import { ClubDetailType } from '@/type/common'
+import { useGetClubDetailQuery } from '@/store/ClubDetailApi'
 
 export default function ClubNav() {
   const router = useRouter()
-  const clubId = router.query.clubID
-
-  const { fetch, data } = useFetch<ClubDetailType>({
-    url: `/club/${clubId}`,
-    method: 'get',
-  })
-
-  useEffect(() => {
-    if (clubId) fetch()
-  }, [clubId])
+  const clubId = router.query.clubID?.toString() || ''
+  const { data } = useGetClubDetailQuery(clubId, { skip: !clubId })
 
   return (
     <S.Layer>

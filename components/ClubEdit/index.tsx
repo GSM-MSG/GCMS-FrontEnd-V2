@@ -9,13 +9,10 @@ import Edit from './components/Edit'
 import Notice from './components/Notice'
 import * as S from './style'
 import SEO from '@/components/SEO'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
 
 const ClubEdit = () => {
   const router = useRouter()
   const clubId = router.query.clubID
-  const { user } = useSelector((state: RootState) => ({ ...state }))
   const [clubData, setClubData] = useState<Partial<EditClubForm>>({})
   const { fetch, data } = useFetch<ClubDetailType>({
     method: 'get',

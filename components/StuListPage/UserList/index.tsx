@@ -2,6 +2,7 @@ import * as S from './style'
 import { setUuid } from '@/store/uuid'
 import { useDispatch } from 'react-redux'
 import AdminMemberType from '@/type/common/AdminUserListType'
+import ProfileImg from '@/components/Common/ProfileImg'
 
 interface Props {
   data: AdminMemberType[]
@@ -22,11 +23,9 @@ export default function UserList({ data, value }: Props) {
                 onClick={() => dispatch(setUuid(item.uuid))}
               >
                 <S.UserWrapper>
-                  <S.UserBox option={false}>
+                  <S.UserBox select={false}>
                     <S.UserImgBox>
-                      {item.profileImg && (
-                        <S.Img src={item.profileImg} alt='profileImg' />
-                      )}
+                      <ProfileImg src={item.profileImg} alt='profileImg' />
                     </S.UserImgBox>
                     <S.UserInfo>
                       <S.UserName>{item.nickname}</S.UserName>

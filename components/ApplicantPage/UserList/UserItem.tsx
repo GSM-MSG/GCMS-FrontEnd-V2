@@ -2,6 +2,7 @@ import { RootState } from '@/store'
 import { addUser, removeUser } from '@/store/applicant'
 import { MemberType } from '@/type/common'
 import { UserItemProps } from '@/type/components/ApplicantPage'
+import ProfileImg from '@/components/Common/ProfileImg'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './style'
 
@@ -22,7 +23,7 @@ export default function UserItem({ item, userScope }: UserItemProps) {
   return (
     <S.UserWrapper htmlFor={item.uuid}>
       <S.UserImgBox>
-        {item.profileImg && <S.Img src={item.profileImg} alt='profileImg' />}
+        <ProfileImg src={item.profileImg} alt='profileImg' />
       </S.UserImgBox>
       <S.UserInfo>
         <S.UserName>{item.name}</S.UserName>

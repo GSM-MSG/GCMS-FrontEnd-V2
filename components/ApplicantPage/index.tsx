@@ -1,7 +1,7 @@
 import { SearchIcon } from '@/assets/svg'
 import { useFetch } from '@/hooks'
 import { RootState } from '@/store'
-import { addAllUser } from '@/store/applicant'
+import { addAllUser, removeAllUser } from '@/store/applicant'
 import { ApplicantListType } from '@/type/common'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -27,6 +27,15 @@ export default function ApplicantPage() {
   }))
   const dispatch = useDispatch()
   const { register, watch } = useForm({ defaultValues: { value: '' } })
+  const isAllSelected = data?.applicantList.length === applicant.length
+
+  const onClick = () => {
+    if (!data) return
+    if (isAllSelected) {
+      return dispatch(removeAllUser())
+    }
+    dispatch(addAllUser(data?.applicantList))
+  }
 
   useEffect(() => {
     if (clubId) fetch()
@@ -49,10 +58,8 @@ export default function ApplicantPage() {
           <>
             <SelectedUserImg selected={applicant} />
             <S.AllSelectBox>
-              <S.AllSelectBtn
-                onClick={() => dispatch(addAllUser(data.applicantList))}
-              >
-                전부 선택
+              <S.AllSelectBtn onClick={onClick}>
+                전체 {isAllSelected ? '삭제' : '선택'}
               </S.AllSelectBtn>
             </S.AllSelectBox>
           </>

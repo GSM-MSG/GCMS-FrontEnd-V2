@@ -21,6 +21,7 @@ const ClubEdit = () => {
     method: 'get',
     url: `/club/${clubId}`,
     onSuccess: (data) => {
+      if (!['MEMBER', 'HEAD', 'ADMIN'].includes(data?.scope)) router.push('/')
       const di = new DataInitializer()
       setClubData(di.ClubDetailToEditClubForm(data))
     },
@@ -38,7 +39,7 @@ const ClubEdit = () => {
 
         <Notice data={data} />
 
-        {(data?.scope === 'HEAD' || (data && user.role === 'ROLE_ADMIN')) && (
+        {data && ['ADMIN', 'HEAD'].includes(data?.scope) && (
           <Edit
             banner={data.bannerImg}
             activity={data.activityImgs}

@@ -19,9 +19,14 @@ const applicantSlice = createSlice({
       state = state.filter((item) => item.uuid !== action.payload)
       return state
     },
+    removeAllUser: (state) => {
+      state = []
+      return state
+    },
   },
 })
 
-export const { addAllUser, addUser, removeUser } = applicantSlice.actions
+export const { addAllUser, addUser, removeUser, removeAllUser } =
+  applicantSlice.actions
 
 export default applicantSlice

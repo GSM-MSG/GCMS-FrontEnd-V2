@@ -1,3 +1,3 @@
-type ScopeType = 'HEAD' | 'MEMBER' | 'USER' | 'OTHER'
+type ScopeType = 'HEAD' | 'MEMBER' | 'USER' | 'OTHER' | 'ADMIN'
 
 export default ScopeType

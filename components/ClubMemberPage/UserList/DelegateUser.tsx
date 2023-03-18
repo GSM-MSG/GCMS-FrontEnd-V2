@@ -8,9 +8,10 @@ import * as S from './style'
 interface Props {
   clubId: string
   uuid: string
+  closeSelected: () => void
 }
 
-const DelegateUser = ({ clubId, uuid }: Props) => {
+const DelegateUser = ({ clubId, uuid, closeSelected }: Props) => {
   const dispatch = useDispatch()
   const [isShow, setIsShow] = useState<boolean>(false)
   const { fetch, isLoading } = useFetch({
@@ -19,6 +20,7 @@ const DelegateUser = ({ clubId, uuid }: Props) => {
     successMessage: '부장 위임에 성공하셨습니다',
     onSuccess: () => {
       dispatch(delegateHead(uuid))
+      closeSelected()
     },
   })
 

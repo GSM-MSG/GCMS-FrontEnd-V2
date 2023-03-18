@@ -1,6 +1,8 @@
 import ConfirmModal from '@/components/Common/ConfirmModal'
 import { useFetch } from '@/hooks'
+import { delegateHead } from '@/store/clubMember'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import * as S from './style'
 
 interface Props {
@@ -9,11 +11,15 @@ interface Props {
 }
 
 const DelegateUser = ({ clubId, uuid }: Props) => {
+  const dispatch = useDispatch()
   const [isShow, setIsShow] = useState<boolean>(false)
   const { fetch, isLoading } = useFetch({
     url: `/club-member/${clubId}`,
     method: 'patch',
     successMessage: '부장 위임에 성공하셨습니다',
+    onSuccess: () => {
+      dispatch(delegateHead(uuid))
+    },
   })
 
   const onClick = () => setIsShow(true)

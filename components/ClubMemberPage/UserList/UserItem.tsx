@@ -9,11 +9,11 @@ import { useState } from 'react'
 export default function UserItem({ item, scope }: MemberItemProps) {
   const router = useRouter()
   const clubID = router.query.clubID?.toString() || ''
-  const [isSelected, setSelected] = useState<boolean>(false)
+  const [selected, setSelected] = useState<boolean>(false)
 
   return (
     <S.UserWrapper>
-      <S.UserBox select={isSelected}>
+      <S.UserBox select={selected}>
         <S.UserImgBox>
           <ProfileImg src={item.profileImg} alt='profileImg' />
         </S.UserImgBox>
@@ -29,8 +29,8 @@ export default function UserItem({ item, scope }: MemberItemProps) {
               <S.CheckBtn
                 id={item.uuid}
                 type='checkbox'
-                onChange={() => setSelected(!isSelected)}
-                checked={isSelected}
+                onChange={() => setSelected(!selected)}
+                checked={selected}
               />
               <S.CheckBtnLabel htmlFor={item.uuid}>
                 <span />
@@ -41,7 +41,11 @@ export default function UserItem({ item, scope }: MemberItemProps) {
       </S.UserBox>
       <S.OptionBox>
         <KickUser clubId={clubID} uuid={item.uuid} />
-        <DelegateUser clubId={clubID} uuid={item.uuid} />
+        <DelegateUser
+          clubId={clubID}
+          uuid={item.uuid}
+          closeSelected={() => setSelected(!selected)}
+        />
       </S.OptionBox>
     </S.UserWrapper>
   )

@@ -13,6 +13,7 @@ import uuidSlice from './uuid'
 import sidebarSlice from './sidebar'
 import confirmModalSlice from './confirmModal'
 import clubDetailApi from './ClubDetailApi'
+import clubMemberSlice from './clubMember'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   uuid: uuidSlice.reducer,
   sidebar: sidebarSlice.reducer,
   confirmModal: confirmModalSlice.reducer,
+  clubMember: clubMemberSlice.reducer,
   [clubDetailApi.reducerPath]: clubDetailApi.reducer,
 })
 

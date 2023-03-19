@@ -24,6 +24,7 @@ const SideBtn = () => {
     url: `applicant/${clubDetail.id}`,
     method: 'post',
     successMessage: '지원에 성공했습니다',
+    autoPushToggle: false,
     errors: {
       401: '다시 로그인해 주세요',
       403: '이미 다른 동아리에 지원을 하고 있습니다',
@@ -38,6 +39,7 @@ const SideBtn = () => {
     method: 'delete',
     successMessage: '지원 취소에 성공했습니다',
     errors: '지원 취소에 실패했습니다',
+    autoPushToggle: false,
     onSuccess: () => {
       dispatch(setIsApplied())
     },
@@ -46,13 +48,14 @@ const SideBtn = () => {
     method: 'patch',
     url: `/club/${clubDetail.id}/${clubDetail.isOpened ? 'close' : 'open'}`,
     errors: '동아리 열기/닫기에 실패했습니다',
+    autoPushToggle: false,
     onSuccess: () => {
       dispatch(setIsOpened())
     },
   })
 
   const handleAplly = () => {
-    if (isOther || isOpened) return
+    if (isOther || !isOpened) return
     if (isApplied) cancel()
     else apply()
   }

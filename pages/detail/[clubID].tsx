@@ -38,8 +38,7 @@ export default function Detail({ ok }: Props) {
     method: 'get',
     url: `/club/${clubId}`,
     onSuccess: (data) => {
-      dispatch(setScope(data.scope))
-      if (data.isApplied) dispatch(setIsApplied())
+      dispatch(setClubDetail(data))
     },
   })
 

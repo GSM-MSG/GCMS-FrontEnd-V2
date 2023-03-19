@@ -104,7 +104,7 @@ const Edit = ({ initialData, banner, activity }: Props) => {
           error={!!errors.bannerImg}
         />
         <Textarea
-          register={register('content', { required: true })}
+          register={register('content', { required: true, maxLength: 200 })}
           content={watch('content')}
           error={!!errors.content}
         />
@@ -121,14 +121,19 @@ const Edit = ({ initialData, banner, activity }: Props) => {
       <Input
         label='노션 링크'
         placeholder='url을 입력해주세요.'
-        register={register('notionLink', { required: true })}
+        register={register('notionLink', {
+          required: true,
+          pattern: /https?:\/\//,
+        })}
         error={!!errors.notionLink}
       />
 
       <Input
         label='담당 선생님'
         placeholder='담당 선생님 성함을 입력해주세요.'
-        register={register('teacher')}
+        register={register('teacher', {
+          pattern: /^\S.*$/,
+        })}
         optional
       />
     </S.Wrapper>

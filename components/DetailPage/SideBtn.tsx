@@ -54,7 +54,7 @@ const SideBtn = () => {
     },
   })
 
-  const handleAplly = () => {
+  const handleApply = () => {
     if (isOther || !isOpened) return
     if (isApplied) cancel()
     else apply()

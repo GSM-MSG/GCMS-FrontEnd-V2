@@ -48,10 +48,12 @@ export const Title = styled.h4`
 export const Description = styled.p`
   opacity: 0.51;
   margin: 0.5rem 0;
+  word-break: break-all;
 `
 
 export const UtilContent = styled.div`
   height: 100%;
+  margin-top: 1rem;
   display: flex;
   justify-content: start;
   gap: 3rem;
@@ -61,8 +63,8 @@ export const UtilSection = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: start;
+  gap: 1rem;
 `
 
 export const SwitchInput = styled.input`
@@ -87,7 +89,7 @@ export const Switch = styled.label`
   cursor: pointer;
   position: relative;
 
-  span:nth-child(1) {
+  span:nth-of-type(1) {
     color: #939393;
   }
 `
@@ -104,7 +106,7 @@ export const SwitchBtn = styled.span`
 `
 
 export const DeleteBtn = styled.button`
-  height: 2rem;
+  height: 1.5rem;
   padding: 0;
   color: #4164e1;
   border: none;

@@ -9,6 +9,11 @@ import loginModalSlice from './loginModal'
 import { createWrapper, HYDRATE } from 'next-redux-wrapper'
 import reissueSlice from './reissue'
 import clubListSlice from './clubList'
+import uuidSlice from './uuid'
+import sidebarSlice from './sidebar'
+import confirmModalSlice from './confirmModal'
+import clubDetailApi from './ClubDetailApi'
+import clubMemberSlice from './clubMember'
 
 const NODE_ENV = process.env.NODE_ENV === 'development'
 
@@ -21,6 +26,11 @@ const rootReducer = combineReducers({
   loginModal: loginModalSlice.reducer,
   reissue: reissueSlice.reducer,
   clubList: clubListSlice.reducer,
+  uuid: uuidSlice.reducer,
+  sidebar: sidebarSlice.reducer,
+  confirmModal: confirmModalSlice.reducer,
+  clubMember: clubMemberSlice.reducer,
+  [clubDetailApi.reducerPath]: clubDetailApi.reducer,
 })
 
 const reducer = (state: RootState | undefined, action: AnyAction) => {
@@ -37,7 +47,9 @@ const makeStore = () => {
     reducer,
     devTools: NODE_ENV,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({ serializableCheck: false }),
+      getDefaultMiddleware({ serializableCheck: false }).concat(
+        clubDetailApi.middleware
+      ),
   })
 }
 

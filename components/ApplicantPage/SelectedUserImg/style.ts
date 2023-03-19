@@ -19,20 +19,22 @@ export const ImgContainer = styled.div`
 export const ImgWrapper = styled.div`
   width: 48px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  small {
+    margin-left: 2.5px;
+  }
 `
 
 export const ImgBox = styled.div`
+  position: relative;
   border-radius: 100%;
   background: #434343;
   overflow: hidden;
   width: 40px;
   height: 40px;
-`
-
-export const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 `
 
 export const Delete = styled.div`

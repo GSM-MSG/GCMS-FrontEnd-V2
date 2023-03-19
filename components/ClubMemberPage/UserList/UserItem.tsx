@@ -1,40 +1,21 @@
-import { useFetch } from '@/hooks'
+import ProfileImg from '@/components/Common/ProfileImg'
 import { MemberItemProps } from '@/type/components/MemberPage'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import KickUser from './KickUser'
 import * as S from './style'
+import DelegateUser from './DelegateUser'
+import { useState } from 'react'
 
 export default function UserItem({ item, scope }: MemberItemProps) {
   const router = useRouter()
-  const clubID = router.query.clubID
-  const [isSelected, setSelected] = useState<boolean>(false)
+  const clubID = router.query.clubID?.toString() || ''
+  const [selected, setSelected] = useState<boolean>(false)
 
-  const { fetch: kick } = useFetch({
-    url: `/club-member/${clubID}`,
-    method: 'post',
-    successMessage: '회원 추방에 성공하셨습니다',
-  })
-
-  const { fetch: delegate } = useFetch({
-    url: `/club-member/${clubID}`,
-    method: 'patch',
-    successMessage: '부장 위임에 성공하셨습니다',
-  })
-
-  const onKick = async (uuid: string) => {
-    const isConfirm = confirm(`정말로 회원 추방을 하시겠습니까?`)
-    if (isConfirm) await kick({ uuid: uuid })
-  }
-
-  const onDelegate = async (uuid: string) => {
-    const isConfirm = confirm(`정말로 부장 위임을 하시겠습니까?`)
-    if (isConfirm) await delegate({ uuid: uuid })
-  }
   return (
     <S.UserWrapper>
-      <S.UserBox option={isSelected}>
+      <S.UserBox select={selected}>
         <S.UserImgBox>
-          {item.profileImg && <S.Img src={item.profileImg} alt='profileImg' />}
+          <ProfileImg src={item.profileImg} alt='profileImg' />
         </S.UserImgBox>
         <S.UserInfo>
           <S.UserName>{item.name}</S.UserName>
@@ -43,13 +24,13 @@ export default function UserItem({ item, scope }: MemberItemProps) {
           </small>
         </S.UserInfo>
         <S.CheckBox>
-          {scope === 'HEAD' && item.scope !== 'HEAD' && (
+          {['HEAD', 'ADMIN'].includes(scope) && item.scope !== 'HEAD' && (
             <>
               <S.CheckBtn
                 id={item.uuid}
                 type='checkbox'
-                onChange={() => setSelected(!isSelected)}
-                checked={isSelected}
+                onChange={() => setSelected(!selected)}
+                checked={selected}
               />
               <S.CheckBtnLabel htmlFor={item.uuid}>
                 <span />
@@ -59,8 +40,12 @@ export default function UserItem({ item, scope }: MemberItemProps) {
         </S.CheckBox>
       </S.UserBox>
       <S.OptionBox>
-        <S.OptionBtn onClick={() => onKick(item.uuid)}>추방</S.OptionBtn>
-        <S.OptionBtn onClick={() => onDelegate(item.uuid)}>위임</S.OptionBtn>
+        <KickUser clubId={clubID} uuid={item.uuid} />
+        <DelegateUser
+          clubId={clubID}
+          uuid={item.uuid}
+          closeSelected={() => setSelected(!selected)}
+        />
       </S.OptionBox>
     </S.UserWrapper>
   )

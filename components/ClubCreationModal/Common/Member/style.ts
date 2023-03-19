@@ -19,19 +19,16 @@ export const UserInfo = styled.div`
   gap: 1rem;
 `
 
-export const UserSampleImg = styled.div`
-  background: #444444;
-  height: 2.8rem;
-  aspect-ratio: 1 / 1;
-  border-radius: 100%;
-`
-
-export const UserImg = styled.img`
+export const UserImg = styled.div`
+  position: relative;
   width: 2.8rem;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
-  object-fit: cover;
-  object-position: center;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
 `
 
 export const GradeInfo = styled.div`

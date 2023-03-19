@@ -11,8 +11,8 @@ interface Props {
 }
 
 const ClubLeaveAndDeleteBtn = ({ clubId, clubName, type }: Props) => {
-  const [isShow, setIsShow] = useState<boolean>(false)
   const router = useRouter()
+  const [isShow, setIsShow] = useState<boolean>(false)
   const { fetch, isLoading } = useFetch({
     method: 'delete',
     url: `/club/${clubId}${type === '탈퇴' ? '/exit' : ''}`,
@@ -35,8 +35,8 @@ const ClubLeaveAndDeleteBtn = ({ clubId, clubName, type }: Props) => {
         <ConfirmModal
           title={`동아리 ${type}하기`}
           description={`${clubName}동아리를 정말로 ${type}하시겠습니까?`}
-          onClose={() => setIsShow(false)}
           onConfirm={onClick}
+          onClose={() => setIsShow(false)}
         />
       )}
     </>

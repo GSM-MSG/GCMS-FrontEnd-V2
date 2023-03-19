@@ -27,4 +27,5 @@ export const Title = styled.h3`
   margin: 0;
   text-align: center;
   color: rgba(255, 255, 255, 0.54);
+  white-space: nowrap;
 `

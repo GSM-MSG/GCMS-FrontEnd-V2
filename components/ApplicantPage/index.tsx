@@ -54,7 +54,7 @@ export default function ApplicantPage() {
             register={register('value')}
           />
         </S.InputBox>
-        {data?.scope === 'HEAD' && (
+        {(data?.scope === 'HEAD' || user.role === 'ROLE_ADMIN') && (
           <>
             <SelectedUserImg selected={applicant} />
             <S.AllSelectBox>

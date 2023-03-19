@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import NotFoundPage from '@/components/NotFoundPage'
 import { useFetch } from '@/hooks'
 import wrapper from '@/store'
-import { setClubDetail, setIsApplied, setScope } from '@/store/clubDetail'
+import { setClubDetail } from '@/store/clubDetail'
 import { ClubDetailType } from '@/type/common'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -38,8 +38,7 @@ export default function Detail({ ok }: Props) {
     method: 'get',
     url: `/club/${clubId}`,
     onSuccess: (data) => {
-      dispatch(setScope(data.scope))
-      if (data.isApplied) dispatch(setIsApplied())
+      dispatch(setClubDetail(data))
     },
   })
 

@@ -88,7 +88,7 @@ const SideBtn = () => {
           </S.ClubControl>
         </S.ClubControls>
       ) : (
-        <S.SideBtn btnMessage={btnMessage()} onClick={handleAplly}>
+        <S.SideBtn btnMessage={btnMessage()} onClick={handleApply}>
           {btnMessage()}
         </S.SideBtn>
       )}

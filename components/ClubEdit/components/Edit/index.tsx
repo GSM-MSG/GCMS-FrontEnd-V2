@@ -84,14 +84,22 @@ const Edit = ({ initialData, banner, activity }: Props) => {
       <Input
         label='동아리 이름'
         placeholder='동아리 이름을 입력해주세요.'
-        register={register('name', { required: true })}
+        register={register('name', {
+          required: true,
+          minLength: 1,
+          maxLength: 25,
+        })}
         error={!!errors.name}
       />
 
       <Input
         label='동아리 연락처'
         placeholder='연락처를 입력해주세요. (디스코드, 이메일 등)'
-        register={register('contact', { required: true })}
+        register={register('contact', {
+          required: true,
+          minLength: 1,
+          maxLength: 50,
+        })}
         error={!!errors.contact}
       />
 
@@ -104,7 +112,11 @@ const Edit = ({ initialData, banner, activity }: Props) => {
           error={!!errors.bannerImg}
         />
         <Textarea
-          register={register('content', { required: true })}
+          register={register('content', {
+            required: true,
+            maxLength: 200,
+            minLength: 1,
+          })}
           content={watch('content')}
           error={!!errors.content}
         />
@@ -121,14 +133,17 @@ const Edit = ({ initialData, banner, activity }: Props) => {
       <Input
         label='노션 링크'
         placeholder='url을 입력해주세요.'
-        register={register('notionLink', { required: true })}
+        register={register('notionLink', {
+          required: true,
+          pattern: /https:\/\//,
+        })}
         error={!!errors.notionLink}
       />
 
       <Input
         label='담당 선생님'
         placeholder='담당 선생님 성함을 입력해주세요.'
-        register={register('teacher')}
+        register={register('teacher', { maxLength: 10, minLength: 1 })}
         optional
       />
     </S.Wrapper>

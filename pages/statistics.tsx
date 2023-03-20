@@ -3,7 +3,7 @@ import NotFoundPage from '@/components/NotFoundPage'
 import StatisticsPage from '@/components/StatisticsPage'
 import { GetServerSideProps } from 'next'
 
-export const getServerSideProps: GetServerSideProps = async (contex) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const clubList = ['FREEDOM', 'EDITORIAL', '']
   const type = contex.query.type?.toString() || ''
   if (clubList.includes(type)) {

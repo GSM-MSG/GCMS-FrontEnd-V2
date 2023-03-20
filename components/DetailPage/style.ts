@@ -123,7 +123,9 @@ export const Description = styled.div`
     font-size: 15px;
     margin-top: 29px;
   }
+
   textarea {
+    white-space: pre;
     margin: 0;
     width: 100%;
     background: none;

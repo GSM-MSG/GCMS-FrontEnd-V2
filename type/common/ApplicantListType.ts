@@ -1,7 +1,7 @@
 import MemberType from './MemberType'
 
 interface ApplicantListType {
-  scope: 'MEMBER' | 'HEAD'
+  scope: 'MEMBER' | 'HEAD' | 'ADMIN'
   applicantList: MemberType[]
 }
 

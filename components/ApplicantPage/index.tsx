@@ -28,6 +28,8 @@ export default function ApplicantPage() {
   const dispatch = useDispatch()
   const { register, watch } = useForm({ defaultValues: { value: '' } })
   const isAllSelected = data?.applicantList.length === applicant.length
+  const isNotMember =
+    data?.scope.includes('ADMIN') || data?.scope.includes('HEAD')
 
   const onClick = () => {
     if (!data) return
@@ -54,7 +56,7 @@ export default function ApplicantPage() {
             register={register('value')}
           />
         </S.InputBox>
-        {(data?.scope === 'HEAD' || user.role === 'ROLE_ADMIN') && (
+        {isNotMember && (
           <>
             <SelectedUserImg selected={applicant} />
             <S.AllSelectBox>
@@ -65,9 +67,7 @@ export default function ApplicantPage() {
           </>
         )}
         <UserList data={data} value={watch('value').trim()} />
-        {(data?.scope === 'HEAD' || user.role === 'ROLE_ADMIN') && (
-          <ChoiceUser onSubmit={() => fetch()} />
-        )}
+        {isNotMember && <ChoiceUser onSubmit={() => fetch()} />}
       </S.Layer>
     </S.Positioner>
   )

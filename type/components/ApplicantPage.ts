@@ -1,4 +1,4 @@
-import { ApplicantListType, MemberType } from '../common'
+import { ApplicantListType, MemberType, ScopeType } from '../common'
 import { ApplicantInitialState } from '../store/applicant'
 
 export interface SelectedProps {
@@ -12,5 +12,5 @@ export interface UserListProps {
 
 export interface UserItemProps {
   item: MemberType
-  userScope: 'HEAD' | 'MEMBER' | 'ADMIN'
+  userScope: Omit<ScopeType, 'USER' | 'OTHER'>
 }

@@ -1,7 +1,8 @@
 import MemberType from './MemberType'
+import ScopeType from './ScopeType'
 
 interface ApplicantListType {
-  scope: 'MEMBER' | 'HEAD' | 'ADMIN'
+  scope: Omit<ScopeType, 'USER' | 'OTHER'>
   applicantList: MemberType[]
 }
 

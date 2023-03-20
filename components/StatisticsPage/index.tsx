@@ -5,9 +5,11 @@ import FileDownload from './FileDownload'
 import Statistics from './Statistics'
 import * as S from './style'
 import * as SVG from '@/assets/svg'
+import { useRouter } from 'next/router'
 
 const StatisticsPage = () => {
-  const [type, setType] = useState<ClubOptionType>('')
+  const router = useRouter()
+  const type = router.query.type?.toString() as ClubOptionType
   const [search, setSearch] = useState<string>('')
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -23,7 +25,7 @@ const StatisticsPage = () => {
         <input onChange={onChange} value={search} placeholder='검색' />
       </S.InputWrapper>
 
-      <FileDownload type={type} onChange={setType} />
+      <FileDownload type={type} />
 
       <ClubList type={type} search={search} />
     </S.Wrapper>

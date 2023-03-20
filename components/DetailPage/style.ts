@@ -117,20 +117,22 @@ export const ContactInfo = styled.div`
 `
 
 export const Description = styled.div`
-  h3,
-  p {
-    margin: 0;
-  }
   h3 {
+    margin: 0;
     font-weight: 700;
     font-size: 15px;
     margin-top: 29px;
   }
-  p {
+  textarea {
+    margin: 0;
+    width: 100%;
+    background: none;
+    border: none;
     font-weight: 400;
     font-size: 14px;
     color: #848484;
     margin-top: 10px;
+    resize: none;
   }
 `
 

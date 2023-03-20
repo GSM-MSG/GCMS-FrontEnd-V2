@@ -1,4 +1,5 @@
 import { RootState } from '@/store'
+import { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import * as S from './style'
 
@@ -6,11 +7,19 @@ export default function Description() {
   const { clubDetail } = useSelector((state: RootState) => ({
     clubDetail: state.clubDetail,
   }))
+  const textarea = useRef<HTMLTextAreaElement>(null)
+  if (textarea.current)
+    textarea.current.style.height = textarea.current.scrollHeight + 'px'
 
   return (
     <S.Description>
       <h3>소개글</h3>
-      <p>{clubDetail.content}</p>
+      <textarea
+        ref={textarea}
+        rows={1}
+        disabled
+        defaultValue={clubDetail.content}
+      />
     </S.Description>
   )
 }

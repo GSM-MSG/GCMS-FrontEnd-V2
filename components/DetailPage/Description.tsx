@@ -1,5 +1,5 @@
 import { RootState } from '@/store'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import * as S from './style'
 
@@ -8,8 +8,18 @@ export default function Description() {
     clubDetail: state.clubDetail,
   }))
   const textarea = useRef<HTMLTextAreaElement>(null)
-  if (textarea.current)
-    textarea.current.style.height = textarea.current.scrollHeight + 'px'
+
+  const handleResizeHeight = () => {
+    if (textarea.current)
+      textarea.current.style.height = textarea.current.scrollHeight + 'px'
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResizeHeight)
+    return () => {
+      window.removeEventListener('resize', handleResizeHeight)
+    }
+  }, [])
 
   return (
     <S.Description>

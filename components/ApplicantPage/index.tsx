@@ -27,7 +27,9 @@ export default function ApplicantPage() {
   const dispatch = useDispatch()
   const { register, watch } = useForm({ defaultValues: { value: '' } })
   const isAllSelected = data?.applicantList.length === applicant.length
-  const isNotMember = ['ADMIN', 'HEAD'].includes(data?.scope ?? '')
+  const isNotMember =
+    typeof data?.scope === 'string' &&
+    ['ADMIN', 'HEAD'].includes(data?.scope ?? '')
 
   const onClick = () => {
     if (!data) return

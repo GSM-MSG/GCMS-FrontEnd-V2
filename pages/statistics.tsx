@@ -5,7 +5,7 @@ import { GetServerSideProps } from 'next'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const clubList = ['FREEDOM', 'EDITORIAL', '']
-  const type = contex.query.type?.toString() || ''
+  const type = context.query.type?.toString() || ''
   if (clubList.includes(type)) {
     return { props: { ok: true } }
   } else {

@@ -15,7 +15,6 @@ import ChoiceUser from './ChoiceUser'
 import { useRouter } from 'next/router'
 
 export default function ApplicantPage() {
-  const { user } = useSelector((state: RootState) => ({ ...state }))
   const router = useRouter()
   const clubId = router.query.clubID
   const { fetch, data } = useFetch<ApplicantListType>({

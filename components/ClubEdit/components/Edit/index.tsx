@@ -23,6 +23,7 @@ const Edit = ({ initialData, banner, activity }: Props) => {
     register,
     watch,
     formState: { errors },
+    setError,
     handleSubmit,
     reset,
   } = useForm<EditClubForm>({
@@ -55,6 +56,7 @@ const Edit = ({ initialData, banner, activity }: Props) => {
   }
 
   const onSubmit = async (form: EditClubForm) => {
+    if (!form.teacher?.trim()) return setError('teacher', {})
     mutation({
       clubId,
       body: {
@@ -143,7 +145,8 @@ const Edit = ({ initialData, banner, activity }: Props) => {
       <Input
         label='담당 선생님'
         placeholder='담당 선생님 성함을 입력해주세요.'
-        register={register('teacher', { maxLength: 10, minLength: 1 })}
+        register={register('teacher')}
+        error={!!errors.teacher}
         optional
       />
     </S.Wrapper>

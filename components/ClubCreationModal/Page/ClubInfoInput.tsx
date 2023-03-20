@@ -14,6 +14,7 @@ const ClubInfoInput = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<SetClubInfoPayload>({
     defaultValues: {
@@ -26,6 +27,8 @@ const ClubInfoInput = () => {
   const dispatch = useDispatch()
 
   const onSubmit = (form: SetClubInfoPayload) => {
+    if (!form.teacher?.trim()) return setError('teacher', {})
+
     dispatch(setClubInfo(form))
     dispatch(nextPage())
   }
@@ -36,14 +39,14 @@ const ClubInfoInput = () => {
         label='동아리 이름'
         placeholder='동아리 이름을 입력해 주세요.'
         errorPlaceholder='동아리 이름을 입력하지 않았어요.'
-        register={register('name', { required: true })}
+        register={register('name', { required: true, maxLength: 25 })}
         error={!!errors.name}
       />
 
       <Input
         label='동아리 연락처'
         placeholder='연락처를 입력해주세요.(디스코드, 이메일등)'
-        register={register('contact', { required: true })}
+        register={register('contact', { required: true, maxLength: 50 })}
         error={!!errors.contact}
       />
 
@@ -52,7 +55,7 @@ const ClubInfoInput = () => {
         placeholder='url을 입력해주세요.'
         register={register('notionLink', {
           required: true,
-          pattern: /https?:\/\//,
+          pattern: /https:\/\//,
         })}
         error={!!errors.notionLink}
       />
@@ -63,6 +66,7 @@ const ClubInfoInput = () => {
         optional
         description='담당 선생님은 전공 동아리 외에는 입력하지 않아도 돼요.'
         register={register('teacher')}
+        error={!!errors.teacher}
       />
     </Layout>
   )

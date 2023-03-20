@@ -46,4 +46,5 @@ export const NavTitle = styled.div`
   width: 100%;
   text-align: center;
   font-size: 13px;
+  color: rgba(255, 255, 255, 0.31);
 `

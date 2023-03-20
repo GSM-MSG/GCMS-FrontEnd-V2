@@ -12,5 +12,5 @@ export interface UserListProps {
 
 export interface UserItemProps {
   item: MemberType
-  userScope: 'HEAD' | 'MEMBER'
+  userScope: 'HEAD' | 'MEMBER' | 'ADMIN'
 }

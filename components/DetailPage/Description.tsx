@@ -21,7 +21,12 @@ export default function Description() {
   return (
     <S.Description>
       <h3>소개글</h3>
-      <textarea ref={textarea} disabled defaultValue={clubDetail.content} />
+      <textarea
+        ref={textarea}
+        rows={1}
+        disabled
+        defaultValue={clubDetail.content}
+      />
     </S.Description>
   )
 }

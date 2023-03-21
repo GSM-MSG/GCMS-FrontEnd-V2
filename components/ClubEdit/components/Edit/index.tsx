@@ -146,7 +146,6 @@ const Edit = ({ initialData, banner, activity }: Props) => {
         label='담당 선생님'
         placeholder='담당 선생님 성함을 입력해주세요.'
         register={register('teacher')}
-        error={!!errors.teacher}
         optional
       />
     </S.Wrapper>

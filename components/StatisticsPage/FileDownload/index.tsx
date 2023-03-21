@@ -5,13 +5,15 @@ import * as S from './style'
 import * as SVG from '@/assets/svg'
 import { useExcelDownload } from '@/hooks'
 import RequestClubType from '@/lib/requestClubType'
+import { useRouter } from 'next/router'
 
 interface Props {
   type: ClubOptionType
-  onChange: (type: ClubOptionType) => void
 }
 
-const FileDownload = ({ type, onChange }: Props) => {
+const FileDownload = ({ type }: Props) => {
+  const router = useRouter()
+
   const clubTypeKorean = RequestClubType(type || 'MAJOR')
   const { download: clubDownload } = useExcelDownload({
     method: 'get',
@@ -24,6 +26,13 @@ const FileDownload = ({ type, onChange }: Props) => {
     url: `/admin/excel/club/grade?clubType=${type || 'MAJOR'}`,
     fileName: `${clubTypeKorean}/동아리별 출력`,
   })
+
+  const onChange = (type: ClubOptionType) => {
+    router.push({
+      pathname: '/statistics',
+      query: type && { type },
+    })
+  }
 
   return (
     <S.Wrapper>

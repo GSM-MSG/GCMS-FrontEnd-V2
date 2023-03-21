@@ -45,6 +45,7 @@ class TokenManager {
   }
 
   removeTokens() {
+    if (typeof window === 'undefined') return
     this._accessToken = null
     this._refreshToken = null
     this._accessExp = null

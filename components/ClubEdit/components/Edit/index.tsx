@@ -23,7 +23,7 @@ const Edit = ({ initialData, banner, activity }: Props) => {
     register,
     watch,
     formState: { errors },
-    setError,
+    setValue,
     handleSubmit,
     reset,
   } = useForm<EditClubForm>({
@@ -56,7 +56,7 @@ const Edit = ({ initialData, banner, activity }: Props) => {
   }
 
   const onSubmit = async (form: EditClubForm) => {
-    if (!form.teacher?.trim()) return setError('teacher', {})
+    setValue('teacher', form.teacher?.trim())
     mutation({
       clubId,
       body: {

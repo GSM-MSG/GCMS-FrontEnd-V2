@@ -14,7 +14,7 @@ const ClubInfoInput = () => {
   const {
     register,
     handleSubmit,
-    setError,
+    setValue,
     formState: { errors },
   } = useForm<SetClubInfoPayload>({
     defaultValues: {
@@ -27,7 +27,7 @@ const ClubInfoInput = () => {
   const dispatch = useDispatch()
 
   const onSubmit = (form: SetClubInfoPayload) => {
-    if (!form.teacher?.trim()) return setError('teacher', {})
+    setValue('teacher', form.teacher?.trim())
 
     dispatch(setClubInfo(form))
     dispatch(nextPage())
@@ -66,7 +66,6 @@ const ClubInfoInput = () => {
         optional
         description='담당 선생님은 전공 동아리 외에는 입력하지 않아도 돼요.'
         register={register('teacher')}
-        error={!!errors.teacher}
       />
     </Layout>
   )

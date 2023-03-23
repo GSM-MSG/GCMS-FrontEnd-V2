@@ -15,7 +15,6 @@ import ChoiceUser from './ChoiceUser'
 import { useRouter } from 'next/router'
 
 export default function ApplicantPage() {
-  const { user } = useSelector((state: RootState) => ({ ...state }))
   const router = useRouter()
   const clubId = router.query.clubID
   const { fetch, data } = useFetch<ApplicantListType>({
@@ -28,6 +27,9 @@ export default function ApplicantPage() {
   const dispatch = useDispatch()
   const { register, watch } = useForm({ defaultValues: { value: '' } })
   const isAllSelected = data?.applicantList.length === applicant.length
+  const isNotMember =
+    typeof data?.scope === 'string' &&
+    ['ADMIN', 'HEAD'].includes(data?.scope ?? '')
 
   const onClick = () => {
     if (!data) return
@@ -54,7 +56,7 @@ export default function ApplicantPage() {
             register={register('value')}
           />
         </S.InputBox>
-        {data?.scope === 'HEAD' && (
+        {isNotMember && (
           <>
             <SelectedUserImg selected={applicant} />
             <S.AllSelectBox>
@@ -65,9 +67,7 @@ export default function ApplicantPage() {
           </>
         )}
         <UserList data={data} value={watch('value').trim()} />
-        {(data?.scope === 'HEAD' || user.role === 'ROLE_ADMIN') && (
-          <ChoiceUser onSubmit={() => fetch()} />
-        )}
+        {isNotMember && <ChoiceUser onSubmit={() => fetch()} />}
       </S.Layer>
     </S.Positioner>
   )

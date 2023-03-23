@@ -23,7 +23,17 @@ API.interceptors.request.use(async (config) => {
   ) {
     await store.dispatch(reissueToken())
     tokenManager.initToken()
-  }
+  } else if (
+    !tokenManager.validateToken(
+      tokenManager.accessExp,
+      tokenManager.accessToken
+    ) &&
+    !tokenManager.validateToken(
+      tokenManager.refreshExp,
+      tokenManager.refreshToken
+    )
+  )
+    tokenManager.removeTokens()
 
   config.headers['Authorization'] = tokenManager.accessToken
     ? `Bearer ${tokenManager.accessToken}`

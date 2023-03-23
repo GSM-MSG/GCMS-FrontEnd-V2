@@ -121,16 +121,23 @@ export const Description = styled.div`
   p {
     margin: 0;
   }
+
   h3 {
     font-weight: 700;
     font-size: 15px;
     margin-top: 29px;
   }
+
   p {
     font-weight: 400;
     font-size: 14px;
     color: #848484;
     margin-top: 10px;
+    white-space: pre;
+    overflow: scroll;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 `
 

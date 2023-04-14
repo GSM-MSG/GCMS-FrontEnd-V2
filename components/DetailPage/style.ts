@@ -133,7 +133,7 @@ export const Description = styled.div`
     font-size: 14px;
     color: #848484;
     margin-top: 10px;
-    white-space: pre;
+    white-space: pre-wrap;
     overflow: scroll;
     ::-webkit-scrollbar {
       display: none;

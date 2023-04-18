@@ -137,7 +137,7 @@ const Edit = ({ initialData, banner, activity }: Props) => {
         placeholder='url을 입력해주세요.'
         register={register('notionLink', {
           required: true,
-          pattern: /https:\/\//,
+          pattern: /https?:\/\/.*/,
         })}
         error={!!errors.notionLink}
       />

@@ -14,7 +14,13 @@ export default function ClubActivity() {
       <div>
         {clubDetail.activityImgs?.map((url, index) => (
           <S.ActivityImg key={index}>
-            <Image alt='activity img' src={url} fill sizes='100%' />
+            <Image
+              alt='activity img'
+              src={url}
+              fill
+              sizes='100%'
+              onContextMenu={(e) => e.preventDefault()}
+            />
           </S.ActivityImg>
         ))}
       </div>

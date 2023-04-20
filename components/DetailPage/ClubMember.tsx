@@ -19,6 +19,7 @@ export default function ClubMember() {
               src={ProfileSrc}
               width={48}
               height={48}
+              onContextMenu={(e) => e.preventDefault()}
             />
             <S.HeadInfo>
               <p>담당 선생님</p>
@@ -32,6 +33,7 @@ export default function ClubMember() {
             src={clubDetail.head.profileImg || ProfileSrc}
             width={48}
             height={48}
+            onContextMenu={(e) => e.preventDefault()}
           />
           <S.HeadInfo>
             <p>동아리 부장</p>
@@ -47,6 +49,7 @@ export default function ClubMember() {
               src={data.profileImg || ProfileSrc}
               width={48}
               height={48}
+              onContextMenu={(e) => e.preventDefault()}
             />
             <p>{data.name}</p>
           </S.MemberWrapper>

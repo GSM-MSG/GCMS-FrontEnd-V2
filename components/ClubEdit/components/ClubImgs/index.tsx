@@ -29,7 +29,7 @@ const ClubImgs = ({ register, activityImgs, onRemove }: Props) => {
         </S.ImgInput>
 
         {activityImgs?.map((i, idx) => (
-          <S.Img key={idx} src={i}>
+          <S.Img key={idx} src={i} onContextMenu={(e) => e.preventDefault()}>
             <S.RemoveImg onClick={() => onRemove(idx)}>
               <SVG.XMark width='10' height='10' />
             </S.RemoveImg>

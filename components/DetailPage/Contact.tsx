@@ -19,6 +19,7 @@ export default function Contact() {
           src={clubDetail.head.profileImg || ProfileSrc}
           width={33}
           height={33}
+          onContextMenu={(e) => e.preventDefault()}
         />
         <S.ContactInfo>
           <p>연략처</p>

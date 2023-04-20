@@ -14,6 +14,7 @@ const ProfileImg = ({ alt, src }: Props) => {
       fill
       sizes='100%'
       priority={true}
+      onContextMenu={(e) => e.preventDefault()}
     />
   )
 }

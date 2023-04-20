@@ -16,7 +16,10 @@ const Notice = ({ data }: Props) => {
       <S.Wrapper>
         <S.Label>공고</S.Label>
         <S.Content>
-          <S.Left src={data?.bannerImg} />
+          <S.Left
+            src={data?.bannerImg}
+            onContextMenu={(e) => e.preventDefault()}
+          />
 
           <S.Right>
             <S.Title>{data?.name}</S.Title>

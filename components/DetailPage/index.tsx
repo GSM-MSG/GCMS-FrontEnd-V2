@@ -31,6 +31,7 @@ export default function DetailPage() {
                 src={clubDetail.bannerImg}
                 fill
                 sizes='100%'
+                onContextMenu={(e) => e.preventDefault()}
               />
             </S.ClubBanner>
             <S.ClubInfo>

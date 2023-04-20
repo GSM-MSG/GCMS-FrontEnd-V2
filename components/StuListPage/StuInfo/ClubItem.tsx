@@ -30,6 +30,7 @@ export default function ClubItem({ clubType, data }: Props) {
                 alt='bannerImg'
                 width={50}
                 height={50}
+                onContextMenu={(e) => e.preventDefault()}
               />
             </S.ClubImg>
             <S.ClubName>{item.name}</S.ClubName>

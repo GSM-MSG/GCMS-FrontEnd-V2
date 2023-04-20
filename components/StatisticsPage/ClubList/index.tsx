@@ -32,7 +32,10 @@ const ClubList = ({ type, search }: Props) => {
         ?.filter((i) => i.name.includes(search))
         .map((i) => (
           <S.ClubSection href={`/detail/${i.id}`} key={i.id}>
-            <S.ClubBanner src={i.bannerImg} />
+            <S.ClubBanner
+              src={i.bannerImg}
+              onContextMenu={(e) => e.preventDefault()}
+            />
             <S.ClubKind>{RequestClubType(i.type)}</S.ClubKind>
             <S.ClubTitle>{i.name}</S.ClubTitle>
             <S.ClubContent>{i.content}</S.ClubContent>

@@ -16,6 +16,7 @@ export default function ClubItem({ club }: Props) {
           fill
           sizes='100%'
           priority={true}
+          onContextMenu={(e) => e.preventDefault()}
         />
       </S.ClubImg>
       <S.ClubTitle>

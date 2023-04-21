@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import Link from 'next/link'
+import NoCopyImg from '../NoCopyImg'
 
 export const Layer = styled.div`
   width: 100%;
@@ -89,9 +90,10 @@ export const ClubImgBox = styled.div`
   min-width: 2.5em;
   width: 2.5em;
   height: 2.5em;
+  position: relative;
 `
 
-export const Img = styled.img`
+export const Img = styled(NoCopyImg)`
   width: 100%;
   height: 100%;
   object-fit: cover;

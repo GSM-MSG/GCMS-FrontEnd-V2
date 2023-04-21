@@ -1,5 +1,5 @@
 import { ClubListType } from '@/type/common'
-import Image from 'next/image'
+import NoCopyImg from '../Common/NoCopyImg'
 import * as S from './style'
 
 interface Props {
@@ -10,13 +10,12 @@ export default function ClubItem({ club }: Props) {
   return (
     <S.ClubItem>
       <S.ClubImg>
-        <Image
+        <NoCopyImg
           alt='banner img'
           src={club.bannerImg}
           fill
           sizes='100%'
           priority={true}
-          onContextMenu={(e) => e.preventDefault()}
         />
       </S.ClubImg>
       <S.ClubTitle>

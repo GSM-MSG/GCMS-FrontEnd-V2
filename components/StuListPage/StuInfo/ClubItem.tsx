@@ -3,8 +3,8 @@ import * as S from './style'
 import * as SVG from '@/assets/svg'
 import AdminDetailType from '@/type/common/AdminDetailType'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import { ClubType } from '@/type/common'
+import NoCopyImg from '@/components/Common/NoCopyImg'
 
 interface Props {
   clubType: ClubType
@@ -25,12 +25,11 @@ export default function ClubItem({ clubType, data }: Props) {
             onClick={() => router.push(`/detail/${item.id}`)}
           >
             <S.ClubImg>
-              <Image
+              <NoCopyImg
                 src={item.bannerImg}
                 alt='bannerImg'
                 width={50}
                 height={50}
-                onContextMenu={(e) => e.preventDefault()}
               />
             </S.ClubImg>
             <S.ClubName>{item.name}</S.ClubName>

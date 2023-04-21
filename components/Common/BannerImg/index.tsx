@@ -1,6 +1,6 @@
-import * as S from './style'
 import * as SVG from '@/assets/svg'
 import { UseFormRegisterReturn } from 'react-hook-form'
+import * as S from './style'
 
 interface Props {
   register: UseFormRegisterReturn
@@ -14,11 +14,7 @@ const BannerImg = ({ register, error, bannerImg }: Props) => {
       <S.Label error={error}>{error && '*'} 배너 사진</S.Label>
       {bannerImg ? (
         <label htmlFor='bannerImg'>
-          <S.Img
-            src={bannerImg}
-            alt='Banner image'
-            onContextMenu={(e) => e.preventDefault()}
-          />
+          <S.Img src={bannerImg} alt='Banner image' fill />
         </label>
       ) : (
         <S.BannerInput error={error} htmlFor='bannerImg'>

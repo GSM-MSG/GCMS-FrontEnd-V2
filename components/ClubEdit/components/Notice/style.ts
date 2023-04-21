@@ -1,3 +1,4 @@
+import NoCopyImg from '@/components/Common/NoCopyImg'
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
@@ -21,9 +22,13 @@ export const Content = styled.div`
   }
 `
 
-export const Left = styled.img`
+export const LeftBox = styled.div`
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
+`
+
+export const Left = styled(NoCopyImg)`
   border-radius: 0.75rem;
   object-fit: cover;
   object-position: center;

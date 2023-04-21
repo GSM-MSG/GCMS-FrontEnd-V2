@@ -1,5 +1,5 @@
 import { ProfileSrc } from '@/lib/ProfileSrc'
-import Image from 'next/image'
+import NoCopyImg from '../NoCopyImg'
 
 interface Props {
   alt: string
@@ -8,13 +8,12 @@ interface Props {
 
 const ProfileImg = ({ alt, src }: Props) => {
   return (
-    <Image
+    <NoCopyImg
       alt={alt}
       src={src || ProfileSrc}
       fill
       sizes='100%'
       priority={true}
-      onContextMenu={(e) => e.preventDefault()}
     />
   )
 }

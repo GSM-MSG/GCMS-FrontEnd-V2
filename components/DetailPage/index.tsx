@@ -1,6 +1,6 @@
 import { RootState } from '@/store'
-import Image from 'next/image'
 import { useSelector } from 'react-redux'
+import NoCopyImg from '../Common/NoCopyImg'
 import SEO from '../SEO'
 import ClubActivity from './ClubActivity'
 import ClubMember from './ClubMember'
@@ -26,12 +26,11 @@ export default function DetailPage() {
         <S.Wrapper>
           <S.Section>
             <S.ClubBanner>
-              <Image
-                alt='banner igm'
+              <NoCopyImg
+                alt='banner img'
                 src={clubDetail.bannerImg}
                 fill
                 sizes='100%'
-                onContextMenu={(e) => e.preventDefault()}
               />
             </S.ClubBanner>
             <S.ClubInfo>

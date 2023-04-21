@@ -1,6 +1,6 @@
 import { ApplyStateType } from '@/type/components/ClubDetailSide'
 import styled from '@emotion/styled'
-import Image from 'next/image'
+import NoCopyImg from '../Common/NoCopyImg'
 
 export const Layout = styled.div`
   width: 100%;
@@ -84,7 +84,7 @@ export const Contact = styled.div`
     border-radius: 1px;
   }
 `
-export const ProfileImg = styled(Image)`
+export const ProfileImg = styled(NoCopyImg)`
   width: 33px;
   height: 33px;
   border-radius: 50%;
@@ -245,7 +245,7 @@ export const MemberWrapper = styled.div`
   }
 `
 
-export const MemberProfile = styled(Image)`
+export const MemberProfile = styled(NoCopyImg)`
   width: 48px;
   height: 48px;
   border-radius: 50%;

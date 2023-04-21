@@ -1,7 +1,7 @@
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
-import Image from 'next/image'
 import * as S from './style'
+import NoCopyImg from '../Common/NoCopyImg'
 
 export default function ClubActivity() {
   const { clubDetail } = useSelector((state: RootState) => ({
@@ -14,13 +14,7 @@ export default function ClubActivity() {
       <div>
         {clubDetail.activityImgs?.map((url, index) => (
           <S.ActivityImg key={index}>
-            <Image
-              alt='activity img'
-              src={url}
-              fill
-              sizes='100%'
-              onContextMenu={(e) => e.preventDefault()}
-            />
+            <NoCopyImg alt='activity img' src={url} fill sizes='100%' />
           </S.ActivityImg>
         ))}
       </div>

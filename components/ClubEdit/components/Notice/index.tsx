@@ -2,8 +2,8 @@ import { RootState } from '@/store'
 import ClubDetailType from '@/type/common/ClubDetailType'
 import { useSelector } from 'react-redux'
 import ClubLeaveAndDeleteBtn from './ClubLeaveAndDeleteBtn'
-import * as S from './style'
 import SwitchBtn from './SwitchBtn'
+import * as S from './style'
 
 interface Props {
   data: ClubDetailType | undefined
@@ -16,10 +16,9 @@ const Notice = ({ data }: Props) => {
       <S.Wrapper>
         <S.Label>공고</S.Label>
         <S.Content>
-          <S.Left
-            src={data?.bannerImg}
-            onContextMenu={(e) => e.preventDefault()}
-          />
+          <S.LeftBox>
+            <S.Left src={data?.bannerImg ?? ''} alt='bannerImg' fill />
+          </S.LeftBox>
 
           <S.Right>
             <S.Title>{data?.name}</S.Title>

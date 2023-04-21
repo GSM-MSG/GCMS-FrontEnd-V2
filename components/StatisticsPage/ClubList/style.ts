@@ -1,4 +1,3 @@
-import NoCopyImg from '@/components/Common/NoCopyImg'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 
@@ -39,7 +38,7 @@ export const ClubSection = styled(Link)`
   }
 `
 
-export const ClubBanner = styled(NoCopyImg)`
+export const ClubBanner = styled.img`
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 100%;

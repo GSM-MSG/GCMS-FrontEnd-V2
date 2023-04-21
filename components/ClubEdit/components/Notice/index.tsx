@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import ClubLeaveAndDeleteBtn from './ClubLeaveAndDeleteBtn'
 import SwitchBtn from './SwitchBtn'
 import * as S from './style'
+import NoCopyImg from '@/components/Common/NoCopyImg'
 
 interface Props {
   data: ClubDetailType | undefined
@@ -16,9 +17,9 @@ const Notice = ({ data }: Props) => {
       <S.Wrapper>
         <S.Label>공고</S.Label>
         <S.Content>
-          <S.LeftBox>
-            <S.Left src={data?.bannerImg ?? ''} alt='bannerImg' fill />
-          </S.LeftBox>
+          <NoCopyImg>
+            <S.Left src={data?.bannerImg} alt='bannerImg' />
+          </NoCopyImg>
 
           <S.Right>
             <S.Title>{data?.name}</S.Title>

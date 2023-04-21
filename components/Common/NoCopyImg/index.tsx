@@ -1,7 +1,7 @@
-import Image, { ImageProps } from 'next/image'
+import { ReactElement } from 'react'
 
-const NoCopyImg = (props: ImageProps) => (
-  <Image {...props} onContextMenu={(e) => e.preventDefault()} />
+const NoCopyImg = ({ children }: { children: ReactElement }) => (
+  <div onContextMenu={(e) => e.preventDefault()}>{children}</div>
 )
 
 export default NoCopyImg

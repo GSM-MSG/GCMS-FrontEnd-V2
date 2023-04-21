@@ -1,8 +1,8 @@
-import { MouseEvent } from 'react'
 import * as SVG from '@/assets/svg'
-import NoCopyImg from '@/components/Common/NoCopyImg'
 import { ClubItemType } from '@/type/components/MyPage'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { MouseEvent } from 'react'
 import * as S from './style'
 
 export default function ClubItem({ clubType, data }: ClubItemType) {
@@ -20,7 +20,7 @@ export default function ClubItem({ clubType, data }: ClubItemType) {
             onClick={() => router.push(`/detail/${item.id}`)}
           >
             <S.ClubImg>
-              <NoCopyImg
+              <Image
                 src={item.bannerImg}
                 alt='bannerImg'
                 width={50}

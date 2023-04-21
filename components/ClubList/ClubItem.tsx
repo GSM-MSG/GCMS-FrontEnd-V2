@@ -1,5 +1,5 @@
 import { ClubListType } from '@/type/common'
-import NoCopyImg from '../Common/NoCopyImg'
+import Image from 'next/image'
 import * as S from './style'
 
 interface Props {
@@ -10,7 +10,7 @@ export default function ClubItem({ club }: Props) {
   return (
     <S.ClubItem>
       <S.ClubImg>
-        <NoCopyImg
+        <Image
           alt='banner img'
           src={club.bannerImg}
           fill

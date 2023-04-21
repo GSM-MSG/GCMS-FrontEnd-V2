@@ -1,15 +1,10 @@
-import { ErrorProps } from '@/type/components/ClubCreationModal'
 import styled from '@emotion/styled'
-import NoCopyImg from '../NoCopyImg'
+import { ErrorProps } from '@/type/components/ClubCreationModal'
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
-  label {
-    position: relative;
-  }
 `
 
 export const Label = styled.label<ErrorProps>`
@@ -30,7 +25,7 @@ export const BannerInput = styled.label<ErrorProps>`
   cursor: pointer;
 `
 
-export const Img = styled(NoCopyImg)`
+export const Img = styled.img`
   width: 100%;
   aspect-ratio: 16 / 9;
   cursor: pointer;

@@ -30,7 +30,7 @@ export const Section = styled.section`
   }
 `
 
-export const ClubBanner = styled.div`
+export const ClubBanner = styled(NoCopyImg)`
   position: relative;
   width: 100%;
   height: 332px;
@@ -158,7 +158,7 @@ export const ClubActivity = styled.div`
     }
   }
 `
-export const ActivityImg = styled.div`
+export const ActivityImg = styled(NoCopyImg)`
   width: 250px;
   position: relative;
   aspect-ratio: 1/1;

@@ -83,17 +83,16 @@ export const ClubBox = styled.div`
   transition: 0.5s;
 `
 
-export const ClubImgBox = styled.div`
+export const ClubImgBox = styled(NoCopyImg)`
   border-radius: 100%;
   background: #434343;
   overflow: hidden;
   min-width: 2.5em;
   width: 2.5em;
   height: 2.5em;
-  position: relative;
 `
 
-export const Img = styled(NoCopyImg)`
+export const Img = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;

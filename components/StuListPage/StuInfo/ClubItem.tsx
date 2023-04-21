@@ -1,10 +1,10 @@
+import * as SVG from '@/assets/svg'
+import { ClubType } from '@/type/common'
+import AdminDetailType from '@/type/common/AdminDetailType'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { MouseEvent } from 'react'
 import * as S from './style'
-import * as SVG from '@/assets/svg'
-import AdminDetailType from '@/type/common/AdminDetailType'
-import { useRouter } from 'next/router'
-import { ClubType } from '@/type/common'
-import NoCopyImg from '@/components/Common/NoCopyImg'
 
 interface Props {
   clubType: ClubType
@@ -25,7 +25,7 @@ export default function ClubItem({ clubType, data }: Props) {
             onClick={() => router.push(`/detail/${item.id}`)}
           >
             <S.ClubImg>
-              <NoCopyImg
+              <Image
                 src={item.bannerImg}
                 alt='bannerImg'
                 width={50}

@@ -57,7 +57,7 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
             <S.ClubWrapper key={item.id}>
               <S.ClubBox>
                 <S.ClubImgBox>
-                  <S.Img src={item.bannerImg} alt='bannerImg' fill />
+                  <S.Img src={item.bannerImg} alt='bannerImg' />
                 </S.ClubImgBox>
                 <S.ClubInfo>
                   <S.ClubKind>{RequestClubType(item.type)}</S.ClubKind>

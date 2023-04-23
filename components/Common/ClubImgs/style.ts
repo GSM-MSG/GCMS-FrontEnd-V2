@@ -1,6 +1,6 @@
 import { ErrorProps } from '@/type/components/ClubCreationModal'
 import styled from '@emotion/styled'
-import NoCopyImg from '../NoCopyImg'
+import NoCopyBox from '../NoCopyBox'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -54,7 +54,7 @@ interface ImgProps {
   src: string
 }
 
-export const Img = styled(NoCopyImg)<ImgProps>`
+export const Img = styled(NoCopyBox)<ImgProps>`
   width: 5rem;
   height: 5rem;
   border-radius: 0.75rem;

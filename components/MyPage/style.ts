@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import NoCopyImg from '../Common/NoCopyImg'
+import NoCopyBox from '../Common/NoCopyBox'
 
 export const Positionier = styled.div`
   width: 100%;
@@ -51,7 +51,7 @@ export const ProfileContent = styled.div`
   }
 `
 
-export const ProfileImg = styled(NoCopyImg)`
+export const ProfileImg = styled(NoCopyBox)`
   width: 60px;
   height: 60px;
   border-radius: 100%;

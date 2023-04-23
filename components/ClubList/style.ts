@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import NoCopyImg from '../Common/NoCopyImg'
+import NoCopyBox from '../Common/NoCopyBox'
 
 export const ClubWrapper = styled.div`
   width: 100%;
@@ -79,7 +79,7 @@ export const ClubItem = styled.div`
     width: 80vw;
   }
 `
-export const ClubImg = styled(NoCopyImg)`
+export const ClubImg = styled(NoCopyBox)`
   width: 100%;
   aspect-ratio: 1 / 1;
   background: #2d2d2f;

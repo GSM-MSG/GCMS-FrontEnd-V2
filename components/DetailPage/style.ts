@@ -1,7 +1,7 @@
 import { ApplyStateType } from '@/type/components/ClubDetailSide'
 import styled from '@emotion/styled'
 import Image from 'next/image'
-import NoCopyImg from '../Common/NoCopyImg'
+import NoCopyBox from '../Common/NoCopyBox'
 
 export const Layout = styled.div`
   width: 100%;
@@ -31,7 +31,7 @@ export const Section = styled.section`
   }
 `
 
-export const ClubBanner = styled(NoCopyImg)`
+export const ClubBanner = styled(NoCopyBox)`
   position: relative;
   width: 100%;
   height: 332px;
@@ -85,7 +85,7 @@ export const Contact = styled.div`
     border-radius: 1px;
   }
 `
-export const ProfileImg = styled(NoCopyImg)`
+export const ProfileImg = styled(Image)`
   width: 33px;
   height: 33px;
   border-radius: 50%;
@@ -159,7 +159,7 @@ export const ClubActivity = styled.div`
     }
   }
 `
-export const ActivityImg = styled(NoCopyImg)`
+export const ActivityImg = styled(NoCopyBox)`
   width: 250px;
   position: relative;
   aspect-ratio: 1/1;

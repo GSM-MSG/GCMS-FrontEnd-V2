@@ -1,10 +1,9 @@
-import { MouseEvent } from 'react'
-
-import Image from 'next/image'
-import * as S from './style'
 import * as SVG from '@/assets/svg'
 import { ClubItemType } from '@/type/components/MyPage'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { MouseEvent } from 'react'
+import * as S from './style'
 
 export default function ClubItem({ clubType, data }: ClubItemType) {
   const router = useRouter()

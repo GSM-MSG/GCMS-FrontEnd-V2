@@ -1,6 +1,6 @@
 import { RootState } from '@/store'
-import { useSelector } from 'react-redux'
 import Image from 'next/image'
+import { useSelector } from 'react-redux'
 import * as S from './style'
 
 export default function ClubActivity() {

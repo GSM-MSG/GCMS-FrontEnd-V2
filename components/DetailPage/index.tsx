@@ -27,7 +27,7 @@ export default function DetailPage() {
           <S.Section>
             <S.ClubBanner>
               <Image
-                alt='banner igm'
+                alt='banner img'
                 src={clubDetail.bannerImg}
                 fill
                 sizes='100%'

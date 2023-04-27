@@ -83,7 +83,7 @@ export const ClubBox = styled.div`
   transition: 0.5s;
 `
 
-export const ClubImgBox = styled(NoCopyBox)`
+export const ClubImgBox = styled.div`
   border-radius: 100%;
   background: #434343;
   overflow: hidden;

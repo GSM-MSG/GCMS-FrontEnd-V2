@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import Link from 'next/link'
-import NoCopyBox from '../NoCopyBox'
 
 export const Layer = styled.div`
   width: 100%;

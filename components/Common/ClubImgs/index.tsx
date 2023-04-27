@@ -3,6 +3,7 @@ import * as SVG from '@/assets/svg'
 import { UseFormRegisterReturn } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { removeActivityImg } from '@/store/clubCreation'
+import NoCopyBox from '../NoCopyBox'
 
 interface Props {
   register: UseFormRegisterReturn
@@ -31,11 +32,13 @@ const ClubImgs = ({ register, imgs }: Props) => {
         </S.ImgInput>
 
         {imgs?.map((i, idx) => (
-          <S.Img key={idx} src={i}>
-            <S.RemoveImg onClick={() => dispatch(removeActivityImg(idx))}>
-              <SVG.XMark width='10' height='10' />
-            </S.RemoveImg>
-          </S.Img>
+          <NoCopyBox key={idx}>
+            <S.Img src={i}>
+              <S.RemoveImg onClick={() => dispatch(removeActivityImg(idx))}>
+                <SVG.XMark width='10' height='10' />
+              </S.RemoveImg>
+            </S.Img>
+          </NoCopyBox>
         ))}
       </S.ImgList>
 

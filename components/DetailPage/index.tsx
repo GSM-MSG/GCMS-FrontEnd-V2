@@ -1,6 +1,7 @@
 import { RootState } from '@/store'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
+import NoCopyBox from '../Common/NoCopyBox'
 import SEO from '../SEO'
 import ClubActivity from './ClubActivity'
 import ClubMember from './ClubMember'
@@ -26,12 +27,14 @@ export default function DetailPage() {
         <S.Wrapper>
           <S.Section>
             <S.ClubBanner>
-              <Image
-                alt='banner img'
-                src={clubDetail.bannerImg}
-                fill
-                sizes='100%'
-              />
+              <NoCopyBox>
+                <Image
+                  alt='banner img'
+                  src={clubDetail.bannerImg}
+                  fill
+                  sizes='100%'
+                />
+              </NoCopyBox>
             </S.ClubBanner>
             <S.ClubInfo>
               <ClubName />

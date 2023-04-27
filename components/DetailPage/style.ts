@@ -389,3 +389,14 @@ export const NotionInfo = styled.div`
     }
   }
 `
+
+export const ImageDetailWrapper = styled.div`
+  position: relative;
+  height: 90%;
+  width: 90%;
+  pointer-events: none;
+
+  img {
+    object-fit: contain;
+  }
+`

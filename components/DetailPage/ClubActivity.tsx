@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import * as S from './style'
 import NoCopyBox from '../Common/NoCopyBox'
+import ImageDetail from './ImageDetail'
 
 export default function ClubActivity() {
   const { clubDetail } = useSelector((state: RootState) => ({
@@ -14,11 +15,13 @@ export default function ClubActivity() {
       <h3>동아리 활동</h3>
       <div>
         {clubDetail.activityImgs?.map((url, index) => (
-          <S.ActivityImg key={index}>
-            <NoCopyBox>
-              <Image alt='activity img' src={url} fill sizes='100%' />
-            </NoCopyBox>
-          </S.ActivityImg>
+          <ImageDetail key={index} url={url}>
+            <S.ActivityImg>
+              <NoCopyBox>
+                <Image alt='activity img' src={url} fill />
+              </NoCopyBox>
+            </S.ActivityImg>
+          </ImageDetail>
         ))}
       </div>
     </S.ClubActivity>

@@ -1,7 +1,10 @@
-import { ReactElement } from 'react'
+import { ReactElement, MouseEvent, cloneElement } from 'react'
 
-const NoCopyBox = ({ children }: { children: ReactElement }) => (
-  <div onContextMenu={(e) => e.preventDefault()}>{children}</div>
-)
+const NoCopyBox = ({ children }: { children: ReactElement }) => {
+  const noContextMenu = (e: MouseEvent<HTMLDivElement, MouseEvent>) =>
+    e.preventDefault()
+
+  return cloneElement(children, { onContextMenu: noContextMenu })
+}
 
 export default NoCopyBox

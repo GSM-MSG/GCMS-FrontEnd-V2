@@ -13,7 +13,6 @@ const ImageDetail = ({ children, url }: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false)
 
   const onClick = () => {
-    console.log('hi')
     setIsShow(!isShow)
   }
 

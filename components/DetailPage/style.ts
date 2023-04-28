@@ -166,6 +166,7 @@ export const ActivityImg = styled.div`
   background: linear-gradient(0deg, #373737, #373737), url(image.png);
   border-radius: 10px;
   img {
+    cursor: pointer;
     object-fit: cover;
   }
   @media (max-width: 750px) {

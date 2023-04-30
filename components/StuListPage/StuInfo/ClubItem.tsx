@@ -1,10 +1,10 @@
+import * as SVG from '@/assets/svg'
+import { ClubType } from '@/type/common'
+import AdminDetailType from '@/type/common/AdminDetailType'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { MouseEvent } from 'react'
 import * as S from './style'
-import * as SVG from '@/assets/svg'
-import AdminDetailType from '@/type/common/AdminDetailType'
-import { useRouter } from 'next/router'
-import Image from 'next/image'
-import { ClubType } from '@/type/common'
 
 interface Props {
   clubType: ClubType

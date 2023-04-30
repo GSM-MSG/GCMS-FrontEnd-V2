@@ -9,6 +9,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import NoCopyBox from '../Common/NoCopyBox'
 import SEO from '../SEO'
 import ClubItem from './ClubItem'
 import ProfileSetting from './ProfileSetting'
@@ -70,12 +71,14 @@ export default function MyPage() {
             <SVG.ProfileIcon />
             <S.ProfileContent>
               <S.ProfileImg>
-                <Image
-                  src={user.profileImg || ProfileSrc}
-                  alt='profileImg'
-                  width={60}
-                  height={60}
-                />
+                <NoCopyBox>
+                  <Image
+                    src={user.profileImg || ProfileSrc}
+                    alt='profileImg'
+                    width={60}
+                    height={60}
+                  />
+                </NoCopyBox>
               </S.ProfileImg>
               <p>{user?.name}님</p>
               <small>

@@ -4,6 +4,7 @@ import { ClubListType } from '@/type/common'
 import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
 import { useEffect } from 'react'
 import * as S from './style'
+import NoCopyBox from '@/components/Common/NoCopyBox'
 
 interface Props {
   type: ClubOptionType
@@ -32,7 +33,9 @@ const ClubList = ({ type, search }: Props) => {
         ?.filter((i) => i.name.includes(search))
         .map((i) => (
           <S.ClubSection href={`/detail/${i.id}`} key={i.id}>
-            <S.ClubBanner src={i.bannerImg} />
+            <NoCopyBox>
+              <S.ClubBanner src={i.bannerImg} alt='bannerImg' />
+            </NoCopyBox>
             <S.ClubKind>{RequestClubType(i.type)}</S.ClubKind>
             <S.ClubTitle>{i.name}</S.ClubTitle>
             <S.ClubContent>{i.content}</S.ClubContent>

@@ -133,7 +133,7 @@ export const Description = styled.div`
     font-size: 14px;
     color: #848484;
     margin-top: 10px;
-    white-space: pre;
+    white-space: pre-wrap;
     overflow: scroll;
     ::-webkit-scrollbar {
       display: none;
@@ -166,6 +166,7 @@ export const ActivityImg = styled.div`
   background: linear-gradient(0deg, #373737, #373737), url(image.png);
   border-radius: 10px;
   img {
+    cursor: pointer;
     object-fit: cover;
   }
   @media (max-width: 750px) {
@@ -387,5 +388,16 @@ export const NotionInfo = styled.div`
     a {
       white-space: nowrap;
     }
+  }
+`
+
+export const ImageDetailWrapper = styled.div`
+  position: relative;
+  height: 90%;
+  width: 90%;
+  pointer-events: none;
+
+  img {
+    object-fit: contain;
   }
 `

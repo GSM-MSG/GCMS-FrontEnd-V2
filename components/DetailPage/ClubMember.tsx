@@ -1,6 +1,7 @@
 import { ProfileSrc } from '@/lib/ProfileSrc'
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
+import NoCopyBox from '../Common/NoCopyBox'
 import * as S from './style'
 
 export default function ClubMember() {
@@ -14,12 +15,14 @@ export default function ClubMember() {
       <div>
         {clubDetail.teacher && (
           <S.HeadProfile>
-            <S.MemberProfile
-              alt='profile img'
-              src={ProfileSrc}
-              width={48}
-              height={48}
-            />
+            <NoCopyBox>
+              <S.MemberProfile
+                alt='profile img'
+                src={ProfileSrc}
+                width={48}
+                height={48}
+              />
+            </NoCopyBox>
             <S.HeadInfo>
               <p>담당 선생님</p>
               <span>{clubDetail.teacher}</span>
@@ -27,12 +30,14 @@ export default function ClubMember() {
           </S.HeadProfile>
         )}
         <S.HeadProfile>
-          <S.MemberProfile
-            alt='profile img'
-            src={clubDetail.head.profileImg || ProfileSrc}
-            width={48}
-            height={48}
-          />
+          <NoCopyBox>
+            <S.MemberProfile
+              alt='profile img'
+              src={clubDetail.head.profileImg || ProfileSrc}
+              width={48}
+              height={48}
+            />
+          </NoCopyBox>
           <S.HeadInfo>
             <p>동아리 부장</p>
             <span>{clubDetail.head?.name}</span>
@@ -42,12 +47,14 @@ export default function ClubMember() {
       <span>
         {clubDetail.member?.map((data) => (
           <S.MemberWrapper key={data.uuid}>
-            <S.MemberProfile
-              alt='member progile img'
-              src={data.profileImg || ProfileSrc}
-              width={48}
-              height={48}
-            />
+            <NoCopyBox>
+              <S.MemberProfile
+                alt='member progile img'
+                src={data.profileImg || ProfileSrc}
+                width={48}
+                height={48}
+              />
+            </NoCopyBox>
             <p>{data.name}</p>
           </S.MemberWrapper>
         ))}

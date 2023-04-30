@@ -6,6 +6,7 @@ import { SubmitType } from '@/type/components/ClubPermission'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Input from '../Input'
+import NoCopyBox from '../NoCopyBox'
 import * as S from './style'
 
 interface ListProps {
@@ -56,9 +57,11 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
           .map((item) => (
             <S.ClubWrapper key={item.id}>
               <S.ClubBox>
-                <S.ClubImgBox>
-                  <S.Img src={item.bannerImg} alt='bannerImg' />
-                </S.ClubImgBox>
+                <NoCopyBox>
+                  <S.ClubImgBox>
+                    <S.Img src={item.bannerImg} alt='bannerImg' />
+                  </S.ClubImgBox>
+                </NoCopyBox>
                 <S.ClubInfo>
                   <S.ClubKind>{RequestClubType(item.type)}</S.ClubKind>
                   <S.ClubName href={`/detail/${item.id}`}>

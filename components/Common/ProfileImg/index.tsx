@@ -1,4 +1,5 @@
 import { ProfileSrc } from '@/lib/ProfileSrc'
+import NoCopyBox from '../NoCopyBox'
 import Image from 'next/image'
 
 interface Props {
@@ -8,13 +9,15 @@ interface Props {
 
 const ProfileImg = ({ alt, src }: Props) => {
   return (
-    <Image
-      alt={alt}
-      src={src || ProfileSrc}
-      fill
-      sizes='100%'
-      priority={true}
-    />
+    <NoCopyBox>
+      <Image
+        alt={alt}
+        src={src || ProfileSrc}
+        fill
+        sizes='100%'
+        priority={true}
+      />
+    </NoCopyBox>
   )
 }
 

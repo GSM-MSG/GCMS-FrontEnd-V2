@@ -4,7 +4,7 @@ import TokenManager from '@/api/TokenManager'
 import axios from 'axios'
 import { TokensType } from '@/type/api/TokenManager'
 import { RootState } from '.'
-import delay from '@/lib/delay'
+import observable from '@/lib/Observable'
 
 export const reissueToken = createAsyncThunk(
   'reissue/reissueToken',
@@ -16,9 +16,9 @@ export const reissueToken = createAsyncThunk(
       reissue.isLoading ||
       tokenManager.calculateMinutes(reissue.refreshDate, 1) >= new Date()
     ) {
-      while ((getState() as RootState).reissue.isLoading) {
-        await delay(100)
-      }
+      await new Promise((resolve) => {
+        observable.setObserver(resolve)
+      })
       return
     }
 
@@ -37,6 +37,7 @@ export const reissueToken = createAsyncThunk(
         },
       }
     )
+    observable.notifyAll()
 
     tokenManager.setTokens(data)
     return data

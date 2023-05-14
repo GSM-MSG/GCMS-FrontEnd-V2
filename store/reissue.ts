@@ -38,6 +38,7 @@ export const reissueToken = createAsyncThunk(
       }
     )
     observable.notifyAll()
+    observable.removeAll()
 
     tokenManager.setTokens(data)
     return data

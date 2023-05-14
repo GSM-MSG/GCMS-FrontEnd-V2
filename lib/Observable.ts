@@ -14,7 +14,9 @@ class Observable {
     this.observers.forEach((observer) => {
       observer.callback()
     })
+  }
 
+  removeAll() {
     this.observers = []
   }
 }

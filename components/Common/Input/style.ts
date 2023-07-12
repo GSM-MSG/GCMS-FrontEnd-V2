@@ -20,7 +20,7 @@ export const DownLoadBtnBox = styled.div`
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-`;
+`
 
 export const Optional = styled.span`
   font-weight: normal;

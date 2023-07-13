@@ -57,7 +57,6 @@ const useFetch = <T,>({
         } else if (errors && e.response && errors[e.response.status]) {
           toast.error(errors[e.response.status], toastOption)
         }
-
         if (onFailure) await onFailure(e)
 
         if (autoPushToggle) router.push('/')

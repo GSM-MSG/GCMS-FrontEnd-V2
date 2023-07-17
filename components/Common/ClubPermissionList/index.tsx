@@ -1,4 +1,5 @@
 import { SearchIcon } from '@/assets/svg'
+import { DownloadBtn } from '@/assets/svg'
 import { useFetch } from '@/hooks'
 import RequestClubType from '@/lib/requestClubType'
 import { ClubListType } from '@/type/common'
@@ -38,6 +39,10 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
   return (
     <S.Layer>
       <S.InputBox>
+        <S.DownLoadBtnBox>
+          <DownloadBtn />
+          <span>개설신청서 다운로드</span>
+        </S.DownLoadBtnBox>
         <SearchIcon />
         <Input
           placeholder='검색'

@@ -15,7 +15,7 @@ interface Props {
   errors?: ErrorsType | string
 }
 
-const useHwpDownload = ({
+const useDownload = ({
   url,
   method,
   fileName,
@@ -39,6 +39,7 @@ const useHwpDownload = ({
       const blob = new Blob([data], {
         type: 'text/plain;charset=UTF-8',
       })
+
       saveAs(blob, `${fileName}.hwp`)
     } catch (e) {
       toast.error('알 수 없는 에러가 발생했습니다', toastOption)
@@ -52,4 +53,4 @@ const useHwpDownload = ({
   return { download, isLoading }
 }
 
-export default useHwpDownload
+export default useDownload

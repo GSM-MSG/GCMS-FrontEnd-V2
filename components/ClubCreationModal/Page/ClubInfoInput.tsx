@@ -51,6 +51,13 @@ const ClubInfoInput = () => {
       />
 
       <Input
+        label='연구 분야 및 주제'
+        placeholder='동아리 연구 분야 및 주제를 입력해주세요.'
+        register={register('contact', { required: true, maxLength: 50 })}
+        error={!!errors.contact}
+      />
+
+      <Input
         label='노션 링크'
         placeholder='url을 입력해주세요.'
         register={register('notionLink', {

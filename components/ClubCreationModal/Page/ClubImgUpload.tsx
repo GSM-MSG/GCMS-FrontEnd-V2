@@ -27,7 +27,7 @@ const ClubImgUpload = () => {
   const { upload, isLoading } = useUpload()
 
   const onSubmit = async () => {
-    if (!clubCreation.bannerImg) return setError('bannerImg', {})
+    // if (!clubCreation.bannerImg) return setError('bannerImg', {})
 
     dispatch(nextPage())
   }

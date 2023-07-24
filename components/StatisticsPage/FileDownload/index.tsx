@@ -13,18 +13,18 @@ interface Props {
 
 const FileDownload = ({ type }: Props) => {
   const router = useRouter()
-  
+
   const clubTypeKorean = RequestClubType(type || 'MAJOR')
   const { download: clubDownload } = useDownload({
     method: 'get',
     url: `/admin/excel/club?clubType=${type || 'MAJOR'}`,
-    fileName: `${clubTypeKorean}/동아리별 출력`,
+    fileName: `${clubTypeKorean}/동아리별 출력.xlsx`,
   })
 
   const { download: classDownload } = useDownload({
     method: 'get',
     url: `/admin/excel/club/grade?clubType=${type || 'MAJOR'}`,
-    fileName: `${clubTypeKorean}/동아리별 출력`,
+    fileName: `${clubTypeKorean}/동아리별 출력.xlsx`,
   })
 
   const onChange = (type: ClubOptionType) => {

@@ -25,6 +25,8 @@ const useDownload = ({
 }: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
+  const fileType = fileName.split('.').at(-1)
+
   const download = useCallback(async () => {
     if (isLoading) return
     setIsLoading(true)
@@ -33,14 +35,17 @@ const useDownload = ({
       const { data } = await API<ArrayBuffer>({
         url,
         method,
-        responseType: 'blob',
+        responseType: fileType === 'xlsx' ? 'blob' : 'text',
       })
 
       const blob = new Blob([data], {
-        type: 'text/plain;charset=UTF-8',
+        type:
+          fileType === 'xlsx'
+            ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
+            : 'text/plain:charset=UTF-8',
       })
 
-      saveAs(blob, `${fileName}.hwp`)
+      saveAs(blob, `${fileName}.${fileType}`)
     } catch (e) {
       toast.error('알 수 없는 에러가 발생했습니다', toastOption)
 

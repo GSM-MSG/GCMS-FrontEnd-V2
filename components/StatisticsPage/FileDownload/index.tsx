@@ -3,7 +3,7 @@ import { ClubOptionType } from '@/type/components/ClubOptionNavigation'
 import Icon from '../Icon'
 import * as S from './style'
 import * as SVG from '@/assets/svg'
-import { useExcelDownload } from '@/hooks'
+import { useDownload } from '@/hooks'
 import RequestClubType from '@/lib/requestClubType'
 import { useRouter } from 'next/router'
 
@@ -15,16 +15,16 @@ const FileDownload = ({ type }: Props) => {
   const router = useRouter()
 
   const clubTypeKorean = RequestClubType(type || 'MAJOR')
-  const { download: clubDownload } = useExcelDownload({
+  const { download: clubDownload } = useDownload({
     method: 'get',
     url: `/admin/excel/club?clubType=${type || 'MAJOR'}`,
-    fileName: `${clubTypeKorean}/동아리별 출력`,
+    fileName: `${clubTypeKorean}/동아리별 출력.xlsx`,
   })
 
-  const { download: classDownload } = useExcelDownload({
+  const { download: classDownload } = useDownload({
     method: 'get',
     url: `/admin/excel/club/grade?clubType=${type || 'MAJOR'}`,
-    fileName: `${clubTypeKorean}/동아리별 출력`,
+    fileName: `${clubTypeKorean}/동아리별 출력.xlsx`,
   })
 
   const onChange = (type: ClubOptionType) => {

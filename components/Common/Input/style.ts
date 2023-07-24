@@ -12,16 +12,6 @@ export const Label = styled.label<ErrorProps>`
   font-weight: bold;
 `
 
-export const DownLoadBtnBox = styled.div`
-  position: absolute;
-  right: 0;
-  width: 9.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-`
-
 export const Optional = styled.span`
   font-weight: normal;
 `

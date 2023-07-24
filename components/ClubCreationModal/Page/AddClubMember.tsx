@@ -18,6 +18,7 @@ const AddClubMember = () => {
   const { clubCreation } = useSelector((state: RootState) => ({
     clubCreation: state.clubCreation,
   }))
+  
   const { register, watch } = useForm<{ name: string }>()
   const { fetch, data } = useFetch<MemberType[]>({
     url: `/user/search?name=${watch('name')}&type=${clubCreation.type}`,
@@ -33,7 +34,7 @@ const AddClubMember = () => {
     successMessage: '동아리 생성에 성공했습니다',
     errors: '동아리 생성에 실패했습니다',
   })
-
+  
   useEffect(() => {
     if (!watch('name').trim()) return
 

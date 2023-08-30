@@ -15,16 +15,18 @@ const FileDownload = ({ type }: Props) => {
   const router = useRouter()
 
   const clubTypeKorean = RequestClubType(type || 'MAJOR')
-  const { download: clubDownload } = useDownload({
+  const { fetch: clubDownload } = useDownload({
     method: 'get',
     url: `/admin/excel/club?clubType=${type || 'MAJOR'}`,
-    fileName: `${clubTypeKorean}/동아리별 출력.xlsx`,
+    fileName: `${clubTypeKorean}/동아리별 출력`,
+    fileType: 'xlsx',
   })
 
-  const { download: classDownload } = useDownload({
+  const { fetch: classDownload } = useDownload({
     method: 'get',
     url: `/admin/excel/club/grade?clubType=${type || 'MAJOR'}`,
-    fileName: `${clubTypeKorean}/동아리별 출력.xlsx`,
+    fileName: `${clubTypeKorean}/동아리별 출력`,
+    fileType: 'xlsx',
   })
 
   const onChange = (type: ClubOptionType) => {

@@ -5,11 +5,13 @@ import { Method } from 'axios'
 import { useCallback, useState } from 'react'
 import { toast } from 'react-toastify'
 import { saveAs } from 'file-saver'
+import { FileTypes } from '@/lib/DocumentFileTypes'
 
 interface Props {
   url: string
   method: Method
   fileName: string
+  fileType: string
   onSuccess?: (data: ArrayBuffer) => void | Promise<void>
   onFailure?: (e: unknown) => void | Promise<void>
   errors?: ErrorsType | string
@@ -19,15 +21,14 @@ const useDownload = ({
   url,
   method,
   fileName,
+  fileType,
   onSuccess,
   onFailure,
   errors,
 }: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const fileType = fileName.split('.').at(-1)
-
-  const download = useCallback(async () => {
+  const fetch = useCallback(async () => {
     if (isLoading) return
     setIsLoading(true)
 
@@ -35,14 +36,11 @@ const useDownload = ({
       const { data } = await API<ArrayBuffer>({
         url,
         method,
-        responseType: fileType === 'xlsx' ? 'blob' : 'text',
+        responseType: 'blob',
       })
 
       const blob = new Blob([data], {
-        type:
-          fileType === 'xlsx'
-            ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
-            : 'text/plain:charset=UTF-8',
+        type: FileTypes[fileType],
       })
 
       saveAs(blob, `${fileName}.${fileType}`)
@@ -55,7 +53,7 @@ const useDownload = ({
     }
   }, [url, method, onSuccess, onFailure, errors])
 
-  return { download, isLoading }
+  return { fetch, isLoading }
 }
 
 export default useDownload

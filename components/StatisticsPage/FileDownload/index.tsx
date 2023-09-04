@@ -18,14 +18,14 @@ const FileDownload = ({ type }: Props) => {
   const { fetch: clubDownload } = useDownload({
     method: 'get',
     url: `/admin/excel/club?clubType=${type || 'MAJOR'}`,
-    fileName: `${clubTypeKorean}/동아리별 출력`,
+    fileName: `${clubTypeKorean}_동아리별 출력`,
     fileType: 'xlsx',
   })
 
   const { fetch: classDownload } = useDownload({
     method: 'get',
     url: `/admin/excel/club/grade?clubType=${type || 'MAJOR'}`,
-    fileName: `${clubTypeKorean}/반별 출력`,
+    fileName: `${clubTypeKorean}_반별 출력`,
     fileType: 'xlsx',
   })
 

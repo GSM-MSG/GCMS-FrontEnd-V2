@@ -10,8 +10,8 @@ import { FileTypes } from '@/lib/DocumentFileTypes'
 interface Props {
   url: string
   method: Method
+  fileType: 'xlsx' | 'hwp'
   fileName: string
-  fileType: string
   onSuccess?: (data: ArrayBuffer) => void | Promise<void>
   onFailure?: (e: unknown) => void | Promise<void>
   errors?: ErrorsType | string

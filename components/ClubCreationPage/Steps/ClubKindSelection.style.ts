@@ -3,13 +3,11 @@ import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-height: 45rem;
   display: flex;
   flex-direction: column;
 `
 
 export const Title = styled.h1`
-  margin-top: 2.5rem;
   color: #fff;
   font-size: 20px;
   margin: 0;

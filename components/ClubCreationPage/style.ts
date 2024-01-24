@@ -8,5 +8,6 @@ export const Positioner = styled.div`
 
 export const Layer = styled.div`
   width: 710px;
+  height: fit-content;
   padding: 2.5rem 0.3125rem;
 `

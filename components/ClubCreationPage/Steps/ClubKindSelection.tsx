@@ -3,11 +3,11 @@ import clubTypeInfo from '@/lib/clubTypeInfo'
 import { setClubType } from '@/store/clubCreation'
 import { nextPage } from '@/store/clubCreationPage'
 import { ClubType } from '@/type/common'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/store'
-import SubmitButton from '../Common/SubmitButton'
 import { useRouter } from 'next/router'
+import Layout from '../Common/Layout'
 
 const ClubKindSelection = () => {
   const router = useRouter()
@@ -21,12 +21,15 @@ const ClubKindSelection = () => {
     router.push(`/`)
   }
 
-  const goToNextPage = () => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
     dispatch(setClubType(type))
     dispatch(nextPage())
   }
+
   return (
-    <S.Wrapper>
+    <Layout onSubmit={onSubmit} backOnClick={goToBackPage}>
       <S.Title>동아리 개설</S.Title>
       <S.Options>
         {clubTypeInfo.map((i, idx) => (
@@ -45,8 +48,7 @@ const ClubKindSelection = () => {
           </S.Option>
         ))}
       </S.Options>
-      <SubmitButton backOnClick={goToBackPage} nextOnClick={goToNextPage} />
-    </S.Wrapper>
+    </Layout>
   )
 }
 

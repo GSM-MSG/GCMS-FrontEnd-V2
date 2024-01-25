@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const clubCreationPageSlice = createSlice({
   name: 'clubCreationPage',
-  initialState: 1,
+  initialState: 3,
   reducers: {
     nextPage: (state) => {
-      if (state >= 6) throw new Error('There is no next page')
+      if (state >= 3) throw new Error('There is no next page')
       return (state += 1)
     },
     backPage: (state) => {

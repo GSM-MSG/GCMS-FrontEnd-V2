@@ -4,14 +4,23 @@ import SubmitButton, { Props as SubmitButtonProps } from '../SubmitButton'
 
 interface Props extends SubmitButtonProps {
   children: ReactNode
-  onSubmit: FormEventHandler<HTMLFormElement>
+  onSubmit?: FormEventHandler<HTMLFormElement>
+  submitButton?: boolean
 }
 
-const Layout = ({ children, onSubmit, backOnClick, nextOnClick }: Props) => {
+const Layout = ({
+  children,
+  onSubmit,
+  backOnClick,
+  nextOnClick,
+  submitButton,
+}: Props) => {
   return (
     <S.Wrapper onSubmit={onSubmit}>
       <S.Content>{children}</S.Content>
-      <SubmitButton backOnClick={backOnClick} nextOnClick={nextOnClick} />
+      {submitButton ? (
+        <SubmitButton backOnClick={backOnClick} nextOnClick={nextOnClick} />
+      ) : null}
     </S.Wrapper>
   )
 }

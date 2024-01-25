@@ -29,7 +29,7 @@ const ClubKindSelection = () => {
   }
 
   return (
-    <Layout onSubmit={onSubmit} backOnClick={goToBackPage}>
+    <Layout onSubmit={onSubmit} backOnClick={goToBackPage} submitButton>
       <S.Title>동아리 개설</S.Title>
       <S.Options>
         {clubTypeInfo.map((i, idx) => (

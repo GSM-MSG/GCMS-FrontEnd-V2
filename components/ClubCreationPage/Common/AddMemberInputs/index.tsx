@@ -5,8 +5,12 @@ import { useForm } from 'react-hook-form'
 import Input from '@/components/Common/Input'
 import Member from '../Member'
 import * as S from './style'
+import { ClubCreationInitialState } from '@/type/store/clubCreation'
+interface Props {
+  clubCreation: ClubCreationInitialState
+}
 
-const AddMemberInputs = ({ clubCreation }) => {
+const AddMemberInputs = ({ clubCreation }: Props) => {
   const { register, watch } = useForm<{ name: string }>()
   const { fetch, data } = useFetch<MemberType[]>({
     url: `/user/search?name=${watch('name')}&type=${clubCreation.type}`,

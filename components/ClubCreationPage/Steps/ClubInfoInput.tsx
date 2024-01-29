@@ -9,10 +9,14 @@ import { RootState } from '@/store'
 import { ImgUploadFormType } from '@/type/components/ClubCreationPage'
 import InfoInput from '../Common/InfoInputs'
 import ImgInputs from '../Common/ImgInputs'
+import AddMemberInputs from '../Common/AddMemberInputs'
+import SelectUserList from '../Common/SelectUserList'
+import SubmitButton from '../Common/SubmitButton'
+import { useFetch } from '@/hooks'
+import { clearClubData } from '@/store/clubCreation'
 
 const ClubInfoInput = () => {
   const dispatch = useDispatch()
-
   const { clubCreation } = useSelector((state: RootState) => ({
     clubCreation: state.clubCreation,
   }))
@@ -31,21 +35,39 @@ const ClubInfoInput = () => {
     },
   })
 
+  const { fetch: addClub, isLoading } = useFetch({
+    url: '/club',
+    method: 'post',
+    onSuccess: () => {
+      dispatch(clearClubData())
+      dispatch(nextPage())
+    },
+    successMessage: '동아리 생성에 성공했습니다',
+    errors: '동아리 생성에 실패했습니다',
+  })
+
   const onSubmit = (form: SetClubInfoPayload) => {
-    if (!clubCreation.bannerImg) return setError('bannerImg', {})
+    if (isLoading) if (!clubCreation.bannerImg) return setError('bannerImg', {})
     setValue('teacher', form.teacher?.trim())
     dispatch(setClubInfo(form))
-    dispatch(nextPage())
+    addClub({ ...clubCreation })
   }
 
   return (
-    <Layout onSubmit={handleSubmit(onSubmit)}>
-      <S.Wrapper>
-        <S.Title>동아리 개설</S.Title>
-        <InfoInput register={register} errors={errors} />
-        <ImgInputs register={register} errors={errors} />
-      </S.Wrapper>
-    </Layout>
+    <>
+      <Layout formId='infoInput' onSubmit={handleSubmit(onSubmit)}>
+        <S.Wrapper>
+          <S.Title>동아리 개설</S.Title>
+          <InfoInput register={register} errors={errors} />
+          <ImgInputs register={register} errors={errors} />
+          <AddMemberInputs clubCreation={clubCreation} />
+        </S.Wrapper>
+      </Layout>
+      <S.SubmitList>
+        <SelectUserList />
+        <SubmitButton formId='infoInput' />
+      </S.SubmitList>
+    </>
   )
 }
 

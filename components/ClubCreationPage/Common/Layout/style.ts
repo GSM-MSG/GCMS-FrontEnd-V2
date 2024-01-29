@@ -4,10 +4,11 @@ export const Wrapper = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 2.5rem 0;
 `
 export const Content = styled.div`
-  width: 100%;
+  width: 710px;
   height: 100%;
   display: flex;
   flex-direction: column;

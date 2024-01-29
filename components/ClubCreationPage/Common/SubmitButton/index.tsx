@@ -5,9 +5,10 @@ import { useDispatch } from 'react-redux'
 export interface Props {
   backOnClick?: () => Promise<void> | void
   nextOnClick?: () => Promise<void> | void
+  formId?: string
 }
 
-const SubmitButton = ({ backOnClick, nextOnClick }: Props) => {
+const SubmitButton = ({ backOnClick, nextOnClick, formId }: Props) => {
   const dispatch = useDispatch()
   return (
     <S.Wrapper>
@@ -16,7 +17,7 @@ const SubmitButton = ({ backOnClick, nextOnClick }: Props) => {
       >
         이전
       </S.BackButton>
-      <S.SubmitButton onClick={nextOnClick} type='submit'>
+      <S.SubmitButton form={formId} onClick={nextOnClick} type='submit'>
         다음
       </S.SubmitButton>
     </S.Wrapper>

@@ -6,6 +6,7 @@ interface Props extends SubmitButtonProps {
   children: ReactNode
   onSubmit?: FormEventHandler<HTMLFormElement>
   submitButton?: boolean
+  formId?: string
 }
 
 const Layout = ({
@@ -14,9 +15,10 @@ const Layout = ({
   backOnClick,
   nextOnClick,
   submitButton,
+  formId,
 }: Props) => {
   return (
-    <S.Wrapper onSubmit={onSubmit}>
+    <S.Wrapper id={formId} onSubmit={onSubmit}>
       <S.Content>{children}</S.Content>
       {submitButton ? (
         <SubmitButton backOnClick={backOnClick} nextOnClick={nextOnClick} />

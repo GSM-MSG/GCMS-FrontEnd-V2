@@ -38,6 +38,7 @@ const ClubInfoInput = () => {
   const { fetch: addClub, isLoading } = useFetch({
     url: '/club',
     method: 'post',
+    autoPushToggle: false,
     onSuccess: () => {
       dispatch(clearClubData())
       dispatch(nextPage())
@@ -50,7 +51,6 @@ const ClubInfoInput = () => {
     if (isLoading) if (!clubCreation.bannerImg) return setError('bannerImg', {})
     setValue('teacher', form.teacher?.trim())
     dispatch(setClubInfo(form))
-    addClub({ ...clubCreation })
   }
 
   return (
@@ -65,7 +65,10 @@ const ClubInfoInput = () => {
       </Layout>
       <S.SubmitList>
         <SelectUserList />
-        <SubmitButton formId='infoInput' />
+        <SubmitButton
+          formId='infoInput'
+          nextOnClick={() => addClub({ ...clubCreation })}
+        />
       </S.SubmitList>
     </>
   )

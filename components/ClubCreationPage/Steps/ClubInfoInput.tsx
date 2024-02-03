@@ -22,6 +22,7 @@ const ClubInfoInput = () => {
   }))
   const {
     register,
+    watch,
     handleSubmit,
     setValue,
     setError,
@@ -31,6 +32,7 @@ const ClubInfoInput = () => {
       name: clubCreation.name,
       contact: clubCreation.contact,
       notionLink: clubCreation.notionLink,
+      content: clubCreation.content,
       teacher: clubCreation.teacher,
     },
   })
@@ -48,6 +50,7 @@ const ClubInfoInput = () => {
   })
 
   const onSubmit = (form: SetClubInfoPayload) => {
+    console.log(form)
     if (isLoading) if (!clubCreation.bannerImg) return setError('bannerImg', {})
     setValue('teacher', form.teacher?.trim())
     dispatch(setClubInfo(form))
@@ -58,8 +61,8 @@ const ClubInfoInput = () => {
       <Layout formId='infoInput' onSubmit={handleSubmit(onSubmit)}>
         <S.Wrapper>
           <S.Title>동아리 개설</S.Title>
-          <InfoInput register={register} errors={errors} />
-          <ImgInputs register={register} errors={errors} />
+          <InfoInput register={register} watch={watch} errors={errors} />
+          {/* <ImgInputs register={register} errors={errors} /> */}
           <AddMemberInputs clubCreation={clubCreation} />
         </S.Wrapper>
       </Layout>

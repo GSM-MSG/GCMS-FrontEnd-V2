@@ -1,13 +1,15 @@
-import { UseFormRegister } from 'react-hook-form'
+import { UseFormRegister, UseFormWatch } from 'react-hook-form'
 import { SetClubInfoPayload } from '@/type/store/clubCreation'
 import { ImgUploadFormType } from '@/type/components/ClubCreationPage'
 import Input from '@/components/Common/Input'
+import Textarea from '@/components/Common/Textarea'
 interface Props {
   register: UseFormRegister<SetClubInfoPayload & ImgUploadFormType>
+  watch: UseFormWatch<SetClubInfoPayload & ImgUploadFormType>
   errors: Record<string, any>
 }
 
-const InfoInput = ({ register, errors }: Props) => {
+const InfoInput = ({ register, watch, errors }: Props) => {
   return (
     <>
       <Input
@@ -40,6 +42,12 @@ const InfoInput = ({ register, errors }: Props) => {
         placeholder='담당 선생님 성함을 입력해주세요.'
         optional
         register={register('teacher')}
+      />
+
+      <Textarea
+        register={register('content', { required: true, maxLength: 200 })}
+        content={watch('content')}
+        error={!!errors.contact}
       />
     </>
   )

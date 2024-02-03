@@ -17,5 +17,6 @@ export interface SetClubInfoPayload {
   name: string
   contact: string
   notionLink: string
+  content: string
   teacher?: string
 }

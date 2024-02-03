@@ -1,4 +1,4 @@
-import { OptionProps, SelectType } from '@/type/components/ClubCreationModal'
+import { OptionProps, SelectType } from '@/type/components/ClubCreationPage'
 import styled from '@emotion/styled'
 
 export const Option = styled.div<OptionProps>`

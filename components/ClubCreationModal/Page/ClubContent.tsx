@@ -1,7 +1,7 @@
 import { RootState } from '@/store'
 import { setContent } from '@/store/clubCreation'
 import { nextPage } from '@/store/clubCreationPage'
-import { ContentFormType } from '@/type/components/ClubCreationModal'
+import { ContentFormType } from '@/type/components/ClubCreationPage'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../Common/Layout'

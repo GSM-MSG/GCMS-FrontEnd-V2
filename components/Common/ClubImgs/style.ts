@@ -1,4 +1,4 @@
-import { ErrorProps } from '@/type/components/ClubCreationModal'
+import { ErrorProps } from '@/type/components/ClubCreationPage'
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`

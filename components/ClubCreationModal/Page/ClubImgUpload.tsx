@@ -5,7 +5,7 @@ import { nextPage } from '@/store/clubCreationPage'
 import {
   ClubImgUploadType,
   ImgUploadFormType,
-} from '@/type/components/ClubCreationModal'
+} from '@/type/components/ClubCreationPage'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import BannerImg from '@/components/Common/BannerImg'

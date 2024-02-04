@@ -6,7 +6,10 @@ import { setClubInfo } from '@/store/clubCreation'
 import { nextPage } from '@/store/clubCreationPage'
 import { SetClubInfoPayload } from '@/type/store/clubCreation'
 import { RootState } from '@/store'
-import { ImgUploadFormType } from '@/type/components/ClubCreationPage'
+import {
+  ImgUploadFormType,
+  InfoInputsFormDataType,
+} from '@/type/components/ClubCreationPage'
 import InfoInput from '../Common/InfoInputs'
 import ImgInputs from '../Common/ImgInputs'
 import AddMemberInputs from '../Common/AddMemberInputs'
@@ -14,7 +17,6 @@ import SelectUserList from '../Common/SelectUserList'
 import SubmitButton from '../Common/SubmitButton'
 import { useFetch } from '@/hooks'
 import { clearClubData } from '@/store/clubCreation'
-
 const ClubInfoInput = () => {
   const dispatch = useDispatch()
   const { clubCreation } = useSelector((state: RootState) => ({
@@ -48,7 +50,7 @@ const ClubInfoInput = () => {
     errors: '동아리 생성에 실패했습니다',
   })
 
-  const onSubmit = (form: SetClubInfoPayload) => {
+  const onSubmit = (form: InfoInputsFormDataType) => {
     if (isLoading) return
     if (!clubCreation.bannerImg) return setError('bannerImg', {})
     dispatch(

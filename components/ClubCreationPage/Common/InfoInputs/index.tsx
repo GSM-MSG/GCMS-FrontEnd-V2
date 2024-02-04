@@ -45,9 +45,9 @@ const InfoInput = ({ register, watch, errors }: Props) => {
       />
 
       <Textarea
-        register={register('content', { required: true, maxLength: 200 })}
         content={watch('content')}
-        error={!!errors.contact}
+        register={register('content', { required: true, maxLength: 200 })}
+        error={!!errors.content}
       />
     </>
   )

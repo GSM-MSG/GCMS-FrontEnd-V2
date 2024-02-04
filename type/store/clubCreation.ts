@@ -19,4 +19,6 @@ export interface SetClubInfoPayload {
   notionLink: string
   content: string
   teacher?: string
+  activityImgs?: FileList
+  bannerImg: FileList
 }

@@ -24,7 +24,6 @@ const ClubInfoInput = () => {
     register,
     watch,
     handleSubmit,
-    setValue,
     setError,
     formState: { errors },
   } = useForm<SetClubInfoPayload & ImgUploadFormType>({
@@ -50,10 +49,8 @@ const ClubInfoInput = () => {
   })
 
   const onSubmit = (form: SetClubInfoPayload) => {
-    console.log(form)
-    if (isLoading) if (!clubCreation.bannerImg) return setError('bannerImg', {})
-    setValue('teacher', form.teacher?.trim())
-    dispatch(setClubInfo(form))
+    if (isLoading && !clubCreation.bannerImg) return setError('bannerImg', {})
+    dispatch(setClubInfo({ ...form, activityImgs: clubCreation.activityImgs }))
   }
 
   return (
@@ -62,16 +59,13 @@ const ClubInfoInput = () => {
         <S.Wrapper>
           <S.Title>동아리 개설</S.Title>
           <InfoInput register={register} watch={watch} errors={errors} />
-          {/* <ImgInputs register={register} errors={errors} /> */}
+          <ImgInputs register={register} errors={errors} />
           <AddMemberInputs clubCreation={clubCreation} />
         </S.Wrapper>
       </Layout>
       <S.SubmitList>
         <SelectUserList />
-        <SubmitButton
-          formId='infoInput'
-          nextOnClick={() => addClub({ ...clubCreation })}
-        />
+        <SubmitButton formId='infoInput' />
       </S.SubmitList>
     </>
   )

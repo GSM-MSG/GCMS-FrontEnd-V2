@@ -21,7 +21,11 @@ const Layout = ({
     <S.Wrapper id={formId} onSubmit={onSubmit}>
       <S.Content>{children}</S.Content>
       {submitButton ? (
-        <SubmitButton backOnClick={backOnClick} nextOnClick={nextOnClick} />
+        <SubmitButton
+          backOnClick={backOnClick}
+          nextOnClick={nextOnClick}
+          formId={formId}
+        />
       ) : null}
     </S.Wrapper>
   )

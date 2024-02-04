@@ -49,7 +49,7 @@ const ClubInfoInput = () => {
   })
 
   const onSubmit = (form: SetClubInfoPayload) => {
-    if (isLoading && !clubCreation.bannerImg) return setError('bannerImg', {})
+    if (!clubCreation.bannerImg) return setError('bannerImg', {})
     dispatch(setClubInfo({ ...form, activityImgs: clubCreation.activityImgs }))
   }
 

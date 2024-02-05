@@ -20,4 +20,14 @@ export interface ContentFormType {
   content: string
 }
 
+export interface InfoInputsFormDataType {
+  name: string
+  contact: string
+  notionLink: string
+  content: string
+  teacher?: string
+  activityImgs?: FileList
+  bannerImg: FileList
+}
+
 export type ClubImgUploadType = 'banner' | 'activity'

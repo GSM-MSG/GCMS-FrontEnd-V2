@@ -1,4 +1,4 @@
-import { SelectType } from '@/type/components/ClubCreationModal'
+import { SelectType } from '@/type/components/ClubCreationPage'
 import styled from '@emotion/styled'
 
 export const Layer = styled.div`

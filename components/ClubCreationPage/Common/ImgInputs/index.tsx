@@ -1,37 +1,28 @@
-import { useUpload } from '@/hooks'
-import { RootState } from '@/store'
-import { addActivityImg, setBannerImg } from '@/store/clubCreation'
-import { nextPage } from '@/store/clubCreationPage'
-import {
-  ClubImgUploadType,
-  ImgUploadFormType,
-} from '@/type/components/ClubCreationModal'
-import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
 import BannerImg from '@/components/Common/BannerImg'
 import ClubImgs from '@/components/Common/ClubImgs'
-import Layout from '../Common/Layout'
+import { UseFormRegister } from 'react-hook-form'
+import { SetClubInfoPayload } from '@/type/store/clubCreation'
+import {
+  ImgUploadFormType,
+  ClubImgUploadType,
+} from '@/type/components/ClubCreationPage'
+import { addActivityImg, setBannerImg } from '@/store/clubCreation'
 import { ChangeEvent } from 'react'
+import { useUpload } from '@/hooks'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@/store'
 
-const ClubImgUpload = () => {
+interface Props {
+  register: UseFormRegister<SetClubInfoPayload & ImgUploadFormType>
+  errors: Record<string, any>
+}
+
+const ImgInputs = ({ register, errors }: Props) => {
   const dispatch = useDispatch()
+  const { upload, isLoading } = useUpload()
   const { clubCreation } = useSelector((state: RootState) => ({
     clubCreation: state.clubCreation,
   }))
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors },
-  } = useForm<ImgUploadFormType>()
-  const { upload, isLoading } = useUpload()
-
-  const onSubmit = async () => {
-    if (!clubCreation.bannerImg) return setError('bannerImg', {})
-
-    dispatch(nextPage())
-  }
-
   const onChangeImg = async (
     e: ChangeEvent<HTMLInputElement>,
     type: ClubImgUploadType
@@ -51,9 +42,8 @@ const ClubImgUpload = () => {
     if (type === 'banner') dispatch(setBannerImg(files[0]))
     else dispatch(addActivityImg([...clubCreation.activityImgs, files[0]]))
   }
-
   return (
-    <Layout onSubmit={handleSubmit(onSubmit)} back>
+    <>
       <BannerImg
         register={register('bannerImg', {
           onChange: (e) => onChangeImg(e, 'banner'),
@@ -67,8 +57,7 @@ const ClubImgUpload = () => {
         })}
         imgs={clubCreation.activityImgs}
       />
-    </Layout>
+    </>
   )
 }
-
-export default ClubImgUpload
+export default ImgInputs

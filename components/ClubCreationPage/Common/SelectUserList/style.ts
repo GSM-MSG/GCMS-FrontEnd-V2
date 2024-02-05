@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-  margin: 0 0 2rem 0;
+  width: 710px;
+  margin: 0rem 0 2rem 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -51,6 +52,7 @@ export const UserImg = styled.div`
   border-radius: 100%;
   flex-shrink: 0;
   position: relative;
+  overflow: hidden;
   img {
     object-fit: cover;
     object-position: center;

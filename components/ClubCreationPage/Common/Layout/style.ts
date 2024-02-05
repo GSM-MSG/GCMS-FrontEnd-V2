@@ -1,18 +1,15 @@
 import styled from '@emotion/styled'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 1.5rem;
-  overflow-y: auto;
+  align-items: center;
+  margin: 2.5rem 0;
 `
-
 export const Content = styled.div`
-  overflow-y: auto;
-  height: 80%;
+  width: 710px;
+  height: 100%;
   display: flex;
   flex-direction: column;
 `

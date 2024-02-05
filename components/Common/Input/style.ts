@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { ErrorProps } from '@/type/components/ClubCreationModal'
+import { ErrorProps } from '@/type/components/ClubCreationPage'
 
 export const Wrapper = styled.div`
   display: flex;

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   text-align: left;
   padding: 0 24px;
   min-width: 390px;
-  min-height: 530px;
+  min-height: 479px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -69,7 +69,7 @@ export const Layer = styled.div`
   border: 1px solid #464646;
   border-radius: 10px 10px 0 0;
   width: 342px;
-  height: 290px;
+  height: 249px;
 
   * {
     border: none;
@@ -78,24 +78,17 @@ export const Layer = styled.div`
     text-decoration: none;
   }
 
-  .dot{
-    width: 1.5rem;
-    height: 1.5rem;
-    background: #4164e1;
-  }
-
   .react-calendar {
     background: #1c1c1e;
     color: #222;
     border-radius: 11px;
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.04);
-    font-family: Pretendard;
     font-size: 13px;
     display: block;
   }
 
   .react-calendar__navigation {
-    padding-top: 14px;
+    padding-top: 12px;
     margin: 0 auto;
     width: 200px;
     display: flex;
@@ -129,9 +122,15 @@ export const Layer = styled.div`
   }
 
   .react-calendar__month-view__weekdays {
-    padding: 10px 0;
+    font-size: 10px;
+    font-weight: 400;
+    max-height: 36px;
+    padding: 12px 0;
     color: #fff;
     opacity: 0.3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .react-calendar__month-view__days {
@@ -140,38 +139,34 @@ export const Layer = styled.div`
     grid-template-columns: repeat(7, 1fr);
 
     button {
-      width: 40px;
-      height: 40px;
       background: transparent;
       color: #fff;
       border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       abbr {
+        text-align: center;
+        max-width: 24px;
+        max-height: 24px;
+        padding: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
       }
     }
-
-    .react-calendar__tile--range {
-      background: #1c1c1e;
-      color: #fff;
-    }
   }
 
   .react-calendar__tile--active {
-    flex: 0;
-    background: #4164e1;
-    font-weight: 700;
-    color: #fff;
-    font-size: 1rem;
-    border-radius: 50%;
-
-    :enabled:hover,
-    :enabled:focus {
+    abbr {
+      flex: 0;
       background: #4164e1;
+      font-weight: 700;
       color: #fff;
+      font-size: 1rem;
+      border-radius: 50%;
     }
   }
 

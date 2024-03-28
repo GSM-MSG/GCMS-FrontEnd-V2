@@ -24,7 +24,7 @@ const useLoggedIn = ({ onFetch = true }: Props) => {
       dispatch(setUserProfile(data))
     },
     onFailure: () => {
-      // !checkUrl && router.replace('/')
+      !checkUrl && router.replace('/')
     },
     autoPushToggle: false,
   })

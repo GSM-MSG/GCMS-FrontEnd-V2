@@ -9,5 +9,5 @@ export const Positioner = styled.div`
 export const Layer = styled.div`
   width: 100%;
   height: fit-content;
-  padding: 2.5rem 0 0 0;
+  padding: 40px 0 0 0;
 `

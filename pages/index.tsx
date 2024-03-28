@@ -28,7 +28,7 @@ interface Props {
 }
 
 export default function Home({ ok }: Props) {
-  if (!ok) return <NotFoundPage />
+  // if (!ok) return <NotFoundPage />
 
   return (
     <>

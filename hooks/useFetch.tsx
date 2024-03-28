@@ -27,7 +27,7 @@ const useFetch = <T,>({
 }: Props<T>) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [data, setData] = useState<T | null>(null)
-  const router = useRouter()
+  // const router = useRouter()
 
   const fetch = useCallback(
     async (body?: any) => {
@@ -59,7 +59,7 @@ const useFetch = <T,>({
         }
         if (onFailure) await onFailure(e)
 
-        if (autoPushToggle) router.push('/')
+        // if (autoPushToggle) router.push('/')
       } finally {
         setIsLoading(false)
       }

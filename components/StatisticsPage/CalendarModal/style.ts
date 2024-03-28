@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   text-align: left;
   padding: 0 24px;
   min-width: 390px;
-  min-height: 479px;
+  min-height: 530px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -69,7 +69,7 @@ export const Layer = styled.div`
   border: 1px solid #464646;
   border-radius: 10px 10px 0 0;
   width: 342px;
-  height: 249px;
+  height: 290px;
 
   * {
     border: none;
@@ -108,6 +108,7 @@ export const Layer = styled.div`
       font-size: 16px;
       font-weight: 600;
       border-radius: 10px;
+      padding: none;
     }
 
     abbr[title] {
@@ -128,7 +129,7 @@ export const Layer = styled.div`
   }
 
   .react-calendar__month-view__weekdays {
-    padding: 15px 0;
+    padding: 10px 0;
     color: #fff;
     opacity: 0.3;
   }
@@ -139,8 +140,8 @@ export const Layer = styled.div`
     grid-template-columns: repeat(7, 1fr);
 
     button {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 40px;
+      height: 40px;
       background: transparent;
       color: #fff;
       border: none;
@@ -148,6 +149,7 @@ export const Layer = styled.div`
       abbr {
         display: flex;
         justify-content: center;
+        align-items: center;
         cursor: pointer;
       }
     }

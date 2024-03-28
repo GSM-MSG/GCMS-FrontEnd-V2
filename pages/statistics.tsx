@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Statistics = ({ ok }: Props) => {
-  if (!ok) return <NotFoundPage />
+  // if (!ok) return <NotFoundPage />
 
   return (
     <>

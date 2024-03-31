@@ -5,6 +5,8 @@ import Calendar from 'react-calendar'
 import { useState } from 'react'
 import { useDownload } from '@/hooks'
 import dayjs from 'dayjs'
+import { toast } from 'react-toastify'
+import toastOption from '@/lib/toastOption'
 
 interface Props {
   title: string
@@ -29,6 +31,14 @@ const CalenderModal = ({ title, onClose }: Props) => {
     setOnCalendar(true)
     setClicked(true)
     setCurrentDate(dayjs(date).format('YYYY-MM-DD'))
+  }
+  
+  const checkNullValue = () => {
+    if(currentDate.trim().length === 0) {
+      toast.error('출력할 주간을 선택해주세요', toastOption);
+    } else {
+      attendanceDownload();
+    }
   }
 
   return (
@@ -78,7 +88,7 @@ const CalenderModal = ({ title, onClose }: Props) => {
             </S.DateSelectBtn>
           </S.CalendarContainer>
         ) : (
-          <S.DownloadBtn title='출석표 출력' onClick={attendanceDownload}>
+          <S.DownloadBtn title='출석표 출력' onClick={checkNullValue}>
             출석표 다운로드
           </S.DownloadBtn>
         )}

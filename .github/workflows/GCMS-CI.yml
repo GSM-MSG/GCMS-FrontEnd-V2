@@ -33,7 +33,7 @@ jobs:
         webhook: ${{ secrets.WEBHOOK }}
         title: "GCMS CI successfully"
         description: "CI success"
-        content: "success!!!\n<@${{ secrets.DISCORD_ID1 }}> <@${{ secrets.DISCORD_ID2 }}> <@${{ secrets.DISCORD_ID3 }}> pr check"
+        content: "success!!!\n<@${{ secrets.DISCORD_ID1 }}> <@${{ secrets.DISCORD_ID2 }}> <@${{ secrets.DISCORD_ID3 }}> <@${{ secrets.DISCORD_ID4 }}>pr check"
         username: GCMS CI bot
         url: "https://github.com/GSM-MSG/GCMS-FrontEnd-V2"
         color: 4CAF50

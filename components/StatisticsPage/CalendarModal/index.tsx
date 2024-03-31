@@ -54,7 +54,7 @@ const CalenderModal = ({ title, onClose }: Props) => {
           <S.SelectDate>날짜 선택</S.SelectDate>
           <S.DateSelectionContainer
             readOnly
-            onClick={() => onClick()}
+            onClick={onClick}
             value={
               clicked
                 ? dayjs(date).format(

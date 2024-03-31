@@ -16,7 +16,6 @@ export const Wrapper = styled.div`
 export const ModalHeader = styled.div`
   padding: 24px 0;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `

@@ -15,12 +15,12 @@ export const Title = styled.span`
   white-space: nowrap;
 
   &:nth-of-type(1) {
-    width: 2.5rem;
-    margin-right: 0.5rem;
+    width: 40px;
+    margin-right: 8px;
   }
 
   &:nth-of-type(3) {
-    margin-right: 1rem;
+    margin-right: 16px;
   }
 `
 
@@ -39,10 +39,10 @@ export const ClubSection = styled(Link)`
 `
 
 export const ClubBanner = styled.img`
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
-  margin-right: 0.5rem;
+  margin-right: 8px;
 `
 
 export const ClubKind = styled.div`

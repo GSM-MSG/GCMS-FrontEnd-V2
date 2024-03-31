@@ -25,6 +25,12 @@ const CalenderModal = ({ title, onClose }: Props) => {
     fileType: 'xlsx',
   })
 
+  const onClick = () => {
+    setOnCalendar(true)
+    setClicked(true)
+    setCurrentDate(dayjs(date).format('YYYY-MM-DD'))
+  }
+
   return (
     <Portal onClose={onClose}>
       <S.Wrapper>
@@ -38,10 +44,7 @@ const CalenderModal = ({ title, onClose }: Props) => {
           <S.SelectDate>날짜 선택</S.SelectDate>
           <S.DateSelectionContainer
             readOnly
-            onClick={() => {
-              setOnCalendar(true)
-              setClicked(true)
-            }}
+            onClick={() => onClick()}
             value={
               clicked
                 ? dayjs(date).format(

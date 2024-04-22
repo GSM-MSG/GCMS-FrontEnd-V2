@@ -22,7 +22,7 @@ const CalenderModal = ({ title, onClose }: Props) => {
 
   const { fetch: attendanceDownload } = useDownload({
     method: 'get',
-    url: `/attend/attend/excel?currentDate=${currentDate}`,
+    url: `/attend/excel?currentDate=${currentDate}`,
     fileName: `${currentDate}_출석부`,
     fileType: 'xlsx',
   })

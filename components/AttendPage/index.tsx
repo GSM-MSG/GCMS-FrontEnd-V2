@@ -222,7 +222,6 @@ export default function AttendPage() {
           setClicked={setClicked}
           date={date}
           setDate={setDate}
-          currentDate={currentDate}
           setCurrentDate={setCurrentDate}
           clicked={clicked}
           selectedPeriods={selectedPeriods}

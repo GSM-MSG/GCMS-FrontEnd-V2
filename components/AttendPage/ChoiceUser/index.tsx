@@ -2,7 +2,6 @@ import ConfirmModal from '@/components/Common/ConfirmModal'
 import { useFetch } from '@/hooks'
 import { RootState } from '@/store'
 import { removeUser } from '@/store/applicant'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './style'
@@ -24,7 +23,6 @@ export default function ChoiceUser({ onSubmit }: choiceUserProps) {
   const dispatch = useDispatch()
   const [choice, setChoice] = useState('')
   const [isShow, setIsShow] = useState<boolean>(false)
-  const router = useRouter()
   const passKorean =
     choice === 'ATTENDED'
       ? '출석'

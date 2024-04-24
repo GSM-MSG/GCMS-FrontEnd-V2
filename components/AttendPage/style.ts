@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { PeriodEnumType } from '.'
-import Link from 'next/link'
 
 export const Positioner = styled.div`
   width: 100%;

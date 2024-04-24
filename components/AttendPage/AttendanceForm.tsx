@@ -14,7 +14,6 @@ interface AttendanceFormProps {
   setClicked: React.Dispatch<React.SetStateAction<boolean>>
   date: Date
   setDate: React.Dispatch<React.SetStateAction<Date>>
-  currentDate: string
   setCurrentDate: React.Dispatch<React.SetStateAction<string>>
   clicked: boolean
   selectedPeriods: PeriodEnumType[]
@@ -32,7 +31,6 @@ const AttendanceForm: React.FC<AttendanceFormProps> = ({
   setClicked,
   date,
   setDate,
-  currentDate,
   setCurrentDate,
   clicked,
   selectedPeriods,

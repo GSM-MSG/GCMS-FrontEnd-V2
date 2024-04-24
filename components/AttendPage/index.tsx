@@ -78,19 +78,18 @@ export default function AttendPage() {
       periods: selectedPeriods,
     })
     setIsShow('')
-    dispatch(removeAllUser())
   }
 
   const download = () => {
     attendanceDownload()
     setIsShow('')
-    dispatch(removeAllUser())
   }
 
   useEffect(() => {
     if (attendData) {
       setPeriodData(selectedPeriods[0])
       setDateData(currentDate)
+      dispatch(removeAllUser())
     }
   }, [attendData])
 

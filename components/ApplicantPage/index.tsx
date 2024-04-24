@@ -41,6 +41,7 @@ export default function ApplicantPage() {
 
   useEffect(() => {
     if (clubId) fetch()
+    dispatch(removeAllUser())
   }, [clubId])
 
   return (

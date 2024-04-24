@@ -17,6 +17,7 @@ export const UserInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  z-index: 1;
 `
 
 export const UserImg = styled.div`
@@ -25,9 +26,11 @@ export const UserImg = styled.div`
   aspect-ratio: 1 / 1;
   border-radius: 100%;
   overflow: hidden;
+
   img {
     object-fit: cover;
     object-position: center;
+    border-radius: 100%;
   }
 `
 
@@ -47,6 +50,7 @@ export const MemberDescription = styled.p`
 
 export const CheckBox = styled.input`
   display: none;
+  z-index: 99;
 
   &:checked + label {
     border: 0.1rem solid #8be246;

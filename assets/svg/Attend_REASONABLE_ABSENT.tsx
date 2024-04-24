@@ -7,7 +7,7 @@ export const Attend_REASONABLE_ABSENT = ({ color }: { color?: string }) => {
       viewBox='0 0 24 24'
       fill='none'
     >
-      <g clip-path='url(#clip0_1933_5170)'>
+      <g clipPath='url(#clip0_1933_5170)'>
         <rect
           x='1.5'
           y='1.5'
@@ -15,7 +15,7 @@ export const Attend_REASONABLE_ABSENT = ({ color }: { color?: string }) => {
           height='21'
           rx='3.5'
           stroke={color ? '#C1C1C1' : 'white'}
-          stroke-width='3'
+          strokeWidth='3'
         />
       </g>
       <defs>

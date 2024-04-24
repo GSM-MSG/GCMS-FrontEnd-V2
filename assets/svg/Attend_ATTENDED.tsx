@@ -7,7 +7,7 @@ export const Attend_ATTENDED = ({ color }: { color?: string }) => {
       viewBox='0 0 24 24'
       fill='none'
     >
-      <g clip-path='url(#clip0_746_7970)'>
+      <g clipPath='url(#clip0_746_7970)'>
         <circle
           cx='12'
           cy='12'

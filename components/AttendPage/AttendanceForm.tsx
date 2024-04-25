@@ -99,7 +99,7 @@ const AttendanceForm: React.FC<AttendanceFormProps> = ({
                   : period === 'ELEVENTH'
                   ? '11교시'
                   : ''
-              )}
+              ).sort()}
               placeholder={isShow=='조회하기'?"조회할 교시를 선택해주세요. (미선택 시 현재 시간 조회)":"생성할 출석표의 교시를 선택해주세요."}
             />
           </S.DateContainer>

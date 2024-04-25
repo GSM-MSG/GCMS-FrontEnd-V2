@@ -9,6 +9,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { RootState } from '.'
 import { removeUser } from './user'
+import Router from 'next/router'
 
 export const reissueToken = createAsyncThunk(
   'reissue/reissueToken',
@@ -51,6 +52,7 @@ export const reissueToken = createAsyncThunk(
     } catch (e) {
       dispatch(removeUser())
       tokenManager.removeTokens()
+      Router.push('/')
       toast.error('다시 로그인 해주세요', toastOption)
       return useLoggedIn({})
     }

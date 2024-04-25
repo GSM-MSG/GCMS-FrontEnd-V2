@@ -1,7 +1,5 @@
-import { accessToken, refreshToken, accessExp, refreshExp } from '@/lib/token'
+import { accessExp, accessToken, refreshExp, refreshToken } from '@/lib/token'
 import { TokensType } from '@/type/api/TokenManager'
-import Router from 'next/router'
-import { toast } from 'react-toastify'
 
 class TokenManager {
   private _accessToken: string | null = null
@@ -57,9 +55,6 @@ class TokenManager {
     localStorage.removeItem(refreshToken)
     localStorage.removeItem(accessExp)
     localStorage.removeItem(refreshExp)
-
-    Router.push('/')
-    toast.error('다시 로그인 해주세요')
   }
 
   get accessToken() {

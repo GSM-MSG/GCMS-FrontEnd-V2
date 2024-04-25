@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { ErrorProps } from '@/type/components/ClubCreationModal'
+import { ErrorProps } from '@/type/components/ClubCreationPage'
 export { Label } from '../Input/style'
 
 export const Wrapper = styled.div`

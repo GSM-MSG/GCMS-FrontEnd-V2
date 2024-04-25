@@ -1,5 +1,6 @@
 import { SearchIcon } from '@/assets/svg'
-import { useFetch } from '@/hooks'
+import { DownloadBtn } from '@/assets/svg'
+import { useDownload, useFetch } from '@/hooks'
 import RequestClubType from '@/lib/requestClubType'
 import { ClubListType } from '@/type/common'
 import { SubmitType } from '@/type/components/ClubPermission'
@@ -30,6 +31,13 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
     },
   })
 
+  const { fetch: download } = useDownload({
+    url: `/admin/hwp/operation/1`,
+    method: 'get',
+    fileName: '운영계획서',
+    fileType: 'hwp',
+  })
+
   useEffect(() => {
     if (apiData.id === 0) return
     submit()
@@ -38,6 +46,10 @@ const ClubPermissionList = ({ inputLabel, data, onFetch }: ListProps) => {
   return (
     <S.Layer>
       <S.InputBox>
+        <S.DownLoadBtnBox onClick={download}>
+          <DownloadBtn />
+          <span>개설신청서 다운로드</span>
+        </S.DownLoadBtnBox>
         <SearchIcon />
         <Input
           placeholder='검색'

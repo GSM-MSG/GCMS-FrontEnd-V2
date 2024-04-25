@@ -1,10 +1,15 @@
+import TokenManager from '@/api/TokenManager'
+import { useLoggedIn } from '@/hooks'
+import observable from '@/lib/Observable'
+import toastOption from '@/lib/toastOption'
+import { TokensType } from '@/type/api/TokenManager'
 import { InitialState } from '@/type/store/reissue'
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import TokenManager from '@/api/TokenManager'
 import axios from 'axios'
-import { TokensType } from '@/type/api/TokenManager'
+import Router from 'next/router'
+import { toast } from 'react-toastify'
 import { RootState } from '.'
-import delay from '@/lib/delay'
+import { removeUser } from './user'
 
 export const reissueToken = createAsyncThunk(
   'reissue/reissueToken',
@@ -16,30 +21,41 @@ export const reissueToken = createAsyncThunk(
       reissue.isLoading ||
       tokenManager.calculateMinutes(reissue.refreshDate, 1) >= new Date()
     ) {
-      while ((getState() as RootState).reissue.isLoading) {
-        await delay(100)
-      }
+      await new Promise((resolve) => {
+        observable.setObserver(resolve)
+      })
       return
     }
 
     dispatch(
       setRefreshTiming({ isLoading: true, refreshDate: new Date().toString() })
     )
-    const { data } = await axios.patch<TokensType>(
-      '/auth',
-      {},
-      {
-        baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
-        withCredentials: true,
-        headers: {
-          'Refresh-Token':
-            tokenManager.refreshToken && `Bearer ${tokenManager.refreshToken}`,
-        },
-      }
-    )
+    try {
+      const { data } = await axios.patch<TokensType>(
+        '/auth',
+        {},
+        {
+          baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
+          withCredentials: true,
+          headers: {
+            'Refresh-Token':
+              tokenManager.refreshToken &&
+              `Bearer ${tokenManager.refreshToken}`,
+          },
+        }
+      )
+      observable.notifyAll()
+      observable.removeAll()
 
-    tokenManager.setTokens(data)
-    return data
+      tokenManager.setTokens(data)
+      return data
+    } catch (e) {
+      dispatch(removeUser())
+      tokenManager.removeTokens()
+      toast.error('다시 로그인 해주세요', toastOption)
+      console.log(Router.route)
+      return useLoggedIn({})
+    }
   }
 )
 

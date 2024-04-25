@@ -1,11 +1,9 @@
 import { RootState } from '@/store'
-import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import ClubCreationModal from '../ClubCreationModal'
 import * as S from './style'
-
+import { useRouter } from 'next/router'
 export default function CreateClubBtn() {
-  const [modal, setModal] = useState(false)
+  const router = useRouter()
   const { user } = useSelector((state: RootState) => ({
     user: state.user,
   }))
@@ -15,9 +13,8 @@ export default function CreateClubBtn() {
   return (
     <>
       <S.Wrapper>
-        <S.Btn onClick={() => setModal(true)} />
+        <S.Btn onClick={() => router.push(`/clubcreate`)} />
       </S.Wrapper>
-      {modal && <ClubCreationModal onClose={() => setModal(false)} />}
     </>
   )
 }

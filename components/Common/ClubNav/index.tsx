@@ -38,6 +38,14 @@ export default function ClubNav() {
             <small>동아리</small>
           </S.NavTitle>
         </S.NavWrapper>
+        <S.NavWrapper href={`/attend/${clubId}`}>
+          <S.IconBox>
+            <SVG.Hand />
+          </S.IconBox>
+          <S.NavTitle>
+            <small>출석</small>
+          </S.NavTitle>
+        </S.NavWrapper>
       </S.NavContainer>
     </S.Layer>
   )

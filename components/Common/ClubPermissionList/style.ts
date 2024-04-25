@@ -19,6 +19,16 @@ export const InputBox = styled.div`
   }
 `
 
+export const DownLoadBtnBox = styled.div`
+  position: absolute;
+  right: 0;
+  width: 9.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+`
+
 export const ClubContainer = styled.div`
   width: 100%;
   max-height: 520px;

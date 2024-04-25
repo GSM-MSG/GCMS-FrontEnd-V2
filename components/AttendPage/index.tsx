@@ -96,11 +96,15 @@ export default function AttendPage() {
   const [isShow, setIsShow] = useState<string>('')
   const [isPick, setIsPick] = useState<string>('')
 
-  const onClose = () => {
-    setIsShow('')
+  const reset = () => {
+    setSelectedPeriods([])
     setIsPick('')
     setDate(new Date())
-    setSelectedPeriods([])
+  }
+
+  const onClose = () => {
+    setIsShow('')
+    reset()
   }
 
   const onClickPeriod = (period: PeriodEnumType) => {
@@ -168,6 +172,7 @@ export default function AttendPage() {
               <S.NavWrapper
                 onClick={() => {
                   setIsShow('조회하기')
+                  reset()
                 }}
                 style={{ cursor: 'pointer' }}
               >
@@ -181,6 +186,7 @@ export default function AttendPage() {
               <S.NavWrapper
                 onClick={() => {
                   setIsShow('생성하기')
+                  reset()
                 }}
                 style={{ cursor: 'pointer' }}
               >

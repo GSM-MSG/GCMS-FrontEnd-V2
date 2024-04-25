@@ -35,5 +35,18 @@ export const Img = styled.img`
 `
 
 export const BannerDescription = styled.div<ErrorProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: ${({ error }) => (error ? '#FF6666' : '#696969')};
+
+  span {
+    &:first-of-type {
+      font-size: 12px;
+    }
+
+    &:last-of-type {
+      font-size: 10px;
+    }
+  }
 `

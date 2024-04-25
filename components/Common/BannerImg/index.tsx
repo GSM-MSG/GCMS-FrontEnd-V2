@@ -1,7 +1,7 @@
 import * as SVG from '@/assets/svg'
 import { UseFormRegisterReturn } from 'react-hook-form'
-import * as S from './style'
 import NoCopyBox from '../NoCopyBox'
+import * as S from './style'
 
 interface Props {
   register: UseFormRegisterReturn
@@ -23,7 +23,8 @@ const BannerImg = ({ register, error, bannerImg }: Props) => {
         <S.BannerInput error={error} htmlFor='bannerImg'>
           <SVG.Pictures error={error} />
           <S.BannerDescription error={error}>
-            배너 사진 업로드
+            <span>배너 사진 업로드</span>
+            <span>권장 최소 사이즈: 1440*1080</span>
           </S.BannerDescription>
         </S.BannerInput>
       )}

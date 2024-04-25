@@ -6,7 +6,6 @@ import { TokensType } from '@/type/api/TokenManager'
 import { InitialState } from '@/type/store/reissue'
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
-import Router from 'next/router'
 import { toast } from 'react-toastify'
 import { RootState } from '.'
 import { removeUser } from './user'
@@ -53,7 +52,6 @@ export const reissueToken = createAsyncThunk(
       dispatch(removeUser())
       tokenManager.removeTokens()
       toast.error('다시 로그인 해주세요', toastOption)
-      console.log(Router.route)
       return useLoggedIn({})
     }
   }

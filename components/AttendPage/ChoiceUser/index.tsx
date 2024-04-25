@@ -83,7 +83,7 @@ export default function ChoiceUser({ onSubmit }: choiceUserProps) {
       </S.Positioner>
       {isShow && (
         <ConfirmModal
-          title={`지원자 ${passKorean}`}
+          title={`동아리원 ${passKorean}`}
           description={`정말 ${passKorean}시키겠습니까?`}
           onClose={() => setIsShow(false)}
           onConfirm={onConfirm}

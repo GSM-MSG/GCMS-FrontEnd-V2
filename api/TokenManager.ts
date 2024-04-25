@@ -1,6 +1,5 @@
-import { accessToken, refreshToken, accessExp, refreshExp } from '@/lib/token'
+import { accessExp, accessToken, refreshExp, refreshToken } from '@/lib/token'
 import { TokensType } from '@/type/api/TokenManager'
-import Router from 'next/router'
 
 class TokenManager {
   private _accessToken: string | null = null
@@ -56,8 +55,6 @@ class TokenManager {
     localStorage.removeItem(refreshToken)
     localStorage.removeItem(accessExp)
     localStorage.removeItem(refreshExp)
-
-    Router.push('/')
   }
 
   get accessToken() {

@@ -51,7 +51,11 @@ API.interceptors.response.use(
   },
   async (error) => {
     const tokenManager = new TokenManager()
-    if (window.location.pathname !== '/' && error.response.status === 401) {
+    if (
+      tokenManager.accessToken &&
+      tokenManager.refreshToken &&
+      error.response.status === 401
+    ) {
       try {
         await store.dispatch(reissueToken())
         tokenManager.initToken()

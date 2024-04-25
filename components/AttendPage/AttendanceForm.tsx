@@ -14,7 +14,7 @@ interface AttendanceFormProps {
   setClicked: React.Dispatch<React.SetStateAction<boolean>>
   date: Date
   setDate: React.Dispatch<React.SetStateAction<Date>>
-  setCurrentDate: React.Dispatch<React.SetStateAction<string>>
+  setCurrentDate: React.Dispatch<React.SetStateAction<Date>>
   clicked: boolean
   selectedPeriods: PeriodEnumType[]
   isPick: string
@@ -68,7 +68,7 @@ const AttendanceForm: React.FC<AttendanceFormProps> = ({
                     )
                   : ''
               }
-              placeholder='조회할 날짜를 선택해주세요. (미선택 시 당일 조회)'
+              placeholder={isShow=='조회하기'?"조회할 교시를 선택해주세요. (미선택 시 현재 시간 조회)":"생성할 출석표의 날짜를 선택해주세요."}
             />
           </S.DateContainer>
           <S.DateContainer onFocus={() => setIsPick('period')}>
@@ -99,8 +99,8 @@ const AttendanceForm: React.FC<AttendanceFormProps> = ({
                   : period === 'ELEVENTH'
                   ? '11교시'
                   : ''
-              )}
-              placeholder='조회할 교시를 선택해주세요. (미선택 시 현재 시간 조회)'
+              ).sort()}
+              placeholder={isShow=='조회하기'?"조회할 교시를 선택해주세요. (미선택 시 현재 시간 조회)":"생성할 출석표의 교시를 선택해주세요."}
             />
           </S.DateContainer>
           {isPick === 'calendar' ? (
@@ -110,7 +110,7 @@ const AttendanceForm: React.FC<AttendanceFormProps> = ({
                 onChange={(value) => {
                   if (!(value instanceof Date)) return
                   setDate(value)
-                  setCurrentDate(dayjs(value).format('YYYY-MM-DD'))
+                  setCurrentDate(value)
                 }}
                 calendarType='US'
                 locale='kr'

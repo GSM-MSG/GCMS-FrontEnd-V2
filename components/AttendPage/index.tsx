@@ -49,15 +49,15 @@ export default function AttendPage() {
   const router = useRouter()
   const clubId = router.query.clubID
   const [date, setDate] = useState(new Date())
-  const [currentDate, setCurrentDate] = useState('')
+  const [currentDate, setCurrentDate] = useState(new Date())
   const [selectedPeriods, setSelectedPeriods] = useState<PeriodEnumType[]>([])
   const [clicked, setClicked] = useState(false)
-  const [dateData, setDateData] = useState('')
+  const [dateData, setDateData] = useState(new Date())
   const [periodData, setPeriodData] = useState('')
 
   const { fetch: attendanceDownload, data: attendData } =
     useFetch<AttendListType>({
-      url: `/attend/${clubId}?date=${currentDate}&period=${selectedPeriods}`,
+      url: `/attend/${clubId}?date=${dayjs(currentDate).format('YYYY-MM-DD')}&period=${selectedPeriods}`,
       method: 'get',
       autoPushToggle: false,
       errors: '출석부를 찾을 수 없습니다. 생성을 진행해주세요.',
@@ -74,7 +74,7 @@ export default function AttendPage() {
   const create = () => {
     attendanceCreate({
       name: 'test',
-      date: currentDate,
+      date: dayjs(currentDate).format('YYYY-MM-DD'),
       periods: selectedPeriods,
     })
     setIsShow('')
@@ -99,6 +99,7 @@ export default function AttendPage() {
   const reset = () => {
     setSelectedPeriods([])
     setIsPick('')
+    setCurrentDate(new Date())
     setDate(new Date())
   }
 
